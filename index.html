@@ -360,15 +360,83 @@
   /* Article reader */
   .article-modal{position:fixed;inset:0;z-index:2000;display:none;background:rgba(10,18,16,.62);padding:24px;overflow:auto;}
   .article-modal.is-open{display:flex;align-items:flex-start;justify-content:center;animation:modalFade .2s ease both;}
-  .article-sheet{width:min(820px,100%);margin:6vh auto 4vh;background:var(--paper);border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.25);padding:clamp(28px,5vw,58px);position:relative;animation:sheetIn .3s cubic-bezier(.2,.7,.2,1) both;}
-  .article-sheet .close-article{position:absolute;right:18px;top:18px;width:38px;height:38px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:24px;line-height:1;}
+  .article-sheet{width:min(860px,100%);margin:5vh auto 4vh;background:var(--paper);border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.25);padding:clamp(28px,5vw,58px);position:relative;animation:sheetIn .3s cubic-bezier(.2,.7,.2,1) both;}
+  .article-sheet .close-article{position:absolute;right:18px;top:18px;width:38px;height:38px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .18s ease;}
+  .article-sheet .close-article:hover{background:var(--paper-dim);border-color:var(--ink);}
   .article-sheet .article-type{font:10px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--signal);margin-bottom:12px;}
-  .article-sheet h2{font-size:clamp(32px,5vw,54px);margin-bottom:14px;max-width:18ch;}
-  .article-sheet .article-dek{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:62ch;margin-bottom:18px;}
-  .article-sheet .article-meta{font:11px 'JetBrains Mono',monospace;color:var(--ink-soft);padding-bottom:20px;border-bottom:1px solid var(--line);}
+  .article-sheet h2{font-size:clamp(30px,4.5vw,48px);margin-bottom:14px;max-width:24ch;}
+  .article-sheet .article-dek{font-size:16.5px;color:var(--ink-soft);line-height:1.7;max-width:64ch;margin-bottom:18px;}
+  .article-sheet .article-meta{font:11px 'JetBrains Mono',monospace;color:var(--ink-soft);padding-bottom:16px;border-bottom:1px solid var(--line);}
   .article-sheet .article-note{margin-top:28px;padding:16px 18px;background:var(--paper-dim);font-size:13px;color:var(--ink-soft);line-height:1.65;}
   @keyframes modalFade{from{opacity:0}to{opacity:1}}
   @keyframes sheetIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  /* Reader toolbar & view toggle */
+  .reader-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 24px;padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .reader-tabs{display:inline-flex;gap:4px;background:var(--paper-dim);padding:3px;border-radius:3px;border:1px solid var(--line);}
+  .reader-tab{padding:6px 14px;border:none;background:transparent;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .18s ease;}
+  .reader-tab.active{background:var(--paper);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,0.08);}
+  .reader-tab:hover:not(.active){color:var(--ink);}
+  .reader-pdf-link{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--signal);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:6px 12px;border-radius:2px;border:1px solid rgba(224,80,31,0.35);transition:all .18s ease;text-decoration:none;}
+  .reader-pdf-link:hover{background:var(--signal);color:#fff;}
+  .reader-pdf-link svg{width:13px;height:13px;}
+
+  /* Article editorial layout & typography */
+  .article-body{margin-top:20px;font-family:'Inter',sans-serif;color:var(--ink);line-height:1.75;}
+  .article-body .lead{font-family:'Fraunces',serif;font-size:clamp(17px,2vw,21px);line-height:1.6;color:var(--ink);margin-bottom:20px;}
+  .article-body p{margin-bottom:18px;font-size:15px;color:#2c2822;}
+  .article-body strong{color:var(--ink);font-weight:600;}
+  .article-body em{font-style:italic;}
+  .article-quote{margin:28px 0;padding:18px 24px;border-left:3px solid var(--signal);background:var(--paper-dim);font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.55;color:var(--ink);}
+  .article-body .section-subhead{font-family:'Fraunces',serif;font-size:20px;margin:28px 0 12px;color:var(--teal);letter-spacing:-0.01em;}
+  
+  /* Q&A interview styling */
+  .qa-item{margin-bottom:22px;border-bottom:1px dashed var(--line);padding-bottom:18px;}
+  .qa-item:last-child{border-bottom:none;}
+  .qa-q{font-weight:600;color:var(--teal);margin-bottom:8px;font-size:14.5px;line-height:1.55;}
+  .qa-a{font-size:14.5px;line-height:1.7;color:#353028;}
+
+  /* Classified Dossier styling */
+  .dossier-card{background:var(--paper-dim);border:1px solid #c9bfa5;padding:22px;border-radius:2px;margin-bottom:24px;position:relative;}
+  .dossier-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:10px;flex-wrap:wrap;gap:8px;}
+  .dossier-stamp{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#c0392b;letter-spacing:0.08em;border:1.5px solid #c0392b;padding:3px 8px;border-radius:2px;}
+  .dossier-case{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--ink-soft);}
+  .dossier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px;font-size:13.5px;}
+  @media (max-width:560px){.dossier-grid{grid-template-columns:1fr;}}
+  .dossier-missing-note{margin-top:14px;font-size:12px;color:var(--ink-soft);font-style:italic;}
+  .dossier-meta{margin-top:12px;padding-top:10px;border-top:1px dashed #c9bfa5;font-size:13px;display:flex;flex-direction:column;gap:4px;}
+  .recovered-item-box{background:#fdf6e6;border:1px dashed #d4af37;padding:16px;border-radius:2px;margin-bottom:20px;}
+  .recovered-inscription{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:#8a4b12;text-align:center;margin-top:8px;}
+  .witness-statement{background:rgba(255,255,255,0.7);border-left:3px solid var(--teal);padding:14px 18px;margin-bottom:16px;}
+  .witness-title{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+  .detective-note{background:var(--teal);color:var(--paper);padding:20px;border-radius:2px;margin:24px 0;}
+  .detective-note p{color:#D9E2DE;font-size:14px;}
+  .detective-prompt{font-family:'Fraunces',serif;font-size:16px;color:#fff !important;font-style:italic;margin-top:10px;text-align:center;}
+  .editorial-divider{text-align:center;color:var(--signal);letter-spacing:0.5em;margin:28px 0;font-size:16px;}
+
+  /* Article images and gallery */
+  .article-featured-img{margin:22px 0 26px;border-radius:2px;overflow:hidden;border:1px solid var(--line);background:var(--paper-card);}
+  .article-featured-img img{width:100%;height:auto;display:block;}
+  .article-gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 26px;}
+  .article-img-wrap{border:1px solid var(--line);background:var(--paper-card);overflow:hidden;}
+  .article-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+  .img-caption{display:block;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-soft);background:var(--paper-dim);}
+  
+  /* Biblio and footnotes */
+  .biblio-box, .footnotes-box{margin-top:32px;padding:20px;background:var(--paper-dim);border:1px solid var(--line);border-radius:2px;font-size:12.5px;}
+  .biblio-box h4{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:12px;}
+  .biblio-box ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+  .biblio-box a, .footnotes-box a{color:var(--signal);text-decoration:underline;text-underline-offset:2px;word-break:break-all;}
+  .footnotes-box p{margin-bottom:8px;font-size:12px;color:var(--ink-soft);}
+  .footnotes-box .img-cred-note{margin-top:12px;font-style:italic;border-top:1px dashed var(--line);padding-top:8px;}
+
+  /* Embedded PDF iframe */
+  .pdf-viewer-wrap{width:100%;height:75vh;min-height:520px;border:1px solid var(--line);background:#525659;border-radius:2px;display:none;position:relative;margin-top:20px;}
+  .pdf-viewer-wrap.active{display:block;}
+  .pdf-viewer-wrap iframe{width:100%;height:100%;border:none;display:block;}
+
+  /* Tag badge for PDF */
+  .tag.pdf-badge{background:rgba(224,80,31,0.12);color:var(--signal);font-weight:600;padding:2px 6px;border-radius:2px;}
 
   /* Loading transition */
   #pageLoader{position:fixed;inset:0;z-index:3000;background:var(--teal);color:var(--paper);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:opacity .5s ease,visibility .5s ease;}
@@ -950,35 +1018,47 @@
 
   <div class="feature">
     <div>
-      <span class="kicker">Op-ed</span>
+      <span class="kicker">Op-ed · PDF Available</span>
       <h2>Buried in Colonialism, Lost in Legislation</h2>
       <p class="dek">Turns out "Indian values" is just Victorian morality wearing a bindi. From the temples of Khajuraho to the Aravanis of Tamil Nadu, our true heritage of gender diversity was erased by colonial laws like Section 377.</p>
       <div class="pullquote">"For over a century and a half, we lived with someone else's anxieties and called them our own traditions."</div>
       <p class="byline">By Gaurika Rashmi Nair · 6 min read</p>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <a class="article-link" href="#article-aippm-colonialism" data-article="article-aippm-colonialism" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Op-Ed ↗</a>
+        <a href="pdfs/buried-in-colonialism.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      </div>
     </div>
     <div class="stat-card">
       <div class="stat"><div class="num">1871</div><div class="lbl">Criminal Tribes Act targeted the hijra community</div></div>
       <div class="stat"><div class="num">158</div><div class="lbl">Years Section 377 was in the Indian Penal Code</div></div>
+      <div style="margin-top:6px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
+        <img src="images/buried-in-colonialism_img6.jpg" alt="Aravani community in Koovagam" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+        <span style="display:block;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--ink-soft);background:var(--paper-dim);">Aravani community festival, Koovagam</span>
+      </div>
     </div>
   </div>
 
   <div class="grid">
     <a class="card article-link" href="#article-aippm-case" data-article="article-aippm-case">
-      <div class="ph card-media alt"><span class="photo-cred">AIPPM, Case File 522627/23</span></div>
+      <div class="ph card-media alt" style="background:url('images/manish-kumar-case-file_img1.jpg') center/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">Case File 52Z627/23 · Classified</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Feature</span></div>
+        <div class="tag-row"><span class="tag read">Classified Dossier</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Subject Profile: Manish Kumar</h3>
         <p class="dek">A classified look into an 'honour killing' where two people chose to love each other despite society. What protection does the law give that society doesn't?</p>
-        <div class="card-foot"><span>Amitha B</span><span>Feature</span></div>
+        <div class="card-foot"><span>Amitha B</span><span>Feature · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-aippm-sketch" data-article="article-aippm-sketch">
-      <div class="ph card-media"><span class="photo-cred">AIPPM, Delegate Statement</span></div>
+      <div class="ph card-media" style="background:linear-gradient(135deg, rgba(224,80,31,0.88), rgba(183,138,63,0.8)), repeating-linear-gradient(45deg, #d8cdae, #d8cdae 2px, #e6dcc2 2px, #e6dcc2 4px);position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">AIPPM · Yogi Adithyanath Sketch</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Character Sketch</span></div>
+        <div class="tag-row"><span class="tag read">Character Sketch</span><span class="tag pdf-badge">PDF</span></div>
         <h3>An Ambassador of Saffron</h3>
-        <p class="dek">He will tell you he stands for everyone, right before explaining, patiently, who doesn't count. A sketch on a delegate confusing certainty for conviction.</p>
-        <div class="card-foot"><span>Gaurika Rashmi Nair</span><span>Sketch</span></div>
+        <p class="dek">He will tell you he stands for everyone, right before explaining, patiently, who doesn't count. A character sketch on Yogi Adithyanath.</p>
+        <div class="card-foot"><span>Gaurika Rashmi Nair</span><span>Sketch · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1027,27 +1107,37 @@
 
   <div class="feature">
     <div>
-      <span class="kicker">Feature</span>
+      <span class="kicker">Feature · PDF Available</span>
       <h2>When Fear Needs a Victim, it Invents a Witch</h2>
       <p class="dek">When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame. A look into how witchcraft accusations conceal xenophobia, land disputes, and scapegoating of vulnerable women.</p>
       <div class="pullquote">"Violence cannot be tolerated by any means. Witches belong to belief. But witch hunting belongs to power, violence and control."</div>
       <p class="byline">By Sruthy S Muraly · 7 min read</p>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <a class="article-link" href="#article-uncsw-witch" data-article="article-uncsw-witch" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Feature ↗</a>
+        <a href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      </div>
     </div>
     <div class="stat-card">
       <div class="stat"><div class="num">22,000</div><div class="lbl">victims of witchcraft accusations documented across 50 countries</div></div>
       <div class="stat"><div class="num">19</div><div class="lbl">people executed in the Salem witch trials, dispelling mythological scopes</div></div>
       <div class="stat"><div class="num">18</div><div class="lbl">older people killed in Tanzania by Sept 2024 over witchcraft allegations</div></div>
+      <div style="margin-top:6px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
+        <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Salem witch trials" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+        <span style="display:block;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--ink-soft);background:var(--paper-dim);">Salem witch trials · Smithsonian Magazine</span>
+      </div>
     </div>
   </div>
 
   <div class="grid cols-2">
     <a class="card article-link" href="#article-uncsw-interview" data-article="article-uncsw-interview">
-      <div class="ph card-media alt"><span class="photo-cred">UNCSW committee floor</span></div>
+      <div class="ph card-media alt" style="background:url('images/when-the-law-says-no_img1.jpg') center/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNCSW · Bangladesh Delegate</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Interview</span></div>
+        <div class="tag-row"><span class="tag read">Interview</span><span class="tag pdf-badge">PDF</span></div>
         <h3>When the Law Says No, But Society Says Yes</h3>
         <p class="dek">An interview with the delegate of Bangladesh on child marriage loopholes, intimate partner violence (IPV), and the limits of cultural justifications.</p>
-        <div class="card-foot"><span>Sruthy S Muraly</span><span>Interview</span></div>
+        <div class="card-foot"><span>Sruthy S Muraly</span><span>Interview · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1067,7 +1157,7 @@
   </div>
 
   <div class="poem-wrap">
-    <span class="kicker">From the UNCSW arts desk</span>
+    <span class="kicker">From the UNCSW arts desk · PDF Available</span>
     <h3>Why do my rights differ with my locality?</h3>
     <span class="byline">By Tessa Vinu</span>
     <div class="poem-body">
@@ -1078,7 +1168,23 @@
       Was I too ambitious?<br>
       For wanting to exist as I was?<br>
       For not wanting someone to tell me to 'cover up' or smile more?<br>
-      <span class="cut">Coz someone decided that the mere existence of a woman is too much or too less...</span>
+      Why is the decision to burn and inflict pain on my body<br>
+      Rather hold the perps accountable?<br><br>
+      They say beauty lies in the eyes of the beholder,<br>
+      Maybe so does shame.<br>
+      Coz I never felt the need to cover up or inflict pain on myself to be socially accepted<br>
+      I never felt ashamed<br>
+      Until someone said I ought to be.<br>
+      Coz someone decided that the mere existence of a woman is too much or too less<br>
+      And always needs to be policed.<br><br>
+      Was it my fault? -<br>
+      YES.<br>
+      Screamed the teary eyed woman in front of me,<br>
+      Before I could go on any further.
+    </div>
+    <div style="margin-top:20px;display:flex;justify-content:center;gap:12px;align-items:center;flex-wrap:wrap;">
+      <a class="article-link" href="#article-uncsw-poem" data-article="article-uncsw-poem" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;background:var(--ink);color:var(--paper);padding:6px 14px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read in Reader ↗</a>
+      <a href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--signal);padding:5px 12px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original Poem PDF ↗</a>
     </div>
   </div>
 
@@ -1113,11 +1219,15 @@
 
   <div class="feature">
     <div>
-      <span class="kicker">Feature</span>
+      <span class="kicker">Feature · PDF Available</span>
       <h2>Three Atoms Ahead.. I Am Always Three Atoms Ahead</h2>
       <p class="dek">From the 'Cocaine Bear' of 1985 to today's server-based chemistry, international drug scheduling cannot outrun a local chemist. Why the CND must adopt rapid Early Warning Advisory systems.</p>
       <div class="pullquote">"In the age of artificial drugs, yesterday's solution is bound to be tomorrow's loophole."</div>
       <p class="byline">By Sarah Asraf · 7 min read</p>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <a class="article-link" href="#article-uncnd-atoms" data-article="article-uncnd-atoms" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Feature ↗</a>
+        <a href="pdfs/three-atoms-ahead.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      </div>
     </div>
     <div class="card quick" style="border:1px solid var(--line);">
       <div class="card-body">
@@ -1133,21 +1243,25 @@
 
   <div class="grid">
     <a class="card article-link" href="#article-uncnd-feature" data-article="article-uncnd-feature">
-      <div class="ph card-media"><span class="photo-cred">UNCND, classified file</span></div>
+      <div class="ph card-media" style="background:url('images/project-somnium-caseum_img1.jpg') center/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNCND · Confidential Dossier</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Dossier</span></div>
+        <div class="tag-row"><span class="tag read">Dossier</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Project: SOMNIUM CASEUM</h3>
         <p class="dek">A classified look at Dream Cheese (DC), a synthetic opioid analogue bypassing borders through molecular substitution and predictive toxicology.</p>
-        <div class="card-foot"><span>Malavika Unnikrishnan</span><span>Feature</span></div>
+        <div class="card-foot"><span>Malavika Unnikrishnan</span><span>Dossier · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-uncnd-interview" data-article="article-uncnd-interview">
-      <div class="ph card-media alt"><span class="photo-cred">UNCND, Interview</span></div>
+      <div class="ph card-media alt" style="background:url('images/when-the-molecule-gets-ahead_img1.jpg') center 25%/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNCND · Delegate of Indonesia</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Interview</span></div>
+        <div class="tag-row"><span class="tag read">Interview</span><span class="tag pdf-badge">PDF</span></div>
         <h3>When the Molecule Gets Ahead of the Law</h3>
         <p class="dek">In conversation with the Delegate of Indonesia on the race to regulate new psychoactive substances and the justification for strict drug laws.</p>
-        <div class="card-foot"><span>Sarah Asraf</span><span>Interview</span></div>
+        <div class="card-foot"><span>Sarah Asraf</span><span>Interview · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1196,36 +1310,48 @@
 
   <div class="feature">
     <div>
-      <span class="kicker">Long read</span>
+      <span class="kicker">Feature · PDF Available</span>
       <h2>Apparently, the Gun Knows Who Is Right</h2>
       <p class="dek">Almost everyone agrees weapons need regulation. But the disagreement begins when we ask whose weapons, supplied to whom, and under what circumstances, exposing the politics of selective accountability.</p>
       <div class="pullquote">"At some point, 'who supplied the weapon?' becomes less important than 'whose side are they on?'"</div>
       <p class="byline">By Ridha Methar · 8 min read</p>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <a class="article-link" href="#article-disec-feature" data-article="article-disec-feature" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Feature ↗</a>
+        <a href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      </div>
     </div>
     <div class="stat-card">
       <div class="stat"><div class="num">9.2%</div><div class="lbl">increase in global major conventional weapons transfers from 2016 to 2025</div></div>
       <div class="stat"><div class="num">42%</div><div class="lbl">of global arms exports accounted for by the United States alone</div></div>
       <div class="stat"><div class="num">25,000</div><div class="lbl">Humvees delivered to Afghan forces that passed directly into Taliban hands</div></div>
+      <div style="margin-top:8px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
+        <img src="images/apparently-the-gun-knows-who-is-right_img1.jpg" alt="UNGA DISEC Floor" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+        <span style="display:block;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--ink-soft);background:var(--paper-dim);">DISEC Floor & Flags · SSET NEWS</span>
+      </div>
     </div>
   </div>
 
   <div class="grid">
     <a class="card article-link" href="#article-disec-op-ed" data-article="article-disec-op-ed">
-      <div class="ph card-media alt"><span class="photo-cred">UNGA DISEC, op-ed</span></div>
+      <div class="ph card-media alt" style="background:url('images/arming-the-enemy-proxy-warfare_img1.jpg') center/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNGA DISEC · Aaisha (IPP)</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Op-Ed</span></div>
+        <div class="tag-row"><span class="tag read">Op-Ed</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Arming the Enemy of My Enemy</h3>
         <p class="dek">The justification for proxy warfare, and how states exploit layers of intermediaries and unresolved legal ambiguities like the Nicaragua and Tadić standards.</p>
-        <div class="card-foot"><span>Nivin Vineeth</span><span>Op-Ed</span></div>
+        <div class="card-foot"><span>Nivin Vineeth</span><span>Op-Ed · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-disec-interview" data-article="article-disec-interview">
-      <div class="ph card-media"><span class="photo-cred">UNGA DISEC, interview</span></div>
+      <div class="ph card-media" style="background:url('images/beyond-the-weapons-russia_img1.jpg') center 20%/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNGA DISEC · Delegate of Russia</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Interview</span></div>
+        <div class="tag-row"><span class="tag read">Interview</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Beyond the Weapons: Allegation or Facts</h3>
-        <p class="dek">An interview with the delegate of Russia on the fine line between cooperation and accountability, and the evidentiary standards needed for illicit weapons transfers.</p>
-        <div class="card-foot"><span>DISEC Desk</span><span>Interview</span></div>
+        <p class="dek">Representative of the International Press Corpus in conversation with the delegate of Russia on the fine line between cooperation and accountability.</p>
+        <div class="card-foot"><span>IPC DISEC Desk</span><span>Interview · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1274,11 +1400,15 @@
   
   <div class="feature">
     <div>
-      <span class="kicker">Op-ed</span>
+      <span class="kicker">Op-ed · PDF Available</span>
       <h2>ΣΠΆΝΙΣ (SCARCITY): WHAT FILLS THE VOID?</h2>
       <p class="dek">When legitimate medicine remains inaccessible or unaffordable, counterfeits fill the gap. Strict enforcement isn't enough if the system itself is fundamentally broken.</p>
       <div class="pullquote">"The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough."</div>
       <p class="byline">By Ishita Sudhir · 7 min read</p>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <a class="article-link" href="#article-who-scarcity" data-article="article-who-scarcity" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Op-Ed ↗</a>
+        <a href="pdfs/scarcity-what-fills-the-void.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      </div>
     </div>
     <div class="card quick" style="border:1px solid var(--line);">
       <div class="card-body">
@@ -1288,27 +1418,34 @@
           <div><b>Doha Declaration</b> — Affirmed the right to use TRIPS flexibilities to protect public health.</div>
           <div><b>MEDICRIME Convention</b> — Treats falsified medical products as criminal conduct requiring cooperation.</div>
         </div>
+        <div style="margin-top:8px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
+          <img src="images/scarcity-what-fills-the-void_img1.jpg" alt="Counterfeit pharmaceutical packaging" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+        </div>
       </div>
     </div>
   </div>
 
   <div class="grid cols-2">
     <a class="card article-link" href="#article-who-feature" data-article="article-who-feature">
-      <div class="ph card-media alt"><span class="photo-cred">WHO, Feature</span></div>
+      <div class="ph card-media alt" style="background:url('images/scarcity-what-fills-the-void_img2.jpg') center/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">WHO · Fake Medicines</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Satire</span></div>
+        <div class="tag-row"><span class="tag read">Satire</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Congratulations! You got your fake medicines</h3>
         <p class="dek">A satirical look at premium hospitals and the substandard pharmaceuticals that imitate everything except the ability to save a life.</p>
-        <div class="card-foot"><span>Jaithra K</span><span>Feature</span></div>
+        <div class="card-foot"><span>Jaithra K</span><span>Satire · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-who-sketch" data-article="article-who-sketch">
-      <div class="ph card-media"><span class="photo-cred">WHO, Committee Floor</span></div>
+      <div class="ph card-media" style="background:url('images/who-character-sketch_img1.jpg') center 20%/cover;position:relative;">
+        <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">WHO · Committee Deliberation</span>
+      </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Character Sketch</span></div>
-        <h3>The WHO's Patience</h3>
+        <div class="tag-row"><span class="tag read">Character Sketch</span><span class="tag pdf-badge">PDF</span></div>
+        <h3>Character Sketch: The WHO</h3>
         <p class="dek">Unlike other committees, WHO seems less interested in changing the conversation than making sure it never stops. A look at the art of deliberation.</p>
-        <div class="card-foot"><span>Ishita Sudhir</span><span>Sketch</span></div>
+        <div class="card-foot"><span>Ishita Sudhir</span><span>Sketch · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1446,7 +1583,27 @@
     <h2 id="articleModalTitle"></h2>
     <p class="article-dek" id="articleModalDek"></p>
     <div class="article-meta" id="articleModalMeta"></div>
-    <div class="article-note">This reader is wired into Nirvana's article system. When the final article copy is ready, this panel can be replaced with the complete story without changing the publication layout.</div>
+    
+    <div class="reader-toolbar" id="articleToolbar" style="display:none;">
+      <div class="reader-tabs">
+        <button type="button" class="reader-tab active" id="tabTextBtn">Editorial Read</button>
+        <button type="button" class="reader-tab" id="tabPdfBtn">View PDF Document</button>
+      </div>
+      <a href="#" target="_blank" rel="noopener" class="reader-pdf-link" id="articlePdfExternalLink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span>Open Original PDF ↗</span>
+      </a>
+    </div>
+
+    <div class="article-body" id="articleModalBody"></div>
+    
+    <div class="pdf-viewer-wrap" id="articleModalPdfWrap">
+      <iframe id="articleModalPdfFrame" title="Original PDF Document" src="about:blank"></iframe>
+    </div>
+
+    <div class="article-note" id="articleModalNote" style="display:none;">
+      This reader is wired into Nirvana's article system. Full editorial copy for this segment is currently in preparation for publication.
+    </div>
   </article>
 </div>
 
@@ -1513,45 +1670,656 @@
 
   /* Article reader / hash routing */
   const articleData = {
-    'article-aippm-case': {type:'Feature · AIPPM',title:'Buried in Colonialism, Lost in Legislation',dek:'A closer look at the historical and legislative questions raised on the AIPPM floor.',meta:'By Amitha B · Feature'},
-    'article-aippm-sketch': {type:'Sketch · AIPPM',title:'AIPPM, Delegate Statement',dek:'A visual and editorial snapshot from the committee floor.',meta:'By Gaurika Rashmi Nair · Sketch'},
-    'article-uncsw-interview': {type:'Interview · UNCSW',title:'When Fear Needs a Victim, it Invents a Witch',dek:'When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame.',meta:'By Sruthy S Muraly · 7 min read'},
-    'article-uncnd-feature': {type:'Feature · UNCND',title:'Three Atoms Ahead.. I Am Always Three Atoms Ahead',dek:'A committee-floor look at the emerging substances debate and the language surrounding it.',meta:'By Malavika Unnikrishnan · Feature'},
-    'article-uncnd-interview': {type:'Interview · UNCND',title:'UNCND, Interview',dek:'A conversation from the committee floor, presented through the press desk.',meta:'By Sarah Asraf · Interview'},
-    'article-disec-op-ed': {type:'Op-Ed · UNGA DISEC',title:'Beyond the Weapons: Allegation or Facts',dek:'An opinion-led examination of claims, evidence and the language of arms-transfer debates.',meta:'By Nivin Vineeth · Op-Ed'},
-    'article-disec-interview': {type:'Interview · UNGA DISEC',title:'UNGA DISEC, Interview',dek:'A press-desk interview from the room where the arms-transfer debate unfolded.',meta:'By DISEC Desk · Interview'},
-    'article-who-feature': {type:'Feature · WHO',title:'WHO, Feature',dek:'A closer look at the issues raised around counterfeit pharmaceuticals and patent law.',meta:'By Jaithra K · Feature'},
-    'article-who-sketch': {type:'Sketch · WHO',title:'WHO, Committee Floor',dek:'A quick editorial sketch from the WHO committee floor.',meta:'By Ishita Sudhir · Sketch'}
+    'article-aippm-colonialism': {
+      type: 'Op-Ed · AIPPM Feature',
+      title: 'Buried in Colonialism, Lost in Legislation',
+      dek: 'Turns out "Indian values" is just Victorian morality wearing a bindi. From the temples of Khajuraho to the Aravanis of Tamil Nadu, our true heritage of gender diversity was erased by colonial laws like Section 377.',
+      meta: 'By Gaurika Rashmi Nair · AIPPM Feature',
+      pdf: 'pdfs/buried-in-colonialism.pdf',
+      contentHtml: `<p class="lead">Majority of conservative Indians love blaming "western media" for the change in Indian culture. But the only thing we did truly inherit from our colonizers was the prudishness in their personality, the censorship over our bodies and our history.</p>
+<p>Walk into any temple complex and the proof is right there, carved into stone. Khajuraho doesn't blush. Neither does the Konark Sun Temple. Take Ardhanarishvara: Shiva and Parvati fused into a single body, half male, half female, worshipped for over a thousand years, not as some oddity, but as a symbol of the cosmic balance. Or even Mohini, the form Vishnu takes to outwit the demons. She is not a footnote in the Puranas. Then, there's Shikhandi. Raised male. Pivotal to Bhishma's downfall on the battlefield. The Mahabharata doesn't edit that out or explain it away. It simply lets a <em>gender-nonconforming figure</em> shape the outcome of history's most famous war.</p>
+<div class="article-gallery">
+  <div class="article-img-wrap"><img src="images/buried-in-colonialism_img2.jpg" alt="Ardhanarishvara representation"><span class="img-caption">Ardhanarishvara: Shiva and Parvati fused in cosmic balance</span></div>
+  <div class="article-img-wrap"><img src="images/buried-in-colonialism_img4.jpg" alt="Mohini representation"><span class="img-caption">Mohini: Divine form of Vishnu outwitting demons</span></div>
+</div>
+<p>In parts of Tamil Nadu, the transgender community known as Aravanis trace their spiritual lineage to her (Mohini) brief marriage to Aravan, right before his sacrifice at Kurukshetra, a story still marked every year at a festival in Koovagam. The myths are theology; the Aravani and hijra communities are living social institutions with their own lineages, some of which draw on that theology and some of which don't. What they share is this: none of it was hidden, and none of it was branded "abnormal," "modern," or "unnatural." It was simply there, there as a part of nature’s balance.</p>
+<div class="article-featured-img">
+  <img src="images/buried-in-colonialism_img6.jpg" alt="Members of transgender community in Tamil Nadu">
+  <span class="img-caption">Members of the Aravani community at the Koovagam festival in Tamil Nadu</span>
+</div>
+<p>The hijra community's roots go back to the Mughal era, when its members held real power: guarding the zenana, advising at court, trusted enough to be recorded in Mughal chronicles. Call it what it actually was. Not tolerance in the modern, watered-down mindset of India. It was <strong>integration</strong>.</p>
+<p>Then the British arrived. With them came the Criminal Tribes Act of 1871, which classified hijras as a "tribe" and turned an entire community into targets: surveillance, warrantless arrest, forced registration. Section 377 of the Indian Penal Code, drafted in 1860 by Macaulay's committee and lifted straight from British sodomy law, criminalised <em>"carnal intercourse against the order of nature."</em> India carried that law for 158 years like a piece of inherited furniture nobody wanted but nobody threw out either, until 2018, when the Supreme Court finally struck it down in <em>Navtej Singh Johar</em>. For over a century and a half, we lived with someone else's anxieties and called them our own traditions. That's not heritage. That's fear wearing the costume of culture.</p>
+<p>The 2014 NALSA judgment was a genuine step forward. It recognised transgender persons as a third gender and grounded that recognition in Articles 14, 15, 19, and 21 of the Constitution. Equality, Inclusivity, Self Identification & Right to Life, not handed down as gifts from the state, but affirmed as rights the state was always obligated to protect. On paper, it's still one of the more progressive rulings anywhere in the world. Then, came the Transgender Persons (Protection of Rights) Act of 2019: it made transgender people apply to the government for a certificate proving who they already were, built directly against the warning NALSA itself had issued. Self-identification in theory. Self-justification in practice. Before this committee drafts another resolution about "intent," it might want to sit with that contradiction for a minute.</p>
+<p>Same-sex marriage hasn't fared any better. In <em>Supriyo v. Union of India</em>, 2023, the Supreme Court agreed unanimously that queer couples deserve dignity and freedom from discrimination. Then, in a 3:2 split, it refused to extend the Special Marriage Act to them. The matter got handed to Parliament, which has shown no particular hurry to pick it up because why hurry up a decision on a life-changing act that offers them no profit as it is not created out of capitalistic intent, but for the good of humanity. Why do something nice for a change?</p>
+<blockquote class="article-quote">So, here's the real question for this committee; Does India want to legislate gender neutrality because the rest of the world is catching up to an idea? Or because India is finally catching up to itself?</blockquote>
+<p>The mythology was never the problem. The clueless bureaucracy is. Wiping away years of history just to fit the ideal version of what "India" is and was supposed to be is the problem.</p>
+<p>A country that once let a warrior born a woman decide the fate of an empire or a god who is the 50-50 balance of a man & woman shouldn't need committee sessions to decide whether her modern equivalent deserves a marriage certificate or not.</p>
+<div class="biblio-box">
+  <h4>⇒ Bibliography & References</h4>
+  <ul>
+    <li><a href="https://indiankanoon.org/doc/193543132" target="_blank" rel="noopener">Indian Kanoon — NALSA Judgment (2014)</a></li>
+    <li><a href="https://indiankanoon.org/doc/168671544" target="_blank" rel="noopener">Indian Kanoon — Navtej Singh Johar v. Union of India (2018)</a></li>
+    <li><a href="https://indiankanoon.org/doc/17412906" target="_blank" rel="noopener">Indian Kanoon — Supriyo v. Union of India (2023)</a></li>
+    <li><a href="https://socialjustice.gov.in/writereaddata/UploadFile/Binder2.pdf" target="_blank" rel="noopener">Ministry of Social Justice — Transgender Persons Rules</a></li>
+    <li><a href="https://www.ohchr.org/sites/default/files/Documents/Publications/Born_Free_and_Equal_WEB.pdf" target="_blank" rel="noopener">OHCHR — Born Free and Equal</a></li>
+    <li><a href="https://www.bbc.com/news/world-asia-india-27031180" target="_blank" rel="noopener">BBC News — India Recognises Transgender as Third Gender</a></li>
+    <li><a href="https://www.iilsindia.com/blogs/brief-history-transgenders-india" target="_blank" rel="noopener">IILS India — Brief History of Transgenders in India</a></li>
+    <li><a href="https://www.impriindia.com/insights/historical-aspect-of-trans-lives-india" target="_blank" rel="noopener">IMPRI — Historical Aspect of Trans Lives in India</a></li>
+  </ul>
+</div>`
+    },
+    'article-aippm-case': {
+      type: 'Classified Dossier · AIPPM',
+      title: 'Subject Profile (Classified - Murder Case): Manish Kumar',
+      dek: 'A classified investigation into an "honour killing" that exposes what protection the law gives when society refuses to see love.',
+      meta: 'By Amitha B · IP Reporter, AIPPM Committee',
+      pdf: 'pdfs/manish-kumar-case-file.pdf',
+      contentHtml: `<div class="dossier-card">
+  <div class="dossier-header">
+    <span class="dossier-stamp">CLASSIFIED — MURDER CASE</span>
+    <span class="dossier-case">CASE FILE : 52Z627/23</span>
+  </div>
+  <div class="dossier-grid">
+    <div class="dossier-field"><strong>SUBJECT:</strong> MANISH KUMAR</div>
+    <div class="dossier-field"><strong>AGE:</strong> 34</div>
+    <div class="dossier-field"><strong>VILLAGE:</strong> Palampur</div>
+    <div class="dossier-field"><strong>OCCUPATION:</strong> Medical Shop owner</div>
+    <div class="dossier-field"><strong>MARITAL STATUS:</strong> MARRIED</div>
+    <div class="dossier-field"><strong>CHILD:</strong> One daughter, 6</div>
+    <div class="dossier-field"><strong>FAMILY:</strong> Wife, mother, older brother</div>
+    <div class="dossier-field"><strong>REPUTATION:</strong> Villagers describe him as quiet and family-oriented.</div>
+  </div>
+  <p class="dossier-missing-note"><em>(Photograph of the subject is missing)</em></p>
+  <div class="dossier-meta">
+    <p><strong>DATE OF MURDER:</strong> 18th August 2023</p>
+    <p><strong>SITE WHERE BODY WAS FOUND:</strong> Abandoned rubber shed near the town.</p>
+  </div>
+</div>
+<h4 class="section-subhead">Personal Notes</h4>
+<p>Usually left the village twice a month by claiming to visit a friend in a nearby town. These visits became frequent three months before his death. When asked, the wife of the subject responded that she was unaware about who this friend was.</p>
+<h4 class="section-subhead">Recovered Item</h4>
+<div class="recovered-item-box">
+  <p>A photograph was found inside the wallet of the victim. The photograph showed the victim holding hands with another person — presumed to be a man. On the back of the photograph it was written:</p>
+  <p class="recovered-inscription">“ Somewhere we can be ourselves ”</p>
+</div>
+<h4 class="section-subhead">Witness Statements</h4>
+<div class="witness-statement">
+  <div class="witness-title">WITNESS 01 — Neighbour:</div>
+  <p>“Everything was perfect about that house. Manish has always been a good man who cared a lot for his family. But, a few weeks before his death, I heard his brother shouting at him and kept on yelling <em>‘DO YOU KNOW WHAT PEOPLE ARE GOING TO SAY ABOUT US ? DO YOU HAVE ANY SHAME?’</em> This was very strange as I’ve known and regarded Manish as a respectable man. A few days after that, I saw him board a bus going to town.”</p>
+</div>
+<div class="witness-statement">
+  <div class="witness-title">WITNESS 02 — Tea shop owner (nearby town):</div>
+  <p>“I’ve known Manish and his family for years, he was our regular customer. He always visited our shop with another man. He said that the man was his close friend. About a few weeks before Manish’s death, I saw this man having a heated argument with Manish’s brother beside our tea shop. I heard Manish’s brother threatening him by saying <em>‘If I ever see you with him again, I’ll make sure that you’ll never see or hear about him again !! DO YOU UNDERSTAND??’</em> After that, I’ve never seen them again.”</p>
+</div>
+<div class="detective-note">
+  <p><strong>A note to the detective reading this:</strong> There are so many unanswered mysteries revolving around this murder case. Who was Manish’s friend? Why did Manish make secret visits to town? Why was his brother furious? What ultimately led to Manish’s murder?</p>
+  <p class="detective-prompt">You have the evidence. What do you think happened?</p>
+</div>
+<div class="editorial-divider">✦ ✦ ✦</div>
+<h4 class="section-subhead">Dear reader,</h4>
+<p>I know you have probably arrived at a conclusion by now and that you know exactly what this was intended at. Here, this case was clearly an example of ‘honour killing’, because two people chose to love each other despite knowing that the society around them would never accept them for who they are. Society hunted them down in all aspects. How many lives do we have to see perish before our eyes until society sees love for what it really is - LOVE !!</p>
+<p>Keeping morality aside, which would itself be ironic, the real question is what protection does the law give that the society doesn't. Though consensual same-sex relationships between two people were decriminalised, marriage between them is still not legally recognized in India.</p>
+<p>The Supreme Court has recognised that LGBTQ+ persons are subject to equal protection of law and directed the State to protect their rights by preventing discrimination. Now a real contradiction arises and it is impossible to ignore.</p>
+<p>The relationship of a same-sex couple is real in every sense that matters to them. However, the absence of recognition of marriage can deprive them of the same legal status and protections provided to marriage for heterosexual couples. It includes adoption, succession and maintenance. And perhaps this is where the discussion on gender-neutral laws becomes more complicated.</p>
+<p>Gender neutrality doesn't merely refer to replacing the words ‘man’ and ‘woman’ with ‘person’. It should also mean that the protection of the law must be available to every person, regardless of whom they love or how they identify.</p>
+<blockquote class="article-quote">The question remains… Who is actually responsible for the fear that made the victim hide his life behind the curtains of judgment?</blockquote>
+<p style="text-align:right;font-style:italic;color:var(--ink-soft);margin-top:16px;">— Amitha B, IP Reporter, AIPPM Committee</p>`
+    },
+    'article-aippm-sketch': {
+      type: 'Character Sketch · AIPPM',
+      title: 'An Ambassador of Saffron: A Character Sketch on Yogi Adithyanath',
+      dek: 'A portrait of political contradiction — walking into committee with certainty mistaken for conviction.',
+      meta: 'By Gaurika Rashmi Nair · Character Sketch',
+      pdf: 'pdfs/an-ambassador-of-saffron.pdf',
+      contentHtml: `<p class="lead">This man strolls into the committee hall as if he has already won, and it is a matter of interpretation as to whether this is a symptom of overconfidence or complete misunderstanding of the dynamics at play. This man, dressed in a saffron reds & oranges, wearing Indian clothes, is clearly sending some signals here.</p>
+<p>He is a study in contradictions. Externally he is loud and confident, the kind of person who speaks before other people can think. Internally, he is meticulous and organized; when you see him prepare for debates in the committee; he is carefully noting down inconsistencies and reading up on every rule and procedure involved to score the points he needs. He is a man of discipline and order who does not want to listen to anyone else but himself.</p>
+<p>He has come into the debate with clear and established views, which he is determined to stick to regardless of facts and figures. He does not believe in any western propaganda, although there is a possibility that this principle does not apply to his debating style. All the delegates in the committee are sanatanis, one unified family, he says, until the trans rights motion is proposed and suddenly the family has a guest list. Marriage is only possible between men and women, sacred and eternal; that is the kind of statement you make when you know nothing of its roots.</p>
+<p>He is dismissive of facts in a particular and predictable way. He believes that since male sexual assault numbers are low, the problem must be smaller too; he does not care about the boy who has been taught to regard reporting such acts as unmanly, and therefore chooses not to do it. He believes that the absence of data means absence of pain, either out of sheer ignorance or for purely practical purposes, after all he is a politician.</p>
+<p>He is, in the very end, less a delegate than a mirror, one held up to a very specific kind of politics that has learned to speak the language of unity while practicing the arithmetic method of exclusion. He will tell you he stands for everyone, right before explaining, patiently, who doesn't count. That is the trick, and it is not a new one. Dress the old hierarchies in new metaphors, call exclusion tradition, call silence strength, call control a vow. But when committees end, motions get passed or shot down, and somewhere outside this room the people he keeps footnoting out of his speeches are still waiting for the provisions he had promised them.</p>
+<blockquote class="article-quote">Saffron looks good under committee lighting. It does not, however, look particularly good on a man who has confused certainty for conviction.</blockquote>`
+    },
+    'article-disec-feature': {
+      type: 'Feature · UNGA DISEC',
+      title: 'Apparently, the Gun Knows Who Is Right: The Politics of Selective Accountability',
+      dek: 'When international law protects the rules more consistently than the people those rules were meant to protect.',
+      meta: 'By Ridha Methar · DISEC Floor Correspondent',
+      pdf: 'pdfs/apparently-the-gun-knows-who-is-right.pdf',
+      contentHtml: `<p class="lead"><em>When international law protects the rules more consistently than the people those rules were meant to protect. Your correspondent from the DISEC floor, Ridha Methar.</em></p>
+<div class="article-featured-img">
+  <img src="images/apparently-the-gun-knows-who-is-right_img1.jpg" alt="DISEC floor in session with member state flags">
+  <span class="img-caption">The UNGA DISEC floor: deliberation under the shadow of global arms proliferation · Photo: SSET NEWS</span>
+</div>
+<p>There is something almost comforting about the way the international community discusses weapons.</p>
+<p>We call them arms transfers. We call them defence assistance. We call them strategic partnerships. Give the same weapon to the wrong person, however, and suddenly it becomes a threat to international peace and security.</p>
+<p>Apparently, the weapon itself knows the difference.</p>
+<p>To be fair, weapons are not the problem. Not entirely. Listening to the arguments around disarmament in DISEC, one thing becomes difficult to ignore: almost everyone agrees that weapons need regulation. But the disagreement begins when we ask whose weapons, supplied to whom, and under what circumstances.</p>
+<p>In a world where borders can be crossed overnight, missiles can travel across in minutes and wars can begin before diplomats have finished drafting their statements; expecting every country to simply disarm would be naïve. States have a right and arguably a responsibility to protect their people. But somewhere between defending a population and defending an interest, we seem to have misplaced the population.</p>
+<p>The Arms Trade Treaty already recognises this problem. States are required to assess whether an arms transfer could contribute to serious violations of international humanitarian or human-rights law, and exports are supposed to be refused where the risk is considered overriding.</p>
+<p>So why does the problem continue? Perhaps because international politics has a rather selective memory.</p>
+<h4 class="section-subhead">Selective Memory and Market Dominance</h4>
+<p>SIPRI reports that global transfers of major conventional weapons increased by 9.2% between 2016 to 20 and 2021 to 25, the highest level since the end of the Cold War. The United States alone accounted for 42% of global arms exports during that period. Meanwhile, SIPRI notes that arms exporters are often themselves stakeholders in the conflicts driving demand, which can make their foreign-policy interests rather difficult to separate from their humanitarian vocabulary.</p>
+<p>And this is where the conversation becomes uncomfortable. We condemn the state that arms a militant group we dislike. We defend the state that arms a government we support. We demand accountability when the weapons come from our opponent and call it security cooperation when they come from our ally.</p>
+<blockquote class="article-quote">At some point, "who supplied the weapon?" becomes less important than "whose side are they on?"</blockquote>
+<p>Afghanistan has shown how weapons and political decisions can have consequences long after the original strategic calculation is forgotten. SIPRI's own transfer records show that international backers delivered roughly 25,000 Humvees to Afghan security forces over the course of the war—vehicles that, when the government collapsed in 2021, passed directly into Taliban hands along with the rest of a two-decade arsenal.</p>
+<p>Gaza has made the question of arms transfers impossible to separate from civilian protection. And across conflicts such as Sudan, Libya and Yemen, tracing weapons is complicated by secrecy, diversion and competing external interests. SIPRI has specifically documented the difficulty of tracking transfers in conflicts where secrecy is high.</p>
+<h4 class="section-subhead">The Question of State Responsibility</h4>
+<p>This does not mean that every state should be forbidden from supporting an armed partner. States may have legitimate security interests. But if a government chooses to supply weapons, it should also choose to accept responsibility for what follows. If the recipient uses those weapons to attack civilians, "we didn't directly do it" should not be the entire defence.</p>
+<p>The international community therefore needs more than another beautifully worded resolution. It needs independent investigations into serious allegations, transparent tracking of international arms transfers and consequences that do not mysteriously disappear when the accused happens to be politically useful.</p>
+<p>And perhaps the UN should ask itself a slightly more uncomfortable question too.</p>
+<p>What happens when the rules designed to protect civilians become more important than the civilians themselves? Because if international law can tell us exactly when a weapon is legally transferable, but cannot guarantee that the person standing underneath it will survive, then perhaps we have become very good at protecting the rules of war while forgetting the reason we had rules in the first place.</p>
+<p>The world does not need fewer rules. It needs fewer people powerful enough to believe that the rules apply only to everyone else.</p>
+<blockquote class="article-quote">Perhaps that is the simplest test of all. A civilian does not care whose flag was printed on the box. They care that the weapon inside it reached them anyway.</blockquote>
+<div class="footnotes-box">
+  <p><strong>Citations & Reference Sources:</strong></p>
+  <p>• <a href="https://www.sipri.org/media/press-release/2026/global-arms-flows-jump-nearly-10-cent-european-demand-soars" target="_blank" rel="noopener">SIPRI — Global arms flows jump nearly 10 per cent as European demand soars</a></p>
+  <p>• <a href="https://www.sipri.org/sites/default/files/2026-03/fs_2603_at_2025.pdf" target="_blank" rel="noopener">SIPRI Fact Sheet — Trends in International Arms Transfers (2025)</a></p>
+  <p>• <a href="https://www.sipri.org/commentary/topical-backgrounder/2021/transfers-major-arms-afghanistan-between-2001-and-2020" target="_blank" rel="noopener">SIPRI Commentary — Transfers of Major Arms to Afghanistan (2001–2020)</a></p>
+  <p class="img-cred-note">Source: SSET NEWS & Stockholm International Peace Research Institute (SIPRI)</p>
+</div>`
+    },
+    'article-disec-interview': {
+      type: 'Interview · UNGA DISEC',
+      title: 'Beyond the Weapons: Allegation or Facts',
+      dek: 'Representative of the International Press Corpus in conversation with the delegate of Russia on the fine line between cooperation and accountability.',
+      meta: 'By IPC DISEC Desk · Diplomatic Interview',
+      pdf: 'pdfs/beyond-the-weapons-russia.pdf',
+      contentHtml: `<div class="article-featured-img">
+  <img src="images/beyond-the-weapons-russia_img1.jpg" alt="Delegate of Russia in conversation with IPC Journalist">
+  <span class="img-caption">Representative of the International Press Corpus in conversation with the delegate of Russia on the fine line between cooperation and accountability</span>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q1: It is prohibited under the sanctions policy of the UN for North Korea to export any armaments; however, it has been found that many countries in the UN have engaged in a large number of military transactions with the North Korean and Russian governments. How can Russia justify its stance against illegal weapons trafficking?</div>
+  <div class="qa-a"><strong>A:</strong> We have always maintained our foreign policy based on international law and the UN Charter. The claims regarding North Korea are largely coming from Western countries and intelligence reports, which Russia does not consider reliable.<br><br>Russia believes sanctions should not be used simply for political pressure. Any allegations regarding weapons transfers must be properly investigated and supported by evidence rather than assumptions.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q2: Delegate you have frequently emphasised the importance of evidence when allegations of weapons transfers are made. What specific evidentiary standard does Russia believe should be met before the UN publicly attributes an illicit weapons transfer to a state?</div>
+  <div class="qa-a"><strong>A:</strong> Russia believes in having a clear and independently verified evidence before a country is accused. A photograph of a weapon or satellite image alone cannot prove which country transferred it.<br><br>The UN should first identify the weapon, its serial number, manufacturer and original export documents where possible. It should then look at the route through which the weapon reached the conflict area. There should also be evidence showing who actually authorised the transfer. A weapon manufactured in one country can later be sold, stolen, captured or transferred by another country.<br><br>We are not saying that states should never be held responsible. But the evidence must be strong enough to establish responsibility before public attribution is made.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q3: Following Russia's veto of the renewal of the UN Panel of Experts monitoring DPRK sanctions, does the Russian Federation support the creation of an alternative independent mechanism to verify alleged weapons transfers, including transfers involving Russia itself?</div>
+  <div class="qa-a"><strong>A:</strong> We do not oppose verification. Our concern was mainly with the way the Panel of Experts was operating and the lack of objectivity in some of its reports.<br><br>A new mechanism can be considered, but it must be genuinely independent and should work under the United Nations, not under groups created by a few Western countries.<br><br>Russia has also criticised the use of satellite images and media reports as if they are complete proof of an arms transfer. These can be useful, but they are not always enough to establish responsibility.<br><br>If such a system is fair and does not target one country, Russia would have no reason to oppose it.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q4: Delegate you have criticised Western weapons transfers to conflict zones as destabilising, while Western states have raised concerns about Russian military cooperation with other sanctioned states. How does Russia propose for distinguishing legitimate military assistance from state-enabled proliferation?</div>
+  <div class="qa-a"><strong>A:</strong> The main difference is whether the assistance is being given to a recognised government or to an armed group operating outside government control.<br><br>Russia believes sovereign governments have the right to request military assistance for their defence, but this is different from secretly supplying weapons to rebel or terrorist groups.<br><br>The problem is that Western countries have often supported armed groups in different conflicts and described it as support for freedom or self-defence. We believes the same standard should apply to everyone.<br><br>If a state is giving weapons to another government through a legal agreement, it should not automatically be called proliferation. But if weapons are secretly transferred to armed groups without the consent of the government concerned, that is a different matter.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q5: If credible evidence establishes that a state has repeatedly facilitated the transfer of weapons to a non-State armed group, what consequences does Russia believe are proportionate and how should the international community respond when that state is itself a permanent member of the Security Council?</div>
+  <div class="qa-a"><strong>A:</strong> If there is clear evidence that a state is deliberately supplying weapons to an illegal armed group, there should be consequences. The rules cannot depend on whether that country is powerful or not.<br><br>Possible measures could include stopping the particular weapons supply, investigating the companies and intermediaries involved, and imposing appropriate sanctions where they are legally justified.<br><br>As for permanent members of the Security Council, such as US, they should not receive special immunity simply because they are P5 members.<br><br>Russia's position is that the same principle must apply to every country. If Western states facilitate weapons transfers to armed groups, they should face the same scrutiny as Russia or any other state.</div>
+</div>`
+    },
+    'article-disec-op-ed': {
+      type: 'Op-Ed · UNGA DISEC',
+      title: 'Arming the Enemy of My Enemy: The Justification for Proxy Warfare',
+      dek: 'In modern warfare, utility has replaced friendship, and utility has been engineered to look like distance.',
+      meta: 'By Nivin Vineeth · UNGA DISEC',
+      pdf: 'pdfs/arming-the-enemy-proxy-warfare.pdf',
+      contentHtml: `<p class="lead"><em>"An enemy of my enemy is my friend"</em> has shaped foreign policy for centuries. But in modern warfare, utility has replaced friendship, and utility has been engineered to look like distance. States no longer simply choose proxies over armies instead they choose architecture: layers of intermediaries and transit states designed so that when a weapon is finally used against a civilian, no government's fingerprints remain on the trigger.</p>
+<p>This is not one problem but two. The first is <strong>direct state sponsorship</strong>, a government knowingly arming a non-state actor for its own strategic ends. The second is <strong>indirect transfer</strong>, the diversion of weapons through brokers, falsified end-user certificates, and complicit transit states until the chain of custody is too tangled to prosecute. DISEC's agenda treats these as distinct failures, and any serious editorial must too.</p>
+<p>Following the Soviet invasion of Afghanistan in 1979, the CIA's Operation Cyclone funnelled over two billion dollars in weapons and training to the mujahideen through Pakistan's ISI, with Saudi Arabia matching Washington's contributions.<sup>1</sup> Among the transfers were roughly two thousand Stinger missiles; a CIA buyback program launched in 1993 at a cost of $65 million which is nearly double the missiles' original value.<sup>2</sup> It was later called an "abysmal failure" by intelligence officials, since the weapons had scattered too widely to trace. The strategic logic was sound: Washington raised the cost of occupation without deploying its own troops. But the networks built to fight that war did not disband with it, they hardened into the Taliban and sheltered al-Qaeda. <em>Sponsorship does not expire when the sponsor's interest does.</em></p>
+<p>If Afghanistan shows what sponsorship does, Libya shows how indirect transfer hides. A 2013 UN Panel of Experts report tracked Libyan weapons reaching fourteen countries in violation of the arms embargo; more recent reporting documents ammunition destined for Sudan's Rapid Support Forces being diverted through Libya and resold to networks linked to ISIS-affiliated gold trafficking in the Niger.<sup>3</sup> This is not incidental leakage; it is the predictable result of a system built on self-reported compliance. The Arms Trade Treaty's Article 11 requires states to assess and mitigate diversion risk, yet enforcement still relies heavily on exporters policing themselves, with no binding penalty for failure.<sup>4</sup></p>
+<p>Both failures converge on one unresolved legal question: <strong>when does support make a state responsible for what its proxy does?</strong> The ICJ's 1986 <em>Nicaragua</em> judgment set a demanding <em>"effective control"</em> test, requiring proof a state directed specific unlawful acts, a threshold so high it has shielded most sponsors from liability.<sup>5</sup> The ICTY's <em>Tadić</em> judgment proposed a looser <em>"overall control"</em> standard, satisfied merely by organizing, financing, or equipping a group.<sup>6</sup> The two have never been reconciled; the ICJ reaffirmed the stricter standard as recently as 2007. That unresolved ambiguity is precisely what sponsors exploit. The plausible deniability is not an accident of proxy warfare, but a loophole international law has left open.</p>
+<div class="article-featured-img">
+  <img src="images/arming-the-enemy-proxy-warfare_img1.jpg" alt="Syria and USA delegates in DISEC">
+  <span class="img-caption">Delegates of Syria and the United States in committee caucus · Photo: Aaisha (IPP)</span>
+</div>
+<p>There is a real case for proxy support. The campaign against ISIS relied on the Syrian Democratic Forces, backed by limited, mission-specific U.S. arms and airpower, when the alternatives were direct intervention or letting a caliphate expand.<sup>7</sup> Proxy support cannot be dismissed as inherently illegitimate, but necessity is not exemption. The SDF's chain of custody was identifiable and its objective narrow. Afghanistan and Libya show what happens once that specificity disappears: necessity becomes a permanent alibi.</p>
+<p>Closing this gap requires naming mechanisms, not slogans. ATT diversion assessments need independent verification, not self-certification. UN Panels of Experts, currently renewed conflict-by-conflict, should become standing bodies empowered to trigger automatic sanctions review upon documented diversion. And DISEC should adopt a working rule bridging <em>Nicaragua</em> and <em>Tadić</em> for arms-transfer cases specifically: a state that arms or knowingly permits transit to a group with a documented record against civilians should face the lower <em>Tadić</em> threshold, reserving the stricter standard for disputes over specific operational acts.</p>
+<blockquote class="article-quote">Proxy warfare can still win a war without a state losing a soldier. But Afghanistan's scattered Stingers and Libya's decade-long diversion trail prove the costs simply relocate. The question is no longer whether the enemy of my enemy can defeat my enemy, it is whether a system that has spent forty years avoiding a definition of control is finally ready to write one.</blockquote>
+<div class="footnotes-box">
+  <p><sup>1</sup> <a href="https://www.guinnessworldrecords.com/world-records/613906-most-expensive-covert-action" target="_blank" rel="noopener">Guinness World Records — Most Expensive Covert Action</a></p>
+  <p><sup>2</sup> <a href="https://www.rferl.org/a/1057196.html" target="_blank" rel="noopener">Radio Free Europe / Radio Liberty — CIA Buyback Program</a></p>
+  <p><sup>3</sup> <a href="https://www.ecoi.net/en/file/local/2139528/n2604139.pdf" target="_blank" rel="noopener">UN Panel of Experts Report on Libya</a></p>
+  <p><sup>4</sup> <a href="https://ihl-databases.icrc.org/en/ihl-treaties/att-2013/article-11?activeTab=" target="_blank" rel="noopener">Arms Trade Treaty, Article 11 (ICRC)</a></p>
+  <p><sup>5</sup> <a href="https://www.icty.org/x/file/Legal%20Library/jud_supplement/supp6-e/tadic.htm" target="_blank" rel="noopener">ICTY Legal Library — Nicaragua vs Tadić comparison</a></p>
+  <p><sup>6</sup> <a href="https://modeldiplomat.com/learn/glossary/effective-control-test" target="_blank" rel="noopener">Effective Control Test — Model Diplomat</a></p>
+  <p><sup>7</sup> <a href="https://www.jpost.com/middle-east/article-887251" target="_blank" rel="noopener">Jerusalem Post — SDF and US Support in Syria</a></p>
+  <p class="img-cred-note">Image source: SIPRI (Trends in International Transfers of Major Arms 1981-2025) & Aaisha (IPP)</p>
+</div>`
+    },
+    'article-uncsw-interview': {
+      type: 'Interview · UNCSW',
+      title: 'When the Law Says No, But Society Says Yes',
+      dek: 'In conversation with the delegate of Bangladesh on child marriage, dowry, legal loopholes and the limits of cultural justification.',
+      meta: 'By Sruthy S Muraly · UNCSW Interview',
+      pdf: 'pdfs/when-the-law-says-no.pdf',
+      contentHtml: `<div class="article-featured-img">
+  <img src="images/when-the-law-says-no_img1.jpg" alt="Bangladesh delegate and journalist placards on committee table">
+  <span class="img-caption">In conversation with the delegate of Bangladesh on child marriage, dowry, legal loopholes and the limits of cultural justification · Photo Credits: Sruthy</span>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q1. There is high prevalence of early marriages among children in South Asia where according to UNFPA, around 47% of girls between 18-24 years have been married below age of 18. Why is the practice of early marriages very common in Bangladesh despite its continued commitment to end such practices?</div>
+  <div class="qa-a"><strong>A1.</strong> Bangladesh is well aware of the fact that child marriages pose a significant problem. According to UNICEF statistics, 51% of women in Bangladesh aged between 20 and 24 years have been married before reaching the age of 18. Nevertheless, there is no doubt about Bangladesh’s successes in solving this problem, which can be clearly seen from the drop of almost half from the initial number in 1970 of those marrying before turning 18.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q2. Bangladesh’s Child Marriage Restraint Act 2017 states that the minimum age of marriage for women is 18; however, Section 19 states that marriage can be performed below the stated age in “special circumstances” with the consent of parents and permission from the court. If child marriage is considered a harmful custom, why is there an exception to it in the law itself?</div>
+  <div class="qa-a"><strong>A2.</strong> Bangladesh recognizes that the special circumstances provision has generated legitimate international concern. Bangladesh's position is that preventing child marriage requires stronger safeguards, registration and enforcement, while addressing the poverty, insecurity and social pressures that drive families toward early marriage.<br><br><strong>Follow-up:</strong> If the purpose is to protect the child, why does the provision rely on parental and judicial approval without expressly requiring the child's own consent? Does that not allow the very family or social pressures behind child marriage to determine what is supposedly in the girl's “best interests”?<br><br>Bangladesh recognises the need for more safeguards in relation to Section 19. Nonetheless, it should be noted that Section 19 does not permit parents to unilaterally organise the marriage of a child. Rather, it mandates certain special circumstances, consideration by the Assessment Committee, consent of the parent or guardian, and finally, an order of the court in the best interest of the child. Moreover, the 2018 Rules specifically prohibit forced marriage and marriage to a rapist in the list of the special circumstances which can be recommended. Thus, Bangladesh realises the concern of obtaining the express consent of the child.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q3. The 2024 Violence Against Women Survey in Bangladesh discovered that young married girls ages 15 to 19 years old are exposed to much more intimate partner violence (IPV), with 62% experiencing IPV in the last year. Given this connection between marriage at an early age and violence against girls, how does Bangladesh justify its support of underage marriage laws?</div>
+  <div class="qa-a"><strong>A3.</strong> Bangladesh does not dispute the evidence; the 2024 national Violence Against Women Survey actually demonstrates why stronger protection is necessary. The survey found that girls aged 15–19 were the most vulnerable group, with over 62% experiencing intimate-partner violence in the previous year. Bangladesh's position is therefore not that underage marriage should be encouraged, but that the exceptional provision must never become a pathway for coerced marriage. We support strengthening judicial scrutiny, requiring the child's views to be heard, and ensuring that exceptional authorization remains truly exceptional.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q4. The same national survey found that dowry is a significant factor of women's risk in intimate-partner violence, where atleast 76% of the have experienced at least one form of IPV in their lifetime Bangladesh has laws against dowry, yet the practice continues to affect women's safety. Does this suggest that criminalisation alone has failed to change the cultural and social norms sustaining harmful practices?</div>
+  <div class="qa-a"><strong>A4.</strong> The 2024 VAW Survey actually shows a decline in recent IPV from 66% in 2015 to 49% in 2024. However, the continued association between dowry and violence demonstrates that criminalisation alone cannot dismantle the social norms sustaining the practice. Bangladesh therefore supports a dual approach: strong legal enforcement against dowry alongside community-level norm change, women's economic empowerment and awareness of legal rights. The objective is not simply to punish dowry, but to make the social and economic conditions sustaining it less viable.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q5. Bangladesh frequently recognises that harmful practices are rooted in social norms rather than law alone. At what point should the state stop treating practices such as child marriage and dowry as matters requiring gradual cultural change and instead treat them as direct violations of women's autonomy that cannot be justified by tradition, family pressure or economic necessity?</div>
+  <div class="qa-a"><strong>A5.</strong> It is obvious for Bangladesh, as tradition can be used as an explanation for perpetuation, not as a justification for a human right violation. At the point when the practice becomes coercive, violent, exploitative or deprives a person of his/her rights and legal autonomy, the intervention by the State is necessary. In case of child marriages and dowry practices in Bangladesh, there should be a two-pronged approach towards their elimination: while the legal and criminal framework needs to set a clear line of acceptability, community discourse and socio-economic empowerment should tackle the underlying conditions for the perpetuation of the practice.</div>
+</div>`
+    },
+    'article-uncsw-witch': {
+      type: 'Feature · UNCSW',
+      title: 'When Fear Needs a Victim, it Invents a Witch',
+      dek: 'When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame.',
+      meta: 'By Sruthy S Muraly · UNCSW Feature',
+      pdf: 'pdfs/when-fear-needs-a-victim-witch.pdf',
+      contentHtml: `<p class="lead">When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame. Reporting from UNCSW is your reliable source of information, Sruthy.</p>
+<div class="article-featured-img">
+  <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Salem witch trials representation">
+  <span class="img-caption">The Salem witch trials: mythology vs historical reality · Credit: Smithsonian Magazine</span>
+</div>
+<p>Utter the word “witch” to a crowd, and mutters of Salem will arise. Popular memory has mythologised the Salem witch trials through a strange cocktail of memes, skits and trolls. The most prevalent idea of the trials is that women who seemed a bit too knowledgeable for the community’s liking were accused of being witches by the locals and burnt on a stake. But the reality of this mythology is grim and far from the theatrical flare given to it. There were around 200 people who were accused of doing witchcraft, of which 19 were executed through hanging. 5 of the executed were men. The pathology of the Witch trials of Salem can be attributed to xenophobia and religious extremism along with widespread paranoia. By 1693, the prosecutions had collapsed.<sup>1</sup></p>
+<p>But that happened three centuries ago. Witch accusations therefore should belong to the glass shelves of a museum as a relic of the times before reason. Even in the 21st century, witchcraft accusations remain a serious human-rights problem. A UN report shows that harmful practices linked to witchcraft documented at least 22,000 victims across 50 countries and six regions over a ten-year period, while warning that the real figure is difficult to establish. Victims have suffered discrimination, banishment, beatings, burnings, sexual violence, mutilation, torture and killing.<sup>2</sup> In fact the severe underreporting of such cases leaves the true scale of the issue to the imagination. Instead of the God of Gaps, some communities found solace in their bad luck, lack of knowledge and resources through witches.</p>
+<blockquote class="article-quote" style="font-style:normal;">
+  <em>“Harvest wasn't bountiful? Find a witch.<br>
+  Your child died of a high fever? Must have been cursed by a witch.”</em>
+</blockquote>
+<p>Who's the lucky winner that has to take the blame in such a situation? And why is it almost always elderly women, widowed women, disabled individuals, and people with albinism? Why does supernatural evil find a liking to these individuals?</p>
+<p>Director Rungano Nyoni of <em>I Am Not a Witch</em><sup>3</sup> learned about this strange phenomenon while conducting research for the movie in Ghana and Zimbabwe. Having stayed at an actual witch camp, Nyoni realised that such accusations were being made towards older women and children time and time again. Her movie, in fact, focuses on the absurdity of a powerless person being moulded into a threat and strives to not question whether there actually is witchcraft.</p>
+<div class="article-featured-img">
+  <img src="images/when-fear-needs-a-victim-witch_img2.jpg" alt="Living conditions in a witch camp in northern Ghana">
+  <span class="img-caption">Living in exile: Residents of a witch camp in northern Ghana · Credit: CNRS NEWS</span>
+</div>
+<p>This is why witch-hunting cannot simply be about belief. The deeper logic leads us to scapegoating. Instead of confronting the lack of resources in healthcare, the influence of powerful religious figures who feed extremism into the minds of the people, or the ulterior motive of financial gain due to greed and land disputes, the accusation performs a remarkable political and moral trick: it turns the powerless into the dangerous. The woman being beaten is recast as the threat. The child being expelled becomes the ultimate source of evil. The mob becomes, in its imagination (or delusion), the victim.</p>
+<p>The cruelty of the accusations transcends violence and becomes a public spectacle. The community and officials<sup>4</sup> together vow the silence of neutrality. When a woman is beaten, stripped and paraded, accusation becomes the substitute for evidence.</p>
+<p>In the infamous case of Akua Denteh,<sup>5</sup> a 90-year-old Ghanaian woman was publicly beaten to death in Kafaba after being accused of witchcraft. The video showed women beating her while members of the community watched and encouraged the attack. The case became a major catalyst for demands that Ghana criminalise witchcraft accusations. Furthermore, Ghanaian authorities have themselves acknowledged that witch accusations are highly gendered, with older women, widows, unmarried and childless women particularly affected.</p>
+<p>In Tanzania, witchcraft can perform the work of a property deed. There have been recorded incidents whereby claims made against the widow occur after the death of the husband and give an excuse to challenge her right to inherit. The supernatural allegation can conceal an extremely material objective: land. Human Rights Watch<sup>6</sup> reports that 25 older people were killed in 2023 in connection with witchcraft allegations. In just the first months of 2024 the violence continued; by September 2024, 18 older people had been killed and 123 subjected to other human-rights abuse.</p>
+<div class="article-featured-img">
+  <img src="images/when-fear-needs-a-victim-witch_img3.jpg" alt="Protest demanding justice for women accused of witchcraft">
+  <span class="img-caption">Protests against ritual violence and witch-branding · Credit: The Guardian</span>
+</div>
+<p>Considering all of this, calling the camps where the accused women find refuge “sanctuaries” should make us uncomfortable. A place becomes a sanctuary only because home has become more dangerous. Not to mention the rigorous hard labour the women have to go through just to merely survive another day. CEDAW<sup>7</sup> has repeatedly urged to close such camps and ensure rehabilitation, safe reintegration and alternative housing for those accused.</p>
+<p>African countries are not an exotic theatre of irrationality for Westerners. Fear, misogyny and religious extremism are hardly geographically exclusive inventions. Cultural sensitivity should not become a compass for morality. The United Nations need not go behind the empirical evidence of the existence of witchcraft. It cannot police the metaphysical beliefs of a country or its people. Violence cannot be tolerated by any means.</p>
+<blockquote class="article-quote">Witches belong to belief. But witch hunting belongs to power, violence and control.</blockquote>
+<div class="footnotes-box">
+  <p><strong>Footnotes:</strong></p>
+  <p><sup>1</sup> <a href="https://www.smithsonianmag.com/history/a-brief-history-of-the-salem-witch-trials-175162489/" target="_blank" rel="noopener">Jess Blumberg, A Brief History of the Salem Witch Trials, Smithsonian Mag. (last updated Oct. 24, 2022)</a></p>
+  <p><sup>2</sup> <a href="https://www.ohchr.org/sites/default/files/Documents/Issues/Albinism/COVID-19_and_Harmful_Practices.pdf" target="_blank" rel="noopener">U.N. Off. of the High Comm'r for Hum. Rts., COVID-19 and Harmful Practices Related to Albinism: Accusations of Witchcraft and Ritual Attacks (July 2020)</a></p>
+  <p><sup>3</sup> <a href="https://letterboxd.com/film/i-am-not-a-witch/" target="_blank" rel="noopener">I Am Not a Witch, Letterboxd (last visited Sept. 12, 2026)</a></p>
+  <p><sup>4</sup> <a href="https://2021-2025.state.gov/reports/2023-country-reports-on-human-rights-practices/ghana/" target="_blank" rel="noopener">U.S. Dep't of State, 2023 Country Reports on Human Rights Practices: Ghana (2024)</a></p>
+  <p><sup>5</sup> <a href="https://decrimpovertystatus.org/stand-with-the-women-accused-of-witchcraft-in-ghana/" target="_blank" rel="noopener">Stand with the Women Accused of Witchcraft in Ghana, Campaign to Decriminalise Poverty and Status</a></p>
+  <p><sup>6</sup> <a href="https://www.hrw.org/world-report/2025/country-chapters/malawi" target="_blank" rel="noopener">Human Rights Watch, World Report 2025: Malawi (2025)</a></p>
+  <p><sup>7</sup> <a href="https://docstore.ohchr.org/" target="_blank" rel="noopener">UN OHCHR / CEDAW Reports on Harmful Practices and Reintegration</a></p>
+  <hr style="border:0;border-top:1px solid var(--line);margin:14px 0 10px;">
+  <p><strong>Bibliography:</strong></p>
+  <p>1. <a href="https://asiapacific.unwomen.org/en/news-and-events/in-focus/youth-voice/2018/ranjita-dilraj" target="_blank" rel="noopener">UN Women (Ranjita Dilraj Profile), U.N. Women Asia-Pac. (2018)</a></p>
+  <p>2. <a href="https://www.unwomen.org/sites/default/files/Headquarters/Attachments/Sections/Library/Publications/2020/Realizing-womens-rights-to-land-and-other-productive-resources-2nd-edition-en.pdf" target="_blank" rel="noopener">UN Women & OHCHR Report, Realizing Women's Rights to Land and Other Productive Resources (2d ed. 2020)</a></p>
+  <p>3. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13437287/" target="_blank" rel="noopener">E.Y. Chung, Witchcraft Accusations Against Older Women in Sub-Saharan Africa, Front. Pub. Health (2026)</a></p>
+  <p>4. <a href="https://www.amnesty.org/en/latest/news/2025/04/ghana-witchcraft-accusations/" target="_blank" rel="noopener">Amnesty International, Branded for Life but Resilient: Women Accused of Witchcraft in Ghana (July 2025)</a></p>
+  <p>5. <a href="https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00024612/03_Federici_Women.pdf" target="_blank" rel="noopener">Silvia Federici, Women, Witch-Hunting and Enclosures in Africa Today, Sozial. Geschichte Online (2010)</a></p>
+  <p>6. <a href="https://decrimpovertystatus.org/stand-with-the-women-accused-of-witchcraft-in-ghana/" target="_blank" rel="noopener">Campaign to Decriminalise Poverty and Status, Stand with the Women Accused of Witchcraft in Ghana</a></p>
+  <p class="img-cred-note">Image credits: Smithsonian Magazine, CNRS NEWS, The Guardian</p>
+</div>`
+    },
+    'article-uncsw-poem': {
+      type: 'Poem · UNCSW Arts Desk',
+      title: 'Why do my rights differ with my locality?',
+      dek: 'A reflective poem on gender inequality, autonomy, and societal blame from the UNCSW Arts Desk.',
+      meta: 'By Tessa Vinu · UNCSW Arts Desk',
+      pdf: 'pdfs/why-do-my-rights-differ-poem.pdf',
+      contentHtml: `<div style="max-width:580px;margin:24px auto;padding:36px 32px;background:var(--paper-dim);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:2px;box-shadow:var(--shadow-sm);">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);margin-bottom:16px;">UNCSW Arts Desk · Literary Contribution</div>
+  <div style="font-family:'Newsreader',serif;font-style:italic;font-size:20px;line-height:2;color:var(--ink);">
+    Was it my fault?<br>
+    Was it my fault to be born as a woman in a world<br>
+    Run on a system created to favour men,<br>
+    So much so that if I had parents who thought different,<br>
+    I would not exist for this moment in narration.<br><br>
+    Was I too ambitious?<br>
+    For wanting to exist as I was?<br>
+    For not wanting someone to tell me to 'cover up' or smile more?<br>
+    Why is the decision to burn and inflict pain on my body<br>
+    Rather hold the perps accountable?<br><br>
+    They say beauty lies in the eyes of the beholder,<br>
+    Maybe so does shame.<br>
+    Coz I never felt the need to cover up or inflict pain on myself to be socially accepted<br>
+    I never felt ashamed<br>
+    Until someone said I ought to be.<br>
+    Coz someone decided that the mere existence of a woman is too much or too less<br>
+    And always needs to be policed.<br><br>
+    Was it my fault? —<br>
+    <strong style="color:var(--signal);letter-spacing:0.08em;font-size:22px;">YES.</strong><br>
+    Screamed the teary eyed woman in front of me,<br>
+    Before I could go on any further.
+  </div>
+  <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);">
+    <span>Original submission preserved in records</span>
+    <span>UNCSW Session 2026</span>
+  </div>
+</div>`
+    },
+    'article-uncnd-atoms': {
+      type: 'Op-Ed · UNCND Feature',
+      title: 'Three Atoms Ahead.. I Am Always Three Atoms Ahead',
+      dek: 'Delving into why international drug scheduling still can\'t outrun a local chemist.',
+      meta: 'By Sarah Asraf · UNCND News',
+      pdf: 'pdfs/three-atoms-ahead.pdf',
+      contentHtml: `<p class="lead">Your humble reporter, Sarah Asraf, reporting from the UNCND Committee, with an Op-Ed delving into why international drug scheduling still can't outrun a local chemist.</p>
+<div class="article-featured-img">
+  <img src="images/three-atoms-ahead_img1.jpg" alt="International Drug Laws by Paresh Nath">
+  <span class="img-caption">Source: INTERNATIONAL DRUG LAWS by Paresh Nath</span>
+</div>
+<p>In December of 1985, a 175-pound black bear died in Georgia’s Chattahoochee National Forest after consuming a large quantity of cocaine.<sup>1</sup> The bear, nicknamed “Pablo Escobear” or “Cocaine Bear”, had ingested duffel bags dropped by a drug trafficker and smuggler, Andrew Thornton II, a former narcotics officer who died jumping out of a plane into the same forest just weeks prior. The bear ate what is described as an amount of cocaine so great no mammal could live through it, and it died within what is believed to be a matter of hours.<sup>2</sup></p>
+<p>It is a grotesque and almost comical addendum to the war on drugs. But it is also, in an unintended way, a parable. An animal came across a substance that it didn’t know anything about, ingested it, and paid the price of that lack of knowledge with its life. Forty years later, human beings have not fared much better. We have simply substituted the duffel bag with a dark net market and a 3D pill press, and the bear with tens of thousands of individuals who pay for that with their lives.</p>
+<h4 class="section-subhead">Supply Moves Faster than the State</h4>
+<p>Let us look at two facts from different ends of the drug market chain. First, in India, Kerala's state government has initiated a campaign called <em>“Operation Toofan”</em>, within the first 100 days of which it has registered over 10,000 cases and arrested more than 10,800 people while confiscating tens of thousands of grams of MDMA and over one ton of cannabis.<sup>3</sup> This is an extensive and resourceful enforcement effort but, at its core, is reactive since it pursues the drug that has made it to the streets.</p>
+<p>On the other hand, the Reuters investigation conducted in 2025 revealed that a group of journalists can purchase all necessary chemicals needed to produce $3 million worth of fentanyl for less than $3,600. These chemicals were obtained legally, and the majority of them came from China because of the flaws in customs regulations and exemptions for low-value shipments.<sup>4</sup> The fact that supply chain innovations precede updates in the control list by months or even years is the true crisis of the "emerging psychoactive substances" agenda.</p>
+<h4 class="section-subhead">The UNCND and Its Battle Against Time</h4>
+<p>For its part, the Commission on Narcotic Drugs is far from doing nothing. At its recent 69th session, the UN body agreed to schedule three new psychoactive substances, among which were two new synthetic opioids from the nitazene class, which are even more potent than fentanyl, according to recommendations from the World Health Organisation. The body created a new independent expert panel which will review the entire system of international drug control before its 2029 progress review. However, the same session was characterised by the failure of the Vienna Consensus, with more resolutions being adopted by voting and not through agreement. This indicates that states are drifting apart even on the fundamental questions of harm reduction and human rights despite the rapid pace of the chemistry.<sup>5</sup></p>
+<p>This is what the agenda item is in fact addressing: speed vs. sovereignty and control vs. access. The system of scheduling that was developed for the times when there were only a few dozen known narcotics cannot cope with the thousands of novel psychoactive substances synthesised by the server-based chemistry.</p>
+<h4 class="section-subhead">Where the Line Should Be Drawn</h4>
+<p>The status quo, made substance by substance, by one decision per year in Vienna, cannot move fast enough to respond to a constantly morphing problem. States must support an Early Warning Advisory system that is properly funded and empowered to implement provisional and limited controls as soon as WHO’s Expert Committee alerts the system to the presence of new analogues, without waiting for the next CND meeting. Such a provisional schedule would automatically expire, unless formally adopted at the next CND session, thereby preserving scientific thoroughness while maintaining state sovereignty over final decision-making. An accelerated process needs an unambiguous carve-out to protect medicines and scientific research, to be assessed separately and rapidly from the process of control. In this way, the drive for speed does not inadvertently create a drive for blanket prohibition.</p>
+<blockquote class="article-quote">The bear in Georgia did not have an early warning system, nor a controlled environment, nor time to figure out the danger. It’s now for the world to show it can do better than just one bear, in a wood, with another person’s stuff. The CND has the organisation, the scientific know-how, and the global reach. What it needs now is speed, for in the age of artificial drugs, yesterday’s solution is bound to be tomorrow’s loophole.</blockquote>
+<div class="footnotes-box">
+  <p><sup>1</sup> Wikipedia contributors. Cocaine Bear (bear). In Wikipedia. Retrieved September 12, 2026, from <a href="https://en.wikipedia.org/wiki/Cocaine_Bear_(bear)" target="_blank" rel="noopener">Wikipedia</a></p>
+  <p><sup>2</sup> Today I Found Out. The curious case of Pablo EskoBear—the “Cocaine Bear”. <a href="https://www.todayifoundout.com/index.php/2017/08/amazing-tale-kentucky-folk-hero-pablo-eskobear-cocaine-bear/" target="_blank" rel="noopener">Today I Found Out</a></p>
+  <p><sup>3</sup> The Times of India. Operation Toofan: Crackdown on drug mafia nearing 100 days. <a href="https://timesofindia.indiatimes.com/city/thiruvananthapuram/operation-toofan-crackdown-on-drug-mafia-nearing-100-days/articleshow/133812716.cms" target="_blank" rel="noopener">Times of India</a></p>
+  <p><sup>4</sup> Reuters. We bought what’s needed to make millions of fentanyl pills—for $3,600. <a href="https://www.reuters.com/investigates/special-report/usa-fentanyl-supply-chain-shipping/" target="_blank" rel="noopener">Reuters</a></p>
+  <p><sup>5</sup> United Nations Office on Drugs and Crime. (2026, March). Three NPS placed under international control at the 69th Session of the Commission on Narcotic Drugs. <a href="https://www.unodc.org/unodc/frontpage/2026/March/cnd-closing.html" target="_blank" rel="noopener">UNODC</a></p>
+</div>`
+    },
+    'article-uncnd-feature': {
+      type: 'Dossier · UNCND',
+      title: 'Project: SOMNIUM CASEUM 1510/X9',
+      dek: 'A classified look at Dream Cheese (DC), a synthetic opioid analogue bypassing borders through molecular substitution and predictive toxicology.',
+      meta: 'By Malavika Unnikrishnan · Clandestine Bio-Research',
+      pdf: 'pdfs/project-somnium-caseum.pdf',
+      contentHtml: `<div class="dossier-card">
+  <div class="dossier-header">
+    <span class="dossier-stamp">CONFIDENTIAL — LEVEL 5 CLEARANCE</span>
+    <span class="dossier-case">DOSSIER REF: 1510-994-X9</span>
+  </div>
+  <div class="dossier-grid">
+    <div class="dossier-field"><strong>PROJECT NAME:</strong> SOMNIUM CASEUM 1510/X9</div>
+    <div class="dossier-field"><strong>DEPARTMENT:</strong> Clandestine Bio-Research</div>
+    <div class="dossier-field"><strong>SUBJECT CLASSIFICATION:</strong> Unscheduled Opioid Modulator</div>
+    <div class="dossier-field"><strong>PRIMARY OPERATIONAL VECTOR:</strong> [Synthetic Depressant]</div>
+    <div class="dossier-field"><strong>CONTAINMENT DIRECTIVE:</strong> Protocol 105/6C Authorization Mandatory</div>
+    <div class="dossier-field"><strong>DOCKET LOG NO:</strong> #994-1510-X9 // STATUS: [Active Investigation]</div>
+  </div>
+</div>
+<div class="dossier-card" style="border-left: 3px solid #c0392b;">
+  <div class="dossier-header">
+    <span class="dossier-stamp">LOG-BOOK / VOL-I</span>
+    <span class="dossier-case">ENTRY: 06:53 // STAGE 1: SECTION 1</span>
+  </div>
+  <p><strong>BASELINE STATS:</strong> PROJECT CODE: DC-01, SOMNIUM CASEUM / DREAM CHEESE (DC)</p>
+  <p>CHEMICAL CLASS: 2-Benzylbenzimidazole derivative; Nitazene series</p>
+  <p>Formula, Mass: C20H23ClN4O2 | 386.88 g/mol</p>
+  <p>Terminal Moiety: para-Chlorobenzyl functional group (Cl)</p>
+  <p>Legal Status: Schedule I Listed</p>
+  <p class="dossier-missing-note"><em>Note: ER admissions up 40% in Sector 4. WHO ECDD review pending. No critical action possible without researched mortality metrics.</em></p>
+</div>
+<div class="dossier-grid">
+  <div class="dossier-card">
+    <div class="dossier-header">
+      <span class="dossier-stamp">STAGE 1: SECTION 3</span>
+      <span class="dossier-case">ENTRY: 08:40 // FIELD TEST</span>
+    </div>
+    <p>• 50 kg intercepted at European maritime customs. Regular tests returned negative. Logged as "unidentified industrial starch" and cleared.</p>
+    <p>• If things proceed as expected we have at least 5 months of legal immunity before the CND can pass a barring decree; number of human overdoses leading to death, time taken for sovereign transposition.</p>
+    <p><em>CND only convenes annually..</em></p>
+  </div>
+  <div class="dossier-card">
+    <div class="dossier-header">
+      <span class="dossier-stamp">STAGE 1: SECTION 4</span>
+      <span class="dossier-case">ENTRY: 16:06 // DC - 002</span>
+    </div>
+    <p>• Due to the high number of ODs the UNODC Early Warning Advisory issued a warning by calculating the ionic composition of DC, DC - 001 prototype has been tested and filed as a synthetic opioid analogue.</p>
+    <p>• Substitution Directive: Execute immediate Halogen Swap (Cl to F). Shift molecular mass from 386.88 to 370.4 g/mol, DC - 002 prototype is ready for circulation, bypassing all modes of detection.</p>
+    <p><em>There exists more solutions incase of further interception.</em></p>
+  </div>
+</div>
+<div class="dossier-card" style="border-left: 3px solid var(--teal);">
+  <div class="dossier-header">
+    <span class="dossier-stamp">STAGE 2: PROCEDURAL LAG</span>
+    <span class="dossier-case">ENTRY: 09:09 // THE MANDATE</span>
+  </div>
+  <p>• Due to the severe procedural lag the CND and its member states have resorted to utilise predictive toxicology as valid evidence to expedite the ECDD's assessment process as that is the only fast track way that doesn’t violate the treaty of 1961.</p>
+  <p>• A neural network model worth 80 million dollars was created to come up with all permutations of DC before it ever existed.</p>
+  <p><em>They do not perceive how dangerous the technology they are handling actually is..</em></p>
+</div>
+<div class="dossier-grid">
+  <div class="dossier-card">
+    <div class="dossier-header">
+      <span class="dossier-stamp">STAGE 2: SECTION 2</span>
+      <span class="dossier-case">ENTRY: 12:40 // OPEN-SOURCE LEAK</span>
+    </div>
+    <p>• With the input of computational modeling near 40 predicted analogues were listed and subsequently banned. For CND to list or ban a drug they have to publicize its chemical makeup to its member states.</p>
+    <p>• The ECDD's expedited predictive audit officially published: 2D/3D molecular geometries of predicted analogues, systematic IUPAC names and simulated synthesis reaction pathways, ranked dissociation constants and calculated respiratory hazard indexes.</p>
+  </div>
+  <div class="dossier-card">
+    <div class="dossier-header">
+      <span class="dossier-stamp">STAGE 2: SECTION 3</span>
+      <span class="dossier-case">ENTRY: 18:30 // LAB TEST DC - 003</span>
+    </div>
+    <p>• The blueprint for DC - 003 was selected from the UN’s database, Predictive Candidate #14, with the highest binding affinity.</p>
+    <p>• After the expected tweaking, substitution with about 60 hours of testing a new variant has been created, with a yield of 94.2% crystalline purity, DREAM CHEESE’s most chemically potent state..</p>
+    <p><em>It would have taken three years of wet-lab trial and error to isolate the pyrrolidinyl modification if the blueprint hadn't been leaked..</em></p>
+  </div>
+</div>
+<div class="dossier-card" style="background:#fdf2e9;border:1.5px solid #d35400;">
+  <div class="dossier-header">
+    <span class="dossier-stamp" style="color:#d35400;border-color:#d35400;">STAGE 3 // FINAL AUDIT</span>
+    <span class="dossier-case">APPROVED FOR ARCHIVAL</span>
+  </div>
+  <p><strong>Ledger Audit & Street Realization:</strong></p>
+  <p>• Wholesale Street Value: $68,000 USD per kilogram post-border clearance.</p>
+  <p>• Initial Batch Revenue: $2,720,000 USD gross realization on primary run.</p>
+  <p>• Net Production Overhead: $14,200 USD</p>
+  <p>• Market Velocity: First shipment cleared three provincial distribution nodes and sold out in 48 hours; zero field border tests failed.</p>
+  <blockquote class="article-quote" style="margin:14px 0 0;background:#fff;">A treaty cannot eliminate supply when it has never learned how to outlaw demand.</blockquote>
+</div>`
+    },
+    'article-uncnd-interview': {
+      type: 'Interview · UNCND',
+      title: 'When the Molecule Gets Ahead of the Law',
+      dek: 'Delegate of Indonesia on the race to regulate new psychoactive substances, strengthen intelligence sharing and protect legitimate research.',
+      meta: 'By Sarah Asraf · UNCND Interview',
+      pdf: 'pdfs/when-the-molecule-gets-ahead.pdf',
+      contentHtml: `<div class="article-featured-img">
+  <img src="images/when-the-molecule-gets-ahead_img1.jpg" alt="Delegate of Indonesia being interviewed by an International Press Journalist">
+  <span class="img-caption">Delegate of Indonesia (left) being interviewed by an International Press Journalist (right) · Source: IP Photojournalist, UNCND</span>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q1: [Journalist]: There are 95 NPS in Indonesia. According to the Delegate of Indonesia, what is the greatest vulnerability of the international system, which allows new psychoactive substances to become available quicker than governments can regulate them?</div>
+  <div class="qa-a"><strong>Delegate of Indonesia:</strong> We think that the greatest vulnerability of the international system is not treaties themselves but inefficiency in scheduling caused by the delay in gathering information about harmful effects. We think it should be solved through the development of early warning systems and intelligence sharing.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q2: [Journalist]: Though possessing one of the most restrictive drug laws in the world, Indonesia seized 2.6 tons of liquid methamphetamine in the latest maritime seizure. Does this mean that the punishments are in step with the sophistication of smuggling networks, or should there be more emphasis on intelligence?</div>
+  <div class="qa-a"><strong>Delegate of Indonesia:</strong> Intelligence sharing and respect for the sovereign authority are key elements in overcoming the problem of narcotics. We think it shows the necessity for increasing efficiency in pre-existing systems and agreements, not the necessity for changing them.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q3: [Journalist]: How can Indonesia protect against the introduction of hazardous NPS into legitimate supply chains employed by scientists and public health authorities without overburdening them?</div>
+  <div class="qa-a"><strong>Delegation of Indonesia:</strong> We already have the substance-by-substance scheduling regime, which is being modernised by our BNN with the substantial involvement of experts. It allows us to target only the actual threats without wasting resources on safe substances. Besides, the principle of legality in Indonesian criminal law allows us to adopt a balanced approach to scheduling.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q4: [Journalist]: The traffickers produce new substances to bypass existing regimes of control. Therefore, new compounds appear faster than they are scheduled. Would Indonesia gain anything from shifting to the class-based regime of prohibition from the substance-to-substance prohibition?</div>
+  <div class="qa-a"><strong>Delegation of Indonesia:</strong> In this case, we need further evidence and discussions to consider even endorsing the shift from the substance-to-substance prohibition regime, taking into account that, due to our domestic legislation, we would not be able to enforce such a shift.</div>
+</div>
+<div class="qa-item">
+  <div class="qa-q">Q5: [Reporter]: Indonesia has always been strict in its stance with regard to drugs and laws surrounding them. If the synthetic drug industry continues to get more advanced with all these measures, would Indonesia re-evaluate its drug policy?</div>
+  <div class="qa-a"><strong>Delegate of Indonesia:</strong> The reason why we take such an unforgiving stance against narcotics and have the death penalty as a punishment for smugglers and syndicates, who usually exploit drug addicts and other people and never use the drug themselves with the few exceptions, is because they create a criminal activity threatening Indonesia's future generation and the country itself, its sovereignty and the resources of the nation, thus deserving such a punishment. In the case of drug addicts, our BNN takes care of rehabilitation.</div>
+</div>`
+    },
+    'article-who-scarcity': {
+      type: 'Op-Ed · WHO Feature',
+      title: 'ΣΠΆΝΙΣ (SCARCITY): WHAT FILLS THE VOID?',
+      dek: 'Because a scarcity becomes an opportunity for someone waiting. Why counterfeit pharmaceuticals are symptoms of structural access failure, not just criminal opportunism.',
+      meta: 'By Ishita Sudhir · WHO Op-Ed',
+      pdf: 'pdfs/scarcity-what-fills-the-void.pdf',
+      contentHtml: `<p class="lead">Because a scarcity becomes an opportunity for someone waiting. This is your journalist, Ishita Sudhir, reporting from the WHO Committee.</p>
+<div class="article-featured-img">
+  <img src="images/scarcity-what-fills-the-void_img1.jpg" alt="Counterfeit pharmaceutical packaging">
+  <span class="img-caption">Substandard and falsified medical products: bridging the gap where legitimate supply fails · Source: Pinterest</span>
+</div>
+<p>The importance of a tablet of medicine can be often overlooked. Its importance begins when health fails. It can make a difference between possible recovery and uncertainty, life and death. Yet a medicine is more than a tablet. It carries the expectation and hope that it will help in marking a new beginning. The expectation is often fundamental that the legitimacy of the medicine is often taken for granted. But what happens when a medicine is legal, regulated, and genuine but still does not reach the person who needs it? Then comes the role of counterfeit medicines.</p>
+<p>Counterfeiting is often viewed as a deliberate act of deception. The law consequently searches for the offender, the counterfeit, and the point of entry at the chain. Yet the pharmaceutical chain has itself become more complicated. The counterfeit no longer exists just outside the legitimate system. This in turn changes the entire nature of the problem. If these counterfeits were simply manufactured outside the law, then stronger enforcement would have appeared to be the most obvious answer. But the counterfeit medicines are not necessarily the beginning of the problem. It is better derived from a 2024 case study examining the pharmaceutical markets in Ethiopia, which has found that the substandard and falsified medicines were closely connected with the barriers faced in accessing essential medicines. It concluded that stricter regulation and enforcement alone did not adequately address the factors creating demand for them.<sup>1</sup> In fact, it is just the point at which the existing weakness in the system becomes visible.</p>
+<h4 class="section-subhead">Substandard vs Falsified: A Crucial Distinction</h4>
+<p>Even international law is starting to recognize this very distinction. The World Health Organization has distinguished between a <strong>substandard medical product</strong> as something that fails to meet the established quality standards and a <strong>falsified product</strong> as something that has been deliberately misrepresented in its identity, composition, or source.<sup>2</sup> This change is not simply terminological. It greatly denotes the factor that a medicine can be authorized but still fail to meet the quality that it is required to provide. Therefore, the law faces an issue that cannot be simply solved by only asking about who owns the medicine.</p>
+<p>The relevance of intellectual property comes into play as pharmaceutical innovation requires protection. Even though international instruments such as the TRIPS agreement recognize this requirement, it does not place it beyond public health considerations. Articles 7 and 8 of the TRIPS situate intellectual property protection within the broader objectives of social and economic welfare, thereby permitting members to adopt the measures necessary to protect public health.<sup>4</sup> Meanwhile, the Doha Declaration has affirmed the right of members to use TRIPS flexibilities to protect public health and promote access to medicines.<sup>5</sup> Thus, the point is not that intellectual property is irrelevant, but that the legal status of a medicine by itself cannot be the answer as to whether that medicine is reaching the patient safely and affordably.</p>
+<p>The answer to this can be found in criminal law, where the MEDICRIME Convention treats the manufacture, supply, and trafficking of falsified medicinal products as conduct that requires criminalization and international cooperation. These measures can be seen as indispensable when falsification is organized across borders, yet criminal law simply answers one question: as to who is responsible for putting falsified products into circulation. Public health must answer another question: as to what allowed that product to become capable of reaching a patient in the first place.</p>
+<div class="article-featured-img">
+  <img src="images/scarcity-what-fills-the-void_img2.jpg" alt="Falsified capsules and blister packs">
+  <span class="img-caption">The lethal peril of counterfeit immunosuppressive medication · Source: Pinterest</span>
+</div>
+<h4 class="section-subhead">A Matter of Life and Death for Transplant Recipients</h4>
+<p>Even though these theoretical distinctions exist, for an organ transplant recipient this is painfully practical. For them the correct and consistent use of immunosuppressive medicines such as <strong>tacrolimus</strong> is critical, and substandardization of the same can lead to serious life-threatening consequences. In such circumstances the question is not simply about access to medicines, but rather it becomes about the access to the right medicine with the right quality and a system that is fully capable of guaranteeing it.<sup>6</sup></p>
+<p>Therefore, the fight against falsified medicines cannot end with making the false medicines easier to identify. By just identifying, a legal system may punish the manufacturer, a regulator may issue an alert, and a border authority may intercept a shipment. But if the genuine medicine remains inaccessible, unaffordable, or unreliable in supply, then the reason for the mere existence of the counterfeits remains intact.</p>
+<blockquote class="article-quote">The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough that the patients do not have to look beyond it in the first place. Because if the gaps still exist, something else will replace it.</blockquote>
+<div class="footnotes-box">
+  <p><strong>References & Citations:</strong></p>
+  <p><sup>1</sup> <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed NCBI — Pharmaceutical Market Access & Substandard Medicines Case Study (2024)</a></p>
+  <p><sup>2</sup> <a href="https://www.who.int/news-room/fact-sheets/detail/substandard-and-falsified-medical-products" target="_blank" rel="noopener">WHO Newsroom — Fact Sheet: Substandard and Falsified Medical Products</a></p>
+  <p><sup>4</sup> <a href="https://www.wto.org/english/docs_e/legal_e/trips_e.htm" target="_blank" rel="noopener">World Trade Organization — TRIPS Agreement Articles 7 & 8</a></p>
+  <p><sup>5</sup> <a href="https://www.wto.org/english/thewto_e/minist_e/min01_e/mindecl_trips_e.htm" target="_blank" rel="noopener">WTO Ministerial Declaration on the TRIPS Agreement and Public Health (Doha Declaration)</a></p>
+  <p><sup>6</sup> <span class="img-cred-note">Source of pictures: Pinterest</span></p>
+</div>`
+    },
+    'article-who-feature': {
+      type: 'Satire · WHO',
+      title: 'Congratulations! You got your fake medicines',
+      dek: 'A satirical approach on counterfeit medicines, premium hospital billing, and pharmaceuticals that imitate everything except the ability to save a life.',
+      meta: 'By Jaithra K · WHO Satire',
+      pdf: 'pdfs/congratulations-fake-medicines.pdf',
+      contentHtml: `<p class="lead"><em>A satirical approach on counterfeit medicines and the architecture of clinical profit.</em></p>
+<div class="article-featured-img">
+  <img src="images/scarcity-what-fills-the-void_img2.jpg" alt="Fake medicines packaging">
+  <span class="img-caption">Substandard and falsified blister packs: shiny covers, fancy colours, zero cure</span>
+</div>
+<p>Somewhere in town there is a big hospital. Bigger and more luxurious than ordinary clinics—so opulent that people often walk in mistaking it for a five-star hotel. One of the most premium restaurants in town runs its cafeteria. It is a common saying there that people might go in to visit a relative who underwent a liver transplant only just to eat the <em>tawa khaleji</em> (goat liver stir fry) at the counter. But the irony is that one would have to sell their own liver just to pay the hospital bills. Too much complexity.</p>
+<p>Why are bills too high? Someone asked. <em>“Your health is our priority. Our pharmacies carry quality pharmaceuticals... patients first, that's our motto,”</em> the doctor smiled, hands gesturing smoothly behind the pristine glass wall of the intensive care unit.</p>
+<p>Still, the patient is left unanswered. Then why does it never end? Why am I supposed to bring my daughter back every single week? Why is she never healing? Why are the medicines not working?</p>
+<p>Why? Because maybe they aren’t even medicines. It’s all a play.</p>
+<blockquote class="article-quote" style="margin:20px 0;">They have shiny covers, fancy colours, and a name that frightens people. The ingredients are printed one by one in neat Latin. It looks all scientific. Everything curable. Everything real. Everything medicinal. But there is one thing missing. Only one single thing: the medicine that works. The medicine that should work. A fake medicine can imitate everything except one thing: the ability to save a life.</blockquote>
+<p>How are substandard and falsified medicines expected to work? They directly threaten patient lives. <em>“Patients first,”</em> they say. Yes—first in line to die.</p>
+<p>What a wonderful healthcare system! They provide medicines that won't work, that don't cure. Please don't stop making fake medicines. We need more pharmacies that sell medicines for unidentified diseases. We need more mansion-like hospitals with gourmet canteens.</p>
+<p style="font-weight:600;font-size:16.5px;color:var(--ink);">Life is easier now. One can buy medicines without even worrying if they actually work...</p>`
+    },
+    'article-who-sketch': {
+      type: 'Character Sketch · WHO',
+      title: "Character Sketch: The WHO",
+      dek: 'Unlike other committees, WHO seems less interested in changing the conversation than making sure it never stops. A look at the art of deliberation.',
+      meta: 'By Ishita Sudhir · WHO Character Sketch',
+      pdf: 'pdfs/who-character-sketch.pdf',
+      contentHtml: `<p class="lead">This is your journalist, Ishita Sudhir, with the character sketch of WHO.</p>
+<div class="article-featured-img">
+  <img src="images/who-character-sketch_img1.jpg" alt="WHO committee floor in session">
+  <span class="img-caption">A glimpse into the committee: endless deliberation and the pursuit of diplomatic consensus · Photo: IP Photojournalist</span>
+</div>
+<p>The WHO committee seems to have a rather peculiar way of keeping themselves busy. Almost every discussion seemed to find its way towards stronger regulation, international cooperation, better enforcement, and even improved access, but only to deliberate the same concerns from yet another direction.</p>
+<p>The arguments raised were not necessarily weak, but there was an odd familiarity in each one of them. One could almost predict where the next point was heading even before the delegate had concluded. WHO seemed less interested in changing the conversation than in making sure that the conversation never stopped.</p>
+<p>However, there was a certain patience to this. Unlike other committees, where every disagreement seemed to turn into an opportunity for another confrontation, WHO seemed to prefer keeping things purely diplomatic. Even when member states approached the issue from conflicting national interests, the discussion repeatedly found its way back to cooperation. It was as if WHO had made peace with the possibility that agreement may take time—and perhaps countless repetitions of the same age-old solutions.</p>
+<h4 class="section-subhead">The Ministerial Declaration and the Art of Waiting</h4>
+<p>Its approach to the Ministerial Declaration was none quite different. Once the delegates were divided into blocs and asked to identify the problems they faced, WHO seemed quite comfortable in its new arrangement. It was perhaps the committee at its most natural form: taking a complicated problem, giving everyone a little space to discuss it, and then hoping that somewhere in the heart of all these discussions a solution might emerge.</p>
+<p>There is something almost endearing about the committee’s faith in deliberation. It does not seem particularly interested in dramatic declarations or easy answers. If anything, it appears slightly suspicious of them. Every solution seems to require another discussion, every discussion another perspective, and every perspective another opportunity for cooperation. The process may seem slow, yet WHO seems to trust the process anyway.</p>
+<div class="article-featured-img" style="margin:24px 0;">
+  <span class="img-caption" style="border-top:none;padding-top:0;"><em>“It showed the patience to listen. It was diplomatic enough to compromise when needed.”</em></span>
+</div>
+<blockquote class="article-quote">Maybe that is also where its character becomes most apparent. It is not a committee that demands attention; it quietly accumulates it through repetition. Neither is it particularly confrontational nor is it entirely passive. It listens, revisits, negotiates, and moves forward. Even if the distance covered sometimes feels considerably smaller than the amount of discussion involved, it was optimistic enough to believe that the next round of discussion might perhaps be the one where everyone agrees.</blockquote>`
+    }
   };
-  const modal=document.getElementById('articleModal');
-  const modalTitle=document.getElementById('articleModalTitle');
-  const modalDek=document.getElementById('articleModalDek');
-  const modalType=document.getElementById('articleModalType');
-  const modalMeta=document.getElementById('articleModalMeta');
-  const closeArticle=document.getElementById('closeArticle');
-  let lastFocused=null;
-  function openArticle(id,push=true){
-    const data=articleData[id];
-    if(!data) return false;
-    modalType.textContent=data.type; modalTitle.textContent=data.title; modalDek.textContent=data.dek; modalMeta.textContent=data.meta;
-    modal.classList.add('is-open'); body.style.overflow='hidden'; lastFocused=document.activeElement; closeArticle.focus();
-    if(push) history.pushState({article:id},'',`#${id}`);
+  const modal = document.getElementById('articleModal');
+  const modalTitle = document.getElementById('articleModalTitle');
+  const modalDek = document.getElementById('articleModalDek');
+  const modalType = document.getElementById('articleModalType');
+  const modalMeta = document.getElementById('articleModalMeta');
+  const closeArticle = document.getElementById('closeArticle');
+  const tabTextBtn = document.getElementById('tabTextBtn');
+  const tabPdfBtn = document.getElementById('tabPdfBtn');
+  const articleToolbar = document.getElementById('articleToolbar');
+  const articleModalBody = document.getElementById('articleModalBody');
+  const articleModalPdfWrap = document.getElementById('articleModalPdfWrap');
+  const articleModalPdfFrame = document.getElementById('articleModalPdfFrame');
+  const articlePdfExternalLink = document.getElementById('articlePdfExternalLink');
+  const articleModalNote = document.getElementById('articleModalNote');
+
+  function setReaderTab(tab) {
+    if (tab === 'pdf') {
+      tabPdfBtn?.classList.add('active');
+      tabTextBtn?.classList.remove('active');
+      if (articleModalBody) articleModalBody.style.display = 'none';
+      articleModalPdfWrap?.classList.add('active');
+    } else {
+      tabTextBtn?.classList.add('active');
+      tabPdfBtn?.classList.remove('active');
+      if (articleModalBody) articleModalBody.style.display = 'block';
+      articleModalPdfWrap?.classList.remove('active');
+    }
+  }
+
+  tabTextBtn?.addEventListener('click', () => setReaderTab('text'));
+  tabPdfBtn?.addEventListener('click', () => setReaderTab('pdf'));
+
+  let lastFocused = null;
+  function openArticle(id, push = true) {
+    const data = articleData[id];
+    if (!data) return false;
+    modalType.textContent = data.type;
+    modalTitle.textContent = data.title;
+    modalDek.textContent = data.dek;
+    modalMeta.textContent = data.meta;
+
+    if (data.contentHtml) {
+      articleModalBody.innerHTML = data.contentHtml;
+      articleModalBody.style.display = 'block';
+      articleModalNote.style.display = 'none';
+    } else {
+      articleModalBody.innerHTML = '';
+      articleModalBody.style.display = 'none';
+      articleModalNote.style.display = 'block';
+    }
+
+    if (data.pdf) {
+      articleToolbar.style.display = 'flex';
+      articlePdfExternalLink.href = data.pdf;
+      articleModalPdfFrame.src = data.pdf;
+      setReaderTab('text');
+    } else {
+      articleToolbar.style.display = 'none';
+      articleModalPdfFrame.src = 'about:blank';
+      articleModalPdfWrap.classList.remove('active');
+    }
+
+    modal.classList.add('is-open');
+    body.style.overflow = 'hidden';
+    lastFocused = document.activeElement;
+    closeArticle.focus();
+    if (push) history.pushState({ article: id }, '', '#' + id);
     return true;
   }
-  function closeArticleModal(push=true){
-    modal.classList.remove('is-open'); body.style.overflow='';
-    if(lastFocused && lastFocused.focus) lastFocused.focus();
-    if(push && location.hash.startsWith('#article-')) history.pushState(null,'',location.pathname+location.search);
+
+  function closeArticleModal(push = true) {
+    modal.classList.remove('is-open');
+    body.style.overflow = '';
+    if (articleModalPdfFrame) articleModalPdfFrame.src = 'about:blank';
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+    if (push && location.hash.startsWith('#article-')) history.pushState(null, '', location.pathname + location.search);
   }
-  document.querySelectorAll('.article-link').forEach(card=>card.addEventListener('click',e=>{e.preventDefault();openArticle(card.dataset.article);}));
-  closeArticle.addEventListener('click',()=>closeArticleModal());
-  modal.addEventListener('click',e=>{if(e.target===modal)closeArticleModal();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape' && modal.classList.contains('is-open'))closeArticleModal();});
-  window.addEventListener('popstate',()=>{
-    const id=location.hash.slice(1);
-    if(articleData[id]) openArticle(id,false); else closeArticleModal(false);
+
+  document.querySelectorAll('.article-link').forEach(card => card.addEventListener('click', e => {
+    e.preventDefault();
+    openArticle(card.dataset.article);
+  }));
+  closeArticle.addEventListener('click', () => closeArticleModal());
+  modal.addEventListener('click', e => { if (e.target === modal) closeArticleModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeArticleModal(); });
+  window.addEventListener('popstate', () => {
+    const id = location.hash.slice(1);
+    if (articleData[id]) openArticle(id, false); else closeArticleModal(false);
   });
-  if(location.hash.startsWith('#article-')) openArticle(location.hash.slice(1),false);
+  if (location.hash.startsWith('#article-')) openArticle(location.hash.slice(1), false);
 
   /* Radio Voice player: real HTML5 audio when a source is supplied. */
   const radioAudio = new Audio();
