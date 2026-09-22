@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nirvana — SSETMUN Press Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E6;
+    --paper-dim:#ECE5D3;
+    --paper-card:#FBF9F2;
+    --ink:#1A1712;
+    --ink-soft:#5B564A;
+    --teal:#132D28;
+    --teal-soft:#1E4038;
+    --signal:#E0501F;
+    --gold:#B78A3F;
+    --signal-dim:#F2D9C7;
+    --line:#DCD3BC;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3,h4,.serif{font-family:'Fraunces',serif;font-weight:500;line-height:1.08;margin:0;letter-spacing:-0.01em;}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  :focus-visible{outline:2px solid var(--signal);outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:0.001ms !important;animation-iteration-count:1 !important;scroll-behavior:auto !important;}}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+  @media (max-width:400px){.wrap{padding:0 16px;}}
+
+  /* TICKER */
+  .ticker{background:var(--teal);color:var(--paper);overflow:hidden;white-space:nowrap;border-bottom:1px solid rgba(245,241,230,0.15);}
+  .ticker-track{display:inline-flex;padding:9px 0;animation:scroll 34s linear infinite;}
+  .ticker-track span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.02em;padding:0 28px;border-right:1px solid rgba(245,241,230,0.25);color:#D9CFB8;}
+  @media (max-width:600px){.ticker-track span{font-size:11px;padding:0 18px;}.ticker-track{animation-duration:24s;}}
+  .ticker-track span b{color:var(--signal);font-weight:500;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* MASTHEAD */
+  header.masthead{background:var(--paper);border-bottom:3px solid var(--ink);padding:22px 0 0;}
+  .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:20px;flex-wrap:wrap;}
+  .masthead-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;line-height:1.7;}
+  .wordmark{font-family:'Bodoni Moda',serif;font-optical-sizing:auto;font-weight:600;font-size:clamp(52px,9vw,104px);text-align:center;flex:1 1 260px;letter-spacing:0.01em;}
+  .masthead-meta.right{text-align:right;}
+  nav.masthead-nav{border-top:1px solid var(--ink);display:flex;gap:0;overflow-x:auto;}
+  nav.masthead-nav a{font-size:13px;font-weight:600;padding:14px 16px;border-right:1px solid var(--line);white-space:nowrap;color:var(--ink);-webkit-tap-highlight-color:transparent;}
+  nav.masthead-nav a:hover{background:var(--paper-dim);}
+  nav.masthead-nav a span{color:var(--signal);}
+  nav.masthead-nav a:active{background:var(--paper-dim);}
+  @media (max-width:600px){
+    .masthead-top{flex-direction:column;align-items:center;text-align:center;gap:10px;padding-bottom:16px;}
+    .masthead-meta.right{text-align:center;}
+    .wordmark{order:-1;}
+  }
+
+  /* HERO */
+  .hero{padding:48px 0 40px;border-bottom:1px solid var(--line);}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:44px;align-items:start;}
+  @media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:28px;}.photo-block{aspect-ratio:16/9;}}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--signal);text-transform:uppercase;display:inline-block;margin-bottom:14px;}
+  .hero h1{font-size:clamp(30px,4.4vw,54px);margin-bottom:16px;}
+  .hero .dek{font-size:18px;color:var(--ink-soft);line-height:1.55;max-width:52ch;margin-bottom:18px;}
+  .byline{font-size:13px;color:var(--ink-soft);font-weight:500;}
+  .photo-block{aspect-ratio:4/5;background:linear-gradient(160deg, rgba(19,45,40,0.82), rgba(19,45,40,0.15)),repeating-linear-gradient(45deg, #d8cdae, #d8cdae 2px, #e6dcc2 2px, #e6dcc2 4px);border-radius:var(--radius);display:flex;align-items:flex-end;padding:16px;position:relative;}
+  .photo-cred{color:#F5F1E6;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.03em;}
+  .hero-side{display:flex;flex-direction:column;gap:20px;}
+
+  .ph{background:linear-gradient(160deg, rgba(19,45,40,0.75), rgba(224,80,31,0.12)),repeating-linear-gradient(45deg, #d8cdae, #d8cdae 2px, #e6dcc2 2px, #e6dcc2 4px);border-radius:var(--radius);position:relative;display:flex;align-items:flex-end;}
+  .ph .photo-cred{padding:12px;}
+  .ph.alt{background:linear-gradient(200deg, rgba(224,80,31,0.55), rgba(19,45,40,0.55)),repeating-linear-gradient(-45deg, #d8cdae, #d8cdae 2px, #e6dcc2 2px, #e6dcc2 4px);}
+
+  .radio-mini{background:var(--teal);color:var(--paper);padding:18px;border-radius:var(--radius);display:flex;flex-direction:column;gap:12px;}
+  .radio-mini-top{display:flex;align-items:center;gap:8px;}
+  .pill{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;background:var(--signal);color:#fff;padding:3px 8px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;}
+  .pill .dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .radio-mini h4{font-size:19px;color:#fff;}
+  .radio-mini .sub{font-size:12.5px;color:#C9D6D1;}
+  .waveform{display:flex;align-items:flex-end;gap:2.5px;height:32px;}
+  .waveform i{width:3px;background:#5A857B;border-radius:2px;display:block;}
+  .waveform.active i{background:var(--signal);animation:wave 1s ease-in-out infinite;}
+  @keyframes wave{0%,100%{transform:scaleY(0.4);}50%{transform:scaleY(1);}}
+  .play-row{display:flex;align-items:center;gap:12px;}
+  .play-btn{width:38px;height:38px;border-radius:50%;background:var(--signal);border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+  .play-btn:hover{background:#c84318;}
+  .play-btn svg{width:14px;height:14px;}
+  @media (max-width:600px){
+    .play-btn{width:44px;height:44px;}
+    .card.radio .play-btn{width:40px;height:40px;}
+  }
+
+  /* SECTIONS */
+  .section{padding:52px 0;border-bottom:1px solid var(--line);}
+  .section.alt{background:var(--paper-dim);}
+  @media (max-width:600px){
+    .section{padding:38px 0;}
+    .hero{padding:32px 0 28px;}
+    .feature{gap:28px;margin-bottom:26px;}
+    .letter{padding:26px;}
+    .radio-feature{padding:26px;}
+    .section-head{margin-bottom:24px;}
+    .committee-banner{margin-bottom:24px;}
+    .poem-wrap{margin-top:26px;}
+    .mini-photos{margin-top:26px;gap:10px;}
+    .kicker{margin-bottom:10px;}
+    .hero h1{margin-bottom:12px;}
+    .hero .dek{margin-bottom:14px;}
+    .feature h2{margin-bottom:12px;}
+    .pullquote{margin:16px 0;}
+    .stat-card{padding:18px;gap:12px;}
+    .letter{gap:22px;}
+    .hero-side{gap:16px;}
+  }
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;gap:20px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(24px,3vw,32px);}
+  .section-head .note{font-size:13px;color:var(--ink-soft);max-width:38ch;line-height:1.55;}
+
+  .letter{background:var(--teal);color:var(--paper);padding:44px;border-radius:var(--radius);display:grid;grid-template-columns:0.55fr 1fr;gap:36px;}
+  @media (max-width:760px){.letter{grid-template-columns:1fr;padding:28px;}}
+  .letter h2{color:#fff;font-size:clamp(26px,3.4vw,36px);font-style:italic;}
+  .letter .role{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--signal);letter-spacing:0.05em;margin-top:14px;display:block;}
+  .letter p{color:#D9E2DE;font-size:15px;line-height:1.7;}
+  .letter p + p{margin-top:14px;}
+
+  /* COMMITTEE BANNER */
+  .committee-banner{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding-bottom:20px;border-bottom:2px solid var(--ink);margin-bottom:32px;flex-wrap:wrap;}
+  .committee-banner .id-row{display:flex;align-items:flex-start;gap:14px;}
+  .badge{margin-top:2px;}
+  .badge{width:46px;height:46px;flex-shrink:0;color:var(--gold);}
+  .committee-banner .idx{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-soft);letter-spacing:0.06em;text-transform:uppercase;}
+  .committee-banner h2{font-size:clamp(36px,6vw,72px);letter-spacing:-0.02em;line-height:0.95;}
+  .committee-banner .full-name{font-size:13px;color:var(--ink-soft);margin-top:4px;}
+  .committee-blurb{max-width:44ch;text-align:right;}
+  @media (max-width:700px){.committee-blurb{text-align:left;max-width:none;}}
+  .committee-blurb p{font-size:13px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px;}
+  .committee-blurb .agenda-lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:var(--signal);text-transform:uppercase;display:block;margin-bottom:4px;}
+  .committee-blurb .agenda-text{font-size:13px;color:var(--ink);font-weight:600;line-height:1.5;}
+  @media (max-width:480px){
+    .committee-banner{gap:16px;margin-bottom:22px;}
+    .badge{width:36px;height:36px;}
+    .committee-banner h2{font-size:clamp(30px,12vw,48px);}
+  }
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr);}
+  @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}.grid.cols-2{grid-template-columns:1fr;}}
+  @media (max-width:600px){.grid{grid-template-columns:1fr;gap:20px;}}
+
+  .card{background:var(--paper-card);border:1px solid var(--line);display:flex;flex-direction:column;height:100%;}
+  .card-media{aspect-ratio:16/10;}
+  .card-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .tag-row{display:flex;justify-content:space-between;align-items:center;}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .tag.read::before{content:"◆ ";color:var(--teal);}
+  .tag.listen{color:var(--signal);}
+  .tag.listen::before{content:"● ";}
+  .card h3{font-size:20px;line-height:1.2;}
+  .card .dek{font-size:13.5px;color:var(--ink-soft);line-height:1.6;flex:1;}
+  .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--ink-soft);padding-top:8px;border-top:1px dashed var(--line);}
+
+  .card.radio{background:var(--teal);border-color:var(--teal);}
+  .card.radio h3{color:#fff;}
+  .card.radio .dek{color:#C9D6D1;}
+  .card.radio .card-foot{color:#9EB2AC;border-top:1px dashed #365A52;}
+  .card.radio .waveform i{background:#3E6960;}
+  .card.radio .play-btn{width:32px;height:32px;}
+
+  .card.pending{border:1.5px dashed var(--line);background:transparent;justify-content:center;align-items:flex-start;}
+  .card.pending .card-body{gap:8px;}
+  .card.pending h3{color:var(--ink-soft);}
+  .card.pending .dek{color:var(--ink-soft);}
+
+  .card.quick .card-body{gap:12px;}
+  .qlist{display:flex;flex-direction:column;gap:9px;}
+  .qlist div{font-size:13px;line-height:1.5;padding-bottom:9px;border-bottom:1px dashed var(--line);}
+  .qlist div:last-child{border-bottom:none;padding-bottom:0;}
+  .qlist b{color:var(--ink);}
+
+  .feature{display:grid;grid-template-columns:0.62fr 0.38fr;gap:44px;margin-bottom:32px;}
+  @media (max-width:860px){.feature{grid-template-columns:1fr;}}
+  .feature h2{font-size:clamp(26px,3.4vw,40px);margin-bottom:16px;}
+  .feature .dek{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:56ch;}
+  .pullquote{border-left:3px solid var(--signal);padding-left:20px;font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.5;margin:22px 0;}
+  .feature .byline{margin-top:18px;}
+  .stat-card{background:var(--paper-dim);padding:22px;border-radius:var(--radius);display:flex;flex-direction:column;gap:14px;}
+  .stat{border-bottom:1px solid var(--line);padding-bottom:12px;}
+  .stat:last-child{border-bottom:none;padding-bottom:0;}
+  .stat .num{font-family:'Fraunces',serif;font-size:28px;}
+  .stat .lbl{font-size:11.5px;color:var(--ink-soft);}
+  .section.alt .stat-card{background:var(--paper-card);}
+
+  .radio-feature{background:var(--teal);color:var(--paper);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;}
+  @media (max-width:760px){.radio-feature{grid-template-columns:1fr;text-align:left;}.radio-feature .waveform{margin-top:6px;}}
+  .radio-feature .play-btn{width:64px;height:64px;}
+  .radio-feature .play-btn svg{width:22px;height:22px;}
+  .radio-feature h3{color:#fff;font-size:clamp(22px,3vw,30px);margin-bottom:8px;}
+  .radio-feature .dek{color:#C9D6D1;font-size:14.5px;max-width:52ch;line-height:1.6;}
+  .radio-feature .meta{margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#9EB2AC;font-family:'JetBrains Mono',monospace;}
+  .progress{width:200px;max-width:100%;height:3px;background:#365A52;border-radius:2px;overflow:hidden;margin-top:14px;}
+  .progress-bar{height:100%;width:0%;background:var(--signal);transition:width .2s linear;}
+  .radio-feature .waveform{height:46px;gap:3px;}
+  .radio-feature .waveform i{width:4px;background:#3E6960;}
+
+  .poem-wrap{max-width:620px;margin:32px auto 0;text-align:center;}
+  .poem-wrap h3{font-size:clamp(24px,3.4vw,36px);margin-bottom:6px;}
+  .poem-wrap .byline{display:block;margin-bottom:24px;}
+  .poem-body{font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.95;color:var(--ink-soft);}
+  .poem-body .cut{opacity:0.55;font-size:14px;}
+
+  .mini-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
+  .mini-photos .ph{aspect-ratio:4/3;}
+  @media (max-width:640px){.mini-photos{grid-template-columns:1fr 1fr;}}
+
+  .corps-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+  @media (max-width:760px){.corps-grid{grid-template-columns:1fr;}}
+  .corps-col h3{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--ink);}
+  .name-list{columns:2;column-gap:24px;font-size:14px;color:var(--ink-soft);list-style:none;margin:0;padding:0;}
+  .name-list li{line-height:2.1;break-inside:avoid;-webkit-column-break-inside:avoid;white-space:nowrap;}
+  @media (max-width:420px){.name-list{columns:1;}}
+  .eb-list{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;}
+  .eb-list .n{font-weight:600;font-size:15px;}
+  .eb-list .r{font-size:12px;color:var(--ink-soft);}
+
+  footer{background:var(--ink);color:#B8B2A0;padding:56px 0 30px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  @media (max-width:760px){.footer-grid{grid-template-columns:1fr;}}
+  footer h4{font-family:'Bodoni Moda',serif;font-weight:600;color:#fff;font-size:26px;margin-bottom:10px;font-style:italic;}
+  footer p{font-size:13.5px;line-height:1.7;color:#9C9686;max-width:38ch;}
+  footer .col-title{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:#6E6959;margin-bottom:14px;}
+  footer a.flink{display:block;font-size:13px;padding:5px 0;border-bottom:1px solid #33301F;color:#D9D3C0;}
+  .photog-list{columns:2;column-gap:18px;}
+  .photog-list a.flink{break-inside:avoid;-webkit-column-break-inside:avoid;}
+  @media (max-width:420px){.photog-list{columns:1;}}
+  .qr{width:88px;height:88px;background:repeating-conic-gradient(#D9D3C0 0% 25%, transparent 0% 50%) 50%/16px 16px;border-radius:2px;}
+  .footer-bottom{border-top:1px solid #33301F;padding-top:22px;font-size:12px;color:#6E6959;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+/* Mobile committee navigation */
+@media (max-width: 760px) {
+  .committee-nav {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .committee-nav::-webkit-scrollbar { display: none; }
+
+  .committee-nav-inner {
+    width: max-content;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero,
+  .section-grid,
+  .feature-grid,
+  .article-grid,
+  .card-grid {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .hero-copy,
+  .section-intro,
+  .feature-copy,
+  .article-card,
+  .radio-feature,
+  .ipc-inner {
+    overflow: hidden;
+  }
+}
+
+
+  /* ===== PHASE 1 + 2 ENHANCEMENTS ===== */
+  :root{scroll-padding-top:76px;}
+  body.nav-open{overflow:hidden;}
+
+  /* Sticky publication navigation */
+  nav.masthead-nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(245,241,230,.97);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 rgba(26,23,18,.08);
+  }
+  nav.masthead-nav a{position:relative;transition:background .2s ease,color .2s ease;}
+  nav.masthead-nav a::after{
+    content:"";position:absolute;left:14px;right:14px;bottom:0;height:2px;
+    background:var(--signal);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;
+  }
+  nav.masthead-nav a.active{background:var(--paper-dim);}
+  nav.masthead-nav a.active::after{transform:scaleX(1);}
+
+  /* Mobile navigation */
+  .mobile-nav-toggle{display:none;}
+  .mobile-nav-panel{display:none;}
+  @media (max-width:600px){
+    nav.masthead-nav{display:none;}
+    .mobile-nav-toggle{
+      display:flex;position:sticky;top:0;z-index:1001;width:100%;
+      align-items:center;justify-content:space-between;gap:12px;
+      border:0;border-top:1px solid var(--ink);border-bottom:2px solid var(--ink);
+      background:rgba(245,241,230,.98);color:var(--ink);padding:12px 16px;
+      font:600 12px 'Inter',sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;
+    }
+    .mobile-nav-toggle .nav-current{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .mobile-nav-toggle .nav-icon{font-size:18px;line-height:1;transition:transform .25s ease;}
+    body.nav-open .mobile-nav-toggle .nav-icon{transform:rotate(45deg);}
+    .mobile-nav-panel{
+      position:fixed;inset:0;z-index:1000;background:rgba(19,45,40,.98);
+      padding:82px 20px 28px;overflow:auto;
+    }
+    body.nav-open .mobile-nav-panel{display:block;animation:navIn .22s ease both;}
+    .mobile-nav-panel a{display:flex;align-items:center;justify-content:space-between;color:var(--paper);padding:17px 0;border-bottom:1px solid rgba(245,241,230,.16);font:500 20px 'Fraunces',serif;}
+    .mobile-nav-panel a::after{content:'↗';font:14px 'JetBrains Mono',monospace;color:#9EB2AC;}
+    @keyframes navIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+  }
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1);}
+  .reveal.is-visible{opacity:1;transform:none;}
+  .reveal.delay-1{transition-delay:.08s}.reveal.delay-2{transition-delay:.16s}.reveal.delay-3{transition-delay:.24s}
+
+  /* Editorial card interactions */
+  .card:not(.radio),.photo-block,.stat-card,.letter,.radio-feature{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;}
+  .card:not(.radio):hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(26,23,18,.10);border-color:#c9bfa5;}
+  .card:not(.radio):focus-within{box-shadow:0 0 0 2px var(--signal),0 12px 26px rgba(26,23,18,.08);}
+  .card:not(.radio) .card-media{overflow:hidden;}
+  .card:not(.radio) .card-media .ph{transition:transform .55s cubic-bezier(.2,.7,.2,1);}
+  .card:not(.radio):hover .card-media .ph{transform:scale(1.035);}
+  .photo-block{overflow:hidden;}
+  .photo-block::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(19,45,40,.18));pointer-events:none;opacity:.65;transition:opacity .3s ease;}
+  .photo-block:hover::after{opacity:.25;}
+
+  /* Make article cards visibly interactive */
+  .card:not(.radio){cursor:pointer;}
+  .card:not(.radio) .card-foot::after{content:'↗';font-family:'JetBrains Mono',monospace;color:var(--signal);margin-left:auto;padding-left:8px;opacity:.7;transition:transform .2s ease;}
+  .card:not(.radio):hover .card-foot::after{transform:translate(2px,-2px);}
+
+  /* Radio player state */
+  .play-btn.is-playing{box-shadow:0 0 0 5px rgba(224,80,31,.18);}
+  .radio-status{font:10px 'JetBrains Mono',monospace;color:#9EB2AC;min-height:15px;}
+  .radio-mini .radio-status{color:#C9D6D1;}
+  .audio-range{width:100%;accent-color:var(--signal);cursor:pointer;}
+  .radio-feature .audio-range{margin-top:10px;}
+
+  /* Article reader */
+  .article-modal{position:fixed;inset:0;z-index:2000;display:none;background:rgba(10,18,16,.62);padding:24px;overflow:auto;}
+  .article-modal.is-open{display:flex;align-items:flex-start;justify-content:center;animation:modalFade .2s ease both;}
+  .article-sheet{width:min(820px,100%);margin:6vh auto 4vh;background:var(--paper);border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.25);padding:clamp(28px,5vw,58px);position:relative;animation:sheetIn .3s cubic-bezier(.2,.7,.2,1) both;}
+  .article-sheet .close-article{position:absolute;right:18px;top:18px;width:38px;height:38px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:24px;line-height:1;}
+  .article-sheet .article-type{font:10px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--signal);margin-bottom:12px;}
+  .article-sheet h2{font-size:clamp(32px,5vw,54px);margin-bottom:14px;max-width:18ch;}
+  .article-sheet .article-dek{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:62ch;margin-bottom:18px;}
+  .article-sheet .article-meta{font:11px 'JetBrains Mono',monospace;color:var(--ink-soft);padding-bottom:20px;border-bottom:1px solid var(--line);}
+  .article-sheet .article-note{margin-top:28px;padding:16px 18px;background:var(--paper-dim);font-size:13px;color:var(--ink-soft);line-height:1.65;}
+  @keyframes modalFade{from{opacity:0}to{opacity:1}}
+  @keyframes sheetIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  /* Loading transition */
+  #pageLoader{position:fixed;inset:0;z-index:3000;background:var(--teal);color:var(--paper);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:opacity .5s ease,visibility .5s ease;}
+  #pageLoader.hide{opacity:0;visibility:hidden;}
+  #pageLoader .loader-inner{text-align:center;}
+  #pageLoader .loader-brand{font:600 clamp(50px,10vw,90px) 'Bodoni Moda',serif;line-height:1;}
+  #pageLoader .loader-line{width:120px;height:2px;background:rgba(245,241,230,.2);margin:18px auto 0;overflow:hidden;}
+  #pageLoader .loader-line::after{content:"";display:block;height:100%;width:45%;background:var(--signal);animation:loaderLine 1s ease-in-out infinite;}
+  @keyframes loaderLine{0%{transform:translateX(-120%)}100%{transform:translateX(300%)}}
+
+  /* Back to top */
+  #backToTop{position:fixed;right:22px;bottom:22px;z-index:900;width:44px;height:44px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;box-shadow:0 8px 20px rgba(26,23,18,.12);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .25s ease;}
+  #backToTop.show{opacity:1;visibility:visible;transform:none;}
+  #backToTop:hover{background:var(--teal);color:var(--paper);border-color:var(--teal);}
+  @media (max-width:600px){#backToTop{right:14px;bottom:14px;width:40px;height:40px;}}
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .card:not(.radio),.photo-block,.stat-card,.letter,.radio-feature{transition:none;}
+    #pageLoader{display:none;}
+  }
+
+
+
+/* =========================================================
+   NIRVANA — MOBILE EDITORIAL LAYOUT
+   A deliberate mobile composition, not a shrunken desktop.
+   ========================================================= */
+@media (max-width: 760px){
+  html{scroll-padding-top:66px;}
+  body{width:100%;min-width:0;overflow-x:hidden;font-size:15px;}
+  *,*::before,*::after{min-width:0;}
+
+  .wrap{width:100%;max-width:none;margin:0;padding-left:18px;padding-right:18px;}
+
+  /* Top strip */
+  .ticker{height:32px;}
+  .ticker-track{padding:7px 0;}
+  .ticker-track span{font-size:9px;letter-spacing:.035em;padding:0 14px;}
+
+  /* Masthead: give the wordmark breathing room */
+  header.masthead{padding-top:14px;border-bottom:2px solid var(--ink);}
+  .masthead-top{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:end;
+    gap:8px;
+    padding-bottom:13px;
+  }
+  .wordmark{
+    grid-column:2;
+    order:0;
+    flex:none;
+    font-size:clamp(48px,14vw,64px);
+    line-height:.9;
+    white-space:nowrap;
+  }
+  .masthead-meta{
+    font-size:8px;
+    line-height:1.5;
+    letter-spacing:.055em;
+    text-align:left;
+  }
+  .masthead-meta.right{text-align:right;}
+
+  /* Compact mobile section bar */
+  .mobile-nav-toggle{
+    position:sticky;
+    top:0;
+    min-height:48px;
+    padding:11px 18px;
+    border-top:0;
+    border-bottom:1px solid var(--ink);
+    box-shadow:0 4px 16px rgba(26,23,18,.08);
+  }
+
+  /* Hero becomes a calm reading stack */
+  .hero{padding:30px 0 26px;}
+  .hero-grid{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+  }
+  .hero-grid > *{width:100%;min-width:0;}
+  .hero-grid > .hero-side{display:flex;}
+  .hero h1{
+    font-size:clamp(32px,9.8vw,43px);
+    line-height:1.02;
+    letter-spacing:-.025em;
+    margin-bottom:13px;
+    max-width:15ch;
+  }
+  .hero .dek{
+    font-size:15px;
+    line-height:1.65;
+    max-width:42ch;
+    margin-bottom:12px;
+  }
+  .kicker{font-size:9px;line-height:1.4;letter-spacing:.075em;margin-bottom:9px;}
+  .byline{font-size:10.5px;line-height:1.5;}
+
+  /* On phones the cover image is landscape and less dominant */
+  .photo-block{
+    width:100%;
+    aspect-ratio:16/10;
+    padding:13px;
+  }
+  .photo-cred{font-size:8.5px;}
+
+  .radio-mini{padding:16px;gap:10px;}
+  .radio-mini-top{align-items:flex-start;}
+  .radio-mini .sub{font-size:10.5px;line-height:1.4;}
+  .radio-mini h4{font-size:20px;}
+  .radio-mini .play-btn{width:42px;height:42px;}
+  .radio-mini .waveform{height:28px;}
+
+  /* Sections: more white space, less visual compression */
+  .section{padding:34px 0;border-bottom:1px solid var(--line);}
+  .section-head{
+    display:block;
+    margin-bottom:22px;
+  }
+  .section-head h2{font-size:25px;line-height:1.1;margin-bottom:8px;}
+  .section-head .note{font-size:11.5px;line-height:1.55;max-width:42ch;}
+
+  /* Secretariat letter */
+  .letter{
+    width:100%;
+    padding:22px 20px;
+    display:block;
+  }
+  .letter h2{font-size:28px;line-height:1.05;}
+  .letter .role{font-size:8.5px;margin-top:10px;}
+  .letter p{font-size:13px;line-height:1.65;}
+  .letter p + p{margin-top:11px;}
+  .letter > * + *{margin-top:18px;}
+
+  /* Committee masthead */
+  .committee-banner{
+    display:block;
+    padding-bottom:17px;
+    margin-bottom:22px;
+    border-bottom:1px solid var(--ink);
+  }
+  .committee-banner .id-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+  }
+  .badge{width:34px;height:34px;}
+  .committee-banner .idx{font-size:8.5px;line-height:1.3;}
+  .committee-banner h2{
+    font-size:clamp(42px,14vw,56px);
+    line-height:.9;
+    overflow-wrap:break-word;
+  }
+  .committee-banner .full-name{font-size:10.5px;line-height:1.45;margin-top:5px;}
+  .committee-blurb{
+    width:100%;
+    max-width:none;
+    text-align:left;
+    margin-top:17px;
+  }
+  .committee-blurb p{font-size:11.5px;line-height:1.6;margin-bottom:11px;}
+  .committee-blurb .agenda-lbl{font-size:8.5px;margin-bottom:4px;}
+  .committee-blurb .agenda-text{font-size:11.5px;line-height:1.55;}
+
+  /* Feature stories */
+  .feature{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    margin-bottom:22px;
+  }
+  .feature > *{width:100%;min-width:0;}
+  .feature h2{
+    font-size:clamp(27px,8vw,36px);
+    line-height:1.06;
+    margin-bottom:11px;
+    overflow-wrap:break-word;
+  }
+  .feature .dek{font-size:14px;line-height:1.7;max-width:44ch;}
+  .pullquote{
+    font-size:17px;
+    line-height:1.45;
+    padding-left:14px;
+    margin:17px 0;
+  }
+  .feature .byline{margin-top:13px;}
+
+  /* Stats read as a vertical list instead of cramped tiles */
+  .stat-card{padding:17px 18px;gap:12px;}
+  .stat{padding-bottom:10px;}
+  .stat .num{font-size:25px;}
+  .stat .lbl{font-size:10.5px;line-height:1.45;}
+
+  /* Article cards */
+  .grid,.grid.cols-2{
+    grid-template-columns:1fr;
+    gap:16px;
+    width:100%;
+  }
+  .card{width:100%;min-width:0;}
+  .card-media{aspect-ratio:16/9;}
+  .card-body{padding:17px;gap:10px;}
+  .tag{font-size:8.5px;}
+  .card h3{font-size:20px;line-height:1.15;overflow-wrap:break-word;}
+  .card .dek{font-size:13px;line-height:1.58;}
+  .card-foot{font-size:10px;gap:8px;}
+  .card.radio .card-body{padding:17px;}
+  .card.radio .play-btn{width:40px;height:40px;}
+
+  /* Radio feature becomes a compact listening module */
+  .radio-feature{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:15px;
+    padding:20px;
+    text-align:left;
+  }
+  .radio-feature .play-btn{width:52px;height:52px;}
+  .radio-feature h3{font-size:25px;line-height:1.08;}
+  .radio-feature .dek{font-size:13px;line-height:1.6;}
+  .radio-feature .meta{font-size:9.5px;gap:10px;margin-top:10px;}
+  .radio-feature .waveform{height:34px;margin-top:0;}
+  .progress{width:100%;margin-top:10px;}
+
+  /* Poetry / special editorial blocks */
+  .poem-wrap{width:100%;max-width:100%;margin-top:25px;padding:0 4px;}
+  .poem-wrap h3{font-size:27px;line-height:1.1;}
+  .poem-wrap .byline{font-size:10.5px;margin-bottom:17px;}
+  .poem-body{font-size:15px;line-height:1.8;}
+  .poem-body .cut{font-size:12px;}
+
+  .mini-photos{grid-template-columns:1fr 1fr;gap:9px;margin-top:22px;}
+  .mini-photos .ph{aspect-ratio:1/1;}
+
+  /* IPC / credits */
+  .corps-grid{display:flex;flex-direction:column;gap:28px;}
+  .corps-col h3{font-size:9px;margin-bottom:11px;padding-bottom:8px;}
+  .name-list{columns:1;font-size:12.5px;}
+  .name-list li{line-height:1.9;white-space:normal;}
+  .eb-list{gap:11px;margin-bottom:20px;}
+  .eb-list .n{font-size:14px;}
+  .eb-list .r{font-size:10.5px;}
+
+  /* Footer */
+  footer{padding:38px 0 24px;}
+  .footer-grid{display:flex;flex-direction:column;gap:28px;margin-bottom:28px;}
+  footer h4{font-size:24px;}
+  footer p{font-size:12px;line-height:1.65;}
+  footer .col-title{font-size:9px;margin-bottom:10px;}
+  footer a.flink{font-size:12px;padding:7px 0;}
+  .photog-list{columns:1;}
+  .qr{width:76px;height:76px;}
+  .footer-bottom{display:flex;flex-direction:column;gap:5px;padding-top:17px;font-size:9.5px;}
+
+  /* Article reader on small screens */
+  .article-modal{padding:10px;}
+  .article-sheet{
+    width:100%;
+    margin:2vh auto;
+    padding:48px 20px 26px;
+  }
+  .article-sheet .close-article{right:12px;top:12px;width:36px;height:36px;}
+  .article-sheet h2{font-size:clamp(30px,9vw,40px);line-height:1.03;max-width:100%;}
+  .article-sheet .article-dek{font-size:14px;line-height:1.65;}
+  .article-sheet .article-meta{font-size:9px;line-height:1.5;}
+  .article-sheet .article-note{font-size:11.5px;line-height:1.6;padding:13px 14px;}
+
+  /* Make all interactive targets comfortable for thumbs */
+  .mobile-nav-toggle,
+  .mobile-nav-panel a,
+  .play-btn,
+  .article-sheet .close-article,
+  #backToTop{touch-action:manipulation;}
+
+  /* Never let editorial content create a second horizontal canvas */
+  .hero-grid,.feature,.letter,.committee-banner,.grid,.radio-feature,.poem-wrap,
+  .corps-grid,.footer-grid,.card,.card-body,.card-foot,.section-head{max-width:100%;}
+  h1,h2,h3,h4,p,a,span{overflow-wrap:break-word;}
+}
+
+@media (max-width: 420px){
+  .wrap{padding-left:16px;padding-right:16px;}
+  .masthead-top{grid-template-columns:1fr auto 1fr;gap:5px;}
+  .wordmark{font-size:49px;}
+  .masthead-meta{font-size:7.2px;}
+  .mobile-nav-toggle{padding-left:16px;padding-right:16px;}
+  .hero h1{font-size:32px;}
+  .hero .dek{font-size:14px;}
+  .section{padding:30px 0;}
+  .committee-banner h2{font-size:42px;}
+  .committee-banner .full-name{font-size:10px;}
+  .feature h2{font-size:28px;}
+  .card-body{padding:15px;}
+  .card h3{font-size:19px;}
+  .radio-feature{padding:18px;}
+  .mini-photos{grid-template-columns:1fr;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .mobile-nav-toggle .nav-icon{transition:none;}
+}
+
+
+  /* =========================================================
+     FINAL EDITORIAL FORMAT — FULL-WIDTH CHAPTERS + CLEAN GUTTERS
+     ========================================================= */
+  section.section,
+  section.hero {
+    width:100%;
+    max-width:none;
+    margin-left:0;
+    margin-right:0;
+  }
+
+  /* The page uses a consistent 1180px reading column. Backgrounds
+     run full-bleed, while the actual content stays inside the gutter. */
+  section.section > *,
+  section.hero > * {
+    width:100%;
+    max-width:1180px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:32px;
+    padding-right:32px;
+  }
+
+  section.hero { padding-left:0; padding-right:0; }
+  section.section { padding-left:0; padding-right:0; }
+
+  section.section > .section-head { padding-top:0; }
+  section.section > .committee-banner { padding-left:32px; padding-right:32px; }
+  section.section > .feature,
+  section.section > .grid,
+  section.section > .radio-feature,
+  section.section > .poem-wrap,
+  section.section > .mini-photos {
+    padding-left:32px;
+    padding-right:32px;
+  }
+
+  /* Separate every editorial chapter clearly */
+  section.section + section.section {
+    border-top:0;
+  }
+  section.section.alt {
+    box-shadow:inset 0 1px 0 rgba(26,23,18,.035);
+  }
+
+  /* Keep content blocks from touching each other */
+  .committee-banner { margin-bottom:42px; }
+  .feature { margin-bottom:42px; }
+  .grid { row-gap:24px; }
+  .mini-photos { margin-top:36px; }
+
+  /* More deliberate card proportions on desktop */
+  .card { min-height:100%; }
+  .card-media { min-height:210px; }
+
+  @media (max-width:760px){
+    /* Full-width backgrounds, 16px side gutters */
+    section.section > *,
+    section.hero > *,
+    section.section > .committee-banner,
+    section.section > .feature,
+    section.section > .grid,
+    section.section > .radio-feature,
+    section.section > .poem-wrap,
+    section.section > .mini-photos {
+      width:100%;
+      max-width:none;
+      padding-left:16px;
+      padding-right:16px;
+    }
+
+    /* Hero gets its own breathing room */
+    section.hero > .hero-grid {
+      padding-top:30px;
+      padding-bottom:28px;
+    }
+
+    /* Each section reads as a distinct chapter */
+    section.section {
+      padding-top:46px;
+      padding-bottom:46px;
+    }
+
+    section.section > .section-head {
+      margin-bottom:28px;
+    }
+
+    .committee-banner {
+      padding-bottom:20px !important;
+      margin-bottom:28px;
+    }
+
+    .feature {
+      gap:24px;
+      margin-bottom:30px;
+    }
+
+    .grid {
+      gap:18px;
+    }
+
+    .mini-photos {
+      margin-top:28px;
+      gap:10px;
+    }
+
+    /* Don't stack every little thing into separate visual boxes.
+       Let the typography create hierarchy instead. */
+    .section-head .note {
+      margin-top:4px;
+    }
+
+    .card {
+      box-shadow:none;
+    }
+
+    .card-body {
+      padding:18px;
+    }
+
+    .card-media {
+      min-height:0;
+    }
+
+    .stat-card {
+      margin-top:0;
+    }
+
+    .letter {
+      margin-top:0;
+    }
+  }
+
+  @media (max-width:420px){
+    section.section > *,
+    section.hero > *,
+    section.section > .committee-banner,
+    section.section > .feature,
+    section.section > .grid,
+    section.section > .radio-feature,
+    section.section > .poem-wrap,
+    section.section > .mini-photos {
+      padding-left:14px;
+      padding-right:14px;
+    }
+
+    section.section {
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    section.hero > .hero-grid {
+      padding-top:26px;
+      padding-bottom:24px;
+    }
+
+    .committee-banner { margin-bottom:24px; }
+    .feature { margin-bottom:26px; }
+  }
+
+</style>
+</head>
+<body>
+<div id="pageLoader" aria-hidden="true"><div class="loader-inner"><div class="loader-brand">Nirvana</div><div class="loader-line"></div></div></div>
+
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap masthead-top">
+    <div class="masthead-meta">Second Edition<br>SCMS School of Engineering &amp; Technology</div>
+    <div class="wordmark">Nirvana</div>
+    <div class="masthead-meta right">SSETMUN · Vol. II</div>
+  </div>
+  <nav class="masthead-nav wrap" aria-label="Committee navigation">
+    <a href="#aippm" data-section="aippm">01 · AIPPM</a>
+    <a href="#uncsw" data-section="uncsw">02 · UNCSW</a>
+    <a href="#uncnd" data-section="uncnd">03 · UNCND</a>
+    <a href="#disec" data-section="disec">04 · UNGA DISEC</a>
+    <a href="#who" data-section="who">05 · WHO</a>
+    <a href="#ipc" data-section="ipc">IPC</a>
+    <a href="#credits" data-section="credits">Credits</a>
+  </nav>
+</header>
+
+<button class="mobile-nav-toggle" id="mobileNavToggle" type="button" aria-expanded="false" aria-controls="mobileNavPanel">
+  <span class="nav-current" id="mobileNavCurrent">Nirvana · Sections</span><span class="nav-icon">＋</span>
+</button>
+<div class="mobile-nav-panel" id="mobileNavPanel" aria-label="Mobile section navigation">
+  <a href="#aippm" data-section="aippm">01 · AIPPM</a>
+  <a href="#uncsw" data-section="uncsw">02 · UNCSW</a>
+  <a href="#uncnd" data-section="uncnd">03 · UNCND</a>
+  <a href="#disec" data-section="disec">04 · UNGA DISEC</a>
+  <a href="#who" data-section="who">05 · WHO</a>
+  <a href="#ipc" data-section="ipc">IPC</a>
+  <a href="#credits" data-section="credits">Credits</a>
+</div>
+
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <span class="kicker">Cover story · Committee floor, in order</span>
+      <h1>Five committees, one newsroom, back for round two</h1>
+      <p class="dek">This edition runs committee by committee — AIPPM through WHO — with the article and the Radio Voice segment from each room sitting side by side, the way the story actually happens.</p>
+      <p class="byline">The International Press Corps · Nirvana, Second Edition</p>
+    </div>
+    <div class="hero-side">
+      <div class="photo-block">
+        <span class="photo-cred">Opening Ceremony / Sankrushi PS</span>
+      </div>
+      <div class="radio-mini">
+        <div class="radio-mini-top">
+          <span class="pill"><span class="dot"></span> NEW</span>
+          <span class="sub">Radio Voice — one segment per committee, below</span>
+        </div>
+        <h4>Start with AIPPM</h4>
+        <div class="play-row">
+          <button type="button" class="play-btn" data-radio-target="aippm" aria-label="Play AIPPM Radio Voice">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <div class="waveform">
+            <i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:35%"></i><i style="height:80%"></i>
+          </div>
+        </div>
+        <p class="sub">Jump straight to committee 01.</p><div class="radio-status" id="miniRadioStatus">Audio source can be connected when the final recording is ready.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <h2>Letters from the Secretariat</h2>
+    <p class="note">Before the committees — the people who built the room, back for a second year.</p>
+  </div>
+  <div class="letter">
+    <div>
+      <h2>Our MUN, your MUN</h2>
+      <span class="role">The Secretariat, SSETMUN</span>
+    </div>
+    <div>
+      <p>What started with three delegates has grown into a delegation with a standing place on the Kerala circuit — and a second edition to prove it wasn't a one-off.</p>
+      <p>What follows is this year's record, committee by committee — five rooms, five agendas, and once again, the sound of each one alongside the page.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 · AIPPM ============ -->
+<section class="section wrap" id="aippm">
+  <div class="committee-banner">
+    <div class="id-row">
+      <svg class="badge" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21"/>
+        <path d="M12 30 C 14 20, 16 14, 18 10 M14 26 C 16 20, 17 16, 18 13 M16 22 C 17 18, 18 15, 18 13"/>
+        <path d="M36 30 C 34 20, 32 14, 30 10 M34 26 C 32 20, 31 16, 30 13 M32 22 C 31 18, 30 15, 30 13"/>
+      </svg>
+      <div>
+        <div class="idx">Committee 01 of 05</div>
+        <h2>AIPPM</h2>
+        <div class="full-name">All India Political Parties Meet</div>
+      </div>
+    </div>
+    <div class="committee-blurb">
+      <p>The All India Political Parties Meet brings together representatives of India's diverse political spectrum to debate pressing national issues.</p>
+      <span class="agenda-lbl">Agenda</span>
+      <span class="agenda-text">Deliberation on Gender-Neutral Laws in India, with Special Emphasis on the Rights of the LGBTQIA+ Community</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div>
+      <span class="kicker">Op-ed</span>
+      <h2>Buried in Colonialism, Lost in Legislation</h2>
+      <p class="dek">Turns out "Indian values" is just Victorian morality wearing a bindi. From the temples of Khajuraho to the Aravanis of Tamil Nadu, our true heritage of gender diversity was erased by colonial laws like Section 377.</p>
+      <div class="pullquote">"For over a century and a half, we lived with someone else's anxieties and called them our own traditions."</div>
+      <p class="byline">By Gaurika Rashmi Nair · 6 min read</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat"><div class="num">1871</div><div class="lbl">Criminal Tribes Act targeted the hijra community</div></div>
+      <div class="stat"><div class="num">158</div><div class="lbl">Years Section 377 was in the Indian Penal Code</div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <a class="card article-link" href="#article-aippm-case" data-article="article-aippm-case">
+      <div class="ph card-media alt"><span class="photo-cred">AIPPM, Case File 522627/23</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Feature</span></div>
+        <h3>Subject Profile: Manish Kumar</h3>
+        <p class="dek">A classified look into an 'honour killing' where two people chose to love each other despite society. What protection does the law give that society doesn't?</p>
+        <div class="card-foot"><span>Amitha B</span><span>Feature</span></div>
+      </div>
+    </a>
+    <a class="card article-link" href="#article-aippm-sketch" data-article="article-aippm-sketch">
+      <div class="ph card-media"><span class="photo-cred">AIPPM, Delegate Statement</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Character Sketch</span></div>
+        <h3>An Ambassador of Saffron</h3>
+        <p class="dek">He will tell you he stands for everyone, right before explaining, patiently, who doesn't count. A sketch on a delegate confusing certainty for conviction.</p>
+        <div class="card-foot"><span>Gaurika Rashmi Nair</span><span>Sketch</span></div>
+      </div>
+    </a>
+    <div class="card radio">
+      <div class="card-body">
+        <div class="tag-row"><span class="tag listen">Radio Voice</span><span class="tag">2:48</span></div>
+        <h3>Overheard in the Hallway</h3>
+        <p class="dek">Vox pops from AIPPM's corridors — delegates on gender-neutral law, off the record and between sessions.</p>
+        <div class="play-row">
+          <button class="play-btn" aria-label="Play Overheard in the Hallway" data-audio="audio/aippm.mp3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <div class="waveform"><i style="height:50%"></i><i style="height:25%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:20%"></i></div>
+        </div>
+        <div class="card-foot"><span>Hosted by Diya Dileep</span><span>Vox pop</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-photos">
+    <div class="ph alt"><span class="photo-cred">AIPPM, floor</span></div>
+    <div class="ph"><span class="photo-cred">AIPPM, delegate statement</span></div>
+  </div>
+</section>
+
+<!-- ============ 02 · UNCSW ============ -->
+<section class="section alt wrap" id="uncsw">
+  <div class="committee-banner">
+    <div class="id-row">
+      <svg class="badge" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21"/>
+        <path d="M12 30 C 14 20, 16 14, 18 10 M14 26 C 16 20, 17 16, 18 13 M16 22 C 17 18, 18 15, 18 13"/>
+        <path d="M36 30 C 34 20, 32 14, 30 10 M34 26 C 32 20, 31 16, 30 13 M32 22 C 31 18, 30 15, 30 13"/>
+      </svg>
+      <div>
+        <div class="idx">Committee 02 of 05</div>
+        <h2>UNCSW</h2>
+        <div class="full-name">United Nations Commission on the Status of Women</div>
+      </div>
+    </div>
+    <div class="committee-blurb">
+      <p>The United Nations Commission on the Status of Women is the principal global intergovernmental body dedicated to gender equality and women's empowerment.</p>
+      <span class="agenda-lbl">Agenda</span>
+      <span class="agenda-text">Analysing the tension between cultural traditions and women's rights in the 21st Century</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div>
+      <span class="kicker">Feature</span>
+      <h2>When Fear Needs a Victim, it Invents a Witch</h2>
+      <p class="dek">When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame. A look into how witchcraft accusations conceal xenophobia, land disputes, and scapegoating of vulnerable women.</p>
+      <div class="pullquote">"Violence cannot be tolerated by any means. Witches belong to belief. But witch hunting belongs to power, violence and control."</div>
+      <p class="byline">By Sruthy S Muraly · 7 min read</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat"><div class="num">22,000</div><div class="lbl">victims of witchcraft accusations documented across 50 countries</div></div>
+      <div class="stat"><div class="num">19</div><div class="lbl">people executed in the Salem witch trials, dispelling mythological scopes</div></div>
+      <div class="stat"><div class="num">18</div><div class="lbl">older people killed in Tanzania by Sept 2024 over witchcraft allegations</div></div>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <a class="card article-link" href="#article-uncsw-interview" data-article="article-uncsw-interview">
+      <div class="ph card-media alt"><span class="photo-cred">UNCSW committee floor</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Interview</span></div>
+        <h3>When the Law Says No, But Society Says Yes</h3>
+        <p class="dek">An interview with the delegate of Bangladesh on child marriage loopholes, intimate partner violence (IPV), and the limits of cultural justifications.</p>
+        <div class="card-foot"><span>Sruthy S Muraly</span><span>Interview</span></div>
+      </div>
+    </a>
+    <div class="card radio">
+      <div class="card-body">
+        <div class="tag-row"><span class="tag listen">Radio Voice</span><span class="tag">3:56</span></div>
+        <h3>Naming the Witch, On Record</h3>
+        <p class="dek">The journalist behind today's UNCSW coverage reads her notes aloud on blame, belief, and who gets accused — including the line the committee report couldn't fit in.</p>
+        <div class="play-row">
+          <button class="play-btn" aria-label="Play Half the Sky, On Record" data-audio="audio/uncsw.mp3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <div class="waveform"><i style="height:30%"></i><i style="height:60%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:20%"></i><i style="height:55%"></i><i style="height:85%"></i></div>
+        </div>
+        <div class="card-foot"><span>Hosted by Ridha Methar</span><span>Companion read</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="poem-wrap">
+    <span class="kicker">From the UNCSW arts desk</span>
+    <h3>Why do my rights differ with my locality?</h3>
+    <span class="byline">By Tessa Vinu</span>
+    <div class="poem-body">
+      Was it my fault to be born as a woman in a world<br>
+      Run on a system created to favour men,<br>
+      So much so that if I had parents who thought different,<br>
+      I would not exist for this moment in narration.<br><br>
+      Was I too ambitious?<br>
+      For wanting to exist as I was?<br>
+      For not wanting someone to tell me to 'cover up' or smile more?<br>
+      <span class="cut">Coz someone decided that the mere existence of a woman is too much or too less...</span>
+    </div>
+  </div>
+
+  <div class="mini-photos">
+    <div class="ph"><span class="photo-cred">UNCSW, moderated caucus</span></div>
+    <div class="ph alt"><span class="photo-cred">Delegate statement, UNCSW</span></div>
+    <div class="ph"><span class="photo-cred">UNCSW, unmoderated caucus</span></div>
+  </div>
+</section>
+
+<!-- ============ 03 · UNCND ============ -->
+<section class="section wrap" id="uncnd">
+  <div class="committee-banner">
+    <div class="id-row">
+      <svg class="badge" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21"/>
+        <path d="M12 30 C 14 20, 16 14, 18 10 M14 26 C 16 20, 17 16, 18 13 M16 22 C 17 18, 18 15, 18 13"/>
+        <path d="M36 30 C 34 20, 32 14, 30 10 M34 26 C 32 20, 31 16, 30 13 M32 22 C 31 18, 30 15, 30 13"/>
+      </svg>
+      <div>
+        <div class="idx">Committee 03 of 05</div>
+        <h2>UNCND</h2>
+        <div class="full-name">United Nations Commission on Narcotic Drugs</div>
+      </div>
+    </div>
+    <div class="committee-blurb">
+      <p>The United Nations Commission on Narcotic Drugs is the main policy-making body for international drug control, working at the intersection of law, health, and enforcement.</p>
+      <span class="agenda-lbl">Agenda</span>
+      <span class="agenda-text">Strengthening Treaty-Compliant Mechanisms for the Timely Scheduling of Emerging Psychoactive Substances</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div>
+      <span class="kicker">Feature</span>
+      <h2>Three Atoms Ahead.. I Am Always Three Atoms Ahead</h2>
+      <p class="dek">From the 'Cocaine Bear' of 1985 to today's server-based chemistry, international drug scheduling cannot outrun a local chemist. Why the CND must adopt rapid Early Warning Advisory systems.</p>
+      <div class="pullquote">"In the age of artificial drugs, yesterday's solution is bound to be tomorrow's loophole."</div>
+      <p class="byline">By Sarah Asraf · 7 min read</p>
+    </div>
+    <div class="card quick" style="border:1px solid var(--line);">
+      <div class="card-body">
+        <span class="tag read">Context at a glance</span>
+        <div class="qlist">
+          <div><b>Operation Toofan</b> — Kerala's crackdown yielded 10,000 cases in 100 days, but remains fundamentally reactive.</div>
+          <div><b>Fentanyl Supply Chain</b> — $3M worth of fentanyl ingredients can be legally purchased for under $3,600.</div>
+          <div><b>Vienna Consensus</b> — Faltering as the CND struggles to balance regulatory speed with state sovereignty.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <a class="card article-link" href="#article-uncnd-feature" data-article="article-uncnd-feature">
+      <div class="ph card-media"><span class="photo-cred">UNCND, classified file</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Dossier</span></div>
+        <h3>Project: SOMNIUM CASEUM</h3>
+        <p class="dek">A classified look at Dream Cheese (DC), a synthetic opioid analogue bypassing borders through molecular substitution and predictive toxicology.</p>
+        <div class="card-foot"><span>Malavika Unnikrishnan</span><span>Feature</span></div>
+      </div>
+    </a>
+    <a class="card article-link" href="#article-uncnd-interview" data-article="article-uncnd-interview">
+      <div class="ph card-media alt"><span class="photo-cred">UNCND, Interview</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Interview</span></div>
+        <h3>When the Molecule Gets Ahead of the Law</h3>
+        <p class="dek">In conversation with the Delegate of Indonesia on the race to regulate new psychoactive substances and the justification for strict drug laws.</p>
+        <div class="card-foot"><span>Sarah Asraf</span><span>Interview</span></div>
+      </div>
+    </a>
+    <div class="card radio">
+      <div class="card-body">
+        <div class="tag-row"><span class="tag listen">Radio Voice</span><span class="tag">3:20</span></div>
+        <h3>Vienna After Hours</h3>
+        <p class="dek">A satirical debrief on today's UNCND session — who scheduled what, and who tried to stall it.</p>
+        <div class="play-row">
+          <button class="play-btn" aria-label="Play Vienna After Hours" data-audio="audio/uncnd.mp3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <div class="waveform"><i style="height:50%"></i><i style="height:25%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:20%"></i></div>
+        </div>
+        <div class="card-foot"><span>Hosted by Norah Chollampatt</span><span>Satirical</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-photos">
+    <div class="ph alt"><span class="photo-cred">UNCND, note-passing</span></div>
+    <div class="ph"><span class="photo-cred">UNCND, placards raised</span></div>
+  </div>
+</section>
+
+<!-- ============ 04 · UNGA DISEC ============ -->
+<section class="section alt wrap" id="disec">
+  <div class="committee-banner">
+    <div class="id-row">
+      <svg class="badge" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21"/>
+        <path d="M12 30 C 14 20, 16 14, 18 10 M14 26 C 16 20, 17 16, 18 13 M16 22 C 17 18, 18 15, 18 13"/>
+        <path d="M36 30 C 34 20, 32 14, 30 10 M34 26 C 32 20, 31 16, 30 13 M32 22 C 31 18, 30 15, 30 13"/>
+      </svg>
+      <div>
+        <div class="idx">Committee 04 of 05</div>
+        <h2>UNGA DISEC</h2>
+        <div class="full-name">United Nations General Assembly · First Committee</div>
+      </div>
+    </div>
+    <div class="committee-blurb">
+      <p>The First Committee (Disarmament and International Security Committee) of the United Nations General Assembly is the principal forum for arms control and global security matters.</p>
+      <span class="agenda-lbl">Agenda</span>
+      <span class="agenda-text">Addressing state sponsored support and indirect transfer of weapons to non-state armed groups</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div>
+      <span class="kicker">Long read</span>
+      <h2>Apparently, the Gun Knows Who Is Right</h2>
+      <p class="dek">Almost everyone agrees weapons need regulation. But the disagreement begins when we ask whose weapons, supplied to whom, and under what circumstances, exposing the politics of selective accountability.</p>
+      <div class="pullquote">"At some point, 'who supplied the weapon?' becomes less important than 'whose side are they on?'"</div>
+      <p class="byline">By Ridha Methar · 8 min read</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat"><div class="num">9.2%</div><div class="lbl">increase in global major conventional weapons transfers from 2016 to 2025</div></div>
+      <div class="stat"><div class="num">42%</div><div class="lbl">of global arms exports accounted for by the United States alone</div></div>
+      <div class="stat"><div class="num">25,000</div><div class="lbl">Humvees delivered to Afghan forces that passed directly into Taliban hands</div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <a class="card article-link" href="#article-disec-op-ed" data-article="article-disec-op-ed">
+      <div class="ph card-media alt"><span class="photo-cred">UNGA DISEC, op-ed</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Op-Ed</span></div>
+        <h3>Arming the Enemy of My Enemy</h3>
+        <p class="dek">The justification for proxy warfare, and how states exploit layers of intermediaries and unresolved legal ambiguities like the Nicaragua and Tadić standards.</p>
+        <div class="card-foot"><span>Nivin Vineeth</span><span>Op-Ed</span></div>
+      </div>
+    </a>
+    <a class="card article-link" href="#article-disec-interview" data-article="article-disec-interview">
+      <div class="ph card-media"><span class="photo-cred">UNGA DISEC, interview</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Interview</span></div>
+        <h3>Beyond the Weapons: Allegation or Facts</h3>
+        <p class="dek">An interview with the delegate of Russia on the fine line between cooperation and accountability, and the evidentiary standards needed for illicit weapons transfers.</p>
+        <div class="card-foot"><span>DISEC Desk</span><span>Interview</span></div>
+      </div>
+    </a>
+    <div class="card radio">
+      <div class="card-body">
+        <div class="tag-row"><span class="tag listen">Radio Voice</span><span class="tag">2:10</span></div>
+        <h3>Disarming the Room</h3>
+        <p class="dek">A short companion cut from DISEC's session — the moment "whose side are they on" went quiet.</p>
+        <div class="play-row">
+          <button class="play-btn" aria-label="Play Disarming the Room" data-audio="audio/disec.mp3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <div class="waveform"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:25%"></i></div>
+        </div>
+        <div class="card-foot"><span>Hosted by Sania Antony</span><span>Closing note</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-photos">
+    <div class="ph"><span class="photo-cred">UNGA DISEC, seated delegation</span></div>
+    <div class="ph alt"><span class="photo-cred">UNGA DISEC, closing gavel</span></div>
+  </div>
+</section>
+
+<!-- ============ 05 · WHO (School Committee) ============ -->
+<section class="section wrap" id="who">
+  <div class="committee-banner">
+    <div class="id-row">
+      <svg class="badge" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21"/>
+        <path d="M12 30 C 14 20, 16 14, 18 10 M14 26 C 16 20, 17 16, 18 13 M16 22 C 17 18, 18 15, 18 13"/>
+        <path d="M36 30 C 34 20, 32 14, 30 10 M34 26 C 32 20, 31 16, 30 13 M32 22 C 31 18, 30 15, 30 13"/>
+      </svg>
+      <div>
+        <div class="idx">Committee 05 of 05</div>
+        <h2>WHO</h2>
+        <div class="full-name">World Health Organization — School Committee</div>
+      </div>
+    </div>
+    <div class="committee-blurb">
+      <p>The World Health Organization is the specialized agency for directing international public health and responding to global medical crises.</p>
+      <span class="agenda-lbl">Agenda</span>
+      <span class="agenda-text">Counterfeit Pharmaceuticals and Patent Laws: Eradicating the Global Black Market of Fake Medicines</span>
+    </div>
+  </div>
+  
+  <div class="feature">
+    <div>
+      <span class="kicker">Op-ed</span>
+      <h2>ΣΠΆΝΙΣ (SCARCITY): WHAT FILLS THE VOID?</h2>
+      <p class="dek">When legitimate medicine remains inaccessible or unaffordable, counterfeits fill the gap. Strict enforcement isn't enough if the system itself is fundamentally broken.</p>
+      <div class="pullquote">"The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough."</div>
+      <p class="byline">By Ishita Sudhir · 7 min read</p>
+    </div>
+    <div class="card quick" style="border:1px solid var(--line);">
+      <div class="card-body">
+        <span class="tag read">Key Frameworks</span>
+        <div class="qlist">
+          <div><b>TRIPS Agreement</b> — Situated IP protection within broader social and economic welfare.</div>
+          <div><b>Doha Declaration</b> — Affirmed the right to use TRIPS flexibilities to protect public health.</div>
+          <div><b>MEDICRIME Convention</b> — Treats falsified medical products as criminal conduct requiring cooperation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <a class="card article-link" href="#article-who-feature" data-article="article-who-feature">
+      <div class="ph card-media alt"><span class="photo-cred">WHO, Feature</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Satire</span></div>
+        <h3>Congratulations! You got your fake medicines</h3>
+        <p class="dek">A satirical look at premium hospitals and the substandard pharmaceuticals that imitate everything except the ability to save a life.</p>
+        <div class="card-foot"><span>Jaithra K</span><span>Feature</span></div>
+      </div>
+    </a>
+    <a class="card article-link" href="#article-who-sketch" data-article="article-who-sketch">
+      <div class="ph card-media"><span class="photo-cred">WHO, Committee Floor</span></div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag read">Character Sketch</span></div>
+        <h3>The WHO's Patience</h3>
+        <p class="dek">Unlike other committees, WHO seems less interested in changing the conversation than making sure it never stops. A look at the art of deliberation.</p>
+        <div class="card-foot"><span>Ishita Sudhir</span><span>Sketch</span></div>
+      </div>
+    </a>
+    <div class="card radio">
+      <div class="card-body">
+        <div class="tag-row"><span class="tag listen">Radio Voice</span><span class="tag">3:05</span></div>
+        <h3>The Counterfeit Cut</h3>
+        <p class="dek">A field recording from WHO's floor — patent law jargon, one very tired chair, and the joke that kept resurfacing about fake medicine.</p>
+        <div class="play-row">
+          <button class="play-btn" aria-label="Play The Counterfeit Cut" data-audio="audio/who.mp3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <div class="waveform"><i style="height:35%"></i><i style="height:65%"></i><i style="height:25%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:70%"></i></div>
+        </div>
+        <div class="card-foot"><span>Hosted by Theres Mary Paul</span><span>Satirical</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-photos">
+    <div class="ph"><span class="photo-cred">WHO, committee floor</span></div>
+    <div class="ph alt"><span class="photo-cred">WHO, delegate statement</span></div>
+  </div>
+</section>
+
+<!-- ============ CLOSING RADIO FEATURE ============ -->
+<section class="section wrap">
+  <div class="section-head">
+    <h2>From the press desk</h2>
+    <p class="note">The one segment that isn't tied to a single committee — the whole conference, in one read.</p>
+  </div>
+  <div class="radio-feature">
+    <button class="play-btn" id="featPlay" aria-label="Play Dispatch from the Press Desk" data-audio="audio/closing.mp3">
+      <svg viewBox="0 0 24 24" fill="currentColor" id="featIcon"><polygon points="6,4 20,12 6,20"/></svg>
+    </button>
+    <div>
+      <span class="pill" style="margin-bottom:10px;"><span class="dot"></span> FEATURED SEGMENT</span>
+      <h3>Dispatch from the Press Desk</h3>
+      <p class="dek">The Editor-in-Chief closes out this edition with an unscripted read on what the newsroom saw across all five committees that the resolutions didn't capture.</p>
+      <div class="meta"><span>08:41</span><span>Hosted by the Editor-in-Chief</span><span>Closing address</span></div>
+      <div class="radio-status" id="featureRadioStatus">Audio source can be connected when the final recording is ready.</div>
+      <div class="progress"><div class="progress-bar" id="featProgress"></div></div>
+    </div>
+    <div class="waveform" id="featWave">
+      <i style="height:35%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:25%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:75%"></i>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="ipc">
+  <div class="section-head">
+    <h2>IPC — International Press Corps</h2>
+    <p class="note">The International Press Corps combines the art of journalism, photography, and rigorous investigation to document the conference from the floor.</p>
+  </div>
+  <div class="card quick" style="border:1px solid var(--line);max-width:520px;margin-bottom:32px;">
+    <div class="card-body">
+      <span class="tag read">Agenda</span>
+      <p class="dek" style="font-size:14px;">Role of photojournalists in simulation of internal press corps.</p>
+    </div>
+  </div>
+  <div class="corps-grid">
+    <div class="corps-col">
+      <h3>Executive Board</h3>
+      <div class="eb-list">
+        <div><div class="n">Adwaith Madhavan</div><div class="r">Editor in Chief</div></div>
+        <div><div class="n">Anna Mariya Biju</div><div class="r">Head of Journalism</div></div>
+        <div><div class="n">Sankrushi PS</div><div class="r">Head of Photojournalism</div></div>
+      </div>
+    </div>
+    <div class="corps-col">
+      <h3>Journalists</h3>
+      <ul class="name-list">
+        <li>Amitha B</li>
+        <li>Diya Dileep</li>
+        <li>Gaurika Rashmi Nair</li>
+        <li>Ishita Sudhir</li>
+        <li>Jaithra K</li>
+        <li>Malavika Unnikrishnan</li>
+        <li>Nivin Vineeth</li>
+        <li>Norah Chollampatt</li>
+        <li>Ridha Methar</li>
+        <li>Sania Antony</li>
+        <li>Sarah Asraf</li>
+        <li>Sruthy S Muraly</li>
+        <li>Tessa Vinu</li>
+        <li>Theres Mary Paul</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer id="credits">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Nirvana</h4>
+        <p>The official newsletter of SSETMUN, second edition, published by the International Press Corps (IPC), SCMS School of Engineering &amp; Technology. Stories and Radio Voice segments are produced independently by the student press desk, organized here by committee.</p>
+      </div>
+      <div>
+        <div class="col-title">Photojournalists</div>
+        <div class="photog-list">
+        <a class="flink" href="#">Pradeep P</a>
+        <a class="flink" href="#">Sai</a>
+        <a class="flink" href="#">Sharon Rajesh</a>
+        <a class="flink" href="#">Gauri BS</a>
+        <a class="flink" href="#">Aaisha A Fathima</a>
+        <a class="flink" href="#">M Rohit</a>
+        <a class="flink" href="#">Dev Krishna MS</a>
+        <a class="flink" href="#">Mohammed Naji KT</a>
+        <a class="flink" href="#">Karthik Ganesh</a>
+        <a class="flink" href="#">Edwin Aby</a>
+        <a class="flink" href="#">Akhil Pradeep</a>
+        <a class="flink" href="#">Niranjan Biyas</a>
+        <a class="flink" href="#">Devak BB</a>
+        </div>
+      </div>
+      <div>
+        <div class="col-title">Scan for more</div>
+        <p style="margin-bottom:14px;">The full photo archive and extended Radio Voice cuts, sorted the same way — by committee.</p>
+        <div class="qr"></div>
+      </div>
+    </div>
+    <div class="footer-bottom wrap" style="padding-left:0;padding-right:0;">
+      <span>SSETMUN · Second Edition</span>
+      <span>Same newsroom, new committees.</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+<div class="article-modal" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+  <article class="article-sheet">
+    <button class="close-article" id="closeArticle" type="button" aria-label="Close article">×</button>
+    <div class="article-type" id="articleModalType">Article</div>
+    <h2 id="articleModalTitle"></h2>
+    <p class="article-dek" id="articleModalDek"></p>
+    <div class="article-meta" id="articleModalMeta"></div>
+    <div class="article-note">This reader is wired into Nirvana's article system. When the final article copy is ready, this panel can be replaced with the complete story without changing the publication layout.</div>
+  </article>
+</div>
+
+<script>
+  const items = [
+    "01 · AIPPM opens debate on gender-neutral laws",
+    "<b>NEW</b> Radio Voice now runs one segment per committee",
+    "02 · UNCSW takes up cultural tradition vs. rights",
+    "03 · UNCND moves to schedule emerging substances",
+    "04 · UNGA DISEC debates arms transfers to non-state groups",
+    "05 · WHO closes debate on counterfeit pharmaceuticals and patent law"
+  ];
+  const track = document.getElementById('tickerTrack');
+  const tickerHTML = items.map(t => `<span>${t}</span>`).join('');
+  track.innerHTML = tickerHTML + tickerHTML;
+
+  /* Mobile navigation */
+  const body = document.body;
+  const mobileToggle = document.getElementById('mobileNavToggle');
+  const mobilePanel = document.getElementById('mobileNavPanel');
+  const mobileCurrent = document.getElementById('mobileNavCurrent');
+  const navLabel = {
+    aippm:'01 · AIPPM', uncsw:'02 · UNCSW', uncnd:'03 · UNCND',
+    disec:'04 · UNGA DISEC', who:'05 · WHO', ipc:'IPC', credits:'Credits'
+  };
+  function closeMobileNav(){
+    body.classList.remove('nav-open');
+    mobileToggle.setAttribute('aria-expanded','false');
+  }
+  mobileToggle.addEventListener('click',()=>{
+    const open = body.classList.toggle('nav-open');
+    mobileToggle.setAttribute('aria-expanded',String(open));
+  });
+  document.querySelectorAll('#mobileNavPanel a').forEach(a=>a.addEventListener('click',closeMobileNav));
+
+  /* Active-section navigation */
+  const allNavLinks = [...document.querySelectorAll('nav.masthead-nav a, #mobileNavPanel a')];
+  const sections = [...document.querySelectorAll('section[id], footer[id]')]
+    .filter(el => navLabel[el.id]);
+  const sectionObserver = new IntersectionObserver(entries=>{
+    const visible = entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+    if(!visible) return;
+    const id = visible.target.id;
+    allNavLinks.forEach(a=>a.classList.toggle('active',a.dataset.section===id));
+    mobileCurrent.textContent = navLabel[id] || 'Nirvana · Sections';
+    const activeDesktop = document.querySelector(`nav.masthead-nav a[data-section="${id}"]`);
+    if(activeDesktop && window.innerWidth <= 600) activeDesktop.scrollIntoView({inline:'center',block:'nearest'});
+  },{rootMargin:'-20% 0px -60% 0px',threshold:[0,.2,.5,1]});
+  sections.forEach(s=>sectionObserver.observe(s));
+
+  /* Smooth anchor navigation with offset */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(!id || id==='#' || id.startsWith('#article-')) return;
+    const target=document.querySelector(id);
+    if(target){e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); history.replaceState(null,'',id);}
+  }));
+
+  /* Scroll reveal */
+  const revealTargets = document.querySelectorAll('.section-head,.letter,.committee-banner,.feature,.grid,.mini-photos,.radio-feature,.corps-grid,.footer-grid');
+  revealTargets.forEach((el,i)=>{el.classList.add('reveal'); if(i%4===1)el.classList.add('delay-1'); if(i%4===2)el.classList.add('delay-2'); if(i%4===3)el.classList.add('delay-3');});
+  const revealObserver = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObserver.unobserve(e.target);}}),{threshold:.08});
+  revealTargets.forEach(el=>revealObserver.observe(el));
+
+  /* Article reader / hash routing */
+  const articleData = {
+    'article-aippm-case': {type:'Feature · AIPPM',title:'Buried in Colonialism, Lost in Legislation',dek:'A closer look at the historical and legislative questions raised on the AIPPM floor.',meta:'By Amitha B · Feature'},
+    'article-aippm-sketch': {type:'Sketch · AIPPM',title:'AIPPM, Delegate Statement',dek:'A visual and editorial snapshot from the committee floor.',meta:'By Gaurika Rashmi Nair · Sketch'},
+    'article-uncsw-interview': {type:'Interview · UNCSW',title:'When Fear Needs a Victim, it Invents a Witch',dek:'When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame.',meta:'By Sruthy S Muraly · 7 min read'},
+    'article-uncnd-feature': {type:'Feature · UNCND',title:'Three Atoms Ahead.. I Am Always Three Atoms Ahead',dek:'A committee-floor look at the emerging substances debate and the language surrounding it.',meta:'By Malavika Unnikrishnan · Feature'},
+    'article-uncnd-interview': {type:'Interview · UNCND',title:'UNCND, Interview',dek:'A conversation from the committee floor, presented through the press desk.',meta:'By Sarah Asraf · Interview'},
+    'article-disec-op-ed': {type:'Op-Ed · UNGA DISEC',title:'Beyond the Weapons: Allegation or Facts',dek:'An opinion-led examination of claims, evidence and the language of arms-transfer debates.',meta:'By Nivin Vineeth · Op-Ed'},
+    'article-disec-interview': {type:'Interview · UNGA DISEC',title:'UNGA DISEC, Interview',dek:'A press-desk interview from the room where the arms-transfer debate unfolded.',meta:'By DISEC Desk · Interview'},
+    'article-who-feature': {type:'Feature · WHO',title:'WHO, Feature',dek:'A closer look at the issues raised around counterfeit pharmaceuticals and patent law.',meta:'By Jaithra K · Feature'},
+    'article-who-sketch': {type:'Sketch · WHO',title:'WHO, Committee Floor',dek:'A quick editorial sketch from the WHO committee floor.',meta:'By Ishita Sudhir · Sketch'}
+  };
+  const modal=document.getElementById('articleModal');
+  const modalTitle=document.getElementById('articleModalTitle');
+  const modalDek=document.getElementById('articleModalDek');
+  const modalType=document.getElementById('articleModalType');
+  const modalMeta=document.getElementById('articleModalMeta');
+  const closeArticle=document.getElementById('closeArticle');
+  let lastFocused=null;
+  function openArticle(id,push=true){
+    const data=articleData[id];
+    if(!data) return false;
+    modalType.textContent=data.type; modalTitle.textContent=data.title; modalDek.textContent=data.dek; modalMeta.textContent=data.meta;
+    modal.classList.add('is-open'); body.style.overflow='hidden'; lastFocused=document.activeElement; closeArticle.focus();
+    if(push) history.pushState({article:id},'',`#${id}`);
+    return true;
+  }
+  function closeArticleModal(push=true){
+    modal.classList.remove('is-open'); body.style.overflow='';
+    if(lastFocused && lastFocused.focus) lastFocused.focus();
+    if(push && location.hash.startsWith('#article-')) history.pushState(null,'',location.pathname+location.search);
+  }
+  document.querySelectorAll('.article-link').forEach(card=>card.addEventListener('click',e=>{e.preventDefault();openArticle(card.dataset.article);}));
+  closeArticle.addEventListener('click',()=>closeArticleModal());
+  modal.addEventListener('click',e=>{if(e.target===modal)closeArticleModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape' && modal.classList.contains('is-open'))closeArticleModal();});
+  window.addEventListener('popstate',()=>{
+    const id=location.hash.slice(1);
+    if(articleData[id]) openArticle(id,false); else closeArticleModal(false);
+  });
+  if(location.hash.startsWith('#article-')) openArticle(location.hash.slice(1),false);
+
+  /* Radio Voice player: real HTML5 audio when a source is supplied. */
+  const radioAudio = new Audio();
+  radioAudio.preload='metadata';
+  let activeRadioButton=null;
+  let activeRadioStatus=null;
+  function setPlayIcon(btn,playing){
+    btn.innerHTML=playing
+      ? '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>';
+    btn.classList.toggle('is-playing',playing);
+  }
+  function stopRadio(){
+    radioAudio.pause();
+    radioAudio.removeAttribute('src');
+    radioAudio.load();
+    if(activeRadioButton) setPlayIcon(activeRadioButton,false);
+    if(activeRadioStatus) activeRadioStatus.textContent='';
+    activeRadioButton=null; activeRadioStatus=null;
+  }
+  function playRadio(btn,src,status){
+    if(!src){
+      if(status) status.textContent='Ready for the final audio file — add a source to this segment.';
+      document.getElementById('ipc')?.scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+    if(activeRadioButton===btn && !radioAudio.paused){radioAudio.pause();setPlayIcon(btn,false);return;}
+    if(activeRadioButton) setPlayIcon(activeRadioButton,false);
+    radioAudio.src=src; activeRadioButton=btn; activeRadioStatus=status; radioAudio.play().then(()=>{setPlayIcon(btn,true);}).catch(()=>{if(status)status.textContent='Audio could not be played in this browser.';});
+  }
+  document.querySelectorAll('.card.radio .play-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>playRadio(btn,btn.dataset.audio||'',btn.closest('.card').querySelector('.radio-status')));
+  });
+  document.querySelectorAll('.radio-feature .play-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>playRadio(btn,btn.dataset.audio||'',document.getElementById('featureRadioStatus')));
+  });
+  radioAudio.addEventListener('ended',()=>{if(activeRadioButton)setPlayIcon(activeRadioButton,false);if(activeRadioStatus)activeRadioStatus.textContent='Segment finished.';});
+  radioAudio.addEventListener('timeupdate',()=>{
+    const bar=document.getElementById('featProgress');
+    if(bar && activeRadioButton?.closest('.radio-feature') && radioAudio.duration) bar.style.width=(radioAudio.currentTime/radioAudio.duration*100)+'%';
+  });
+
+  /* Hero Radio button: scroll to the first committee, ready to play once source is connected. */
+  const miniPlay=document.querySelector('.radio-mini .play-btn');
+  miniPlay?.addEventListener('click',()=>document.getElementById('aippm')?.scrollIntoView({behavior:'smooth',block:'start'}));
+
+  /* Back to top */
+  const backTop=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>650),{passive:true});
+  backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  /* Loading transition */
+  const loader=document.getElementById('pageLoader');
+  window.addEventListener('load',()=>setTimeout(()=>loader.classList.add('hide'),220));
+</script>
+
+</body>
+</html>
