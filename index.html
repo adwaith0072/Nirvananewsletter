@@ -555,7 +555,6 @@
   .radio-mini .waveform{height:28px;}
 
   /* Sections: more white space, less visual compression */
-  .section{padding:34px 0;border-bottom:1px solid var(--line);}
   .section-head{
     display:block;
     margin-bottom:22px;
@@ -731,7 +730,6 @@
   .mobile-nav-toggle{padding-left:16px;padding-right:16px;}
   .hero h1{font-size:32px;}
   .hero .dek{font-size:14px;}
-  .section{padding:30px 0;}
   .committee-banner h2{font-size:42px;}
   .committee-banner .full-name{font-size:10px;}
   .feature h2{font-size:28px;}
@@ -801,110 +799,238 @@
   .card { min-height:100%; }
   .card-media { min-height:210px; }
 
-  @media (max-width:760px){
-    /* Full-width backgrounds, 16px side gutters */
-    section.section > *,
-    section.hero > *,
-    section.section > .committee-banner,
-    section.section > .feature,
-    section.section > .grid,
-    section.section > .radio-feature,
-    section.section > .poem-wrap,
-    section.section > .mini-photos {
-      width:100%;
-      max-width:none;
-      padding-left:16px;
-      padding-right:16px;
-    }
 
-    /* Hero gets its own breathing room */
-    section.hero > .hero-grid {
-      padding-top:30px;
-      padding-bottom:28px;
-    }
 
-    /* Each section reads as a distinct chapter */
-    section.section {
-      padding-top:46px;
-      padding-bottom:46px;
-    }
 
-    section.section > .section-head {
-      margin-bottom:28px;
-    }
+/* =========================================================
+   RADIO VOICE + IPC PRESS ROOM — integrated editorial layer
+   ========================================================= */
+.radio-section{background:var(--teal);color:var(--paper);margin-left:calc((1180px - 100vw)/2);margin-right:calc((1180px - 100vw)/2);padding-left:max(20px,calc((100vw - 1180px)/2));padding-right:max(20px,calc((100vw - 1180px)/2));overflow:hidden;}
+.radio-section .wrap{max-width:1180px;padding-left:0;padding-right:0;}
+.radio-section .section-head{margin-bottom:26px}.radio-section .section-head .kicker{color:#e8a58a}.radio-section .section-head h2{color:var(--paper)}.radio-section .section-head .note{color:#c9d6d1}
+.radio-viewport{overflow:hidden}.radio-track{display:flex;gap:10px;transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.radio-card{flex:0 0 calc((100% - 20px)/3);min-height:300px;border:1px solid rgba(245,241,230,.2);padding:20px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(255,255,255,.025)}
+.radio-card:hover{background:rgba(255,255,255,.06);border-color:rgba(245,241,230,.4)}.radio-top{display:flex;justify-content:space-between;gap:10px}.radio-tag{font:500 9px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#d9cfb8;text-transform:uppercase}
+.radio-card .play{width:40px;height:40px;border:1px solid var(--paper);border-radius:50%;background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;flex:0 0 auto;padding:0}.radio-card .play:hover{background:var(--signal);border-color:var(--signal)}.radio-card .play svg{width:16px;height:16px}
+.radio-card h3{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(25px,2.7vw,38px);line-height:.95;margin:20px 0 9px}.radio-card p{font-family:'Source Serif 4','Fraunces',serif;font-size:15px;line-height:1.5;color:#c9d6d1;max-width:42ch}
+.radio-card .wave{height:34px;margin:16px 0;border-bottom:1px solid rgba(245,241,230,.12);background:linear-gradient(90deg,transparent 0 3%,#5a857b 3% 5%,transparent 5% 8%,#5a857b 8% 11%,transparent 11% 14%,#5a857b 14% 15%,transparent 15% 18%,#5a857b 18% 22%,transparent 22% 25%,#5a857b 25% 27%,transparent 27% 31%,#5a857b 31% 35%,transparent 35% 38%,#5a857b 38% 40%,transparent 40% 44%,#5a857b 44% 48%,transparent 48% 51%,#5a857b 51% 53%,transparent 53% 57%,#5a857b 57% 61%,transparent 61% 64%,#5a857b 64% 66%,transparent 66% 70%,#5a857b 70% 74%,transparent 74% 77%,#5a857b 77% 79%,transparent 79% 83%,#5a857b 83% 87%,transparent 87% 90%,#5a857b 90% 92%,transparent 92% 96%,#5a857b 96% 98%,transparent);opacity:.8}
+.radio-foot{font:500 9px 'JetBrains Mono',monospace;color:#a9b9b4;display:flex;justify-content:space-between;gap:10px}.radio-controls{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid rgba(245,241,230,.18)}.radio-arrows{display:flex;gap:7px}.radio-arrow{width:42px;height:38px;border:1px solid rgba(245,241,230,.45);background:transparent;color:var(--paper);cursor:pointer;font:500 16px 'Inter',sans-serif}.radio-arrow:hover{background:var(--signal);border-color:var(--signal)}.radio-dots{display:flex;gap:6px;align-items:center}.radio-dot{width:6px;height:6px;border:0;border-radius:50%;background:#55746d;padding:0;cursor:pointer}.radio-dot.active{background:var(--signal);width:18px;border-radius:8px}.radio-count{font:500 9px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#a9b9b4}.radio-card .play.is-playing{box-shadow:0 0 0 5px rgba(224,80,31,.18)}
+#radioPlayer.player{position:sticky;bottom:0;z-index:20;background:#0e211e;border-top:1px solid rgba(245,241,230,.2);padding:10px 0;color:var(--paper)}
+#radioPlayer .player-inner{display:flex;align-items:center;gap:15px}#radioPlayer .player-title{flex:1;min-width:0}#radioPlayer .player-title strong{font:500 16px 'Bodoni Moda','Fraunces',serif}#radioPlayer .player-progress{height:3px;background:#34534c;flex:2;overflow:hidden}#radioPlayer .player-progress span{display:block;width:0;height:100%;background:var(--signal);transition:width .1s linear}#radioPlayer .play{width:40px;height:40px;border:1px solid rgba(245,241,230,.45);border-radius:50%;background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0}#radioPlayer .play:hover{background:var(--signal);border-color:var(--signal)}#radioPlayer .player-time{min-width:42px;text-align:right;font-size:10px}
+.press{display:grid;grid-template-columns:.55fr 1.45fr;gap:50px;align-items:start}.press-intro h2{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(45px,6vw,80px);line-height:.9;letter-spacing:-.04em;margin:10px 0 14px}.press-intro p{font-family:'Source Serif 4','Fraunces',serif;font-size:17px;line-height:1.5;color:var(--ink-soft);max-width:31ch}.press-stat{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:baseline;gap:8px 12px;margin-top:28px;padding-top:16px;border-top:1px solid var(--line);max-width:300px}.press-stat strong,.press-stat b{font:500 42px/.8 'Bodoni Moda','Fraunces',serif;color:var(--teal)}.press-stat span{font:500 9px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}.team-wrap{min-width:0}.editorial-board{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:13px 0 15px}.board-names{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}.board-names span{display:flex;flex-direction:column;gap:3px}.board-names strong{font-size:12px}.board-names small{font:500 8px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}.team-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:22px}.team-list h3{font:500 28px/.95 'Bodoni Moda','Fraunces',serif;margin:7px 0 10px}.name-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:18px;border-top:1px solid var(--line)}.name-grid span{font:500 10px 'Inter',sans-serif;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+@media(max-width:900px){.radio-section{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px}.radio-card{flex-basis:calc((100% - 10px)/2)}.press{grid-template-columns:1fr;gap:34px}.board-names{grid-template-columns:1fr 1fr}.team-columns{gap:24px}}
+@media(max-width:760px){.radio-section{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}.radio-card{flex-basis:100%;min-height:285px;padding:18px}.radio-card h3{font-size:clamp(29px,9vw,40px)}.radio-card p{font-size:14px}.radio-controls{gap:12px;flex-wrap:wrap}.radio-arrows{order:1}.radio-count{order:2;margin-left:auto}.radio-dots{order:3;width:100%;justify-content:center;min-height:28px;overflow:hidden}.radio-dot{width:10px;height:10px;min-width:10px}.radio-dot.active{width:24px;min-width:24px}.radio-arrow{width:48px;height:44px}#radioPlayer{padding:9px 0}#radioPlayer .player-inner{gap:10px;flex-wrap:wrap}#radioPlayer .player-title{min-width:0;flex:1 1 150px}#radioPlayer .player-title strong{font-size:14px}#radioPlayer .player-progress{order:4;flex-basis:100%;width:100%}.press{grid-template-columns:1fr;gap:28px}.press-intro p{font-size:16px}.press-stat{max-width:100%}.board-names{grid-template-columns:1fr;gap:12px}.team-columns{grid-template-columns:1fr;gap:30px}.name-grid{grid-template-columns:1fr 1fr;column-gap:14px}.name-grid span{font-size:10px;line-height:1.3;overflow-wrap:anywhere}}
+@media(max-width:380px){.name-grid{grid-template-columns:1fr}.press-stat{grid-template-columns:auto 1fr;gap:8px 12px}.press-stat b{grid-column:1}.press-stat span:last-child{grid-column:2;grid-row:2}}
 
-    .committee-banner {
-      padding-bottom:20px !important;
-      margin-bottom:28px;
-    }
+/* =========================================================
+   PHOTO DESK + WRAP ENDING — visual system from new layout
+   ========================================================= */
+.photo-desk{
+  background:var(--paper);
+  padding-top:76px !important;
+  padding-bottom:82px !important;
+}
+.photo-desk-inner{
+  max-width:1180px !important;
+  margin:0 auto !important;
+  padding-left:32px !important;
+  padding-right:32px !important;
+}
+.photo-desk-head{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  gap:40px;
+  align-items:end;
+  margin-bottom:28px;
+}
+.photo-desk-kicker{
+  display:block;
+  color:var(--signal);
+  font:600 10px 'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:9px;
+}
+.photo-desk-title{
+  font-family:'Bodoni Moda','Fraunces',serif;
+  font-size:clamp(58px,7.2vw,92px);
+  line-height:.88;
+  letter-spacing:-.055em;
+  margin:0;
+}
+.photo-desk-note{
+  font-family:'Source Serif 4','Fraunces',serif;
+  font-size:15px;
+  line-height:1.5;
+  color:var(--ink-soft);
+  max-width:28ch;
+  margin:0 0 3px auto;
+}
+.photo-grid{
+  display:grid;
+  grid-template-columns:1.9fr 1fr 1fr 1.55fr;
+  grid-template-rows:210px 210px;
+  gap:8px;
+}
+.photo-tile{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  min-width:0;
+  background:var(--teal);
+  color:#fff;
+  border:0;
+  padding:0;
+  text-align:left;
+  cursor:pointer;
+  isolation:isolate;
+}
+.photo-tile.large{grid-column:1;grid-row:1 / span 2;}
+.photo-tile.aippm{grid-column:2;grid-row:1;}
+.photo-tile.uncnd{grid-column:3;grid-row:1;}
+.photo-tile.disec{grid-column:4;grid-row:1 / span 2;}
+.photo-tile.who{grid-column:2 / span 2;grid-row:2;}
+.photo-tile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease;
+}
+.photo-tile::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(0,0,0,.72) 100%);
+}
+.photo-tile:hover img{transform:scale(1.035);filter:saturate(1.04);}
+.photo-caption{
+  position:absolute;
+  z-index:2;
+  left:10px;
+  right:10px;
+  bottom:9px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:8px;
+  color:#fff;
+  font:500 9px 'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.photo-caption strong{font-weight:500;}
+.photo-caption span:last-child{opacity:.7;font-size:8px;}
+.photo-tile:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
 
-    .feature {
-      gap:24px;
-      margin-bottom:30px;
-    }
-
-    .grid {
-      gap:18px;
-    }
-
-    .mini-photos {
-      margin-top:28px;
-      gap:10px;
-    }
-
-    /* Don't stack every little thing into separate visual boxes.
-       Let the typography create hierarchy instead. */
-    .section-head .note {
-      margin-top:4px;
-    }
-
-    .card {
-      box-shadow:none;
-    }
-
-    .card-body {
-      padding:18px;
-    }
-
-    .card-media {
-      min-height:0;
-    }
-
-    .stat-card {
-      margin-top:0;
-    }
-
-    .letter {
-      margin-top:0;
-    }
-  }
-
-  @media (max-width:420px){
-    section.section > *,
-    section.hero > *,
-    section.section > .committee-banner,
-    section.section > .feature,
-    section.section > .grid,
-    section.section > .radio-feature,
-    section.section > .poem-wrap,
-    section.section > .mini-photos {
-      padding-left:14px;
-      padding-right:14px;
-    }
-
-    section.section {
-      padding-top:40px;
-      padding-bottom:40px;
-    }
-
-    section.hero > .hero-grid {
-      padding-top:26px;
-      padding-bottom:24px;
-    }
-
-    .committee-banner { margin-bottom:24px; }
-    .feature { margin-bottom:26px; }
-  }
+.wrap-ending{
+  background:var(--teal);
+  color:var(--paper);
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  padding:72px 0 28px !important;
+}
+.wrap-ending > .wrap-ending-inner{
+  max-width:1180px !important;
+  width:100%;
+  padding-left:32px !important;
+  padding-right:32px !important;
+  margin:0 auto !important;
+}
+.wrap-ending-main{
+  min-height:305px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.wrap-ending-kicker{
+  font:500 12px 'Source Serif 4',serif;
+  color:#e8a58a;
+  margin-bottom:8px;
+}
+.wrap-ending h2{
+  color:var(--paper);
+  font-family:'Bodoni Moda','Fraunces',serif;
+  font-size:clamp(60px,7.2vw,104px);
+  line-height:.9;
+  letter-spacing:-.055em;
+  margin:0;
+}
+.wrap-ending-sub{
+  margin:18px 0 0;
+  font-family:'Source Serif 4','Fraunces',serif;
+  font-size:15px;
+  line-height:1.35;
+  color:#e4e0d2;
+}
+.wrap-ending-nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:26px;
+  margin-top:38px;
+}
+.wrap-ending-nav a{
+  color:var(--paper);
+  text-decoration:none;
+  font:600 10px 'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  transition:color .2s ease,transform .2s ease;
+}
+.wrap-ending-nav a:hover{color:#e8a58a;transform:translateY(-1px);}
+.wrap-ending-bottom{
+  border-top:1px solid rgba(245,241,230,.2);
+  padding-top:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  color:#9eb2ac;
+  font:500 9px 'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+@media(max-width:900px){
+  .photo-desk-head{grid-template-columns:1fr 240px;gap:25px;}
+  .photo-grid{grid-template-columns:1.55fr 1fr 1fr;grid-template-rows:190px 190px 190px;}
+  .photo-tile.large{grid-column:1;grid-row:1 / span 2;}
+  .photo-tile.aippm{grid-column:2;grid-row:1;}
+  .photo-tile.uncnd{grid-column:3;grid-row:1;}
+  .photo-tile.disec{grid-column:2 / span 2;grid-row:2;}
+  .photo-tile.who{grid-column:1;grid-row:3;}
+}
+@media(max-width:760px){
+  .photo-desk{padding-top:56px !important;padding-bottom:60px !important;}
+  .photo-desk-inner{padding-left:20px !important;padding-right:20px !important;}
+  .photo-desk-head{display:block;margin-bottom:22px;}
+  .photo-desk-title{font-size:clamp(54px,15vw,78px);}
+  .photo-desk-note{margin:15px 0 0;max-width:34ch;}
+  .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:230px 150px 150px 190px;}
+  .photo-tile.large{grid-column:1 / span 2;grid-row:1;}
+  .photo-tile.aippm{grid-column:1;grid-row:2;}
+  .photo-tile.uncnd{grid-column:2;grid-row:2;}
+  .photo-tile.disec{grid-column:1 / span 2;grid-row:3;}
+  .photo-tile.who{grid-column:1 / span 2;grid-row:4;}
+  .photo-caption{font-size:8px;}
+  .photo-caption span:last-child{font-size:7px;}
+  .wrap-ending{min-height:470px;padding:56px 0 22px !important;}
+  .wrap-ending > .wrap-ending-inner{padding-left:20px !important;padding-right:20px !important;}
+  .wrap-ending-main{min-height:350px;}
+  .wrap-ending h2{font-size:clamp(58px,17vw,86px);}
+  .wrap-ending-nav{gap:16px 22px;margin-top:30px;}
+  .wrap-ending-bottom{font-size:8px;align-items:flex-start;}
+}
+@media(max-width:420px){
+  .photo-grid{grid-template-rows:210px 135px 135px 170px;}
+  .photo-desk-title{font-size:56px;}
+  .wrap-ending-nav{display:grid;grid-template-columns:repeat(2,1fr);width:100%;gap:16px;}
+  .wrap-ending-nav a{text-align:center;}
+  .wrap-ending-bottom{flex-direction:column;gap:8px;}
+}
 
 </style>
 </head>
@@ -927,7 +1053,9 @@
     <a href="#uncnd" data-section="uncnd">03 · UNCND</a>
     <a href="#disec" data-section="disec">04 · UNGA DISEC</a>
     <a href="#who" data-section="who">05 · WHO</a>
-    <a href="#ipc" data-section="ipc">IPC</a>
+    <a href="#radio" data-section="radio">06 · Radio Voice</a>
+    <a href="#photos" data-section="photos">07 · Photo Desk</a>
+    <a href="#ipc" data-section="ipc">08 · Press Room</a>
     <a href="#credits" data-section="credits">Credits</a>
   </nav>
 </header>
@@ -941,11 +1069,13 @@
   <a href="#uncnd" data-section="uncnd">03 · UNCND</a>
   <a href="#disec" data-section="disec">04 · UNGA DISEC</a>
   <a href="#who" data-section="who">05 · WHO</a>
-  <a href="#ipc" data-section="ipc">IPC</a>
+  <a href="#radio" data-section="radio">06 · Radio Voice</a>
+  <a href="#photos" data-section="photos">07 · Photo Desk</a>
+  <a href="#ipc" data-section="ipc">08 · Press Room</a>
   <a href="#credits" data-section="credits">Credits</a>
 </div>
 
-<section class="hero wrap">
+<section class="hero wrap" id="edition">
   <div class="hero-grid">
     <div>
       <span class="kicker">Cover story · Committee floor, in order</span>
@@ -960,9 +1090,9 @@
       <div class="radio-mini">
         <div class="radio-mini-top">
           <span class="pill"><span class="dot"></span> NEW</span>
-          <span class="sub">Radio Voice — one segment per committee, below</span>
+          <span class="sub">Radio Voice — one segment from every committee, plus the Press Desk.</span>
         </div>
-        <h4>Start with AIPPM</h4>
+        <h3>Start with AIPPM</h3>
         <div class="play-row">
           <button type="button" class="play-btn" data-radio-target="aippm" aria-label="Play AIPPM Radio Voice">
             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
@@ -971,7 +1101,7 @@
             <i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:35%"></i><i style="height:80%"></i>
           </div>
         </div>
-        <p class="sub">Jump straight to committee 01.</p><div class="radio-status" id="miniRadioStatus">Audio source can be connected when the final recording is ready.</div>
+        <p class="sub">Play committee 01.</p><div class="radio-status" id="miniRadioStatus">Audio source can be connected when the final recording is ready.</div>
       </div>
     </div>
   </div>
@@ -1023,9 +1153,9 @@
       <p class="dek">Turns out "Indian values" is just Victorian morality wearing a bindi. From the temples of Khajuraho to the Aravanis of Tamil Nadu, our true heritage of gender diversity was erased by colonial laws like Section 377.</p>
       <div class="pullquote">"For over a century and a half, we lived with someone else's anxieties and called them our own traditions."</div>
       <p class="byline">By Gaurika Rashmi Nair · 6 min read</p>
-      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <a class="article-link" href="#article-aippm-colonialism" data-article="article-aippm-colonialism" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Op-Ed ↗</a>
-        <a href="pdfs/buried-in-colonialism.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      <div class="article-actions">
+        <a class="article-link article-btn primary" href="#article-aippm-colonialism" data-article="article-aippm-colonialism" >Read article →</a>
+        <a class="article-btn pdf" href="pdfs/buried-in-colonialism.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
       </div>
     </div>
     <div class="stat-card">
@@ -1040,7 +1170,7 @@
 
   <div class="grid">
     <a class="card article-link" href="#article-aippm-case" data-article="article-aippm-case">
-      <div class="ph card-media alt" style="background:url('images/manish-kumar-case-file_img1.jpg') center/cover;position:relative;">
+      <div class="ph card-media alt" style="background:url('images/manish-kumar-case-file_img1.jpg') center/cover;position:relative;" role="img" aria-label="Case File 52Z627/23 · Classified">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">Case File 52Z627/23 · Classified</span>
       </div>
       <div class="card-body">
@@ -1051,7 +1181,7 @@
       </div>
     </a>
     <a class="card article-link" href="#article-aippm-sketch" data-article="article-aippm-sketch">
-      <div class="ph card-media" style="background:linear-gradient(135deg, rgba(224,80,31,0.88), rgba(183,138,63,0.8)), repeating-linear-gradient(45deg, #d8cdae, #d8cdae 2px, #e6dcc2 2px, #e6dcc2 4px);position:relative;">
+      <div class="ph card-media" style="background:linear-gradient(135deg, rgba(224,80,31,0.88), rgba(183,138,63,0.8)), repeating-linear-gradient(45deg, #d8cdae, #d8cdae 2px, #e6dcc2 2px, #e6dcc2 4px);position:relative;" role="img" aria-label="AIPPM · Yogi Adithyanath Sketch">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">AIPPM · Yogi Adithyanath Sketch</span>
       </div>
       <div class="card-body">
@@ -1078,8 +1208,8 @@
   </div>
 
   <div class="mini-photos">
-    <div class="ph alt"><span class="photo-cred">AIPPM, floor</span></div>
-    <div class="ph"><span class="photo-cred">AIPPM, delegate statement</span></div>
+    <div class="ph alt" role="img" aria-label="AIPPM, floor"><span class="photo-cred">AIPPM, floor</span></div>
+    <div class="ph" role="img" aria-label="AIPPM, delegate statement"><span class="photo-cred">AIPPM, delegate statement</span></div>
   </div>
 </section>
 
@@ -1095,26 +1225,26 @@
       <div>
         <div class="idx">Committee 02 of 05</div>
         <h2>UNCSW</h2>
-        <div class="full-name">United Nations Commission on the Status of Women</div>
+        <div class="full-name">Commission on the Status of Women</div>
       </div>
     </div>
     <div class="committee-blurb">
       <p>The United Nations Commission on the Status of Women is the principal global intergovernmental body dedicated to gender equality and women's empowerment.</p>
       <span class="agenda-lbl">Agenda</span>
-      <span class="agenda-text">Analysing the tension between cultural traditions and women's rights in the 21st Century</span>
+      <span class="agenda-text">Analysing the tension between cultural traditions and women's rights in the 21st century</span>
     </div>
   </div>
 
   <div class="feature">
     <div>
       <span class="kicker">Feature · PDF Available</span>
-      <h2>When Fear Needs a Victim, it Invents a Witch</h2>
+      <h2>When Fear Needs a Victim, It Invents a Witch</h2>
       <p class="dek">When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame. A look into how witchcraft accusations conceal xenophobia, land disputes, and scapegoating of vulnerable women.</p>
       <div class="pullquote">"Violence cannot be tolerated by any means. Witches belong to belief. But witch hunting belongs to power, violence and control."</div>
       <p class="byline">By Sruthy S Muraly · 7 min read</p>
-      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <a class="article-link" href="#article-uncsw-witch" data-article="article-uncsw-witch" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Feature ↗</a>
-        <a href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      <div class="article-actions">
+        <a class="article-link article-btn primary" href="#article-uncsw-witch" data-article="article-uncsw-witch" >Read article →</a>
+        <a class="article-btn pdf" href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
       </div>
     </div>
     <div class="stat-card">
@@ -1130,7 +1260,7 @@
 
   <div class="grid cols-2">
     <a class="card article-link" href="#article-uncsw-interview" data-article="article-uncsw-interview">
-      <div class="ph card-media alt" style="background:url('images/when-the-law-says-no_img1.jpg') center/cover;position:relative;">
+      <div class="ph card-media alt" style="background:url('images/when-the-law-says-no_img1.jpg') center/cover;position:relative;" role="img" aria-label="UNCSW · Bangladesh Delegate">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNCSW · Bangladesh Delegate</span>
       </div>
       <div class="card-body">
@@ -1146,7 +1276,7 @@
         <h3>Naming the Witch, On Record</h3>
         <p class="dek">The journalist behind today's UNCSW coverage reads her notes aloud on blame, belief, and who gets accused — including the line the committee report couldn't fit in.</p>
         <div class="play-row">
-          <button class="play-btn" aria-label="Play Half the Sky, On Record" data-audio="audio/uncsw.mp3">
+          <button class="play-btn" aria-label="Play Naming the Witch, On Record" data-audio="audio/uncsw.mp3">
             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
           </button>
           <div class="waveform"><i style="height:30%"></i><i style="height:60%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:20%"></i><i style="height:55%"></i><i style="height:85%"></i></div>
@@ -1179,19 +1309,19 @@
       And always needs to be policed.<br><br>
       Was it my fault? -<br>
       YES.<br>
-      Screamed the teary eyed woman in front of me,<br>
+      Screamed the teary-eyed woman in front of me,<br>
       Before I could go on any further.
     </div>
-    <div style="margin-top:20px;display:flex;justify-content:center;gap:12px;align-items:center;flex-wrap:wrap;">
-      <a class="article-link" href="#article-uncsw-poem" data-article="article-uncsw-poem" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;background:var(--ink);color:var(--paper);padding:6px 14px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read in Reader ↗</a>
-      <a href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--signal);padding:5px 12px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original Poem PDF ↗</a>
+    <div class="article-actions article-actions-center">
+      <a class="article-link article-btn primary" href="#article-uncsw-poem" data-article="article-uncsw-poem" >Read article →</a>
+      <a class="article-btn pdf" href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
     </div>
   </div>
 
   <div class="mini-photos">
-    <div class="ph"><span class="photo-cred">UNCSW, moderated caucus</span></div>
-    <div class="ph alt"><span class="photo-cred">Delegate statement, UNCSW</span></div>
-    <div class="ph"><span class="photo-cred">UNCSW, unmoderated caucus</span></div>
+    <div class="ph" role="img" aria-label="UNCSW, moderated caucus"><span class="photo-cred">UNCSW, moderated caucus</span></div>
+    <div class="ph alt" role="img" aria-label="Delegate statement, UNCSW"><span class="photo-cred">Delegate statement, UNCSW</span></div>
+    <div class="ph" role="img" aria-label="UNCSW, unmoderated caucus"><span class="photo-cred">UNCSW, unmoderated caucus</span></div>
   </div>
 </section>
 
@@ -1220,13 +1350,13 @@
   <div class="feature">
     <div>
       <span class="kicker">Feature · PDF Available</span>
-      <h2>Three Atoms Ahead.. I Am Always Three Atoms Ahead</h2>
+      <h2>Three Atoms Ahead… I Am Always Three Atoms Ahead</h2>
       <p class="dek">From the 'Cocaine Bear' of 1985 to today's server-based chemistry, international drug scheduling cannot outrun a local chemist. Why the CND must adopt rapid Early Warning Advisory systems.</p>
       <div class="pullquote">"In the age of artificial drugs, yesterday's solution is bound to be tomorrow's loophole."</div>
       <p class="byline">By Sarah Asraf · 7 min read</p>
-      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <a class="article-link" href="#article-uncnd-atoms" data-article="article-uncnd-atoms" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Feature ↗</a>
-        <a href="pdfs/three-atoms-ahead.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      <div class="article-actions">
+        <a class="article-link article-btn primary" href="#article-uncnd-atoms" data-article="article-uncnd-atoms" >Read article →</a>
+        <a class="article-btn pdf" href="pdfs/three-atoms-ahead.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
       </div>
     </div>
     <div class="card quick" style="border:1px solid var(--line);">
@@ -1243,7 +1373,7 @@
 
   <div class="grid">
     <a class="card article-link" href="#article-uncnd-feature" data-article="article-uncnd-feature">
-      <div class="ph card-media" style="background:url('images/project-somnium-caseum_img1.jpg') center/cover;position:relative;">
+      <div class="ph card-media" style="background:url('images/project-somnium-caseum_img1.jpg') center/cover;position:relative;" role="img" aria-label="UNCND · Confidential Dossier">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNCND · Confidential Dossier</span>
       </div>
       <div class="card-body">
@@ -1254,7 +1384,7 @@
       </div>
     </a>
     <a class="card article-link" href="#article-uncnd-interview" data-article="article-uncnd-interview">
-      <div class="ph card-media alt" style="background:url('images/when-the-molecule-gets-ahead_img1.jpg') center 25%/cover;position:relative;">
+      <div class="ph card-media alt" style="background:url('images/when-the-molecule-gets-ahead_img1.jpg') center 25%/cover;position:relative;" role="img" aria-label="UNCND · Delegate of Indonesia">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNCND · Delegate of Indonesia</span>
       </div>
       <div class="card-body">
@@ -1281,8 +1411,8 @@
   </div>
 
   <div class="mini-photos">
-    <div class="ph alt"><span class="photo-cred">UNCND, note-passing</span></div>
-    <div class="ph"><span class="photo-cred">UNCND, placards raised</span></div>
+    <div class="ph alt" role="img" aria-label="UNCND, note-passing"><span class="photo-cred">UNCND, note-passing</span></div>
+    <div class="ph" role="img" aria-label="UNCND, placards raised"><span class="photo-cred">UNCND, placards raised</span></div>
   </div>
 </section>
 
@@ -1315,9 +1445,9 @@
       <p class="dek">Almost everyone agrees weapons need regulation. But the disagreement begins when we ask whose weapons, supplied to whom, and under what circumstances, exposing the politics of selective accountability.</p>
       <div class="pullquote">"At some point, 'who supplied the weapon?' becomes less important than 'whose side are they on?'"</div>
       <p class="byline">By Ridha Methar · 8 min read</p>
-      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <a class="article-link" href="#article-disec-feature" data-article="article-disec-feature" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Feature ↗</a>
-        <a href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      <div class="article-actions">
+        <a class="article-link article-btn primary" href="#article-disec-feature" data-article="article-disec-feature" >Read article →</a>
+        <a class="article-btn pdf" href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
       </div>
     </div>
     <div class="stat-card">
@@ -1333,7 +1463,7 @@
 
   <div class="grid">
     <a class="card article-link" href="#article-disec-op-ed" data-article="article-disec-op-ed">
-      <div class="ph card-media alt" style="background:url('images/arming-the-enemy-proxy-warfare_img1.jpg') center/cover;position:relative;">
+      <div class="ph card-media alt" style="background:url('images/arming-the-enemy-proxy-warfare_img1.jpg') center/cover;position:relative;" role="img" aria-label="UNGA DISEC · Aaisha (IPP)">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNGA DISEC · Aaisha (IPP)</span>
       </div>
       <div class="card-body">
@@ -1344,13 +1474,13 @@
       </div>
     </a>
     <a class="card article-link" href="#article-disec-interview" data-article="article-disec-interview">
-      <div class="ph card-media" style="background:url('images/beyond-the-weapons-russia_img1.jpg') center 20%/cover;position:relative;">
+      <div class="ph card-media" style="background:url('images/beyond-the-weapons-russia_img1.jpg') center 20%/cover;position:relative;" role="img" aria-label="UNGA DISEC · Delegate of Russia">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNGA DISEC · Delegate of Russia</span>
       </div>
       <div class="card-body">
         <div class="tag-row"><span class="tag read">Interview</span><span class="tag pdf-badge">PDF</span></div>
-        <h3>Beyond the Weapons: Allegation or Facts</h3>
-        <p class="dek">Representative of the International Press Corpus in conversation with the delegate of Russia on the fine line between cooperation and accountability.</p>
+        <h3>Beyond the Weapons: Allegations or Facts</h3>
+        <p class="dek">Representative of the International Press Corps in conversation with the delegate of Russia on the fine line between cooperation and accountability.</p>
         <div class="card-foot"><span>IPC DISEC Desk</span><span>Interview · PDF</span></div>
       </div>
     </a>
@@ -1371,8 +1501,8 @@
   </div>
 
   <div class="mini-photos">
-    <div class="ph"><span class="photo-cred">UNGA DISEC, seated delegation</span></div>
-    <div class="ph alt"><span class="photo-cred">UNGA DISEC, closing gavel</span></div>
+    <div class="ph" role="img" aria-label="UNGA DISEC, seated delegation"><span class="photo-cred">UNGA DISEC, seated delegation</span></div>
+    <div class="ph alt" role="img" aria-label="UNGA DISEC, closing gavel"><span class="photo-cred">UNGA DISEC, closing gavel</span></div>
   </div>
 </section>
 
@@ -1394,7 +1524,7 @@
     <div class="committee-blurb">
       <p>The World Health Organization is the specialized agency for directing international public health and responding to global medical crises.</p>
       <span class="agenda-lbl">Agenda</span>
-      <span class="agenda-text">Counterfeit Pharmaceuticals and Patent Laws: Eradicating the Global Black Market of Fake Medicines</span>
+      <span class="agenda-text">Counterfeit Pharmaceuticals and Patent Laws: Addressing Substandard and Falsified Medical Products</span>
     </div>
   </div>
   
@@ -1405,9 +1535,9 @@
       <p class="dek">When legitimate medicine remains inaccessible or unaffordable, counterfeits fill the gap. Strict enforcement isn't enough if the system itself is fundamentally broken.</p>
       <div class="pullquote">"The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough."</div>
       <p class="byline">By Ishita Sudhir · 7 min read</p>
-      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <a class="article-link" href="#article-who-scarcity" data-article="article-who-scarcity" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:2px;font-weight:600;letter-spacing:0.04em;">Read Full Op-Ed ↗</a>
-        <a href="pdfs/scarcity-what-fills-the-void.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--signal);padding:7px 14px;border:1px solid var(--signal);border-radius:2px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">View Original PDF ↗</a>
+      <div class="article-actions">
+        <a class="article-link article-btn primary" href="#article-who-scarcity" data-article="article-who-scarcity" >Read article →</a>
+        <a class="article-btn pdf" href="pdfs/scarcity-what-fills-the-void.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
       </div>
     </div>
     <div class="card quick" style="border:1px solid var(--line);">
@@ -1427,7 +1557,7 @@
 
   <div class="grid cols-2">
     <a class="card article-link" href="#article-who-feature" data-article="article-who-feature">
-      <div class="ph card-media alt" style="background:url('images/scarcity-what-fills-the-void_img2.jpg') center/cover;position:relative;">
+      <div class="ph card-media alt" style="background:url('images/scarcity-what-fills-the-void_img2.jpg') center/cover;position:relative;" role="img" aria-label="WHO · Fake Medicines">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">WHO · Fake Medicines</span>
       </div>
       <div class="card-body">
@@ -1438,7 +1568,7 @@
       </div>
     </a>
     <a class="card article-link" href="#article-who-sketch" data-article="article-who-sketch">
-      <div class="ph card-media" style="background:url('images/who-character-sketch_img1.jpg') center 20%/cover;position:relative;">
+      <div class="ph card-media" style="background:url('images/who-character-sketch_img1.jpg') center 20%/cover;position:relative;" role="img" aria-label="WHO · Committee Deliberation">
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">WHO · Committee Deliberation</span>
       </div>
       <div class="card-body">
@@ -1465,109 +1595,135 @@
   </div>
 
   <div class="mini-photos">
-    <div class="ph"><span class="photo-cred">WHO, committee floor</span></div>
-    <div class="ph alt"><span class="photo-cred">WHO, delegate statement</span></div>
+    <div class="ph" role="img" aria-label="WHO, committee floor"><span class="photo-cred">WHO, committee floor</span></div>
+    <div class="ph alt" role="img" aria-label="WHO, delegate statement"><span class="photo-cred">WHO, delegate statement</span></div>
   </div>
 </section>
 
-<!-- ============ CLOSING RADIO FEATURE ============ -->
-<section class="section wrap">
-  <div class="section-head">
-    <h2>From the press desk</h2>
-    <p class="note">The one segment that isn't tied to a single committee — the whole conference, in one read.</p>
-  </div>
-  <div class="radio-feature">
-    <button class="play-btn" id="featPlay" aria-label="Play Dispatch from the Press Desk" data-audio="audio/closing.mp3">
-      <svg viewBox="0 0 24 24" fill="currentColor" id="featIcon"><polygon points="6,4 20,12 6,20"/></svg>
-    </button>
-    <div>
-      <span class="pill" style="margin-bottom:10px;"><span class="dot"></span> FEATURED SEGMENT</span>
-      <h3>Dispatch from the Press Desk</h3>
-      <p class="dek">The Editor-in-Chief closes out this edition with an unscripted read on what the newsroom saw across all five committees that the resolutions didn't capture.</p>
-      <div class="meta"><span>08:41</span><span>Hosted by the Editor-in-Chief</span><span>Closing address</span></div>
-      <div class="radio-status" id="featureRadioStatus">Audio source can be connected when the final recording is ready.</div>
-      <div class="progress"><div class="progress-bar" id="featProgress"></div></div>
+<!-- ============ RADIO VOICE ============ -->
+<section class="section radio-section" id="radio">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Listen</span><h2>Radio Voice</h2></div>
+      <p class="note">One recorded voice from every committee, plus the Press Desk. Slide through the newsroom's audio record without leaving the page.</p>
     </div>
-    <div class="waveform" id="featWave">
-      <i style="height:35%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:25%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:75%"></i>
+    <div class="radio-carousel" aria-label="Radio Voice listening desk">
+      <div class="radio-viewport"><div class="radio-track" id="radioTrack"></div></div>
+      <div class="radio-controls">
+        <div class="radio-arrows">
+          <button aria-label="Previous Radio Voice entry" class="radio-arrow" data-radio-move="-1" type="button">←</button>
+          <button aria-label="Next Radio Voice entry" class="radio-arrow" data-radio-move="1" type="button">→</button>
+        </div>
+        <div class="radio-dots" id="radioDots" aria-label="Radio Voice entries"></div>
+        <span class="radio-count" id="radioCount">01 / 06</span>
+      </div>
     </div>
   </div>
 </section>
+<div class="player" id="radioPlayer" aria-label="Radio Voice player">
+  <div class="wrap player-inner">
+    <button class="play" id="radioPlayerButton" type="button" aria-label="Play selected Radio Voice entry">▶</button>
+    <div class="player-title"><strong id="playerTitle">Overheard in the Hallway</strong><div class="small player-meta">AIPPM · Hosted by Diya Dileep</div></div>
+    <div class="player-progress" aria-hidden="true"><span id="playerBar"></span></div>
+    <span class="mono player-time" id="playerTime">02:48</span>
+  </div>
+</div>
 
 <section class="section wrap" id="ipc">
-  <div class="section-head">
-    <h2>IPC — International Press Corps</h2>
-    <p class="note">The International Press Corps combines the art of journalism, photography, and rigorous investigation to document the conference from the floor.</p>
-  </div>
-  <div class="card quick" style="border:1px solid var(--line);max-width:520px;margin-bottom:32px;">
-    <div class="card-body">
-      <span class="tag read">Agenda</span>
-      <p class="dek" style="font-size:14px;">Role of photojournalists in simulation of internal press corps.</p>
-    </div>
-  </div>
-  <div class="corps-grid">
-    <div class="corps-col">
-      <h3>Executive Board</h3>
-      <div class="eb-list">
-        <div><div class="n">Adwaith Madhavan</div><div class="r">Editor in Chief</div></div>
-        <div><div class="n">Anna Mariya Biju</div><div class="r">Head of Journalism</div></div>
-        <div><div class="n">Sankrushi PS</div><div class="r">Head of Photojournalism</div></div>
+  <div class="press">
+    <div class="press-intro">
+      <span class="kicker">People · Newsroom</span>
+      <h2>IPC / Press Room</h2>
+      <p>The International Press Corps behind Nirvana — journalism, photojournalism, editing, and the reporting desk that carries the edition from committee floor to publication.</p>
+      <div class="press-stat" aria-label="International Press Corps team counts">
+        <strong>14</strong><span>journalists</span><b>13</b><span>photojournalists</span>
       </div>
     </div>
-    <div class="corps-col">
-      <h3>Journalists</h3>
-      <ul class="name-list">
-        <li>Amitha B</li>
-        <li>Diya Dileep</li>
-        <li>Gaurika Rashmi Nair</li>
-        <li>Ishita Sudhir</li>
-        <li>Jaithra K</li>
-        <li>Malavika Unnikrishnan</li>
-        <li>Nivin Vineeth</li>
-        <li>Norah Chollampatt</li>
-        <li>Ridha Methar</li>
-        <li>Sania Antony</li>
-        <li>Sarah Asraf</li>
-        <li>Sruthy S Muraly</li>
-        <li>Tessa Vinu</li>
-        <li>Theres Mary Paul</li>
-      </ul>
+    <div class="team-wrap">
+      <div class="editorial-board">
+        <span class="kicker">Editorial board</span>
+        <div class="board-names">
+          <span><strong>Adwaith Madhavan</strong><small>Editor-in-Chief</small></span>
+          <span><strong>Anna Mariya Biju</strong><small>Head of Journalism</small></span>
+          <span><strong>Sankrushi PS</strong><small>Head of Photojournalism</small></span>
+        </div>
+      </div>
+      <div class="team-columns">
+        <div class="team-list"><span class="kicker">Journalists · 14</span><h3>Journalism Desk</h3>
+          <div class="name-grid">
+            <span>Amitha B</span><span>Diya Dileep</span><span>Gaurika Rashmi Nair</span><span>Ishita Sudhir</span>
+            <span>Jaithra K</span><span>Malavika Unnikrishnan</span><span>Nivin Vineeth</span><span>Norah Chollampatt</span>
+            <span>Ridha Methar</span><span>Sania Antony</span><span>Sarah Asraf</span><span>Sruthy S Muraly</span>
+            <span>Tessa Vinu</span><span>Theres Mary Paul</span>
+          </div>
+        </div>
+        <div class="team-list"><span class="kicker">Photojournalists · 13</span><h3>Photojournalism Desk</h3>
+          <div class="name-grid">
+            <span>Pradeep P</span><span>Sai</span><span>Sharon Rajesh</span><span>Gauri BS</span><span>Aaisha A Fathima</span>
+            <span>M Rohit</span><span>Dev Krishna MS</span><span>Mohammed Naji KT</span><span>Karthik Ganesh</span><span>Edwin Aby</span>
+            <span>Akhil Pradeep</span><span>Niranjan Biyas</span><span>Devak BB</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer id="credits">
-  <div class="wrap">
-    <div class="footer-grid">
+
+<section class="section photo-desk" id="photos">
+  <div class="photo-desk-inner">
+    <div class="photo-desk-head">
       <div>
-        <h4>Nirvana</h4>
-        <p>The official newsletter of SSETMUN, second edition, published by the International Press Corps (IPC), SCMS School of Engineering &amp; Technology. Stories and Radio Voice segments are produced independently by the student press desk, organized here by committee.</p>
+        <span class="photo-desk-kicker">Captured</span>
+        <h2 class="photo-desk-title">The Photo Desk</h2>
       </div>
-      <div>
-        <div class="col-title">Photojournalists</div>
-        <div class="photog-list">
-        <a class="flink" href="#">Pradeep P</a>
-        <a class="flink" href="#">Sai</a>
-        <a class="flink" href="#">Sharon Rajesh</a>
-        <a class="flink" href="#">Gauri BS</a>
-        <a class="flink" href="#">Aaisha A Fathima</a>
-        <a class="flink" href="#">M Rohit</a>
-        <a class="flink" href="#">Dev Krishna MS</a>
-        <a class="flink" href="#">Mohammed Naji KT</a>
-        <a class="flink" href="#">Karthik Ganesh</a>
-        <a class="flink" href="#">Edwin Aby</a>
-        <a class="flink" href="#">Akhil Pradeep</a>
-        <a class="flink" href="#">Niranjan Biyas</a>
-        <a class="flink" href="#">Devak BB</a>
-        </div>
-      </div>
-      <div>
-        <div class="col-title">Scan for more</div>
-        <p style="margin-bottom:14px;">The full photo archive and extended Radio Voice cuts, sorted the same way — by committee.</p>
-        <div class="qr"></div>
-      </div>
+      <p class="photo-desk-note">The MUN through their lens. Moments that matter, without turning the publication into a gallery app.</p>
     </div>
-    <div class="footer-bottom wrap" style="padding-left:0;padding-right:0;">
+
+    <div class="photo-grid" aria-label="Selected photojournalism from the conference">
+      <button class="photo-tile large" type="button" aria-label="Committee floor photo">
+        <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Committee floor and field documentation">
+        <span class="photo-caption"><strong>Committee floor</strong><span>IP Photojournalism</span></span>
+      </button>
+
+      <button class="photo-tile aippm" type="button" aria-label="AIPPM photo">
+        <img src="images/buried-in-colonialism_img2.jpg" alt="AIPPM visual documentation">
+        <span class="photo-caption"><strong>AIPPM</strong><span>Press Desk</span></span>
+      </button>
+
+      <button class="photo-tile uncnd" type="button" aria-label="UNCND photo">
+        <img src="images/when-the-molecule-gets-ahead_img1.jpg" alt="UNCND committee documentation">
+        <span class="photo-caption"><strong>UNCND</strong><span>IP Photojournalism</span></span>
+      </button>
+
+      <button class="photo-tile disec" type="button" aria-label="DISEC photo">
+        <img src="images/apparently-the-gun-knows-who-is-right_img1.jpg" alt="DISEC committee documentation">
+        <span class="photo-caption"><strong>DISEC</strong><span>Floor coverage</span></span>
+      </button>
+
+      <button class="photo-tile who" type="button" aria-label="WHO photo">
+        <img src="images/who-character-sketch_img1.jpg" alt="WHO committee documentation">
+        <span class="photo-caption"><strong>WHO</strong><span>Committee floor</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer id="credits" class="wrap-ending">
+  <div class="wrap-ending-inner">
+    <div class="wrap-ending-main">
+      <span class="wrap-ending-kicker">Nirvana · Second Edition</span>
+      <h2>That's a wrap.</h2>
+      <p class="wrap-ending-sub">Five committees. One newsroom. One record of the room.<br>Produced by the International Press Corps · SSETMUN</p>
+      <nav class="wrap-ending-nav" aria-label="Edition navigation">
+        <a href="#edition">Edition</a>
+        <a href="#radio">Radio Voice</a>
+        <a href="#photos">Photo Desk</a>
+        <a href="#ipc">Press Room</a>
+        <a href="#credits">Credits</a>
+      </nav>
+    </div>
+    <div class="wrap-ending-bottom">
       <span>SSETMUN · Second Edition</span>
       <span>Same newsroom, new committees.</span>
     </div>
@@ -1589,7 +1745,7 @@
         <button type="button" class="reader-tab active" id="tabTextBtn">Editorial Read</button>
         <button type="button" class="reader-tab" id="tabPdfBtn">View PDF Document</button>
       </div>
-      <a href="#" target="_blank" rel="noopener" class="reader-pdf-link" id="articlePdfExternalLink">
+      <a href="" target="_blank" rel="noopener" class="reader-pdf-link" id="articlePdfExternalLink" aria-label="Open original PDF in a new tab">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
         <span>Open Original PDF ↗</span>
       </a>
@@ -1627,7 +1783,7 @@
   const mobileCurrent = document.getElementById('mobileNavCurrent');
   const navLabel = {
     aippm:'01 · AIPPM', uncsw:'02 · UNCSW', uncnd:'03 · UNCND',
-    disec:'04 · UNGA DISEC', who:'05 · WHO', ipc:'IPC', credits:'Credits'
+    disec:'04 · UNGA DISEC', who:'05 · WHO', radio:'06 · Radio Voice', photos:'07 · Photo Desk', ipc:'08 · Press Room', credits:'Credits'
   };
   function closeMobileNav(){
     body.classList.remove('nav-open');
@@ -1663,7 +1819,7 @@
   }));
 
   /* Scroll reveal */
-  const revealTargets = document.querySelectorAll('.section-head,.letter,.committee-banner,.feature,.grid,.mini-photos,.radio-feature,.corps-grid,.footer-grid');
+  const revealTargets = document.querySelectorAll('.section-head,.letter,.committee-banner,.feature,.grid,.mini-photos,.radio-feature,.corps-grid,.footer-grid,.photo-desk-head,.photo-grid');
   revealTargets.forEach((el,i)=>{el.classList.add('reveal'); if(i%4===1)el.classList.add('delay-1'); if(i%4===2)el.classList.add('delay-2'); if(i%4===3)el.classList.add('delay-3');});
   const revealObserver = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObserver.unobserve(e.target);}}),{threshold:.08});
   revealTargets.forEach(el=>revealObserver.observe(el));
@@ -1735,14 +1891,14 @@
     <p><strong>SITE WHERE BODY WAS FOUND:</strong> Abandoned rubber shed near the town.</p>
   </div>
 </div>
-<h4 class="section-subhead">Personal Notes</h4>
+<h3 class="section-subhead">Personal Notes</h3>
 <p>Usually left the village twice a month by claiming to visit a friend in a nearby town. These visits became frequent three months before his death. When asked, the wife of the subject responded that she was unaware about who this friend was.</p>
-<h4 class="section-subhead">Recovered Item</h4>
+<h3 class="section-subhead">Recovered Item</h3>
 <div class="recovered-item-box">
   <p>A photograph was found inside the wallet of the victim. The photograph showed the victim holding hands with another person — presumed to be a man. On the back of the photograph it was written:</p>
   <p class="recovered-inscription">“ Somewhere we can be ourselves ”</p>
 </div>
-<h4 class="section-subhead">Witness Statements</h4>
+<h3 class="section-subhead">Witness Statements</h3>
 <div class="witness-statement">
   <div class="witness-title">WITNESS 01 — Neighbour:</div>
   <p>“Everything was perfect about that house. Manish has always been a good man who cared a lot for his family. But, a few weeks before his death, I heard his brother shouting at him and kept on yelling <em>‘DO YOU KNOW WHAT PEOPLE ARE GOING TO SAY ABOUT US ? DO YOU HAVE ANY SHAME?’</em> This was very strange as I’ve known and regarded Manish as a respectable man. A few days after that, I saw him board a bus going to town.”</p>
@@ -1756,7 +1912,7 @@
   <p class="detective-prompt">You have the evidence. What do you think happened?</p>
 </div>
 <div class="editorial-divider">✦ ✦ ✦</div>
-<h4 class="section-subhead">Dear reader,</h4>
+<h3 class="section-subhead">Dear reader,</h3>
 <p>I know you have probably arrived at a conclusion by now and that you know exactly what this was intended at. Here, this case was clearly an example of ‘honour killing’, because two people chose to love each other despite knowing that the society around them would never accept them for who they are. Society hunted them down in all aspects. How many lives do we have to see perish before our eyes until society sees love for what it really is - LOVE !!</p>
 <p>Keeping morality aside, which would itself be ironic, the real question is what protection does the law give that the society doesn't. Though consensual same-sex relationships between two people were decriminalised, marriage between them is still not legally recognized in India.</p>
 <p>The Supreme Court has recognised that LGBTQ+ persons are subject to equal protection of law and directed the State to protect their rights by preventing discrimination. Now a real contradiction arises and it is impossible to ignore.</p>
@@ -1796,13 +1952,13 @@
 <p>In a world where borders can be crossed overnight, missiles can travel across in minutes and wars can begin before diplomats have finished drafting their statements; expecting every country to simply disarm would be naïve. States have a right and arguably a responsibility to protect their people. But somewhere between defending a population and defending an interest, we seem to have misplaced the population.</p>
 <p>The Arms Trade Treaty already recognises this problem. States are required to assess whether an arms transfer could contribute to serious violations of international humanitarian or human-rights law, and exports are supposed to be refused where the risk is considered overriding.</p>
 <p>So why does the problem continue? Perhaps because international politics has a rather selective memory.</p>
-<h4 class="section-subhead">Selective Memory and Market Dominance</h4>
+<h3 class="section-subhead">Selective Memory and Market Dominance</h3>
 <p>SIPRI reports that global transfers of major conventional weapons increased by 9.2% between 2016 to 20 and 2021 to 25, the highest level since the end of the Cold War. The United States alone accounted for 42% of global arms exports during that period. Meanwhile, SIPRI notes that arms exporters are often themselves stakeholders in the conflicts driving demand, which can make their foreign-policy interests rather difficult to separate from their humanitarian vocabulary.</p>
 <p>And this is where the conversation becomes uncomfortable. We condemn the state that arms a militant group we dislike. We defend the state that arms a government we support. We demand accountability when the weapons come from our opponent and call it security cooperation when they come from our ally.</p>
 <blockquote class="article-quote">At some point, "who supplied the weapon?" becomes less important than "whose side are they on?"</blockquote>
 <p>Afghanistan has shown how weapons and political decisions can have consequences long after the original strategic calculation is forgotten. SIPRI's own transfer records show that international backers delivered roughly 25,000 Humvees to Afghan security forces over the course of the war—vehicles that, when the government collapsed in 2021, passed directly into Taliban hands along with the rest of a two-decade arsenal.</p>
 <p>Gaza has made the question of arms transfers impossible to separate from civilian protection. And across conflicts such as Sudan, Libya and Yemen, tracing weapons is complicated by secrecy, diversion and competing external interests. SIPRI has specifically documented the difficulty of tracking transfers in conflicts where secrecy is high.</p>
-<h4 class="section-subhead">The Question of State Responsibility</h4>
+<h3 class="section-subhead">The Question of State Responsibility</h3>
 <p>This does not mean that every state should be forbidden from supporting an armed partner. States may have legitimate security interests. But if a government chooses to supply weapons, it should also choose to accept responsibility for what follows. If the recipient uses those weapons to attack civilians, "we didn't directly do it" should not be the entire defence.</p>
 <p>The international community therefore needs more than another beautifully worded resolution. It needs independent investigations into serious allegations, transparent tracking of international arms transfers and consequences that do not mysteriously disappear when the accused happens to be politically useful.</p>
 <p>And perhaps the UN should ask itself a slightly more uncomfortable question too.</p>
@@ -1819,13 +1975,13 @@
     },
     'article-disec-interview': {
       type: 'Interview · UNGA DISEC',
-      title: 'Beyond the Weapons: Allegation or Facts',
-      dek: 'Representative of the International Press Corpus in conversation with the delegate of Russia on the fine line between cooperation and accountability.',
+      title: 'Beyond the Weapons: Allegations or Facts',
+      dek: 'Representative of the International Press Corps in conversation with the delegate of Russia on the fine line between cooperation and accountability.',
       meta: 'By IPC DISEC Desk · Diplomatic Interview',
       pdf: 'pdfs/beyond-the-weapons-russia.pdf',
       contentHtml: `<div class="article-featured-img">
   <img src="images/beyond-the-weapons-russia_img1.jpg" alt="Delegate of Russia in conversation with IPC Journalist">
-  <span class="img-caption">Representative of the International Press Corpus in conversation with the delegate of Russia on the fine line between cooperation and accountability</span>
+  <span class="img-caption">Representative of the International Press Corps in conversation with the delegate of Russia on the fine line between cooperation and accountability</span>
 </div>
 <div class="qa-item">
   <div class="qa-q">Q1: It is prohibited under the sanctions policy of the UN for North Korea to export any armaments; however, it has been found that many countries in the UN have engaged in a large number of military transactions with the North Korean and Russian governments. How can Russia justify its stance against illegal weapons trafficking?</div>
@@ -1900,7 +2056,7 @@
   <div class="qa-a"><strong>A3.</strong> Bangladesh does not dispute the evidence; the 2024 national Violence Against Women Survey actually demonstrates why stronger protection is necessary. The survey found that girls aged 15–19 were the most vulnerable group, with over 62% experiencing intimate-partner violence in the previous year. Bangladesh's position is therefore not that underage marriage should be encouraged, but that the exceptional provision must never become a pathway for coerced marriage. We support strengthening judicial scrutiny, requiring the child's views to be heard, and ensuring that exceptional authorization remains truly exceptional.</div>
 </div>
 <div class="qa-item">
-  <div class="qa-q">Q4. The same national survey found that dowry is a significant factor of women's risk in intimate-partner violence, where atleast 76% of the have experienced at least one form of IPV in their lifetime Bangladesh has laws against dowry, yet the practice continues to affect women's safety. Does this suggest that criminalisation alone has failed to change the cultural and social norms sustaining harmful practices?</div>
+  <div class="qa-q">Q4. The same national survey found that dowry is a significant factor of women's risk in intimate-partner violence, where at least 76% have experienced at least one form of IPV in their lifetime Bangladesh has laws against dowry, yet the practice continues to affect women's safety. Does this suggest that criminalisation alone has failed to change the cultural and social norms sustaining harmful practices?</div>
   <div class="qa-a"><strong>A4.</strong> The 2024 VAW Survey actually shows a decline in recent IPV from 66% in 2015 to 49% in 2024. However, the continued association between dowry and violence demonstrates that criminalisation alone cannot dismantle the social norms sustaining the practice. Bangladesh therefore supports a dual approach: strong legal enforcement against dowry alongside community-level norm change, women's economic empowerment and awareness of legal rights. The objective is not simply to punish dowry, but to make the social and economic conditions sustaining it less viable.</div>
 </div>
 <div class="qa-item">
@@ -1910,7 +2066,7 @@
     },
     'article-uncsw-witch': {
       type: 'Feature · UNCSW',
-      title: 'When Fear Needs a Victim, it Invents a Witch',
+      title: 'When Fear Needs a Victim, It Invents a Witch',
       dek: 'When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame.',
       meta: 'By Sruthy S Muraly · UNCSW Feature',
       pdf: 'pdfs/when-fear-needs-a-victim-witch.pdf',
@@ -1968,7 +2124,7 @@
       dek: 'A reflective poem on gender inequality, autonomy, and societal blame from the UNCSW Arts Desk.',
       meta: 'By Tessa Vinu · UNCSW Arts Desk',
       pdf: 'pdfs/why-do-my-rights-differ-poem.pdf',
-      contentHtml: `<div style="max-width:580px;margin:24px auto;padding:36px 32px;background:var(--paper-dim);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:2px;box-shadow:var(--shadow-sm);">
+      contentHtml: `<div style="max-width:580px;margin:24px auto;padding:36px 32px;background:var(--paper-dim);border:1px solid var(--line);border-left:4px solid var(--signal);border-radius:2px;box-shadow:0 8px 24px rgba(26,23,18,.08);">
   <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);margin-bottom:16px;">UNCSW Arts Desk · Literary Contribution</div>
   <div style="font-family:'Newsreader',serif;font-style:italic;font-size:20px;line-height:2;color:var(--ink);">
     Was it my fault?<br>
@@ -1990,7 +2146,7 @@
     And always needs to be policed.<br><br>
     Was it my fault? —<br>
     <strong style="color:var(--signal);letter-spacing:0.08em;font-size:22px;">YES.</strong><br>
-    Screamed the teary eyed woman in front of me,<br>
+    Screamed the teary-eyed woman in front of me,<br>
     Before I could go on any further.
   </div>
   <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);">
@@ -2001,7 +2157,7 @@
     },
     'article-uncnd-atoms': {
       type: 'Op-Ed · UNCND Feature',
-      title: 'Three Atoms Ahead.. I Am Always Three Atoms Ahead',
+      title: 'Three Atoms Ahead… I Am Always Three Atoms Ahead',
       dek: 'Delving into why international drug scheduling still can\'t outrun a local chemist.',
       meta: 'By Sarah Asraf · UNCND News',
       pdf: 'pdfs/three-atoms-ahead.pdf',
@@ -2012,13 +2168,13 @@
 </div>
 <p>In December of 1985, a 175-pound black bear died in Georgia’s Chattahoochee National Forest after consuming a large quantity of cocaine.<sup>1</sup> The bear, nicknamed “Pablo Escobear” or “Cocaine Bear”, had ingested duffel bags dropped by a drug trafficker and smuggler, Andrew Thornton II, a former narcotics officer who died jumping out of a plane into the same forest just weeks prior. The bear ate what is described as an amount of cocaine so great no mammal could live through it, and it died within what is believed to be a matter of hours.<sup>2</sup></p>
 <p>It is a grotesque and almost comical addendum to the war on drugs. But it is also, in an unintended way, a parable. An animal came across a substance that it didn’t know anything about, ingested it, and paid the price of that lack of knowledge with its life. Forty years later, human beings have not fared much better. We have simply substituted the duffel bag with a dark net market and a 3D pill press, and the bear with tens of thousands of individuals who pay for that with their lives.</p>
-<h4 class="section-subhead">Supply Moves Faster than the State</h4>
+<h3 class="section-subhead">Supply Moves Faster than the State</h3>
 <p>Let us look at two facts from different ends of the drug market chain. First, in India, Kerala's state government has initiated a campaign called <em>“Operation Toofan”</em>, within the first 100 days of which it has registered over 10,000 cases and arrested more than 10,800 people while confiscating tens of thousands of grams of MDMA and over one ton of cannabis.<sup>3</sup> This is an extensive and resourceful enforcement effort but, at its core, is reactive since it pursues the drug that has made it to the streets.</p>
 <p>On the other hand, the Reuters investigation conducted in 2025 revealed that a group of journalists can purchase all necessary chemicals needed to produce $3 million worth of fentanyl for less than $3,600. These chemicals were obtained legally, and the majority of them came from China because of the flaws in customs regulations and exemptions for low-value shipments.<sup>4</sup> The fact that supply chain innovations precede updates in the control list by months or even years is the true crisis of the "emerging psychoactive substances" agenda.</p>
-<h4 class="section-subhead">The UNCND and Its Battle Against Time</h4>
+<h3 class="section-subhead">The UNCND and Its Battle Against Time</h3>
 <p>For its part, the Commission on Narcotic Drugs is far from doing nothing. At its recent 69th session, the UN body agreed to schedule three new psychoactive substances, among which were two new synthetic opioids from the nitazene class, which are even more potent than fentanyl, according to recommendations from the World Health Organisation. The body created a new independent expert panel which will review the entire system of international drug control before its 2029 progress review. However, the same session was characterised by the failure of the Vienna Consensus, with more resolutions being adopted by voting and not through agreement. This indicates that states are drifting apart even on the fundamental questions of harm reduction and human rights despite the rapid pace of the chemistry.<sup>5</sup></p>
 <p>This is what the agenda item is in fact addressing: speed vs. sovereignty and control vs. access. The system of scheduling that was developed for the times when there were only a few dozen known narcotics cannot cope with the thousands of novel psychoactive substances synthesised by the server-based chemistry.</p>
-<h4 class="section-subhead">Where the Line Should Be Drawn</h4>
+<h3 class="section-subhead">Where the Line Should Be Drawn</h3>
 <p>The status quo, made substance by substance, by one decision per year in Vienna, cannot move fast enough to respond to a constantly morphing problem. States must support an Early Warning Advisory system that is properly funded and empowered to implement provisional and limited controls as soon as WHO’s Expert Committee alerts the system to the presence of new analogues, without waiting for the next CND meeting. Such a provisional schedule would automatically expire, unless formally adopted at the next CND session, thereby preserving scientific thoroughness while maintaining state sovereignty over final decision-making. An accelerated process needs an unambiguous carve-out to protect medicines and scientific research, to be assessed separately and rapidly from the process of control. In this way, the drive for speed does not inadvertently create a drive for blanket prohibition.</p>
 <blockquote class="article-quote">The bear in Georgia did not have an early warning system, nor a controlled environment, nor time to figure out the danger. It’s now for the world to show it can do better than just one bear, in a wood, with another person’s stuff. The CND has the organisation, the scientific know-how, and the global reach. What it needs now is speed, for in the age of artificial drugs, yesterday’s solution is bound to be tomorrow’s loophole.</blockquote>
 <div class="footnotes-box">
@@ -2069,7 +2225,7 @@
     </div>
     <p>• 50 kg intercepted at European maritime customs. Regular tests returned negative. Logged as "unidentified industrial starch" and cleared.</p>
     <p>• If things proceed as expected we have at least 5 months of legal immunity before the CND can pass a barring decree; number of human overdoses leading to death, time taken for sovereign transposition.</p>
-    <p><em>CND only convenes annually..</em></p>
+    <p><em>CND only convenes annually.</em></p>
   </div>
   <div class="dossier-card">
     <div class="dossier-header">
@@ -2166,15 +2322,15 @@
 </div>
 <p>The importance of a tablet of medicine can be often overlooked. Its importance begins when health fails. It can make a difference between possible recovery and uncertainty, life and death. Yet a medicine is more than a tablet. It carries the expectation and hope that it will help in marking a new beginning. The expectation is often fundamental that the legitimacy of the medicine is often taken for granted. But what happens when a medicine is legal, regulated, and genuine but still does not reach the person who needs it? Then comes the role of counterfeit medicines.</p>
 <p>Counterfeiting is often viewed as a deliberate act of deception. The law consequently searches for the offender, the counterfeit, and the point of entry at the chain. Yet the pharmaceutical chain has itself become more complicated. The counterfeit no longer exists just outside the legitimate system. This in turn changes the entire nature of the problem. If these counterfeits were simply manufactured outside the law, then stronger enforcement would have appeared to be the most obvious answer. But the counterfeit medicines are not necessarily the beginning of the problem. It is better derived from a 2024 case study examining the pharmaceutical markets in Ethiopia, which has found that the substandard and falsified medicines were closely connected with the barriers faced in accessing essential medicines. It concluded that stricter regulation and enforcement alone did not adequately address the factors creating demand for them.<sup>1</sup> In fact, it is just the point at which the existing weakness in the system becomes visible.</p>
-<h4 class="section-subhead">Substandard vs Falsified: A Crucial Distinction</h4>
-<p>Even international law is starting to recognize this very distinction. The World Health Organization has distinguished between a <strong>substandard medical product</strong> as something that fails to meet the established quality standards and a <strong>falsified product</strong> as something that has been deliberately misrepresented in its identity, composition, or source.<sup>2</sup> This change is not simply terminological. It greatly denotes the factor that a medicine can be authorized but still fail to meet the quality that it is required to provide. Therefore, the law faces an issue that cannot be simply solved by only asking about who owns the medicine.</p>
+<h3 class="section-subhead">Substandard vs Falsified: A Crucial Distinction</h3>
+<p>The World Health Organization distinguishes between a <strong>substandard medical product</strong>, which is an authorized product that fails to meet quality standards or specifications, and a <strong>falsified product</strong>, which deliberately or fraudulently misrepresents its identity, composition, or source.<sup>2</sup> The distinction matters: a product can be authorized yet still fail quality requirements, while falsification concerns deliberate deception. The legal and public-health response therefore has to address both quality failures and intentional fraud.</p>
 <p>The relevance of intellectual property comes into play as pharmaceutical innovation requires protection. Even though international instruments such as the TRIPS agreement recognize this requirement, it does not place it beyond public health considerations. Articles 7 and 8 of the TRIPS situate intellectual property protection within the broader objectives of social and economic welfare, thereby permitting members to adopt the measures necessary to protect public health.<sup>4</sup> Meanwhile, the Doha Declaration has affirmed the right of members to use TRIPS flexibilities to protect public health and promote access to medicines.<sup>5</sup> Thus, the point is not that intellectual property is irrelevant, but that the legal status of a medicine by itself cannot be the answer as to whether that medicine is reaching the patient safely and affordably.</p>
 <p>The answer to this can be found in criminal law, where the MEDICRIME Convention treats the manufacture, supply, and trafficking of falsified medicinal products as conduct that requires criminalization and international cooperation. These measures can be seen as indispensable when falsification is organized across borders, yet criminal law simply answers one question: as to who is responsible for putting falsified products into circulation. Public health must answer another question: as to what allowed that product to become capable of reaching a patient in the first place.</p>
 <div class="article-featured-img">
   <img src="images/scarcity-what-fills-the-void_img2.jpg" alt="Falsified capsules and blister packs">
   <span class="img-caption">The lethal peril of counterfeit immunosuppressive medication · Source: Pinterest</span>
 </div>
-<h4 class="section-subhead">A Matter of Life and Death for Transplant Recipients</h4>
+<h3 class="section-subhead">A Matter of Life and Death for Transplant Recipients</h3>
 <p>Even though these theoretical distinctions exist, for an organ transplant recipient this is painfully practical. For them the correct and consistent use of immunosuppressive medicines such as <strong>tacrolimus</strong> is critical, and substandardization of the same can lead to serious life-threatening consequences. In such circumstances the question is not simply about access to medicines, but rather it becomes about the access to the right medicine with the right quality and a system that is fully capable of guaranteeing it.<sup>6</sup></p>
 <p>Therefore, the fight against falsified medicines cannot end with making the false medicines easier to identify. By just identifying, a legal system may punish the manufacturer, a regulator may issue an alert, and a border authority may intercept a shipment. But if the genuine medicine remains inaccessible, unaffordable, or unreliable in supply, then the reason for the mere existence of the counterfeits remains intact.</p>
 <blockquote class="article-quote">The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough that the patients do not have to look beyond it in the first place. Because if the gaps still exist, something else will replace it.</blockquote>
@@ -2221,7 +2377,7 @@
 <p>The WHO committee seems to have a rather peculiar way of keeping themselves busy. Almost every discussion seemed to find its way towards stronger regulation, international cooperation, better enforcement, and even improved access, but only to deliberate the same concerns from yet another direction.</p>
 <p>The arguments raised were not necessarily weak, but there was an odd familiarity in each one of them. One could almost predict where the next point was heading even before the delegate had concluded. WHO seemed less interested in changing the conversation than in making sure that the conversation never stopped.</p>
 <p>However, there was a certain patience to this. Unlike other committees, where every disagreement seemed to turn into an opportunity for another confrontation, WHO seemed to prefer keeping things purely diplomatic. Even when member states approached the issue from conflicting national interests, the discussion repeatedly found its way back to cooperation. It was as if WHO had made peace with the possibility that agreement may take time—and perhaps countless repetitions of the same age-old solutions.</p>
-<h4 class="section-subhead">The Ministerial Declaration and the Art of Waiting</h4>
+<h3 class="section-subhead">The Ministerial Declaration and the Art of Waiting</h3>
 <p>Its approach to the Ministerial Declaration was none quite different. Once the delegates were divided into blocs and asked to identify the problems they faced, WHO seemed quite comfortable in its new arrangement. It was perhaps the committee at its most natural form: taking a complicated problem, giving everyone a little space to discuss it, and then hoping that somewhere in the heart of all these discussions a solution might emerge.</p>
 <p>There is something almost endearing about the committee’s faith in deliberation. It does not seem particularly interested in dramatic declarations or easy answers. If anything, it appears slightly suspicious of them. Every solution seems to require another discussion, every discussion another perspective, and every perspective another opportunity for cooperation. The process may seem slow, yet WHO seems to trust the process anyway.</p>
 <div class="article-featured-img" style="margin:24px 0;">
@@ -2321,51 +2477,41 @@
   });
   if (location.hash.startsWith('#article-')) openArticle(location.hash.slice(1), false);
 
-  /* Radio Voice player: real HTML5 audio when a source is supplied. */
-  const radioAudio = new Audio();
-  radioAudio.preload='metadata';
-  let activeRadioButton=null;
-  let activeRadioStatus=null;
-  function setPlayIcon(btn,playing){
-    btn.innerHTML=playing
-      ? '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>'
-      : '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>';
-    btn.classList.toggle('is-playing',playing);
-  }
-  function stopRadio(){
-    radioAudio.pause();
-    radioAudio.removeAttribute('src');
-    radioAudio.load();
-    if(activeRadioButton) setPlayIcon(activeRadioButton,false);
-    if(activeRadioStatus) activeRadioStatus.textContent='';
-    activeRadioButton=null; activeRadioStatus=null;
-  }
-  function playRadio(btn,src,status){
-    if(!src){
-      if(status) status.textContent='Ready for the final audio file — add a source to this segment.';
-      document.getElementById('ipc')?.scrollIntoView({behavior:'smooth',block:'start'});
-      return;
-    }
-    if(activeRadioButton===btn && !radioAudio.paused){radioAudio.pause();setPlayIcon(btn,false);return;}
-    if(activeRadioButton) setPlayIcon(activeRadioButton,false);
-    radioAudio.src=src; activeRadioButton=btn; activeRadioStatus=status; radioAudio.play().then(()=>{setPlayIcon(btn,true);}).catch(()=>{if(status)status.textContent='Audio could not be played in this browser.';});
-  }
-  document.querySelectorAll('.card.radio .play-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>playRadio(btn,btn.dataset.audio||'',btn.closest('.card').querySelector('.radio-status')));
-  });
-  document.querySelectorAll('.radio-feature .play-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>playRadio(btn,btn.dataset.audio||'',document.getElementById('featureRadioStatus')));
-  });
-  radioAudio.addEventListener('ended',()=>{if(activeRadioButton)setPlayIcon(activeRadioButton,false);if(activeRadioStatus)activeRadioStatus.textContent='Segment finished.';});
-  radioAudio.addEventListener('timeupdate',()=>{
-    const bar=document.getElementById('featProgress');
-    if(bar && activeRadioButton?.closest('.radio-feature') && radioAudio.duration) bar.style.width=(radioAudio.currentTime/radioAudio.duration*100)+'%';
-  });
-
-  /* Hero Radio button: scroll to the first committee, ready to play once source is connected. */
-  const miniPlay=document.querySelector('.radio-mini .play-btn');
-  miniPlay?.addEventListener('click',()=>document.getElementById('aippm')?.scrollIntoView({behavior:'smooth',block:'start'}));
-
+  /* Radio Voice: carousel + real HTML5 audio */
+  const radioAudio = new Audio(); radioAudio.preload='metadata';
+  const radioTrack=document.getElementById('radioTrack'), radioDots=document.getElementById('radioDots'), radioCount=document.getElementById('radioCount');
+  const playerTitle=document.getElementById('playerTitle'), playerMeta=document.querySelector('#radioPlayer .player-meta'), playerBar=document.getElementById('playerBar'), playerTime=document.getElementById('playerTime'), playerButton=document.getElementById('radioPlayerButton');
+  const radioData=[
+    ['01','AIPPM','Overheard in the Hallway','Vox pops from AIPPM corridors — delegates on gender-neutral law.','Diya Dileep','02:48','audio/aippm.mp3'],
+    ['02','UNCSW','Naming the Witch, On Record','The journalist behind the UNCSW coverage reads her notes aloud.','Ridha Methar','03:56','audio/uncsw.mp3'],
+    ['03','UNCND','Vienna After Hours','A satirical debrief on today’s UNCND session — who stalled it?','Norah Chollampatt','03:20','audio/uncnd.mp3'],
+    ['04','UNGA DISEC','Disarming the Room','A short companion cut from DISEC’s session — the room goes quiet.','Sania Antony','02:10','audio/disec.mp3'],
+    ['05','WHO','The Counterfeit Cut','A field recording from WHO’s floor — patent law jargon and a tired chair.','Theres Mary Paul','03:05','audio/who.mp3'],
+    ['06','PRESS DESK','Dispatch from the Press Desk','The Editor-in-Chief closes out the edition with what the resolutions missed.','Editor-in-Chief','08:41','audio/closing.mp3']
+  ];
+  const playIcon='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>';
+  const pauseIcon='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>';
+  radioTrack.innerHTML=radioData.map((r,i)=>`<article class="radio-card" data-radio-index="${i}"><div><div class="radio-top"><span class="radio-tag">${r[0]} · ${r[1]}</span><button class="play play-btn" type="button" data-radio-index="${i}" data-audio="${r[6]}" aria-label="Play ${r[2]}" aria-pressed="false">${playIcon}</button></div><h3>${r[2]}</h3><p>${r[3]}</p></div><div><div class="wave" aria-hidden="true"></div><div class="radio-foot"><span>Hosted by ${r[4]}</span><span>${r[5]}</span></div></div></article>`).join('');
+  radioDots.innerHTML=radioData.map((_,i)=>`<button class="radio-dot${i===0?' active':''}" type="button" data-radio-index="${i}" aria-label="Go to radio entry ${i+1}"></button>`).join('');
+  const radioCards=[...radioTrack.querySelectorAll('.radio-card')];
+  let radioIndex=0,activeRadioButton=null,activeRadioStatus=null,selectedRadioIndex=0,touchStart=0;
+  const perView=()=>innerWidth<=600?1:innerWidth<=900?2:3;
+  function setPlayIcon(btn,playing){if(!btn)return;btn.innerHTML=playing?pauseIcon:playIcon;btn.classList.toggle('is-playing',playing);btn.setAttribute('aria-pressed',String(playing));}
+  function formatTime(v){if(!Number.isFinite(v))return playerTime.textContent;const m=Math.floor(v/60),s=Math.floor(v%60);return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
+  function updateRadio(){const max=Math.max(0,radioCards.length-perView());radioIndex=Math.min(radioIndex,max);const card=radioCards[0];if(!card)return;radioTrack.style.transform=`translate3d(${-radioIndex*(card.getBoundingClientRect().width+10)}px,0,0)`;radioDots.querySelectorAll('.radio-dot').forEach((d,i)=>d.classList.toggle('active',i===radioIndex));radioCount.textContent=`${String(radioIndex+1).padStart(2,'0')} / ${String(radioCards.length).padStart(2,'0')}`;}
+  function moveRadio(d){const max=Math.max(0,radioCards.length-perView());radioIndex+=d;if(radioIndex<0)radioIndex=max;if(radioIndex>max)radioIndex=0;updateRadio();}
+  function goRadio(i){const max=Math.max(0,radioCards.length-perView());radioIndex=Math.min(Math.max(0,i),max);updateRadio();}
+  function selectRadio(i){const r=radioData[i];if(!r)return;selectedRadioIndex=i;playerTitle.textContent=r[2];playerMeta.textContent=`${r[1]} · Hosted by ${r[4]}`;playerTime.textContent=r[5];playerBar.style.width='0%';goRadio(i);}
+  function playRadio(btn,src,status){if(!src)return;const i=Number(btn.dataset.radioIndex);if(Number.isFinite(i))selectRadio(i);if(activeRadioButton===btn&&!radioAudio.paused){radioAudio.pause();setPlayIcon(btn,false);return;}if(activeRadioButton&&activeRadioButton!==btn)setPlayIcon(activeRadioButton,false);radioAudio.src=src;activeRadioButton=btn;activeRadioStatus=status;playerBar.style.width='0%';radioAudio.play().then(()=>{setPlayIcon(btn,true);playerButton.innerHTML=pauseIcon;playerButton.setAttribute('aria-label','Pause selected Radio Voice entry');}).catch(()=>{if(status)status.textContent='Audio could not be played in this browser.';});}
+  document.addEventListener('click',e=>{const audioBtn=e.target.closest('.play-btn[data-audio]');if(audioBtn){playRadio(audioBtn,audioBtn.dataset.audio||'',null);return;}const move=e.target.closest('[data-radio-move]');if(move){moveRadio(Number(move.dataset.radioMove));return;}const dot=e.target.closest('.radio-dot');if(dot){goRadio(Number(dot.dataset.radioIndex));return;}if(e.target.closest('#radioPlayerButton')){const r=radioData[selectedRadioIndex];if(!r)return;if(activeRadioButton&&Number(activeRadioButton.dataset.radioIndex)===selectedRadioIndex){if(radioAudio.paused){radioAudio.play().then(()=>{setPlayIcon(activeRadioButton,true);playerButton.innerHTML=pauseIcon;});}else{radioAudio.pause();}}else{const btn=radioCards[selectedRadioIndex]?.querySelector('.play-btn');if(btn)playRadio(btn,r[6],null);}}});
+  radioTrack.addEventListener('touchstart',e=>{touchStart=e.touches[0].clientX},{passive:true});
+  radioTrack.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStart;if(Math.abs(dx)>45)moveRadio(dx<0?1:-1)},{passive:true});
+  radioAudio.addEventListener('timeupdate',()=>{if(radioAudio.duration){playerBar.style.width=(radioAudio.currentTime/radioAudio.duration*100)+'%';playerTime.textContent=formatTime(radioAudio.currentTime);}});
+  radioAudio.addEventListener('ended',()=>{if(activeRadioButton)setPlayIcon(activeRadioButton,false);activeRadioButton=null;playerButton.innerHTML=playIcon;playerButton.setAttribute('aria-label','Play selected Radio Voice entry');playerBar.style.width='0%';const r=radioData[selectedRadioIndex];if(r)playerTime.textContent=r[5];});
+  radioAudio.addEventListener('pause',()=>{if(activeRadioButton)setPlayIcon(activeRadioButton,false);playerButton.innerHTML=playIcon;playerButton.setAttribute('aria-label','Play selected Radio Voice entry');});
+  document.querySelectorAll('.chapter-radio .mini-play[data-radio-title]').forEach(btn=>btn.addEventListener('click',()=>{const i=radioData.findIndex(r=>r[2]===btn.dataset.radioTitle);if(i<0)return;const cardBtn=radioCards[i]?.querySelector('.play-btn');if(cardBtn)playRadio(cardBtn,radioData[i][6],null);document.getElementById('radio')?.scrollIntoView({behavior:'smooth',block:'start'});}));
+  document.querySelector('.radio-mini .play-btn[data-audio]')?.addEventListener('click',e=>{playRadio(e.currentTarget,e.currentTarget.dataset.audio,null);document.getElementById('radio')?.scrollIntoView({behavior:'smooth',block:'start'});});
+  updateRadio();window.addEventListener('resize',updateRadio);
   /* Back to top */
   const backTop=document.getElementById('backToTop');
   window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>650),{passive:true});
