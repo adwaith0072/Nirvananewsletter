@@ -163,7 +163,9 @@
   .tag.listen::before{content:"● ";}
   .card h3{font-size:20px;line-height:1.2;}
   .card .dek{font-size:13.5px;color:var(--ink-soft);line-height:1.6;flex:1;}
-  .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--ink-soft);padding-top:8px;border-top:1px dashed var(--line);}
+  .card-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:11.5px;color:var(--ink-soft);padding-top:8px;border-top:1px dashed var(--line);}
+  .card-foot span:first-child{margin-right:auto;}
+  .card-foot span:last-child{display:inline-flex;align-items:center;gap:4px;flex-shrink:0;}
 
   .card.radio{background:var(--teal);border-color:var(--teal);}
   .card.radio h3{color:#fff;}
@@ -347,7 +349,72 @@
 
   /* Make article cards visibly interactive */
   .card:not(.radio){cursor:pointer;}
-  .card:not(.radio) .card-foot::after{content:'↗';font-family:'Crimson Pro',serif;color:var(--signal);margin-left:auto;padding-left:8px;opacity:.7;transition:transform .2s ease;}
+  .card:not(.radio) .card-foot::after{content:'↗';font-family:'Crimson Pro',serif;color:var(--signal);margin-left:2px;opacity:.85;transition:transform .2s ease;flex-shrink:0;}
+  /* Feature Article Actions & PDF Buttons */
+  .article-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .article-actions.article-actions-center {
+    justify-content: center;
+    margin-top: 24px;
+  }
+  .article-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+    line-height: 1.2;
+    cursor: pointer;
+  }
+  .article-btn.primary {
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    box-shadow: 0 2px 6px rgba(26, 23, 18, 0.12);
+  }
+  .article-btn.primary:hover {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(19, 45, 40, 0.22);
+  }
+  .article-btn.pdf {
+    background: var(--paper);
+    color: var(--signal);
+    border: 1.5px solid var(--signal);
+    box-shadow: 0 2px 6px rgba(224, 80, 31, 0.08);
+  }
+  .article-btn.pdf svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: stroke 0.2s ease, transform 0.2s ease;
+  }
+  .article-btn.pdf:hover {
+    background: var(--signal);
+    color: #fff;
+    border-color: var(--signal);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(224, 80, 31, 0.25);
+  }
+  .article-btn.pdf:hover svg {
+    stroke: #fff;
+    transform: translateY(-1px);
+  }
+
   .card:not(.radio):hover .card-foot::after{transform:translate(2px,-2px);}
 
   /* Radio player state */
@@ -1154,8 +1221,8 @@
       <div class="pullquote">"For over a century and a half, we lived with someone else's anxieties and called them our own traditions."</div>
       <p class="byline">By Gaurika Rashmi Nair · 6 min read</p>
       <div class="article-actions">
-        <a class="article-link article-btn primary" href="#article-aippm-colonialism" data-article="article-aippm-colonialism" >Read article →</a>
-        <a class="article-btn pdf" href="pdfs/buried-in-colonialism.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
+        <a class="article-link article-btn primary" href="#article-aippm-colonialism" data-article="article-aippm-colonialism">Read Full Feature →</a>
+        <a class="article-btn pdf" href="pdfs/buried-in-colonialism.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
       </div>
     </div>
     <div class="stat-card">
@@ -1177,7 +1244,7 @@
         <div class="tag-row"><span class="tag read">Classified Dossier</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Subject Profile: Manish Kumar</h3>
         <p class="dek">A classified look into an 'honour killing' where two people chose to love each other despite society. What protection does the law give that society doesn't?</p>
-        <div class="card-foot"><span>Amitha B</span><span>Feature · PDF</span></div>
+        <div class="card-foot"><span>Amitha B</span> <span>Feature · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-aippm-sketch" data-article="article-aippm-sketch">
@@ -1188,7 +1255,7 @@
         <div class="tag-row"><span class="tag read">Character Sketch</span><span class="tag pdf-badge">PDF</span></div>
         <h3>An Ambassador of Saffron</h3>
         <p class="dek">He will tell you he stands for everyone, right before explaining, patiently, who doesn't count. A character sketch on Yogi Adithyanath.</p>
-        <div class="card-foot"><span>Gaurika Rashmi Nair</span><span>Sketch · PDF</span></div>
+        <div class="card-foot"><span>Gaurika Rashmi Nair</span> <span>Sketch · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1202,7 +1269,7 @@
           </button>
           <div class="waveform"><i style="height:50%"></i><i style="height:25%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:20%"></i></div>
         </div>
-        <div class="card-foot"><span>Hosted by Diya Dileep</span><span>Vox pop</span></div>
+        <div class="card-foot"><span>Hosted by Diya Dileep</span> <span>Vox pop</span></div>
       </div>
     </div>
   </div>
@@ -1243,8 +1310,8 @@
       <div class="pullquote">"Violence cannot be tolerated by any means. Witches belong to belief. But witch hunting belongs to power, violence and control."</div>
       <p class="byline">By Sruthy S Muraly · 7 min read</p>
       <div class="article-actions">
-        <a class="article-link article-btn primary" href="#article-uncsw-witch" data-article="article-uncsw-witch" >Read article →</a>
-        <a class="article-btn pdf" href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
+        <a class="article-link article-btn primary" href="#article-uncsw-witch" data-article="article-uncsw-witch">Read Full Feature →</a>
+        <a class="article-btn pdf" href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
       </div>
     </div>
     <div class="stat-card">
@@ -1267,7 +1334,7 @@
         <div class="tag-row"><span class="tag read">Interview</span><span class="tag pdf-badge">PDF</span></div>
         <h3>When the Law Says No, But Society Says Yes</h3>
         <p class="dek">An interview with the delegate of Bangladesh on child marriage loopholes, intimate partner violence (IPV), and the limits of cultural justifications.</p>
-        <div class="card-foot"><span>Sruthy S Muraly</span><span>Interview · PDF</span></div>
+        <div class="card-foot"><span>Sruthy S Muraly</span> <span>Interview · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1281,7 +1348,7 @@
           </button>
           <div class="waveform"><i style="height:30%"></i><i style="height:60%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:20%"></i><i style="height:55%"></i><i style="height:85%"></i></div>
         </div>
-        <div class="card-foot"><span>Hosted by Ridha Methar</span><span>Companion read</span></div>
+        <div class="card-foot"><span>Hosted by Ridha Methar</span> <span>Companion read</span></div>
       </div>
     </div>
   </div>
@@ -1313,8 +1380,8 @@
       Before I could go on any further.
     </div>
     <div class="article-actions article-actions-center">
-      <a class="article-link article-btn primary" href="#article-uncsw-poem" data-article="article-uncsw-poem" >Read article →</a>
-      <a class="article-btn pdf" href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
+      <a class="article-link article-btn primary" href="#article-uncsw-poem" data-article="article-uncsw-poem">Read in Reader →</a>
+      <a class="article-btn pdf" href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original Poem PDF ↗</span></a>
     </div>
   </div>
 
@@ -1355,8 +1422,8 @@
       <div class="pullquote">"In the age of artificial drugs, yesterday's solution is bound to be tomorrow's loophole."</div>
       <p class="byline">By Sarah Asraf · 7 min read</p>
       <div class="article-actions">
-        <a class="article-link article-btn primary" href="#article-uncnd-atoms" data-article="article-uncnd-atoms" >Read article →</a>
-        <a class="article-btn pdf" href="pdfs/three-atoms-ahead.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
+        <a class="article-link article-btn primary" href="#article-uncnd-atoms" data-article="article-uncnd-atoms">Read Full Feature →</a>
+        <a class="article-btn pdf" href="pdfs/three-atoms-ahead.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
       </div>
     </div>
     <div class="card quick" style="border:1px solid var(--line);">
@@ -1380,7 +1447,7 @@
         <div class="tag-row"><span class="tag read">Dossier</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Project: SOMNIUM CASEUM</h3>
         <p class="dek">A classified look at Dream Cheese (DC), a synthetic opioid analogue bypassing borders through molecular substitution and predictive toxicology.</p>
-        <div class="card-foot"><span>Malavika Unnikrishnan</span><span>Dossier · PDF</span></div>
+        <div class="card-foot"><span>Malavika Unnikrishnan</span> <span>Dossier · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-uncnd-interview" data-article="article-uncnd-interview">
@@ -1391,7 +1458,7 @@
         <div class="tag-row"><span class="tag read">Interview</span><span class="tag pdf-badge">PDF</span></div>
         <h3>When the Molecule Gets Ahead of the Law</h3>
         <p class="dek">In conversation with the Delegate of Indonesia on the race to regulate new psychoactive substances and the justification for strict drug laws.</p>
-        <div class="card-foot"><span>Sarah Asraf</span><span>Interview · PDF</span></div>
+        <div class="card-foot"><span>Sarah Asraf</span> <span>Interview · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1405,7 +1472,7 @@
           </button>
           <div class="waveform"><i style="height:50%"></i><i style="height:25%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:20%"></i></div>
         </div>
-        <div class="card-foot"><span>Hosted by Norah Chollampatt</span><span>Satirical</span></div>
+        <div class="card-foot"><span>Hosted by Norah Chollampatt</span> <span>Satirical</span></div>
       </div>
     </div>
   </div>
@@ -1446,8 +1513,8 @@
       <div class="pullquote">"At some point, 'who supplied the weapon?' becomes less important than 'whose side are they on?'"</div>
       <p class="byline">By Ridha Methar · 8 min read</p>
       <div class="article-actions">
-        <a class="article-link article-btn primary" href="#article-disec-feature" data-article="article-disec-feature" >Read article →</a>
-        <a class="article-btn pdf" href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
+        <a class="article-link article-btn primary" href="#article-disec-feature" data-article="article-disec-feature">Read Full Feature →</a>
+        <a class="article-btn pdf" href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
       </div>
     </div>
     <div class="stat-card">
@@ -1470,7 +1537,7 @@
         <div class="tag-row"><span class="tag read">Op-Ed</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Arming the Enemy of My Enemy</h3>
         <p class="dek">The justification for proxy warfare, and how states exploit layers of intermediaries and unresolved legal ambiguities like the Nicaragua and Tadić standards.</p>
-        <div class="card-foot"><span>Nivin Vineeth</span><span>Op-Ed · PDF</span></div>
+        <div class="card-foot"><span>Nivin Vineeth</span> <span>Op-Ed · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-disec-interview" data-article="article-disec-interview">
@@ -1481,7 +1548,7 @@
         <div class="tag-row"><span class="tag read">Interview</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Beyond the Weapons: Allegations or Facts</h3>
         <p class="dek">Representative of the International Press Corps in conversation with the delegate of Russia on the fine line between cooperation and accountability.</p>
-        <div class="card-foot"><span>IPC DISEC Desk</span><span>Interview · PDF</span></div>
+        <div class="card-foot"><span>IPC DISEC Desk</span> <span>Interview · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1495,7 +1562,7 @@
           </button>
           <div class="waveform"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:25%"></i></div>
         </div>
-        <div class="card-foot"><span>Hosted by Sania Antony</span><span>Closing note</span></div>
+        <div class="card-foot"><span>Hosted by Sania Antony</span> <span>Closing note</span></div>
       </div>
     </div>
   </div>
@@ -1536,8 +1603,8 @@
       <div class="pullquote">"The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough."</div>
       <p class="byline">By Ishita Sudhir · 7 min read</p>
       <div class="article-actions">
-        <a class="article-link article-btn primary" href="#article-who-scarcity" data-article="article-who-scarcity" >Read article →</a>
-        <a class="article-btn pdf" href="pdfs/scarcity-what-fills-the-void.pdf" target="_blank" rel="noopener" >Open PDF ↗</a>
+        <a class="article-link article-btn primary" href="#article-who-scarcity" data-article="article-who-scarcity">Read Full Op-Ed →</a>
+        <a class="article-btn pdf" href="pdfs/scarcity-what-fills-the-void.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
       </div>
     </div>
     <div class="card quick" style="border:1px solid var(--line);">
@@ -1564,7 +1631,7 @@
         <div class="tag-row"><span class="tag read">Satire</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Congratulations! You got your fake medicines</h3>
         <p class="dek">A satirical look at premium hospitals and the substandard pharmaceuticals that imitate everything except the ability to save a life.</p>
-        <div class="card-foot"><span>Jaithra K</span><span>Satire · PDF</span></div>
+        <div class="card-foot"><span>Jaithra K</span> <span>Satire · PDF</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-who-sketch" data-article="article-who-sketch">
@@ -1575,7 +1642,7 @@
         <div class="tag-row"><span class="tag read">Character Sketch</span><span class="tag pdf-badge">PDF</span></div>
         <h3>Character Sketch: The WHO</h3>
         <p class="dek">Unlike other committees, WHO seems less interested in changing the conversation than making sure it never stops. A look at the art of deliberation.</p>
-        <div class="card-foot"><span>Ishita Sudhir</span><span>Sketch · PDF</span></div>
+        <div class="card-foot"><span>Ishita Sudhir</span> <span>Sketch · PDF</span></div>
       </div>
     </a>
     <div class="card radio">
@@ -1589,7 +1656,7 @@
           </button>
           <div class="waveform"><i style="height:35%"></i><i style="height:65%"></i><i style="height:25%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:70%"></i></div>
         </div>
-        <div class="card-foot"><span>Hosted by Theres Mary Paul</span><span>Satirical</span></div>
+        <div class="card-foot"><span>Hosted by Theres Mary Paul</span> <span>Satirical</span></div>
       </div>
     </div>
   </div>
