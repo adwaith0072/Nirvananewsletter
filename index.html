@@ -415,14 +415,86 @@
     transform: translateY(-1px);
   }
 
+  /* Listen Broadcast & Action Play Button Styles */
+  .article-btn.broadcast-btn,
+  .article-btn.play-btn {
+    width: auto !important;
+    height: auto !important;
+    min-height: 38px !important;
+    border-radius: 2px !important;
+    padding: 9px 18px !important;
+    background: var(--signal) !important;
+    color: #fff !important;
+    border: 1.5px solid var(--signal) !important;
+    box-shadow: 0 2px 6px rgba(224, 80, 31, 0.18) !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    line-height: 1.2 !important;
+    cursor: pointer !important;
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .article-btn.broadcast-btn:hover,
+  .article-btn.play-btn:hover {
+    background: #c84318 !important;
+    border-color: #c84318 !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(224, 80, 31, 0.28) !important;
+  }
+  .article-btn.broadcast-btn.is-playing,
+  .article-btn.play-btn.is-playing {
+    background: var(--teal) !important;
+    border-color: var(--teal) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 4px rgba(19, 45, 40, 0.25) !important;
+  }
+  .article-btn.broadcast-btn .btn-icon,
+  .article-btn.play-btn .btn-icon,
+  .article-btn.broadcast-btn svg,
+  .article-btn.play-btn svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    fill: currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .card:not(.radio):hover .card-foot::after{transform:translate(2px,-2px);}
 
   /* Radio player state */
-  .play-btn.is-playing{box-shadow:0 0 0 5px rgba(224,80,31,.18);}
+  .play-btn.is-playing:not(.article-btn){box-shadow:0 0 0 5px rgba(224,80,31,.18);}
   .radio-status{font:10px 'Crimson Pro',serif;color:#9EB2AC;min-height:15px;}
   .radio-mini .radio-status{color:#C9D6D1;}
   .audio-range{width:100%;accent-color:var(--signal);cursor:pointer;}
   .radio-feature .audio-range{margin-top:10px;}
+
+  /* Inline Article Audio Seeker */
+  .article-audio-box {
+    transition: all 0.2s ease;
+  }
+  .article-audio-box.is-playing {
+    border-color: var(--signal) !important;
+    background: #fdfbf7 !important;
+    box-shadow: 0 4px 14px rgba(224,80,31,0.1);
+  }
+  .inline-progress-wrap {
+    touch-action: none;
+    user-select: none;
+  }
+  .inline-progress-wrap:hover .inline-bar {
+    background: #c84318 !important;
+  }
 
   /* Article reader */
   .article-modal{position:fixed;inset:0;z-index:2000;display:none;background:rgba(10,18,16,.62);padding:24px;overflow:auto;}
@@ -882,11 +954,30 @@
 .radio-card h3{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(25px,2.7vw,38px);line-height:.95;margin:20px 0 9px}.radio-card p{font-family:'Source Serif 4','Fraunces',serif;font-size:15px;line-height:1.5;color:#c9d6d1;max-width:42ch}
 .radio-card .wave{height:34px;margin:16px 0;border-bottom:1px solid rgba(245,241,230,.12);background:linear-gradient(90deg,transparent 0 3%,#5a857b 3% 5%,transparent 5% 8%,#5a857b 8% 11%,transparent 11% 14%,#5a857b 14% 15%,transparent 15% 18%,#5a857b 18% 22%,transparent 22% 25%,#5a857b 25% 27%,transparent 27% 31%,#5a857b 31% 35%,transparent 35% 38%,#5a857b 38% 40%,transparent 40% 44%,#5a857b 44% 48%,transparent 48% 51%,#5a857b 51% 53%,transparent 53% 57%,#5a857b 57% 61%,transparent 61% 64%,#5a857b 64% 66%,transparent 66% 70%,#5a857b 70% 74%,transparent 74% 77%,#5a857b 77% 79%,transparent 79% 83%,#5a857b 83% 87%,transparent 87% 90%,#5a857b 90% 92%,transparent 92% 96%,#5a857b 96% 98%,transparent);opacity:.8}
 .radio-foot{font:500 9px 'Crimson Pro',serif;color:#a9b9b4;display:flex;justify-content:space-between;gap:10px}.radio-controls{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid rgba(245,241,230,.18)}.radio-arrows{display:flex;gap:7px}.radio-arrow{width:42px;height:38px;border:1px solid rgba(245,241,230,.45);background:transparent;color:var(--paper);cursor:pointer;font:500 16px 'Inter',sans-serif}.radio-arrow:hover{background:var(--signal);border-color:var(--signal)}.radio-dots{display:flex;gap:6px;align-items:center}.radio-dot{width:6px;height:6px;border:0;border-radius:50%;background:#55746d;padding:0;cursor:pointer}.radio-dot.active{background:var(--signal);width:18px;border-radius:8px}.radio-count{font:500 9px 'Crimson Pro',serif;letter-spacing:.08em;color:#a9b9b4}.radio-card .play.is-playing{box-shadow:0 0 0 5px rgba(224,80,31,.18)}
-#radioPlayer.player{position:sticky;bottom:0;z-index:20;background:#0e211e;border-top:1px solid rgba(245,241,230,.2);padding:10px 0;color:var(--paper)}
-#radioPlayer .player-inner{display:flex;align-items:center;gap:15px}#radioPlayer .player-title{flex:1;min-width:0}#radioPlayer .player-title strong{font:500 16px 'Bodoni Moda','Fraunces',serif}#radioPlayer .player-progress{height:3px;background:#34534c;flex:2;overflow:hidden}#radioPlayer .player-progress span{display:block;width:0;height:100%;background:var(--signal);transition:width .1s linear}#radioPlayer .play{width:40px;height:40px;border:1px solid rgba(245,241,230,.45);border-radius:50%;background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0}#radioPlayer .play:hover{background:var(--signal);border-color:var(--signal)}#radioPlayer .player-time{min-width:42px;text-align:right;font-size:10px}
-.press{display:grid;grid-template-columns:.55fr 1.45fr;gap:50px;align-items:start}.press-intro h2{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(45px,6vw,80px);line-height:.9;letter-spacing:-.04em;margin:10px 0 14px}.press-intro p{font-family:'Source Serif 4','Fraunces',serif;font-size:17px;line-height:1.5;color:var(--ink-soft);max-width:31ch}.press-stat{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:baseline;gap:8px 12px;margin-top:28px;padding-top:16px;border-top:1px solid var(--line);max-width:300px}.press-stat strong,.press-stat b{font:500 42px/.8 'Bodoni Moda','Fraunces',serif;color:var(--teal)}.press-stat span{font:500 9px 'Crimson Pro',serif;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}.team-wrap{min-width:0}.editorial-board{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:13px 0 15px}.board-names{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}.board-names span{display:flex;flex-direction:column;gap:3px}.board-names strong{font-size:12px}.board-names small{font:500 8px 'Crimson Pro',serif;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}.team-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:22px}.team-list h3{font:500 28px/.95 'Bodoni Moda','Fraunces',serif;margin:7px 0 10px}.name-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:18px;border-top:1px solid var(--line)}.name-grid span{font:500 10px 'Inter',sans-serif;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+#radioPlayer.player{position:sticky;bottom:0;z-index:20;background:#0e211e;border-top:1px solid rgba(245,241,230,.2);padding:10px 0;color:var(--paper);box-shadow:0 -4px 20px rgba(0,0,0,0.35);}
+#radioPlayer .player-inner{display:flex;align-items:center;gap:16px;}
+.player-controls{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.player-btn-skip{width:32px;height:32px;border-radius:50%;border:1px solid rgba(245,241,230,0.3);background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0;transition:all .2s ease;}
+.player-btn-skip:hover{background:rgba(245,241,230,0.15);border-color:var(--signal);color:var(--signal);transform:scale(1.05);}
+.player-btn-skip svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;}
+#radioPlayer .play{width:40px;height:40px;border:1px solid rgba(245,241,230,.45);border-radius:50%;background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0;transition:all .2s ease;flex-shrink:0;}
+#radioPlayer .play:hover{background:var(--signal);border-color:var(--signal);transform:scale(1.05);}
+#radioPlayer .player-title{flex:1;min-width:140px;max-width:280px;}
+#radioPlayer .player-title strong{font:500 15px 'Bodoni Moda','Fraunces',serif;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#radioPlayer .player-meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:#c9d6d1;}
+.player-progress-container{flex:2;min-width:160px;height:28px;display:flex;align-items:center;position:relative;cursor:pointer;user-select:none;touch-action:none;}
+.player-progress{width:100%;height:6px;background:#254039;border-radius:3px;position:relative;transition:height .15s ease;overflow:visible;}
+.player-progress-container:hover .player-progress,.player-progress-container.is-dragging .player-progress{height:8px;}
+#playerBar{display:block;width:0%;height:100%;background:linear-gradient(90deg,#d34a1c 0%,var(--signal) 100%);border-radius:3px;position:relative;pointer-events:none;transition:width .05s linear;}
+.player-seek-thumb{position:absolute;top:50%;left:0%;width:14px;height:14px;background:#fff;border:2px solid var(--signal);border-radius:50%;transform:translate(-50%,-50%) scale(0);box-shadow:0 0 8px rgba(0,0,0,0.5);transition:transform .15s ease;pointer-events:none;z-index:2;}
+.player-progress-container:hover .player-seek-thumb,.player-progress-container.is-dragging .player-seek-thumb{transform:translate(-50%,-50%) scale(1);}
+.player-seek-hover{position:absolute;top:0;left:0;height:100%;background:rgba(255,255,255,0.18);border-radius:3px;pointer-events:none;width:0%;z-index:1;}
+.player-seek-tooltip{position:absolute;top:-26px;left:0%;transform:translateX(-50%);background:rgba(14,33,30,0.95);border:1px solid rgba(245,241,230,0.3);color:var(--paper);font:500 11px/1 'Crimson Pro',serif;padding:3px 6px;border-radius:2px;pointer-events:none;opacity:0;transition:opacity .15s ease;white-space:nowrap;}
+.player-progress-container:hover .player-seek-tooltip,.player-progress-container.is-dragging .player-seek-tooltip{opacity:1;}
+#radioPlayer .player-time{min-width:90px;text-align:right;font-size:11px;color:#c9d6d1;flex-shrink:0;font-feature-settings:"tnum";}
+.press{display:grid;grid-template-columns:.55fr 1.45fr;gap:50px;align-items:start}.press-intro h2{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(45px,6vw,80px);line-height:.9;letter-spacing:-.04em;margin:10px 0 14px}.press-intro p{font-family:'Source Serif 4','Fraunces',serif;font-size:17px;line-height:1.5;color:var(--ink-soft);max-width:31ch}.press-stat{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:baseline;gap:8px 12px;margin-top:28px;padding-top:16px;border-top:1px solid var(--line);max-width:300px}.press-stat strong,.press-stat b{font:500 42px/.8 'Bodoni Moda','Fraunces',serif;color:var(--teal)}.press-stat span{font:500 9px 'Crimson Pro',serif;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}.team-wrap{min-width:0}.editorial-board{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:13px 0 15px}.board-names{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}.board-names span{display:flex;flex-direction:column;gap:3px}.board-names strong{font-size:12px}.board-names small{font:500 8px 'Crimson Pro',serif;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}.team-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:22px}.team-list h3{font:500 28px/.95 'Bodoni Moda','Fraunces',serif;margin:7px 0 10px}.name-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:18px;border-top:1px solid var(--line)}.name-grid span{font-500 10px 'Inter',sans-serif;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink-soft)}
 @media(max-width:900px){.radio-section{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px}.radio-card{flex-basis:calc((100% - 10px)/2)}.press{grid-template-columns:1fr;gap:34px}.board-names{grid-template-columns:1fr 1fr}.team-columns{gap:24px}}
-@media(max-width:760px){.radio-section{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}.radio-card{flex-basis:100%;min-height:285px;padding:18px}.radio-card h3{font-size:clamp(29px,9vw,40px)}.radio-card p{font-size:14px}.radio-controls{gap:12px;flex-wrap:wrap}.radio-arrows{order:1}.radio-count{order:2;margin-left:auto}.radio-dots{order:3;width:100%;justify-content:center;min-height:28px;overflow:hidden}.radio-dot{width:10px;height:10px;min-width:10px}.radio-dot.active{width:24px;min-width:24px}.radio-arrow{width:48px;height:44px}#radioPlayer{padding:9px 0}#radioPlayer .player-inner{gap:10px;flex-wrap:wrap}#radioPlayer .player-title{min-width:0;flex:1 1 150px}#radioPlayer .player-title strong{font-size:14px}#radioPlayer .player-progress{order:4;flex-basis:100%;width:100%}.press{grid-template-columns:1fr;gap:28px}.press-intro p{font-size:16px}.press-stat{max-width:100%}.board-names{grid-template-columns:1fr;gap:12px}.team-columns{grid-template-columns:1fr;gap:30px}.name-grid{grid-template-columns:1fr 1fr;column-gap:14px}.name-grid span{font-size:10px;line-height:1.3;overflow-wrap:anywhere}}
+@media(max-width:760px){.radio-section{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}.radio-card{flex-basis:100%;min-height:285px;padding:18px}.radio-card h3{font-size:clamp(29px,9vw,40px)}.radio-card p{font-size:14px}.radio-controls{gap:12px;flex-wrap:wrap}.radio-arrows{order:1}.radio-count{order:2;margin-left:auto}.radio-dots{order:3;width:100%;justify-content:center;min-height:28px;overflow:hidden}.radio-dot{width:10px;height:10px;min-width:10px}.radio-dot.active{width:24px;min-width:24px}.radio-arrow{width:48px;height:44px}#radioPlayer{padding:9px 0}#radioPlayer .player-inner{gap:10px;flex-wrap:wrap}#radioPlayer .player-title{min-width:0;flex:1 1 140px}#radioPlayer .player-title strong{font-size:14px}.player-progress-container{order:4;flex-basis:100%;width:100%;margin-top:4px;}.press{grid-template-columns:1fr;gap:28px}.press-intro p{font-size:16px}.press-stat{max-width:100%}.board-names{grid-template-columns:1fr;gap:12px}.team-columns{grid-template-columns:1fr;gap:30px}.name-grid{grid-template-columns:1fr 1fr;column-gap:14px}.name-grid span{font-size:10px;line-height:1.3;overflow-wrap:anywhere}}
 @media(max-width:380px){.name-grid{grid-template-columns:1fr}.press-stat{grid-template-columns:auto 1fr;gap:8px 12px}.press-stat b{grid-column:1}.press-stat span:last-child{grid-column:2;grid-row:2}}
 
 /* =========================================================
@@ -1312,7 +1403,7 @@
       <div class="article-actions">
         <a class="article-link article-btn primary" href="#article-uncsw-witch" data-article="article-uncsw-witch">Read Full Feature →</a>
         <a class="article-btn pdf" href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
-        <button type="button" class="article-btn play-btn" data-audio="audio/uncsw.mp3" aria-label="Listen to Ladyfish Affairs broadcast" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><polygon points="6,4 20,12 6,20"/></svg><span>Listen Broadcast (05:17)</span></button>
+        <button type="button" class="article-btn broadcast-btn play-btn" data-audio="audio/uncsw.mp3" aria-label="Listen to Ladyfish Affairs broadcast"><span class="btn-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span><span class="btn-text">Listen Broadcast (05:17)</span></button>
       </div>
     </div>
     <div class="stat-card">
@@ -1516,7 +1607,7 @@
       <div class="article-actions">
         <a class="article-link article-btn primary" href="#article-disec-feature" data-article="article-disec-feature">Read Full Feature →</a>
         <a class="article-btn pdf" href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
-        <button type="button" class="article-btn play-btn" data-audio="audio/disec-after-dark.mp3" aria-label="Listen to DISEC After Dark with Ridha Methar" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><polygon points="6,4 20,12 6,20"/></svg><span>DISEC After Dark (04:30)</span></button>
+        <button type="button" class="article-btn broadcast-btn play-btn" data-audio="audio/disec-after-dark.mp3" aria-label="Listen to DISEC After Dark with Ridha Methar"><span class="btn-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span><span class="btn-text">DISEC After Dark (04:30)</span></button>
       </div>
     </div>
     <div class="stat-card">
@@ -1691,10 +1782,30 @@
 </section>
 <div class="player" id="radioPlayer" aria-label="Radio Voice player">
   <div class="wrap player-inner">
-    <button class="play" id="radioPlayerButton" type="button" aria-label="Play selected Radio Voice entry">▶</button>
-    <div class="player-title"><strong id="playerTitle">Overheard in the Hallway</strong><div class="small player-meta">AIPPM · Hosted by Diya Dileep</div></div>
-    <div class="player-progress" aria-hidden="true"><span id="playerBar"></span></div>
-    <span class="mono player-time" id="playerTime">02:48</span>
+    <div class="player-controls">
+      <button class="player-btn-skip" id="playerSkipBack" type="button" aria-label="Skip backward 10 seconds" title="Rewind 10s">
+        <svg viewBox="0 0 24 24"><polygon points="11 19 2 12 11 5 11 19"/><polygon points="22 19 13 12 22 5 22 19"/></svg>
+      </button>
+      <button class="play" id="radioPlayerButton" type="button" aria-label="Play selected Radio Voice entry">▶</button>
+      <button class="player-btn-skip" id="playerSkipForward" type="button" aria-label="Skip forward 10 seconds" title="Fast forward 10s">
+        <svg viewBox="0 0 24 24"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></svg>
+      </button>
+    </div>
+    <div class="player-title">
+      <strong id="playerTitle">Overheard in the Hallway</strong>
+      <div class="small player-meta">AIPPM · Hosted by Diya Dileep</div>
+    </div>
+    <div class="player-progress-container" id="playerProgressContainer" title="Click or drag to seek">
+      <div class="player-progress" id="playerProgress" role="slider" tabindex="0" aria-label="Seek audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span id="playerBar"></span>
+        <span class="player-seek-thumb" id="playerSeekThumb"></span>
+      </div>
+      <div class="player-seek-hover" id="playerSeekHover"></div>
+      <div class="player-seek-tooltip" id="playerSeekTooltip">00:00</div>
+    </div>
+    <div class="mono player-time" id="playerTime">
+      <span id="playerCurrentTime">00:00</span> / <span id="playerDuration">02:48</span>
+    </div>
   </div>
 </div>
 
@@ -1939,17 +2050,7 @@
       dek: 'A classified investigation into an "honour killing" that exposes what protection the law gives when society refuses to see love.',
       meta: 'By Amitha B · IP Reporter, AIPPM Committee',
       pdf: 'pdfs/manish-kumar-case-file.pdf',
-      contentHtml: `<div class="article-audio-box" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
-  <button type="button" class="play-btn" data-audio="audio/uncnd.mp3" aria-label="Play UNCND D&D Debrief with Malavika" style="width:42px;height:42px;flex-shrink:0;">
-    <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="6,4 20,12 6,20"/></svg>
-  </button>
-  <div>
-    <div style="font-family:'Crimson Pro',serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);font-weight:700;">Radio Voice Companion · 05:19</div>
-    <div style="font-size:14px;font-weight:600;color:var(--ink);">Dungeons & Dragons with Malavika: The Rogue Chemist & Natural 1s</div>
-    <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">Hosted by Malavika Unnikrishnan · SSET News debrief on UNCND.</div>
-  </div>
-</div>
-<div class="dossier-card">
+      contentHtml: `<div class="dossier-card">
   <div class="dossier-header">
     <span class="dossier-stamp">CLASSIFIED — MURDER CASE</span>
     <span class="dossier-case">CASE FILE : 52Z627/23</span>
@@ -2020,14 +2121,22 @@
       meta: 'By Ridha Methar · DISEC Floor Correspondent',
       pdf: 'pdfs/apparently-the-gun-knows-who-is-right.pdf',
       contentHtml: `<p class="lead"><em>When international law protects the rules more consistently than the people those rules were meant to protect. Your correspondent from the DISEC floor, Ridha Methar.</em></p>
-<div class="article-audio-box" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
+<div class="article-audio-box" data-audio="audio/disec-after-dark.mp3" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
   <button type="button" class="play-btn" data-audio="audio/disec-after-dark.mp3" aria-label="Play DISEC After Dark by Ridha Methar" style="width:42px;height:42px;flex-shrink:0;">
     <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="6,4 20,12 6,20"/></svg>
   </button>
-  <div>
+  <div style="flex:1;min-width:0;">
     <div style="font-family:'Crimson Pro',serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);font-weight:700;">DISEC After Dark Broadcast · 04:30</div>
     <div style="font-size:14px;font-weight:600;color:var(--ink);">DISEC After Dark: Weapons Diversion, Custody & State Responsibility</div>
     <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">Reported live by Ridha Methar · DISEC Floor Correspondent.</div>
+    <div class="article-audio-seeker" style="margin-top:8px;display:flex;align-items:center;gap:10px;">
+      <div class="inline-progress-wrap" role="slider" tabindex="0" aria-label="Seek article audio" style="flex:1;height:20px;display:flex;align-items:center;cursor:pointer;">
+        <div style="width:100%;height:4px;background:rgba(19,45,40,0.15);border-radius:2px;overflow:hidden;position:relative;">
+          <div class="inline-bar" style="width:0%;height:100%;background:var(--signal);border-radius:2px;transition:width 0.08s linear;"></div>
+        </div>
+      </div>
+      <span class="inline-time mono" style="font-size:11px;color:var(--ink-soft);min-width:85px;text-align:right;">00:00 / 04:30</span>
+    </div>
   </div>
 </div>
 <div class="article-featured-img">
@@ -2100,6 +2209,24 @@
       meta: 'By Nivin Vineeth · UNGA DISEC',
       pdf: 'pdfs/arming-the-enemy-proxy-warfare.pdf',
       contentHtml: `<p class="lead"><em>"An enemy of my enemy is my friend"</em> has shaped foreign policy for centuries. But in modern warfare, utility has replaced friendship, and utility has been engineered to look like distance. States no longer simply choose proxies over armies instead they choose architecture: layers of intermediaries and transit states designed so that when a weapon is finally used against a civilian, no government's fingerprints remain on the trigger.</p>
+<div class="article-audio-box" data-audio="audio/disec-three-countries.mp3" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
+  <button type="button" class="play-btn" data-audio="audio/disec-three-countries.mp3" aria-label="Play companion analysis: Three Countries, Three Solutions" style="width:42px;height:42px;flex-shrink:0;">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="6,4 20,12 6,20"/></svg>
+  </button>
+  <div style="flex:1;min-width:0;">
+    <div style="font-family:'Crimson Pro',serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);font-weight:700;">Companion Audio Briefing · 03:41</div>
+    <div style="font-size:14px;font-weight:600;color:var(--ink);">Three Countries, Three Solutions — China, Russia & Syria</div>
+    <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">International Press Corps reporting on the UN General Assembly's First Committee.</div>
+    <div class="article-audio-seeker" style="margin-top:8px;display:flex;align-items:center;gap:10px;">
+      <div class="inline-progress-wrap" role="slider" tabindex="0" aria-label="Seek article audio" style="flex:1;height:20px;display:flex;align-items:center;cursor:pointer;">
+        <div style="width:100%;height:4px;background:rgba(19,45,40,0.15);border-radius:2px;overflow:hidden;position:relative;">
+          <div class="inline-bar" style="width:0%;height:100%;background:var(--signal);border-radius:2px;transition:width 0.08s linear;"></div>
+        </div>
+      </div>
+      <span class="inline-time mono" style="font-size:11px;color:var(--ink-soft);min-width:85px;text-align:right;">00:00 / 03:41</span>
+    </div>
+  </div>
+</div>
 <p>This is not one problem but two. The first is <strong>direct state sponsorship</strong>, a government knowingly arming a non-state actor for its own strategic ends. The second is <strong>indirect transfer</strong>, the diversion of weapons through brokers, falsified end-user certificates, and complicit transit states until the chain of custody is too tangled to prosecute. DISEC's agenda treats these as distinct failures, and any serious editorial must too.</p>
 <p>Following the Soviet invasion of Afghanistan in 1979, the CIA's Operation Cyclone funnelled over two billion dollars in weapons and training to the mujahideen through Pakistan's ISI, with Saudi Arabia matching Washington's contributions.<sup>1</sup> Among the transfers were roughly two thousand Stinger missiles; a CIA buyback program launched in 1993 at a cost of $65 million which is nearly double the missiles' original value.<sup>2</sup> It was later called an "abysmal failure" by intelligence officials, since the weapons had scattered too widely to trace. The strategic logic was sound: Washington raised the cost of occupation without deploying its own troops. But the networks built to fight that war did not disband with it, they hardened into the Taliban and sheltered al-Qaeda. <em>Sponsorship does not expire when the sponsor's interest does.</em></p>
 <p>If Afghanistan shows what sponsorship does, Libya shows how indirect transfer hides. A 2013 UN Panel of Experts report tracked Libyan weapons reaching fourteen countries in violation of the arms embargo; more recent reporting documents ammunition destined for Sudan's Rapid Support Forces being diverted through Libya and resold to networks linked to ISIS-affiliated gold trafficking in the Niger.<sup>3</sup> This is not incidental leakage; it is the predictable result of a system built on self-reported compliance. The Arms Trade Treaty's Article 11 requires states to assess and mitigate diversion risk, yet enforcement still relies heavily on exporters policing themselves, with no binding penalty for failure.<sup>4</sup></p>
@@ -2160,14 +2287,22 @@
       meta: 'By Sruthy S Muraly · UNCSW Feature',
       pdf: 'pdfs/when-fear-needs-a-victim-witch.pdf',
       contentHtml: `<p class="lead">When illness, poverty and misfortune demand an explanation, the weakest are too often made to carry the blame. Reporting from UNCSW is your reliable source of information, Sruthy.</p>
-<div class="article-audio-box" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
+<div class="article-audio-box" data-audio="audio/uncsw.mp3" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
   <button type="button" class="play-btn" data-audio="audio/uncsw.mp3" aria-label="Play BNN Ladyfish Affairs Broadcast" style="width:42px;height:42px;flex-shrink:0;">
     <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="6,4 20,12 6,20"/></svg>
   </button>
-  <div>
+  <div style="flex:1;min-width:0;">
     <div style="font-family:'Crimson Pro',serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);font-weight:700;">Radio Voice Broadcast · 05:17</div>
     <div style="font-size:14px;font-weight:600;color:var(--ink);">Naming the Witch: BNN Council for Ladyfish Affairs</div>
     <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">Satirical newsroom debrief on reef customs, child marriage, and witch accusations.</div>
+    <div class="article-audio-seeker" style="margin-top:8px;display:flex;align-items:center;gap:10px;">
+      <div class="inline-progress-wrap" role="slider" tabindex="0" aria-label="Seek article audio" style="flex:1;height:20px;display:flex;align-items:center;cursor:pointer;">
+        <div style="width:100%;height:4px;background:rgba(19,45,40,0.15);border-radius:2px;overflow:hidden;position:relative;">
+          <div class="inline-bar" style="width:0%;height:100%;background:var(--signal);border-radius:2px;transition:width 0.08s linear;"></div>
+        </div>
+      </div>
+      <span class="inline-time mono" style="font-size:11px;color:var(--ink-soft);min-width:85px;text-align:right;">00:00 / 05:17</span>
+    </div>
   </div>
 </div>
 <div class="article-featured-img">
@@ -2290,7 +2425,25 @@
       dek: 'A classified look at Dream Cheese (DC), a synthetic opioid analogue bypassing borders through molecular substitution and predictive toxicology.',
       meta: 'By Malavika Unnikrishnan · Clandestine Bio-Research',
       pdf: 'pdfs/project-somnium-caseum.pdf',
-      contentHtml: `<div class="dossier-card">
+      contentHtml: `<div class="article-audio-box" data-audio="audio/uncnd.mp3" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
+  <button type="button" class="play-btn" data-audio="audio/uncnd.mp3" aria-label="Play UNCND D&D Debrief with Malavika" style="width:42px;height:42px;flex-shrink:0;">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="6,4 20,12 6,20"/></svg>
+  </button>
+  <div style="flex:1;min-width:0;">
+    <div style="font-family:'Crimson Pro',serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);font-weight:700;">Radio Voice Companion · 05:19</div>
+    <div style="font-size:14px;font-weight:600;color:var(--ink);">Dungeons & Dragons with Malavika: The Rogue Chemist & Natural 1s</div>
+    <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">Hosted by Malavika Unnikrishnan · SSET News debrief on UNCND.</div>
+    <div class="article-audio-seeker" style="margin-top:8px;display:flex;align-items:center;gap:10px;">
+      <div class="inline-progress-wrap" role="slider" tabindex="0" aria-label="Seek article audio" style="flex:1;height:20px;display:flex;align-items:center;cursor:pointer;">
+        <div style="width:100%;height:4px;background:rgba(19,45,40,0.15);border-radius:2px;overflow:hidden;position:relative;">
+          <div class="inline-bar" style="width:0%;height:100%;background:var(--signal);border-radius:2px;transition:width 0.08s linear;"></div>
+        </div>
+      </div>
+      <span class="inline-time mono" style="font-size:11px;color:var(--ink-soft);min-width:85px;text-align:right;">00:00 / 05:19</span>
+    </div>
+  </div>
+</div>
+<div class="dossier-card">
   <div class="dossier-header">
     <span class="dossier-stamp">CONFIDENTIAL — LEVEL 5 CLEARANCE</span>
     <span class="dossier-case">DOSSIER REF: 1510-994-X9</span>
@@ -2383,14 +2536,22 @@
       dek: 'Delegate of Indonesia on the race to regulate new psychoactive substances, strengthen intelligence sharing and protect legitimate research.',
       meta: 'By Sarah Asraf · UNCND Interview',
       pdf: 'pdfs/when-the-molecule-gets-ahead.pdf',
-      contentHtml: `<div class="article-audio-box" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
+      contentHtml: `<div class="article-audio-box" data-audio="audio/uncnd-news-radio.mp3" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
   <button type="button" class="play-btn" data-audio="audio/uncnd-news-radio.mp3" aria-label="Play UNCND News Radio broadcast by Sarah Asraf" style="width:42px;height:42px;flex-shrink:0;">
     <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="6,4 20,12 6,20"/></svg>
   </button>
-  <div>
+  <div style="flex:1;min-width:0;">
     <div style="font-family:'Crimson Pro',serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);font-weight:700;">UNCND News Radio Broadcast · 06:54</div>
     <div style="font-size:14px;font-weight:600;color:var(--ink);">GSL Debates, Analog Scheduling & Floor Interview with France</div>
     <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">Hosted by Sarah Asraf · International Press Corps UNCND Desk.</div>
+    <div class="article-audio-seeker" style="margin-top:8px;display:flex;align-items:center;gap:10px;">
+      <div class="inline-progress-wrap" role="slider" tabindex="0" aria-label="Seek article audio" style="flex:1;height:20px;display:flex;align-items:center;cursor:pointer;">
+        <div style="width:100%;height:4px;background:rgba(19,45,40,0.15);border-radius:2px;overflow:hidden;position:relative;">
+          <div class="inline-bar" style="width:0%;height:100%;background:var(--signal);border-radius:2px;transition:width 0.08s linear;"></div>
+        </div>
+      </div>
+      <span class="inline-time mono" style="font-size:11px;color:var(--ink-soft);min-width:85px;text-align:right;">00:00 / 06:54</span>
+    </div>
   </div>
 </div>
 <div class="article-featured-img">
@@ -2586,10 +2747,20 @@
   });
   if (location.hash.startsWith('#article-')) openArticle(location.hash.slice(1), false);
 
-  /* Radio Voice: carousel + real HTML5 audio */
+  /* Radio Voice: carousel + HTML5 audio + Interactive Seeking */
   const radioAudio = new Audio(); radioAudio.preload='metadata';
   const radioTrack=document.getElementById('radioTrack'), radioDots=document.getElementById('radioDots'), radioCount=document.getElementById('radioCount');
-  const playerTitle=document.getElementById('playerTitle'), playerMeta=document.querySelector('#radioPlayer .player-meta'), playerBar=document.getElementById('playerBar'), playerTime=document.getElementById('playerTime'), playerButton=document.getElementById('radioPlayerButton');
+  const playerTitle=document.getElementById('playerTitle'), playerMeta=document.querySelector('#radioPlayer .player-meta'), playerBar=document.getElementById('playerBar'), playerButton=document.getElementById('radioPlayerButton');
+  const progressContainer=document.getElementById('playerProgressContainer');
+  const progressElem=document.getElementById('playerProgress');
+  const seekThumb=document.getElementById('playerSeekThumb');
+  const seekHover=document.getElementById('playerSeekHover');
+  const seekTooltip=document.getElementById('playerSeekTooltip');
+  const playerCurTime=document.getElementById('playerCurrentTime');
+  const playerDurTime=document.getElementById('playerDuration');
+  const skipBackBtn=document.getElementById('playerSkipBack');
+  const skipForwardBtn=document.getElementById('playerSkipForward');
+
   const radioData=[
     ['01','AIPPM','Overheard in the Hallway','Vox pops from AIPPM corridors — delegates on gender-neutral law.','Diya Dileep','02:48','audio/aippm.mp3'],
     ['02','UNCSW','Naming the Witch: Ladyfish Affairs','A satirical newsroom debrief on UNCSW — reef customs, child marriage, and tradition vs cruelty.','BNN News Desk','05:17','audio/uncsw.mp3'],
@@ -2604,21 +2775,179 @@
   radioTrack.innerHTML=radioData.map((r,i)=>`<article class="radio-card" data-radio-index="${i}"><div><div class="radio-top"><span class="radio-tag">${r[0]} · ${r[1]}</span><button class="play play-btn" type="button" data-radio-index="${i}" data-audio="${r[6]}" aria-label="Play ${r[2]}" aria-pressed="false">${playIcon}</button></div><h3>${r[2]}</h3><p>${r[3]}</p></div><div><div class="wave" aria-hidden="true"></div><div class="radio-foot"><span>Hosted by ${r[4]}</span><span>${r[5]}</span></div></div></article>`).join('');
   radioDots.innerHTML=radioData.map((_,i)=>`<button class="radio-dot${i===0?' active':''}" type="button" data-radio-index="${i}" aria-label="Go to radio entry ${i+1}"></button>`).join('');
   const radioCards=[...radioTrack.querySelectorAll('.radio-card')];
-  let radioIndex=0,activeRadioButton=null,activeRadioStatus=null,selectedRadioIndex=0,touchStart=0;
+  let radioIndex=0,activeRadioButton=null,activeRadioStatus=null,selectedRadioIndex=0,touchStart=0,isDraggingProgress=false;
   const perView=()=>innerWidth<=600?1:innerWidth<=900?2:3;
+
+  function formatTime(v){
+    if(!Number.isFinite(v) || v < 0) return '00:00';
+    const m=Math.floor(v/60),s=Math.floor(v%60);
+    return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+
   function setPlayIcon(btn,playing){
     if(!btn)return;
-    btn.innerHTML=playing?pauseIcon:playIcon;
+    const isArticleBtn = btn.classList.contains('article-btn');
+    if(isArticleBtn){
+      const iconHolder = btn.querySelector('.btn-icon') || btn.querySelector('svg');
+      if(iconHolder){
+        iconHolder.innerHTML = playing ? pauseIcon : playIcon;
+      }
+      const textSpan = btn.querySelector('.btn-text');
+      if(textSpan){
+        if(!btn.dataset.defaultText) btn.dataset.defaultText = textSpan.textContent;
+        textSpan.textContent = playing ? textSpan.textContent.replace(/^Listen\b/i, 'Playing') : btn.dataset.defaultText;
+      }
+    } else {
+      btn.innerHTML=playing?pauseIcon:playIcon;
+    }
     btn.classList.toggle('is-playing',playing);
     btn.setAttribute('aria-pressed',String(playing));
     btn.closest('.play-row')?.querySelector('.waveform')?.classList.toggle('active',playing);
     btn.closest('.radio-card')?.querySelector('.wave')?.classList.toggle('active',playing);
+    const box = btn.closest('.article-audio-box');
+    if(box){
+      box.classList.toggle('is-playing', playing);
+      box.querySelector('.waveform')?.classList.toggle('active', playing);
+    }
   }
-  function formatTime(v){if(!Number.isFinite(v))return playerTime.textContent;const m=Math.floor(v/60),s=Math.floor(v%60);return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
+
+  function getSeekFraction(e, container){
+    const rect = container.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const fraction = (clientX - rect.left) / rect.width;
+    return Math.max(0, Math.min(1, fraction));
+  }
+
+  function updateSeekVisuals(fraction, cur, dur){
+    const pct = (fraction * 100).toFixed(2) + '%';
+    if(playerBar) playerBar.style.width = pct;
+    if(seekThumb) seekThumb.style.left = pct;
+    if(progressElem) progressElem.setAttribute('aria-valuenow', Math.round(fraction * 100));
+    if(playerCurTime) playerCurTime.textContent = formatTime(cur);
+    if(playerDurTime && Number.isFinite(dur) && dur > 0) playerDurTime.textContent = formatTime(dur);
+
+    // Sync all inline article audio seekers matching currently playing track
+    document.querySelectorAll('.article-audio-box').forEach(box => {
+      const btn = box.querySelector('.play-btn[data-audio]');
+      if(btn && activeRadioButton && btn.dataset.audio === activeRadioButton.dataset.audio){
+        const inlineBar = box.querySelector('.inline-bar');
+        const inlineTime = box.querySelector('.inline-time');
+        if(inlineBar) inlineBar.style.width = pct;
+        if(inlineTime && Number.isFinite(dur) && dur > 0){
+          inlineTime.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+        }
+      }
+    });
+  }
+
+  function seekToFraction(fraction){
+    if(!Number.isFinite(radioAudio.duration) || radioAudio.duration <= 0) return;
+    const targetTime = fraction * radioAudio.duration;
+    radioAudio.currentTime = targetTime;
+    updateSeekVisuals(fraction, targetTime, radioAudio.duration);
+  }
+
+  /* Interactive Seeker Events on #radioPlayer */
+  if(progressContainer){
+    progressContainer.addEventListener('mousedown', e => {
+      isDraggingProgress = true;
+      progressContainer.classList.add('is-dragging');
+      seekToFraction(getSeekFraction(e, progressContainer));
+    });
+
+    window.addEventListener('mousemove', e => {
+      if(isDraggingProgress){
+        seekToFraction(getSeekFraction(e, progressContainer));
+      }
+      if(progressContainer.matches(':hover') || isDraggingProgress){
+        const frac = getSeekFraction(e, progressContainer);
+        if(seekHover) seekHover.style.width = (frac * 100).toFixed(2) + '%';
+        if(seekTooltip && Number.isFinite(radioAudio.duration) && radioAudio.duration > 0){
+          seekTooltip.style.left = (frac * 100).toFixed(2) + '%';
+          seekTooltip.textContent = formatTime(frac * radioAudio.duration);
+        }
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      if(isDraggingProgress){
+        isDraggingProgress = false;
+        progressContainer.classList.remove('is-dragging');
+      }
+    });
+
+    progressContainer.addEventListener('touchstart', e => {
+      isDraggingProgress = true;
+      progressContainer.classList.add('is-dragging');
+      seekToFraction(getSeekFraction(e, progressContainer));
+    }, {passive:true});
+
+    progressContainer.addEventListener('touchmove', e => {
+      if(isDraggingProgress){
+        seekToFraction(getSeekFraction(e, progressContainer));
+      }
+    }, {passive:true});
+
+    progressContainer.addEventListener('touchend', () => {
+      isDraggingProgress = false;
+      progressContainer.classList.remove('is-dragging');
+    });
+
+    progressContainer.addEventListener('mouseleave', () => {
+      if(seekHover) seekHover.style.width = '0%';
+    });
+  }
+
+  if(progressElem){
+    progressElem.addEventListener('keydown', e => {
+      if(!Number.isFinite(radioAudio.duration)) return;
+      if(e.key === 'ArrowLeft'){
+        radioAudio.currentTime = Math.max(0, radioAudio.currentTime - 5);
+        e.preventDefault();
+      } else if(e.key === 'ArrowRight'){
+        radioAudio.currentTime = Math.min(radioAudio.duration, radioAudio.currentTime + 5);
+        e.preventDefault();
+      } else if(e.key === 'Home'){
+        radioAudio.currentTime = 0;
+        e.preventDefault();
+      } else if(e.key === 'End'){
+        radioAudio.currentTime = radioAudio.duration;
+        e.preventDefault();
+      }
+    });
+  }
+
+  if(skipBackBtn){
+    skipBackBtn.addEventListener('click', () => {
+      if(Number.isFinite(radioAudio.duration)){
+        radioAudio.currentTime = Math.max(0, radioAudio.currentTime - 10);
+      }
+    });
+  }
+  if(skipForwardBtn){
+    skipForwardBtn.addEventListener('click', () => {
+      if(Number.isFinite(radioAudio.duration)){
+        radioAudio.currentTime = Math.min(radioAudio.duration, radioAudio.currentTime + 10);
+      }
+    });
+  }
+
   function updateRadio(){const max=Math.max(0,radioCards.length-perView());radioIndex=Math.min(radioIndex,max);const card=radioCards[0];if(!card)return;radioTrack.style.transform=`translate3d(${-radioIndex*(card.getBoundingClientRect().width+10)}px,0,0)`;radioDots.querySelectorAll('.radio-dot').forEach((d,i)=>d.classList.toggle('active',i===radioIndex));radioCount.textContent=`${String(radioIndex+1).padStart(2,'0')} / ${String(radioCards.length).padStart(2,'0')}`;}
   function moveRadio(d){const max=Math.max(0,radioCards.length-perView());radioIndex+=d;if(radioIndex<0)radioIndex=max;if(radioIndex>max)radioIndex=0;updateRadio();}
   function goRadio(i){const max=Math.max(0,radioCards.length-perView());radioIndex=Math.min(Math.max(0,i),max);updateRadio();}
-  function selectRadio(i){const r=radioData[i];if(!r)return;selectedRadioIndex=i;playerTitle.textContent=r[2];playerMeta.textContent=`${r[1]} · Hosted by ${r[4]}`;playerTime.textContent=r[5];playerBar.style.width='0%';goRadio(i);}
+  function selectRadio(i){
+    const r=radioData[i];
+    if(!r)return;
+    selectedRadioIndex=i;
+    playerTitle.textContent=r[2];
+    playerMeta.textContent=`${r[1]} · Hosted by ${r[4]}`;
+    if(playerDurTime) playerDurTime.textContent=r[5];
+    if(playerCurTime) playerCurTime.textContent='00:00';
+    if(playerBar) playerBar.style.width='0%';
+    if(seekThumb) seekThumb.style.left='0%';
+    goRadio(i);
+  }
+
   function playRadio(btn,src,status){
     if(!src)return;
     let i=Number(btn.dataset.radioIndex);
@@ -2626,12 +2955,23 @@
       i=radioData.findIndex(r=>r[6]===src);
     }
     if(Number.isFinite(i)&&i>=0)selectRadio(i);
-    if(activeRadioButton===btn&&!radioAudio.paused){radioAudio.pause();setPlayIcon(btn,false);return;}
+    if(activeRadioButton===btn&&!radioAudio.paused){
+      radioAudio.pause();
+      setPlayIcon(btn,false);
+      return;
+    }
     if(activeRadioButton&&activeRadioButton!==btn)setPlayIcon(activeRadioButton,false);
-    radioAudio.src=src;
+    
+    // Set src if different
+    const currentAbsolute = radioAudio.src ? new URL(radioAudio.src, location.href).href : '';
+    const targetAbsolute = new URL(src, location.href).href;
+    if(currentAbsolute !== targetAbsolute){
+      radioAudio.src=src;
+      updateSeekVisuals(0, 0, 0);
+    }
+
     activeRadioButton=btn;
     activeRadioStatus=status;
-    playerBar.style.width='0%';
     radioAudio.play().then(()=>{
       setPlayIcon(btn,true);
       playerButton.innerHTML=pauseIcon;
@@ -2642,18 +2982,106 @@
       if(status)status.textContent='Audio recording not available.';
     });
   }
+
   radioAudio.addEventListener('error',()=>{
     if(activeRadioButton) setPlayIcon(activeRadioButton,false);
     playerButton.innerHTML=playIcon;
   });
-  document.addEventListener('click',e=>{const audioBtn=e.target.closest('.play-btn[data-audio]');if(audioBtn){playRadio(audioBtn,audioBtn.dataset.audio||'',null);return;}const move=e.target.closest('[data-radio-move]');if(move){moveRadio(Number(move.dataset.radioMove));return;}const dot=e.target.closest('.radio-dot');if(dot){goRadio(Number(dot.dataset.radioIndex));return;}if(e.target.closest('#radioPlayerButton')){const r=radioData[selectedRadioIndex];if(!r)return;if(activeRadioButton&&Number(activeRadioButton.dataset.radioIndex)===selectedRadioIndex){if(radioAudio.paused){radioAudio.play().then(()=>{setPlayIcon(activeRadioButton,true);playerButton.innerHTML=pauseIcon;});}else{radioAudio.pause();}}else{const btn=radioCards[selectedRadioIndex]?.querySelector('.play-btn');if(btn)playRadio(btn,r[6],null);}}});
+
+  document.addEventListener('click',e=>{
+    const audioBtn=e.target.closest('.play-btn[data-audio]');
+    if(audioBtn){
+      playRadio(audioBtn,audioBtn.dataset.audio||'',null);
+      return;
+    }
+    const move=e.target.closest('[data-radio-move]');
+    if(move){
+      moveRadio(Number(move.dataset.radioMove));
+      return;
+    }
+    const dot=e.target.closest('.radio-dot');
+    if(dot){
+      goRadio(Number(dot.dataset.radioIndex));
+      return;
+    }
+    if(e.target.closest('#radioPlayerButton')){
+      const r=radioData[selectedRadioIndex];
+      if(!r)return;
+      if(activeRadioButton&&Number(activeRadioButton.dataset.radioIndex)===selectedRadioIndex){
+        if(radioAudio.paused){
+          radioAudio.play().then(()=>{
+            setPlayIcon(activeRadioButton,true);
+            playerButton.innerHTML=pauseIcon;
+          });
+        }else{
+          radioAudio.pause();
+        }
+      }else{
+        const btn=radioCards[selectedRadioIndex]?.querySelector('.play-btn');
+        if(btn)playRadio(btn,r[6],null);
+      }
+      return;
+    }
+    const inlineProgress=e.target.closest('.inline-progress-wrap');
+    if(inlineProgress){
+      const box=inlineProgress.closest('.article-audio-box');
+      const btn=box?.querySelector('.play-btn[data-audio]');
+      if(btn){
+        const src=btn.dataset.audio;
+        if(activeRadioButton!==btn){
+          playRadio(btn,src,null);
+        }
+        setTimeout(()=>{
+          seekToFraction(getSeekFraction(e, inlineProgress));
+        },40);
+      }
+    }
+  });
+
   radioTrack.addEventListener('touchstart',e=>{touchStart=e.touches[0].clientX},{passive:true});
   radioTrack.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStart;if(Math.abs(dx)>45)moveRadio(dx<0?1:-1)},{passive:true});
-  radioAudio.addEventListener('timeupdate',()=>{if(radioAudio.duration){playerBar.style.width=(radioAudio.currentTime/radioAudio.duration*100)+'%';playerTime.textContent=formatTime(radioAudio.currentTime);}});
-  radioAudio.addEventListener('ended',()=>{if(activeRadioButton)setPlayIcon(activeRadioButton,false);activeRadioButton=null;playerButton.innerHTML=playIcon;playerButton.setAttribute('aria-label','Play selected Radio Voice entry');playerBar.style.width='0%';const r=radioData[selectedRadioIndex];if(r)playerTime.textContent=r[5];});
-  radioAudio.addEventListener('pause',()=>{if(activeRadioButton)setPlayIcon(activeRadioButton,false);playerButton.innerHTML=playIcon;playerButton.setAttribute('aria-label','Play selected Radio Voice entry');});
-  document.querySelectorAll('.chapter-radio .mini-play[data-radio-title]').forEach(btn=>btn.addEventListener('click',()=>{const i=radioData.findIndex(r=>r[2]===btn.dataset.radioTitle);if(i<0)return;const cardBtn=radioCards[i]?.querySelector('.play-btn');if(cardBtn)playRadio(cardBtn,radioData[i][6],null);document.getElementById('radio')?.scrollIntoView({behavior:'smooth',block:'start'});}));
-  document.querySelector('.radio-mini .play-btn[data-audio]')?.addEventListener('click',e=>{playRadio(e.currentTarget,e.currentTarget.dataset.audio,null);document.getElementById('radio')?.scrollIntoView({behavior:'smooth',block:'start'});});
+  
+  radioAudio.addEventListener('timeupdate',()=>{
+    if(!isDraggingProgress && radioAudio.duration){
+      const frac = radioAudio.currentTime / radioAudio.duration;
+      updateSeekVisuals(frac, radioAudio.currentTime, radioAudio.duration);
+    }
+  });
+
+  radioAudio.addEventListener('loadedmetadata',()=>{
+    if(radioAudio.duration){
+      if(playerDurTime) playerDurTime.textContent=formatTime(radioAudio.duration);
+      updateSeekVisuals(radioAudio.currentTime / (radioAudio.duration || 1), radioAudio.currentTime, radioAudio.duration);
+    }
+  });
+
+  radioAudio.addEventListener('ended',()=>{
+    if(activeRadioButton)setPlayIcon(activeRadioButton,false);
+    activeRadioButton=null;
+    playerButton.innerHTML=playIcon;
+    playerButton.setAttribute('aria-label','Play selected Radio Voice entry');
+    updateSeekVisuals(0, 0, radioAudio.duration || 0);
+  });
+
+  radioAudio.addEventListener('pause',()=>{
+    if(activeRadioButton)setPlayIcon(activeRadioButton,false);
+    playerButton.innerHTML=playIcon;
+    playerButton.setAttribute('aria-label','Play selected Radio Voice entry');
+  });
+
+  document.querySelectorAll('.chapter-radio .mini-play[data-radio-title]').forEach(btn=>btn.addEventListener('click',()=>{
+    const i=radioData.findIndex(r=>r[2]===btn.dataset.radioTitle);
+    if(i<0)return;
+    const cardBtn=radioCards[i]?.querySelector('.play-btn');
+    if(cardBtn)playRadio(cardBtn,radioData[i][6],null);
+    document.getElementById('radio')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+
+  document.querySelector('.radio-mini .play-btn[data-audio]')?.addEventListener('click',e=>{
+    playRadio(e.currentTarget,e.currentTarget.dataset.audio,null);
+    document.getElementById('radio')?.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
   updateRadio();window.addEventListener('resize',updateRadio);
   /* Back to top */
   const backTop=document.getElementById('backToTop');
