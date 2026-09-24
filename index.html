@@ -1627,10 +1627,17 @@
         <span class="photo-cred" style="background:rgba(19,45,40,0.85);backdrop-filter:blur(4px);">UNGA DISEC · Aaisha (IPP)</span>
       </div>
       <div class="card-body">
-        <div class="tag-row"><span class="tag read">Op-Ed</span><span class="tag pdf-badge">PDF</span></div>
+        <div class="tag-row"><span class="tag read">Op-Ed</span><span class="tag pdf-badge">PDF</span><span class="tag listen">Audio · 03:41</span></div>
         <h3>Arming the Enemy of My Enemy</h3>
         <p class="dek">The justification for proxy warfare, and how states exploit layers of intermediaries and unresolved legal ambiguities like the Nicaragua and Tadić standards.</p>
-        <div class="card-foot"><span>Nivin Vineeth</span> <span>Op-Ed · PDF</span></div>
+        <div class="play-row" style="margin-top:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;">
+          <button class="play-btn" type="button" aria-label="Play Three Countries, Three Solutions by Nivin Vineeth" data-audio="audio/disec-three-countries.mp3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <div class="waveform"><i style="height:35%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:50%"></i><i style="height:70%"></i><i style="height:30%"></i></div>
+          <span style="font-family:'Crimson Pro',serif;font-size:12.5px;color:var(--signal);font-weight:600;letter-spacing:0.02em;">Three Countries, Three Solutions (03:41)</span>
+        </div>
+        <div class="card-foot"><span>Nivin Vineeth</span> <span>Op-Ed + Audio Briefing · 03:41</span></div>
       </div>
     </a>
     <a class="card article-link" href="#article-disec-interview" data-article="article-disec-interview">
@@ -1775,7 +1782,7 @@
           <button aria-label="Next Radio Voice entry" class="radio-arrow" data-radio-move="1" type="button">→</button>
         </div>
         <div class="radio-dots" id="radioDots" aria-label="Radio Voice entries"></div>
-        <span class="radio-count" id="radioCount">01 / 07</span>
+        <span class="radio-count" id="radioCount">01 / 08</span>
       </div>
     </div>
   </div>
@@ -2210,13 +2217,13 @@
       pdf: 'pdfs/arming-the-enemy-proxy-warfare.pdf',
       contentHtml: `<p class="lead"><em>"An enemy of my enemy is my friend"</em> has shaped foreign policy for centuries. But in modern warfare, utility has replaced friendship, and utility has been engineered to look like distance. States no longer simply choose proxies over armies instead they choose architecture: layers of intermediaries and transit states designed so that when a weapon is finally used against a civilian, no government's fingerprints remain on the trigger.</p>
 <div class="article-audio-box" data-audio="audio/disec-three-countries.mp3" style="margin:16px 0 20px;padding:14px 18px;background:var(--paper-dim);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;gap:14px;">
-  <button type="button" class="play-btn" data-audio="audio/disec-three-countries.mp3" aria-label="Play companion analysis: Three Countries, Three Solutions" style="width:42px;height:42px;flex-shrink:0;">
+  <button type="button" class="play-btn" data-audio="audio/disec-three-countries.mp3" aria-label="Play companion analysis: Three Countries, Three Solutions by Nivin Vineeth" style="width:42px;height:42px;flex-shrink:0;">
     <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="6,4 20,12 6,20"/></svg>
   </button>
   <div style="flex:1;min-width:0;">
     <div style="font-family:'Crimson Pro',serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);font-weight:700;">Companion Audio Briefing · 03:41</div>
     <div style="font-size:14px;font-weight:600;color:var(--ink);">Three Countries, Three Solutions — China, Russia & Syria</div>
-    <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">International Press Corps reporting on the UN General Assembly's First Committee.</div>
+    <div style="font-size:12px;color:var(--ink-soft);margin-top:1px;">Reported and hosted by Nivin Vineeth · UNGA DISEC / International Press Corps.</div>
     <div class="article-audio-seeker" style="margin-top:8px;display:flex;align-items:center;gap:10px;">
       <div class="inline-progress-wrap" role="slider" tabindex="0" aria-label="Seek article audio" style="flex:1;height:20px;display:flex;align-items:center;cursor:pointer;">
         <div style="width:100%;height:4px;background:rgba(19,45,40,0.15);border-radius:2px;overflow:hidden;position:relative;">
@@ -2735,6 +2742,7 @@
   }
 
   document.querySelectorAll('.article-link').forEach(card => card.addEventListener('click', e => {
+    if (e.target.closest('.play-btn') || e.target.closest('.broadcast-btn') || e.target.closest('.inline-progress-wrap')) return;
     e.preventDefault();
     openArticle(card.dataset.article);
   }));
@@ -2767,8 +2775,9 @@
     ['03','UNCND','Vienna After Hours: D&D Campaign','Tabletop debrief on today’s UNCND session — rogue chemists and natural 1s.','Malavika Unnikrishnan','05:19','audio/uncnd.mp3'],
     ['04','UNGA DISEC','Disarming the Room: Floor Report','Sania Antony reports live from Room 203 on DISEC’s floor debate.','Sania Antony','03:05','audio/disec.mp3'],
     ['05','WHO','The Counterfeit Cut','A field recording from WHO’s floor — patent law jargon and a tired chair.','Theres Mary Paul','03:05','audio/who.mp3'],
-    ['06','DISEC / PRESS','DISEC After Dark','Ridha Methar reporting from the DISEC floor on weapons diversion, custody, and accountability.','Ridha Methar','04:30','audio/disec-after-dark.mp3'],
-    ['07','UNCND','UNCND News Radio: The Molecule Ahead','Full broadcast on emerging substances, analog scheduling, and live interview with France.','Sarah Asraf','06:54','audio/uncnd-news-radio.mp3']
+    ['06','UNGA DISEC','Three Countries, Three Solutions','Analysis on China, Russia, Syria & selective accountability: "Everybody wants fingerprints, just not their own."','Nivin Vineeth','03:41','audio/disec-three-countries.mp3'],
+    ['07','DISEC / PRESS','DISEC After Dark','Ridha Methar reporting from the DISEC floor on weapons diversion, custody, and accountability.','Ridha Methar','04:30','audio/disec-after-dark.mp3'],
+    ['08','UNCND','UNCND News Radio: The Molecule Ahead','Full broadcast on emerging substances, analog scheduling, and live interview with France.','Sarah Asraf','06:54','audio/uncnd-news-radio.mp3']
   ];
   const playIcon='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>';
   const pauseIcon='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>';
