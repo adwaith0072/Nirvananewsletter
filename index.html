@@ -45,19 +45,19 @@
 
   /* MASTHEAD */
   header.masthead{background:var(--paper);border-bottom:3px solid var(--ink);padding:22px 0 0;}
-  .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:20px;flex-wrap:wrap;}
-  .masthead-meta{font-family:'Crimson Pro',serif;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;line-height:1.7;}
-  .wordmark{font-family:'Bodoni Moda',serif;font-optical-sizing:auto;font-weight:600;font-size:clamp(52px,9vw,104px);text-align:center;flex:1 1 260px;letter-spacing:0.01em;}
-  .masthead-meta.right{text-align:right;}
-  nav.masthead-nav{border-top:1px solid var(--ink);display:flex;gap:0;overflow-x:auto;}
+  .masthead-top{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:24px;padding-bottom:20px;}
+  .masthead-meta{font-family:'Crimson Pro',serif;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;line-height:1.7;justify-self:start;text-align:left;}
+  .wordmark{grid-column:2;justify-self:center;font-family:'Bodoni Moda',serif;font-optical-sizing:auto;font-weight:600;font-size:clamp(52px,9vw,104px);line-height:0.92;text-align:center;letter-spacing:0.01em;white-space:nowrap;}
+  .masthead-meta.right{justify-self:end;text-align:right;}
+  nav.masthead-nav{border-top:1px solid var(--ink);display:flex;justify-content:center;gap:0;overflow-x:auto;}
   nav.masthead-nav a{font-size:13px;font-weight:600;padding:14px 16px;border-right:1px solid var(--line);white-space:nowrap;color:var(--ink);-webkit-tap-highlight-color:transparent;}
+  nav.masthead-nav a:first-child{border-left:1px solid var(--line);}
   nav.masthead-nav a:hover{background:var(--paper-dim);}
   nav.masthead-nav a span{color:var(--signal);}
   nav.masthead-nav a:active{background:var(--paper-dim);}
   @media (max-width:600px){
-    .masthead-top{flex-direction:column;align-items:center;text-align:center;gap:10px;padding-bottom:16px;}
-    .masthead-meta.right{text-align:center;}
-    .wordmark{order:-1;}
+    .masthead-top{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:8px;padding-bottom:14px;}
+    .wordmark{order:0;}
   }
 
   /* HERO */
@@ -587,10 +587,10 @@
   @keyframes loaderLine{0%{transform:translateX(-120%)}100%{transform:translateX(300%)}}
 
   /* Back to top */
-  #backToTop{position:fixed;right:22px;bottom:22px;z-index:900;width:44px;height:44px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;box-shadow:0 8px 20px rgba(26,23,18,.12);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .25s ease;}
+  #backToTop{position:fixed;right:20px;bottom:56px;z-index:900;width:38px;height:38px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;box-shadow:0 6px 16px rgba(26,23,18,.14);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .25s ease;}
   #backToTop.show{opacity:1;visibility:visible;transform:none;}
   #backToTop:hover{background:var(--teal);color:var(--paper);border-color:var(--teal);}
-  @media (max-width:600px){#backToTop{right:14px;bottom:14px;width:40px;height:40px;}}
+  @media (max-width:600px){#backToTop{right:12px;bottom:52px;width:34px;height:34px;font-size:14px;}}
 
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none;}
@@ -620,26 +620,28 @@
   header.masthead{padding-top:14px;border-bottom:2px solid var(--ink);}
   .masthead-top{
     display:grid;
-    grid-template-columns:1fr auto 1fr;
+    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
     align-items:end;
     gap:8px;
     padding-bottom:13px;
   }
   .wordmark{
     grid-column:2;
+    justify-self:center;
     order:0;
     flex:none;
-    font-size:clamp(48px,14vw,64px);
+    font-size:clamp(44px,13vw,64px);
     line-height:.9;
     white-space:nowrap;
   }
   .masthead-meta{
     font-size:8px;
-    line-height:1.5;
-    letter-spacing:.055em;
+    line-height:1.45;
+    letter-spacing:.05em;
     text-align:left;
+    justify-self:start;
   }
-  .masthead-meta.right{text-align:right;}
+  .masthead-meta.right{text-align:right;justify-self:end;}
 
   /* Compact mobile section bar */
   .mobile-nav-toggle{
@@ -863,9 +865,9 @@
 
 @media (max-width: 420px){
   .wrap{padding-left:16px;padding-right:16px;}
-  .masthead-top{grid-template-columns:1fr auto 1fr;gap:5px;}
-  .wordmark{font-size:49px;}
-  .masthead-meta{font-size:7.2px;}
+  .masthead-top{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:5px;}
+  .wordmark{font-size:44px;}
+  .masthead-meta{font-size:7px;}
   .mobile-nav-toggle{padding-left:16px;padding-right:16px;}
   .hero h1{font-size:32px;}
   .hero .dek{font-size:14px;}
@@ -951,33 +953,34 @@
 .radio-card{flex:0 0 calc((100% - 20px)/3);min-height:300px;border:1px solid rgba(245,241,230,.2);padding:20px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(255,255,255,.025)}
 .radio-card:hover{background:rgba(255,255,255,.06);border-color:rgba(245,241,230,.4)}.radio-top{display:flex;justify-content:space-between;gap:10px}.radio-tag{font:500 9px 'Crimson Pro',serif;letter-spacing:.08em;color:#d9cfb8;text-transform:uppercase}
 .radio-card .play{width:40px;height:40px;border:1px solid var(--paper);border-radius:50%;background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;flex:0 0 auto;padding:0}.radio-card .play:hover{background:var(--signal);border-color:var(--signal)}.radio-card .play svg{width:16px;height:16px}
-.radio-card h3{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(25px,2.7vw,38px);line-height:.95;margin:20px 0 9px}.radio-card p{font-family:'Source Serif 4','Fraunces',serif;font-size:15px;line-height:1.5;color:#c9d6d1;max-width:42ch}
+.radio-card h3{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(25px,2.7vw,38px);line-height:.95;margin:20px 0 9px}.radio-card p{font-family:'Crimson Pro','Fraunces',serif;font-size:15px;line-height:1.5;color:#c9d6d1;max-width:42ch}
 .radio-card .wave{height:34px;margin:16px 0;border-bottom:1px solid rgba(245,241,230,.12);background:linear-gradient(90deg,transparent 0 3%,#5a857b 3% 5%,transparent 5% 8%,#5a857b 8% 11%,transparent 11% 14%,#5a857b 14% 15%,transparent 15% 18%,#5a857b 18% 22%,transparent 22% 25%,#5a857b 25% 27%,transparent 27% 31%,#5a857b 31% 35%,transparent 35% 38%,#5a857b 38% 40%,transparent 40% 44%,#5a857b 44% 48%,transparent 48% 51%,#5a857b 51% 53%,transparent 53% 57%,#5a857b 57% 61%,transparent 61% 64%,#5a857b 64% 66%,transparent 66% 70%,#5a857b 70% 74%,transparent 74% 77%,#5a857b 77% 79%,transparent 79% 83%,#5a857b 83% 87%,transparent 87% 90%,#5a857b 90% 92%,transparent 92% 96%,#5a857b 96% 98%,transparent);opacity:.8}
 .radio-foot{font:500 9px 'Crimson Pro',serif;color:#a9b9b4;display:flex;justify-content:space-between;gap:10px}.radio-controls{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid rgba(245,241,230,.18)}.radio-arrows{display:flex;gap:7px}.radio-arrow{width:42px;height:38px;border:1px solid rgba(245,241,230,.45);background:transparent;color:var(--paper);cursor:pointer;font:500 16px 'Inter',sans-serif}.radio-arrow:hover{background:var(--signal);border-color:var(--signal)}.radio-dots{display:flex;gap:6px;align-items:center}.radio-dot{width:6px;height:6px;border:0;border-radius:50%;background:#55746d;padding:0;cursor:pointer}.radio-dot.active{background:var(--signal);width:18px;border-radius:8px}.radio-count{font:500 9px 'Crimson Pro',serif;letter-spacing:.08em;color:#a9b9b4}.radio-card .play.is-playing{box-shadow:0 0 0 5px rgba(224,80,31,.18)}
-#radioPlayer.player{position:sticky;bottom:0;z-index:20;background:#0e211e;border-top:1px solid rgba(245,241,230,.2);padding:10px 0;color:var(--paper);box-shadow:0 -4px 20px rgba(0,0,0,0.35);}
-#radioPlayer .player-inner{display:flex;align-items:center;gap:16px;}
-.player-controls{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.player-btn-skip{width:32px;height:32px;border-radius:50%;border:1px solid rgba(245,241,230,0.3);background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0;transition:all .2s ease;}
+#radioPlayer.player{position:sticky;bottom:0;z-index:20;background:rgba(14,33,30,0.97);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(245,241,230,.18);padding:6px 0;color:var(--paper);box-shadow:0 -2px 14px rgba(0,0,0,0.28);}
+#radioPlayer .player-inner{display:flex;align-items:center;gap:12px;flex-wrap:nowrap;min-height:32px;position:relative;}
+.player-controls{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.player-btn-skip{width:24px;height:24px;border-radius:50%;border:1px solid rgba(245,241,230,0.28);background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0;transition:all .2s ease;}
 .player-btn-skip:hover{background:rgba(245,241,230,0.15);border-color:var(--signal);color:var(--signal);transform:scale(1.05);}
-.player-btn-skip svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;}
-#radioPlayer .play{width:40px;height:40px;border:1px solid rgba(245,241,230,.45);border-radius:50%;background:transparent;color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0;transition:all .2s ease;flex-shrink:0;}
-#radioPlayer .play:hover{background:var(--signal);border-color:var(--signal);transform:scale(1.05);}
-#radioPlayer .player-title{flex:1;min-width:140px;max-width:280px;}
-#radioPlayer .player-title strong{font:500 15px 'Bodoni Moda','Fraunces',serif;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-#radioPlayer .player-meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:#c9d6d1;}
-.player-progress-container{flex:2;min-width:160px;height:28px;display:flex;align-items:center;position:relative;cursor:pointer;user-select:none;touch-action:none;}
-.player-progress{width:100%;height:6px;background:#254039;border-radius:3px;position:relative;transition:height .15s ease;overflow:visible;}
-.player-progress-container:hover .player-progress,.player-progress-container.is-dragging .player-progress{height:8px;}
-#playerBar{display:block;width:0%;height:100%;background:linear-gradient(90deg,#d34a1c 0%,var(--signal) 100%);border-radius:3px;position:relative;pointer-events:none;transition:width .05s linear;}
-.player-seek-thumb{position:absolute;top:50%;left:0%;width:14px;height:14px;background:#fff;border:2px solid var(--signal);border-radius:50%;transform:translate(-50%,-50%) scale(0);box-shadow:0 0 8px rgba(0,0,0,0.5);transition:transform .15s ease;pointer-events:none;z-index:2;}
+.player-btn-skip svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2;}
+#radioPlayer .play{width:30px;height:30px;border:1px solid rgba(245,241,230,.45);border-radius:50%;background:var(--signal);border-color:var(--signal);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;transition:all .2s ease;flex-shrink:0;font-size:11px;line-height:1;}
+#radioPlayer .play svg{width:11px;height:11px;display:block;}
+#radioPlayer .play:hover{background:#c84318;border-color:#c84318;transform:scale(1.05);}
+#radioPlayer .player-title{flex:1;min-width:0;max-width:340px;line-height:1.15;}
+#radioPlayer .player-title strong{font:500 13px/1.2 'Bodoni Moda','Fraunces',serif;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#radioPlayer .player-meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;line-height:1.2;color:#b8c8c3;}
+.player-progress-container{flex:1.6;min-width:100px;height:18px;display:flex;align-items:center;position:relative;cursor:pointer;user-select:none;touch-action:none;}
+.player-progress{width:100%;height:4px;background:#254039;border-radius:2px;position:relative;transition:height .15s ease;overflow:visible;}
+.player-progress-container:hover .player-progress,.player-progress-container.is-dragging .player-progress{height:6px;}
+#playerBar{display:block;width:0%;height:100%;background:linear-gradient(90deg,#d34a1c 0%,var(--signal) 100%);border-radius:2px;position:relative;pointer-events:none;transition:width .05s linear;}
+.player-seek-thumb{position:absolute;top:50%;left:0%;width:11px;height:11px;background:#fff;border:2px solid var(--signal);border-radius:50%;transform:translate(-50%,-50%) scale(0);box-shadow:0 0 6px rgba(0,0,0,0.5);transition:transform .15s ease;pointer-events:none;z-index:2;}
 .player-progress-container:hover .player-seek-thumb,.player-progress-container.is-dragging .player-seek-thumb{transform:translate(-50%,-50%) scale(1);}
-.player-seek-hover{position:absolute;top:0;left:0;height:100%;background:rgba(255,255,255,0.18);border-radius:3px;pointer-events:none;width:0%;z-index:1;}
-.player-seek-tooltip{position:absolute;top:-26px;left:0%;transform:translateX(-50%);background:rgba(14,33,30,0.95);border:1px solid rgba(245,241,230,0.3);color:var(--paper);font:500 11px/1 'Crimson Pro',serif;padding:3px 6px;border-radius:2px;pointer-events:none;opacity:0;transition:opacity .15s ease;white-space:nowrap;}
+.player-seek-hover{position:absolute;top:0;left:0;height:100%;background:rgba(255,255,255,0.18);border-radius:2px;pointer-events:none;width:0%;z-index:1;}
+.player-seek-tooltip{position:absolute;top:-24px;left:0%;transform:translateX(-50%);background:rgba(14,33,30,0.95);border:1px solid rgba(245,241,230,0.3);color:var(--paper);font:500 10px/1 'Crimson Pro',serif;padding:3px 5px;border-radius:2px;pointer-events:none;opacity:0;transition:opacity .15s ease;white-space:nowrap;}
 .player-progress-container:hover .player-seek-tooltip,.player-progress-container.is-dragging .player-seek-tooltip{opacity:1;}
-#radioPlayer .player-time{min-width:90px;text-align:right;font-size:11px;color:#c9d6d1;flex-shrink:0;font-feature-settings:"tnum";}
+#radioPlayer .player-time{min-width:68px;text-align:right;font-size:10.5px;color:#c9d6d1;flex-shrink:0;font-feature-settings:"tnum";white-space:nowrap;}
 .press{display:grid;grid-template-columns:.55fr 1.45fr;gap:50px;align-items:start}.press-intro h2{font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(45px,6vw,80px);line-height:.9;letter-spacing:-.04em;margin:10px 0 14px}.press-intro p{font-family:'Crimson Pro','Fraunces',serif;font-size:17px;line-height:1.5;color:var(--ink-soft);max-width:31ch}.press-stat{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:baseline;gap:8px 12px;margin-top:28px;padding-top:16px;border-top:1px solid var(--line);max-width:300px}.press-stat strong,.press-stat b{font:500 42px/.8 'Bodoni Moda','Fraunces',serif;color:var(--teal)}.press-stat span{font:500 9px 'Crimson Pro',serif;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}.team-wrap{min-width:0}.editorial-board{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:13px 0 15px}.board-names{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}.board-names span{display:flex;flex-direction:column;gap:3px}.board-names strong{font-size:12px}.board-names small{font:500 8px 'Crimson Pro',serif;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}.team-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:22px}.team-list h3{font:500 28px/.95 'Bodoni Moda','Fraunces',serif;margin:7px 0 10px}.name-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:18px;border-top:1px solid var(--line)}.name-grid span{font:500 13px 'Inter',sans-serif;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink-soft)}
 @media(max-width:900px){.radio-section{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px}.radio-card{flex-basis:calc((100% - 10px)/2)}.press{grid-template-columns:1fr;gap:34px}.board-names{grid-template-columns:1fr 1fr}.team-columns{gap:24px}}
-@media(max-width:760px){.radio-section{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}.radio-card{flex-basis:100%;min-height:285px;padding:18px}.radio-card h3{font-size:clamp(29px,9vw,40px)}.radio-card p{font-size:14px}.radio-controls{gap:12px;flex-wrap:wrap}.radio-arrows{order:1}.radio-count{order:2;margin-left:auto}.radio-dots{order:3;width:100%;justify-content:center;min-height:28px;overflow:hidden}.radio-dot{width:10px;height:10px;min-width:10px}.radio-dot.active{width:24px;min-width:24px}.radio-arrow{width:48px;height:44px}#radioPlayer{padding:9px 0}#radioPlayer .player-inner{gap:10px;flex-wrap:wrap}#radioPlayer .player-title{min-width:0;flex:1 1 140px}#radioPlayer .player-title strong{font-size:14px}.player-progress-container{order:4;flex-basis:100%;width:100%;margin-top:4px;}.press{grid-template-columns:1fr;gap:28px}.press-intro p{font-size:16px}.press-stat{max-width:100%}.board-names{grid-template-columns:1fr;gap:12px}.team-columns{grid-template-columns:1fr;gap:30px}.name-grid{grid-template-columns:1fr 1fr;column-gap:14px}.name-grid span{font-size:10px;line-height:1.3;overflow-wrap:anywhere}}
+@media(max-width:760px){.radio-section{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}.radio-card{flex-basis:100%;min-height:285px;padding:18px}.radio-card h3{font-size:clamp(29px,9vw,40px)}.radio-card p{font-size:14px}.radio-controls{gap:12px;flex-wrap:wrap}.radio-arrows{order:1}.radio-count{order:2;margin-left:auto}.radio-dots{order:3;width:100%;justify-content:center;min-height:28px;overflow:hidden}.radio-dot{width:10px;height:10px;min-width:10px}.radio-dot.active{width:24px;min-width:24px}.radio-arrow{width:48px;height:44px}#radioPlayer.player{padding:5px 0 4px;}#radioPlayer .player-inner{gap:8px;flex-wrap:nowrap;min-height:30px;}#radioPlayer .player-controls{gap:4px;}#radioPlayer .player-btn-skip{width:22px;height:22px;}#radioPlayer .play{width:28px;height:28px;}#radioPlayer .player-title{min-width:0;flex:1 1 auto;max-width:none;}#radioPlayer .player-title strong{font-size:12px;line-height:1.15;}#radioPlayer .player-meta{font-size:9.5px;line-height:1.15;}#radioPlayer .player-time{font-size:9.5px;min-width:58px;}.player-progress-container{position:absolute;top:-7px;left:0;right:0;width:100%;height:8px;margin:0;flex:none;}.player-progress{height:3px;border-radius:0;}.press{grid-template-columns:1fr;gap:28px}.press-intro p{font-size:16px}.press-stat{max-width:100%}.board-names{grid-template-columns:1fr;gap:12px}.team-columns{grid-template-columns:1fr;gap:30px}.name-grid{grid-template-columns:1fr 1fr;column-gap:14px}.name-grid span{font-size:10px;line-height:1.3;overflow-wrap:anywhere}}
 @media(max-width:380px){.name-grid{grid-template-columns:1fr}.press-stat{grid-template-columns:auto 1fr;gap:8px 12px}.press-stat b{grid-column:1}.press-stat span:last-child{grid-column:2;grid-row:2}}
 
 /* =========================================================
@@ -1017,7 +1020,7 @@
   margin:0;
 }
 .photo-desk-note{
-  font-family:'Source Serif 4','Fraunces',serif;
+  font-family:'Crimson Pro','Fraunces',serif;
   font-size:15px;
   line-height:1.5;
   color:var(--ink-soft);
@@ -1106,7 +1109,7 @@
   text-align:center;
 }
 .wrap-ending-kicker{
-  font:500 12px 'Source Serif 4',serif;
+  font:500 12px 'Crimson Pro',serif;
   color:#e8a58a;
   margin-bottom:8px;
 }
@@ -1120,7 +1123,7 @@
 }
 .wrap-ending-sub{
   margin:18px 0 0;
-  font-family:'Source Serif 4','Fraunces',serif;
+  font-family:'Crimson Pro','Fraunces',serif;
   font-size:15px;
   line-height:1.35;
   color:#e4e0d2;
@@ -1790,7 +1793,7 @@
       <button class="player-btn-skip" id="playerSkipBack" type="button" aria-label="Skip backward 10 seconds" title="Rewind 10s">
         <svg viewBox="0 0 24 24"><polygon points="11 19 2 12 11 5 11 19"/><polygon points="22 19 13 12 22 5 22 19"/></svg>
       </button>
-      <button class="play" id="radioPlayerButton" type="button" aria-label="Play selected Radio Voice entry">▶</button>
+      <button class="play" id="radioPlayerButton" type="button" aria-label="Play selected Radio Voice entry"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg></button>
       <button class="player-btn-skip" id="playerSkipForward" type="button" aria-label="Skip forward 10 seconds" title="Fast forward 10s">
         <svg viewBox="0 0 24 24"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></svg>
       </button>
@@ -1813,10 +1816,49 @@
   </div>
 </div>
 
+<section class="section photo-desk" id="photos">
+  <div class="photo-desk-inner">
+    <div class="photo-desk-head">
+      <div>
+        <span class="photo-desk-kicker">07 · Captured</span>
+        <h2 class="photo-desk-title">The Photo Desk</h2>
+      </div>
+      <p class="photo-desk-note">The MUN through their lens. Moments that matter, without turning the publication into a gallery app.</p>
+    </div>
+
+    <div class="photo-grid" aria-label="Selected photojournalism from the conference">
+      <button class="photo-tile large article-link" type="button" data-article="article-uncsw-witch" aria-label="UNCSW feature photo — open article">
+        <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Committee floor and field documentation">
+        <span class="photo-caption"><strong>UNCSW · Feature</strong><span>IP Photojournalism</span></span>
+      </button>
+
+      <button class="photo-tile aippm article-link" type="button" data-article="article-aippm-colonialism" aria-label="AIPPM photo — open article">
+        <img src="images/buried-in-colonialism_img2.jpg" alt="AIPPM visual documentation">
+        <span class="photo-caption"><strong>01 · AIPPM</strong><span>Press Desk</span></span>
+      </button>
+
+      <button class="photo-tile uncnd article-link" type="button" data-article="article-uncnd-interview" aria-label="UNCND photo — open article">
+        <img src="images/when-the-molecule-gets-ahead_img1.jpg" alt="UNCND committee documentation">
+        <span class="photo-caption"><strong>03 · UNCND</strong><span>IP Photojournalism</span></span>
+      </button>
+
+      <button class="photo-tile disec article-link" type="button" data-article="article-disec-feature" aria-label="DISEC photo — open article">
+        <img src="images/apparently-the-gun-knows-who-is-right_img1.jpg" alt="DISEC committee documentation">
+        <span class="photo-caption"><strong>04 · DISEC</strong><span>Floor coverage</span></span>
+      </button>
+
+      <button class="photo-tile who article-link" type="button" data-article="article-who-sketch" aria-label="WHO photo — open article">
+        <img src="images/who-character-sketch_img1.jpg" alt="WHO committee documentation">
+        <span class="photo-caption"><strong>05 · WHO</strong><span>Committee floor</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <section class="section wrap" id="ipc">
   <div class="press">
     <div class="press-intro">
-      <span class="kicker">People · Newsroom</span>
+      <span class="kicker">08 · People · Newsroom</span>
       <h2>IPC / Press Room</h2>
       <p>The International Press Corps behind Nirvana — journalism, photojournalism, editing, and the reporting desk that carries the edition from committee floor to publication.</p>
       <div class="press-stat" aria-label="International Press Corps team counts">
@@ -1853,46 +1895,6 @@
   </div>
 </section>
 
-
-<section class="section photo-desk" id="photos">
-  <div class="photo-desk-inner">
-    <div class="photo-desk-head">
-      <div>
-        <span class="photo-desk-kicker">Captured</span>
-        <h2 class="photo-desk-title">The Photo Desk</h2>
-      </div>
-      <p class="photo-desk-note">The MUN through their lens. Moments that matter, without turning the publication into a gallery app.</p>
-    </div>
-
-    <div class="photo-grid" aria-label="Selected photojournalism from the conference">
-      <button class="photo-tile large" type="button" aria-label="Committee floor photo">
-        <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Committee floor and field documentation">
-        <span class="photo-caption"><strong>Committee floor</strong><span>IP Photojournalism</span></span>
-      </button>
-
-      <button class="photo-tile aippm" type="button" aria-label="AIPPM photo">
-        <img src="images/buried-in-colonialism_img2.jpg" alt="AIPPM visual documentation">
-        <span class="photo-caption"><strong>AIPPM</strong><span>Press Desk</span></span>
-      </button>
-
-      <button class="photo-tile uncnd" type="button" aria-label="UNCND photo">
-        <img src="images/when-the-molecule-gets-ahead_img1.jpg" alt="UNCND committee documentation">
-        <span class="photo-caption"><strong>UNCND</strong><span>IP Photojournalism</span></span>
-      </button>
-
-      <button class="photo-tile disec" type="button" aria-label="DISEC photo">
-        <img src="images/apparently-the-gun-knows-who-is-right_img1.jpg" alt="DISEC committee documentation">
-        <span class="photo-caption"><strong>DISEC</strong><span>Floor coverage</span></span>
-      </button>
-
-      <button class="photo-tile who" type="button" aria-label="WHO photo">
-        <img src="images/who-character-sketch_img1.jpg" alt="WHO committee documentation">
-        <span class="photo-caption"><strong>WHO</strong><span>Committee floor</span></span>
-      </button>
-    </div>
-  </div>
-</section>
-
 <footer id="credits" class="wrap-ending">
   <div class="wrap-ending-inner">
     <div class="wrap-ending-main">
@@ -1901,10 +1903,10 @@
       <p class="wrap-ending-sub">Five committees. One newsroom. One record of the room.<br>Produced by the International Press Corps · SSETMUN</p>
       <nav class="wrap-ending-nav" aria-label="Edition navigation">
         <a href="#edition">Edition</a>
+        <a href="#aippm">Committees</a>
         <a href="#radio">Radio Voice</a>
         <a href="#photos">Photo Desk</a>
         <a href="#ipc">Press Room</a>
-        <a href="#credits">Credits</a>
       </nav>
     </div>
     <div class="wrap-ending-bottom">
@@ -1949,11 +1951,11 @@
 
 <script>
   const items = [
-    "01 · AIPPM opens debate on gender-neutral laws",
-    "<b>NEW</b> Radio Voice now runs one segment per committee",
-    "02 · UNCSW takes up cultural tradition vs. rights",
-    "03 · UNCND moves to schedule emerging substances",
-    "04 · UNGA DISEC debates arms transfers to non-state groups",
+    "01 · AIPPM opens debate on gender-neutral laws & BNS reform",
+    "<b>NEW</b> Radio Voice now features all 10 recorded dispatches across every committee",
+    "02 · UNCSW takes up cultural tradition vs. women's rights",
+    "03 · UNCND moves to schedule emerging psychoactive substances",
+    "04 · UNGA DISEC debates arms transfers & proxy accountability",
     "05 · WHO closes debate on counterfeit pharmaceuticals and patent law"
   ];
   const track = document.getElementById('tickerTrack');
