@@ -4,7 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nirvana — SSETMUN Press Desk</title>
+<meta name="description" content="Nirvana — Official publication of the International Press Corps at SSETMUN. Live floor dispatches, Radio Voice broadcasts, investigative features, and conference photography across all five committees.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta property="og:title" content="Nirvana — SSETMUN Press Desk">
+<meta property="og:description" content="Official publication of the International Press Corps at SSETMUN. Five committees, one newsroom, live floor dispatches, Radio Voice, and conference photography.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/opening-ceremony.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nirvana — SSETMUN Press Desk">
+<meta name="twitter:description" content="Official publication of the International Press Corps at SSETMUN. Five committees, one newsroom, live floor dispatches, Radio Voice, and conference photography.">
+<meta name="twitter:image" content="images/opening-ceremony.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23132D28'/><text x='50' y='68' font-family='serif' font-size='60' font-weight='bold' fill='%23F5F1E6' text-anchor='middle'>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -1034,26 +1047,28 @@
   margin-bottom: 22px;
 }
 .photo-filter-btn {
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--ink-soft);
-  padding: 6px 14px;
+  background: rgba(19, 45, 40, 0.03);
+  border: 1px solid rgba(19, 45, 40, 0.12);
+  color: rgba(19, 45, 40, 0.55);
+  padding: 5px 13px;
   border-radius: 999px;
-  font: 500 12px/1 'Crimson Pro', serif;
+  font: 500 11.5px/1 'Crimson Pro', serif;
   text-transform: uppercase;
   letter-spacing: .06em;
   cursor: pointer;
   transition: all .2s ease;
 }
 .photo-filter-btn:hover {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: rgba(19, 45, 40, 0.35);
+  color: var(--ink);
+  background: rgba(19, 45, 40, 0.06);
 }
 .photo-filter-btn.active {
   background: var(--teal);
   color: var(--paper);
   border-color: var(--teal);
   font-weight: 600;
+  box-shadow: 0 1px 4px rgba(19, 45, 40, 0.18);
 }
 .photo-filter-btn:focus-visible {
   outline: 2px solid var(--signal);
@@ -1116,25 +1131,33 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(9,19,17,0.82);
+  background: rgba(9,19,17,0.85);
   backdrop-filter: blur(8px);
   color: var(--paper);
-  font: 500 10.5px 'Crimson Pro', serif;
+  font: 500 11px/1 'Crimson Pro', serif;
   letter-spacing: .06em;
   text-transform: uppercase;
-  padding: 5px 12px;
+  padding: 6px 13px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.14);
-  pointer-events: none;
-  z-index: 2;
-  display: flex;
+  border: 1px solid rgba(255,255,255,0.18);
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 6;
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
-  opacity: .85;
-  transition: opacity .2s ease;
+  gap: 6px;
+  opacity: .9;
+  transition: opacity .2s ease, transform .2s ease, background .2s ease;
 }
-.photo-stage:hover .photo-zoom-hint {
+.photo-zoom-hint:hover {
   opacity: 1;
+  background: var(--teal);
+  border-color: var(--signal);
+  transform: scale(1.05);
+}
+.photo-zoom-hint:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
 }
 
 /* Subtle Understated Side Arrows */
@@ -1178,7 +1201,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 24px;
-  padding: 22px 4px 16px;
+  padding: 18px 2px 14px;
   border-bottom: 1px solid var(--line);
 }
 .photo-editorial-meta {
@@ -1187,42 +1210,43 @@
 }
 .photo-meta-kicker {
   display: block;
-  font: 600 11px 'Crimson Pro', serif;
+  font: 600 11px/1.2 'Crimson Pro', serif;
   text-transform: uppercase;
   letter-spacing: .12em;
   color: var(--signal);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 .photo-meta-title {
   font-family: 'Bodoni Moda', 'Fraunces', serif;
-  font-size: clamp(24px, 3vw, 34px);
-  line-height: 1.1;
+  font-size: clamp(22px, 2.8vw, 32px);
+  line-height: 1.15;
   letter-spacing: -.02em;
-  margin: 0 0 6px;
+  margin: 0 0 5px;
   color: var(--ink);
   font-weight: 500;
 }
 .photo-meta-caption {
   font-family: 'Crimson Pro', serif;
-  font-size: 15.5px;
-  line-height: 1.45;
+  font-size: 14.5px;
+  line-height: 1.4;
   color: var(--ink-soft);
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   max-width: 60ch;
 }
 .photo-meta-credit {
   font-family: 'Crimson Pro', serif;
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--ink-soft);
   display: flex;
   gap: 6px;
   align-items: baseline;
+  margin: 0;
 }
 .photo-credit-label {
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: .08em;
-  opacity: .75;
+  opacity: .7;
 }
 .photo-credit-name {
   font-weight: 600;
@@ -1249,52 +1273,23 @@
   color: var(--signal);
 }
 .photo-story-link.hidden {
-  display: none;
+  display: none !important;
 }
 
-/* Understated Navigation Controls & Counter */
+/* Understated Counter (no duplicate arrows) */
 .photo-nav-suite {
   display: flex;
   align-items: center;
-  gap: 16px;
   flex-shrink: 0;
-  margin-top: 4px;
-}
-.photo-nav-arrow {
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--ink);
-  font-family: 'Crimson Pro', serif;
-  font-size: 20px;
-  line-height: 1;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all .2s ease;
-  padding: 0;
-}
-.photo-nav-arrow:hover {
-  border-color: var(--signal);
-  color: var(--signal);
-  background: var(--paper-dim);
-}
-.photo-nav-arrow:focus-visible {
-  outline: 2px solid var(--signal);
-  outline-offset: 2px;
+  padding-top: 4px;
 }
 .photo-index-count {
   font-family: 'Crimson Pro', serif;
+  font-size: 15px;
   font-weight: 600;
-  font-size: 14.5px;
-  color: var(--ink);
-  letter-spacing: .05em;
   font-feature-settings: "tnum";
-  min-width: 52px;
-  text-align: center;
+  color: var(--ink);
+  letter-spacing: .08em;
 }
 
 .photo-carousel-bottom {
@@ -1409,6 +1404,11 @@
 /* =========================================================
    REUSABLE EDITORIAL FULLSCREEN LIGHTBOX
    ========================================================= */
+html.lightbox-locked,
+body.lightbox-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
 .photo-lightbox {
   position: fixed;
   inset: 0;
@@ -1551,10 +1551,14 @@
   color: #fff;
   letter-spacing: .02em;
 }
+.lightbox-caption {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.78);
+  font-style: italic;
+}
 .lightbox-credit {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.65);
-  font-style: italic;
 }
 .lightbox-counter {
   font-size: 13px;
@@ -1821,7 +1825,7 @@
       <p class="byline">By Gaurika Rashmi Nair · 6 min read</p>
       <div class="article-actions">
         <a class="article-link article-btn primary" href="#article-aippm-colonialism" data-article="article-aippm-colonialism">Read Full Feature →</a>
-        <a class="article-btn pdf" href="pdfs/buried-in-colonialism.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
+        <a class="article-btn pdf" href="pdfs/buried-in-colonialism.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
         <button type="button" class="article-btn broadcast-btn play-btn" data-audio="audio/aippm-gaurika.mp3" aria-label="Listen to AIPPM Day 2 Broadcast by Gaurika Rashmi Nair"><span class="btn-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span><span class="btn-text">Listen Broadcast (05:47)</span></button>
       </div>
     </div>
@@ -1913,7 +1917,7 @@
       <p class="byline">By Sruthy S Muraly · 7 min read</p>
       <div class="article-actions">
         <a class="article-link article-btn primary" href="#article-uncsw-witch" data-article="article-uncsw-witch">Read Full Feature →</a>
-        <a class="article-btn pdf" href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
+        <a class="article-btn pdf" href="pdfs/when-fear-needs-a-victim-witch.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
         <button type="button" class="article-btn broadcast-btn play-btn" data-audio="audio/uncsw.mp3" aria-label="Listen to Ladyfish Affairs broadcast"><span class="btn-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span><span class="btn-text">Listen Broadcast (05:17)</span></button>
       </div>
     </div>
@@ -1998,7 +2002,7 @@
     </div>
     <div class="article-actions article-actions-center">
       <a class="article-link article-btn primary" href="#article-uncsw-poem" data-article="article-uncsw-poem">Read in Reader →</a>
-      <a class="article-btn pdf" href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original Poem PDF ↗</span></a>
+      <a class="article-btn pdf" href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original Poem PDF ↗</span></a>
     </div>
   </div>
 </section>
@@ -2034,7 +2038,7 @@
       <p class="byline">By Sarah Asraf · 7 min read</p>
       <div class="article-actions">
         <a class="article-link article-btn primary" href="#article-uncnd-atoms" data-article="article-uncnd-atoms">Read Full Feature →</a>
-        <a class="article-btn pdf" href="pdfs/three-atoms-ahead.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
+        <a class="article-btn pdf" href="pdfs/three-atoms-ahead.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
         <button type="button" class="article-btn broadcast-btn play-btn" data-audio="audio/uncnd-news-radio.mp3" aria-label="Listen to UNCND News Radio broadcast by Sarah Asraf"><span class="btn-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span><span class="btn-text">Listen Broadcast (06:54)</span></button>
       </div>
     </div>
@@ -2125,7 +2129,7 @@
       <p class="byline">By Ridha Methar · 8 min read</p>
       <div class="article-actions">
         <a class="article-link article-btn primary" href="#article-disec-feature" data-article="article-disec-feature">Read Full Feature →</a>
-        <a class="article-btn pdf" href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
+        <a class="article-btn pdf" href="pdfs/apparently-the-gun-knows-who-is-right.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
         <button type="button" class="article-btn broadcast-btn play-btn" data-audio="audio/disec-after-dark.mp3" aria-label="Listen to DISEC After Dark with Ridha Methar"><span class="btn-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span><span class="btn-text">DISEC After Dark (04:30)</span></button>
       </div>
     </div>
@@ -2218,7 +2222,7 @@
       <p class="byline">By Ishita Sudhir · 7 min read</p>
       <div class="article-actions">
         <a class="article-link article-btn primary" href="#article-who-scarcity" data-article="article-who-scarcity">Read Full Op-Ed →</a>
-        <a class="article-btn pdf" href="pdfs/scarcity-what-fills-the-void.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
+        <a class="article-btn pdf" href="pdfs/scarcity-what-fills-the-void.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original PDF ↗</span></a>
       </div>
     </div>
     <div class="card quick" style="border:1px solid var(--line);">
@@ -2352,10 +2356,10 @@
           <div class="photo-frame" id="photoFrame">
             <img id="photoCarouselImg" src="images/aippm-ambassador-of-saffron.jpg" alt="Delegate representing Yogi Adityanath addressing the AIPPM committee floor in saffron attire" loading="eager" decoding="async" draggable="false">
             <div class="photo-badge" id="photoBadge">01 · AIPPM</div>
-            <div class="photo-zoom-hint" aria-hidden="true">
+            <button type="button" class="photo-zoom-hint" id="photoExpandBtn" aria-label="Expand photograph to fullscreen">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
               <span>Expand</span>
-            </div>
+            </button>
           </div>
         </div>
 
@@ -2380,9 +2384,7 @@
         </div>
 
         <div class="photo-nav-suite">
-          <button class="photo-nav-arrow prev" id="photoNavPrev" type="button" aria-label="Previous photograph">←</button>
           <span class="photo-index-count" id="photoCount" aria-live="polite">01 / 34</span>
-          <button class="photo-nav-arrow next" id="photoNavNext" type="button" aria-label="Next photograph">→</button>
         </div>
       </div>
 
@@ -2488,7 +2490,7 @@
         <button type="button" class="reader-tab active" id="tabTextBtn">Editorial Read</button>
         <button type="button" class="reader-tab" id="tabPdfBtn">View PDF Document</button>
       </div>
-      <a href="" target="_blank" rel="noopener" class="reader-pdf-link" id="articlePdfExternalLink" aria-label="Open original PDF in a new tab">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="reader-pdf-link" id="articlePdfExternalLink" aria-label="Open original PDF in a new tab">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
         <span>Open Original PDF ↗</span>
       </a>
@@ -2497,7 +2499,7 @@
     <div class="article-body" id="articleModalBody"></div>
     
     <div class="pdf-viewer-wrap" id="articleModalPdfWrap">
-      <iframe id="articleModalPdfFrame" title="Original PDF Document" src="about:blank"></iframe>
+      <iframe id="articleModalPdfFrame" title="Original PDF Document" src="about:blank" loading="lazy"></iframe>
     </div>
 
     <div class="article-note" id="articleModalNote" style="display:none;">
@@ -2529,14 +2531,24 @@
     disec:'04 · UNGA DISEC', who:'05 · WHO', radio:'06 · Radio Voice', photos:'07 · Photo Desk', ipc:'08 · Press Room', credits:'Credits'
   };
   function closeMobileNav(){
+    if (!body.classList.contains('nav-open')) return;
     body.classList.remove('nav-open');
     mobileToggle.setAttribute('aria-expanded','false');
+    if (!isLightboxOpen && !modal.classList.contains('is-open')) {
+      body.style.overflow = '';
+    }
   }
   mobileToggle.addEventListener('click',()=>{
     const open = body.classList.toggle('nav-open');
     mobileToggle.setAttribute('aria-expanded',String(open));
   });
   document.querySelectorAll('#mobileNavPanel a').forEach(a=>a.addEventListener('click',closeMobileNav));
+  // Close mobile nav when clicking outside panel
+  document.addEventListener('click', (e) => {
+    if (body.classList.contains('nav-open') && !e.target.closest('#mobileNavPanel') && !e.target.closest('#mobileNavToggle')) {
+      closeMobileNav();
+    }
+  });
 
   /* Active-section navigation */
   const allNavLinks = [...document.querySelectorAll('nav.masthead-nav a, #mobileNavPanel a')];
@@ -2618,14 +2630,14 @@
 <div class="biblio-box">
   <h4>⇒ Bibliography & References</h4>
   <ul>
-    <li><a href="https://indiankanoon.org/doc/193543132" target="_blank" rel="noopener">Indian Kanoon — NALSA Judgment (2014)</a></li>
-    <li><a href="https://indiankanoon.org/doc/168671544" target="_blank" rel="noopener">Indian Kanoon — Navtej Singh Johar v. Union of India (2018)</a></li>
-    <li><a href="https://indiankanoon.org/doc/17412906" target="_blank" rel="noopener">Indian Kanoon — Supriyo v. Union of India (2023)</a></li>
-    <li><a href="https://socialjustice.gov.in/writereaddata/UploadFile/Binder2.pdf" target="_blank" rel="noopener">Ministry of Social Justice — Transgender Persons Rules</a></li>
-    <li><a href="https://www.ohchr.org/sites/default/files/Documents/Publications/Born_Free_and_Equal_WEB.pdf" target="_blank" rel="noopener">OHCHR — Born Free and Equal</a></li>
-    <li><a href="https://www.bbc.com/news/world-asia-india-27031180" target="_blank" rel="noopener">BBC News — India Recognises Transgender as Third Gender</a></li>
-    <li><a href="https://www.iilsindia.com/blogs/brief-history-transgenders-india" target="_blank" rel="noopener">IILS India — Brief History of Transgenders in India</a></li>
-    <li><a href="https://www.impriindia.com/insights/historical-aspect-of-trans-lives-india" target="_blank" rel="noopener">IMPRI — Historical Aspect of Trans Lives in India</a></li>
+    <li><a href="https://indiankanoon.org/doc/193543132" target="_blank" rel="noopener noreferrer">Indian Kanoon — NALSA Judgment (2014)</a></li>
+    <li><a href="https://indiankanoon.org/doc/168671544" target="_blank" rel="noopener noreferrer">Indian Kanoon — Navtej Singh Johar v. Union of India (2018)</a></li>
+    <li><a href="https://indiankanoon.org/doc/17412906" target="_blank" rel="noopener noreferrer">Indian Kanoon — Supriyo v. Union of India (2023)</a></li>
+    <li><a href="https://socialjustice.gov.in/writereaddata/UploadFile/Binder2.pdf" target="_blank" rel="noopener noreferrer">Ministry of Social Justice — Transgender Persons Rules</a></li>
+    <li><a href="https://www.ohchr.org/sites/default/files/Documents/Publications/Born_Free_and_Equal_WEB.pdf" target="_blank" rel="noopener noreferrer">OHCHR — Born Free and Equal</a></li>
+    <li><a href="https://www.bbc.com/news/world-asia-india-27031180" target="_blank" rel="noopener noreferrer">BBC News — India Recognises Transgender as Third Gender</a></li>
+    <li><a href="https://www.iilsindia.com/blogs/brief-history-transgenders-india" target="_blank" rel="noopener noreferrer">IILS India — Brief History of Transgenders in India</a></li>
+    <li><a href="https://www.impriindia.com/insights/historical-aspect-of-trans-lives-india" target="_blank" rel="noopener noreferrer">IMPRI — Historical Aspect of Trans Lives in India</a></li>
   </ul>
 </div>`
     },
@@ -2802,9 +2814,9 @@
 <blockquote class="article-quote">Perhaps that is the simplest test of all. A civilian does not care whose flag was printed on the box. They care that the weapon inside it reached them anyway.</blockquote>
 <div class="footnotes-box">
   <p><strong>Citations & Reference Sources:</strong></p>
-  <p>• <a href="https://www.sipri.org/media/press-release/2026/global-arms-flows-jump-nearly-10-cent-european-demand-soars" target="_blank" rel="noopener">SIPRI — Global arms flows jump nearly 10 per cent as European demand soars</a></p>
-  <p>• <a href="https://www.sipri.org/sites/default/files/2026-03/fs_2603_at_2025.pdf" target="_blank" rel="noopener">SIPRI Fact Sheet — Trends in International Arms Transfers (2025)</a></p>
-  <p>• <a href="https://www.sipri.org/commentary/topical-backgrounder/2021/transfers-major-arms-afghanistan-between-2001-and-2020" target="_blank" rel="noopener">SIPRI Commentary — Transfers of Major Arms to Afghanistan (2001–2020)</a></p>
+  <p>• <a href="https://www.sipri.org/media/press-release/2026/global-arms-flows-jump-nearly-10-cent-european-demand-soars" target="_blank" rel="noopener noreferrer">SIPRI — Global arms flows jump nearly 10 per cent as European demand soars</a></p>
+  <p>• <a href="https://www.sipri.org/sites/default/files/2026-03/fs_2603_at_2025.pdf" target="_blank" rel="noopener noreferrer">SIPRI Fact Sheet — Trends in International Arms Transfers (2025)</a></p>
+  <p>• <a href="https://www.sipri.org/commentary/topical-backgrounder/2021/transfers-major-arms-afghanistan-between-2001-and-2020" target="_blank" rel="noopener noreferrer">SIPRI Commentary — Transfers of Major Arms to Afghanistan (2001–2020)</a></p>
   <p class="img-cred-note">Source: SSET NEWS & Stockholm International Peace Research Institute (SIPRI)</p>
 </div>`
     },
@@ -2892,13 +2904,13 @@
 </div>
 <blockquote class="article-quote">Proxy warfare can still win a war without a state losing a soldier. But Afghanistan's scattered Stingers and Libya's decade-long diversion trail prove the costs simply relocate. The question is no longer whether the enemy of my enemy can defeat my enemy, it is whether a system that has spent forty years avoiding a definition of control is finally ready to write one.</blockquote>
 <div class="footnotes-box">
-  <p><sup>1</sup> <a href="https://www.guinnessworldrecords.com/world-records/613906-most-expensive-covert-action" target="_blank" rel="noopener">Guinness World Records — Most Expensive Covert Action</a></p>
-  <p><sup>2</sup> <a href="https://www.rferl.org/a/1057196.html" target="_blank" rel="noopener">Radio Free Europe / Radio Liberty — CIA Buyback Program</a></p>
-  <p><sup>3</sup> <a href="https://www.ecoi.net/en/file/local/2139528/n2604139.pdf" target="_blank" rel="noopener">UN Panel of Experts Report on Libya</a></p>
-  <p><sup>4</sup> <a href="https://ihl-databases.icrc.org/en/ihl-treaties/att-2013/article-11?activeTab=" target="_blank" rel="noopener">Arms Trade Treaty, Article 11 (ICRC)</a></p>
-  <p><sup>5</sup> <a href="https://www.icty.org/x/file/Legal%20Library/jud_supplement/supp6-e/tadic.htm" target="_blank" rel="noopener">ICTY Legal Library — Nicaragua vs Tadić comparison</a></p>
-  <p><sup>6</sup> <a href="https://modeldiplomat.com/learn/glossary/effective-control-test" target="_blank" rel="noopener">Effective Control Test — Model Diplomat</a></p>
-  <p><sup>7</sup> <a href="https://www.jpost.com/middle-east/article-887251" target="_blank" rel="noopener">Jerusalem Post — SDF and US Support in Syria</a></p>
+  <p><sup>1</sup> <a href="https://www.guinnessworldrecords.com/world-records/613906-most-expensive-covert-action" target="_blank" rel="noopener noreferrer">Guinness World Records — Most Expensive Covert Action</a></p>
+  <p><sup>2</sup> <a href="https://www.rferl.org/a/1057196.html" target="_blank" rel="noopener noreferrer">Radio Free Europe / Radio Liberty — CIA Buyback Program</a></p>
+  <p><sup>3</sup> <a href="https://www.ecoi.net/en/file/local/2139528/n2604139.pdf" target="_blank" rel="noopener noreferrer">UN Panel of Experts Report on Libya</a></p>
+  <p><sup>4</sup> <a href="https://ihl-databases.icrc.org/en/ihl-treaties/att-2013/article-11?activeTab=" target="_blank" rel="noopener noreferrer">Arms Trade Treaty, Article 11 (ICRC)</a></p>
+  <p><sup>5</sup> <a href="https://www.icty.org/x/file/Legal%20Library/jud_supplement/supp6-e/tadic.htm" target="_blank" rel="noopener noreferrer">ICTY Legal Library — Nicaragua vs Tadić comparison</a></p>
+  <p><sup>6</sup> <a href="https://modeldiplomat.com/learn/glossary/effective-control-test" target="_blank" rel="noopener noreferrer">Effective Control Test — Model Diplomat</a></p>
+  <p><sup>7</sup> <a href="https://www.jpost.com/middle-east/article-887251" target="_blank" rel="noopener noreferrer">Jerusalem Post — SDF and US Support in Syria</a></p>
   <p class="img-cred-note">Image source: SIPRI (Trends in International Transfers of Major Arms 1981-2025) & Aaisha (IPP)</p>
 </div>`
     },
@@ -3021,21 +3033,21 @@
 <blockquote class="article-quote">Witches belong to belief. But witch hunting belongs to power, violence and control.</blockquote>
 <div class="footnotes-box">
   <p><strong>Footnotes:</strong></p>
-  <p><sup>1</sup> <a href="https://www.smithsonianmag.com/history/a-brief-history-of-the-salem-witch-trials-175162489/" target="_blank" rel="noopener">Jess Blumberg, A Brief History of the Salem Witch Trials, Smithsonian Mag. (last updated Oct. 24, 2022)</a></p>
-  <p><sup>2</sup> <a href="https://www.ohchr.org/sites/default/files/Documents/Issues/Albinism/COVID-19_and_Harmful_Practices.pdf" target="_blank" rel="noopener">U.N. Off. of the High Comm'r for Hum. Rts., COVID-19 and Harmful Practices Related to Albinism: Accusations of Witchcraft and Ritual Attacks (July 2020)</a></p>
-  <p><sup>3</sup> <a href="https://letterboxd.com/film/i-am-not-a-witch/" target="_blank" rel="noopener">I Am Not a Witch, Letterboxd (last visited Sept. 12, 2026)</a></p>
-  <p><sup>4</sup> <a href="https://2021-2025.state.gov/reports/2023-country-reports-on-human-rights-practices/ghana/" target="_blank" rel="noopener">U.S. Dep't of State, 2023 Country Reports on Human Rights Practices: Ghana (2024)</a></p>
-  <p><sup>5</sup> <a href="https://decrimpovertystatus.org/stand-with-the-women-accused-of-witchcraft-in-ghana/" target="_blank" rel="noopener">Stand with the Women Accused of Witchcraft in Ghana, Campaign to Decriminalise Poverty and Status</a></p>
-  <p><sup>6</sup> <a href="https://www.hrw.org/world-report/2025/country-chapters/malawi" target="_blank" rel="noopener">Human Rights Watch, World Report 2025: Malawi (2025)</a></p>
-  <p><sup>7</sup> <a href="https://docstore.ohchr.org/" target="_blank" rel="noopener">UN OHCHR / CEDAW Reports on Harmful Practices and Reintegration</a></p>
+  <p><sup>1</sup> <a href="https://www.smithsonianmag.com/history/a-brief-history-of-the-salem-witch-trials-175162489/" target="_blank" rel="noopener noreferrer">Jess Blumberg, A Brief History of the Salem Witch Trials, Smithsonian Mag. (last updated Oct. 24, 2022)</a></p>
+  <p><sup>2</sup> <a href="https://www.ohchr.org/sites/default/files/Documents/Issues/Albinism/COVID-19_and_Harmful_Practices.pdf" target="_blank" rel="noopener noreferrer">U.N. Off. of the High Comm'r for Hum. Rts., COVID-19 and Harmful Practices Related to Albinism: Accusations of Witchcraft and Ritual Attacks (July 2020)</a></p>
+  <p><sup>3</sup> <a href="https://letterboxd.com/film/i-am-not-a-witch/" target="_blank" rel="noopener noreferrer">I Am Not a Witch, Letterboxd (last visited Sept. 12, 2026)</a></p>
+  <p><sup>4</sup> <a href="https://2021-2025.state.gov/reports/2023-country-reports-on-human-rights-practices/ghana/" target="_blank" rel="noopener noreferrer">U.S. Dep't of State, 2023 Country Reports on Human Rights Practices: Ghana (2024)</a></p>
+  <p><sup>5</sup> <a href="https://decrimpovertystatus.org/stand-with-the-women-accused-of-witchcraft-in-ghana/" target="_blank" rel="noopener noreferrer">Stand with the Women Accused of Witchcraft in Ghana, Campaign to Decriminalise Poverty and Status</a></p>
+  <p><sup>6</sup> <a href="https://www.hrw.org/world-report/2025/country-chapters/malawi" target="_blank" rel="noopener noreferrer">Human Rights Watch, World Report 2025: Malawi (2025)</a></p>
+  <p><sup>7</sup> <a href="https://docstore.ohchr.org/" target="_blank" rel="noopener noreferrer">UN OHCHR / CEDAW Reports on Harmful Practices and Reintegration</a></p>
   <hr style="border:0;border-top:1px solid var(--line);margin:14px 0 10px;">
   <p><strong>Bibliography:</strong></p>
-  <p>1. <a href="https://asiapacific.unwomen.org/en/news-and-events/in-focus/youth-voice/2018/ranjita-dilraj" target="_blank" rel="noopener">UN Women (Ranjita Dilraj Profile), U.N. Women Asia-Pac. (2018)</a></p>
-  <p>2. <a href="https://www.unwomen.org/sites/default/files/Headquarters/Attachments/Sections/Library/Publications/2020/Realizing-womens-rights-to-land-and-other-productive-resources-2nd-edition-en.pdf" target="_blank" rel="noopener">UN Women & OHCHR Report, Realizing Women's Rights to Land and Other Productive Resources (2d ed. 2020)</a></p>
-  <p>3. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13437287/" target="_blank" rel="noopener">E.Y. Chung, Witchcraft Accusations Against Older Women in Sub-Saharan Africa, Front. Pub. Health (2026)</a></p>
-  <p>4. <a href="https://www.amnesty.org/en/latest/news/2025/04/ghana-witchcraft-accusations/" target="_blank" rel="noopener">Amnesty International, Branded for Life but Resilient: Women Accused of Witchcraft in Ghana (July 2025)</a></p>
-  <p>5. <a href="https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00024612/03_Federici_Women.pdf" target="_blank" rel="noopener">Silvia Federici, Women, Witch-Hunting and Enclosures in Africa Today, Sozial. Geschichte Online (2010)</a></p>
-  <p>6. <a href="https://decrimpovertystatus.org/stand-with-the-women-accused-of-witchcraft-in-ghana/" target="_blank" rel="noopener">Campaign to Decriminalise Poverty and Status, Stand with the Women Accused of Witchcraft in Ghana</a></p>
+  <p>1. <a href="https://asiapacific.unwomen.org/en/news-and-events/in-focus/youth-voice/2018/ranjita-dilraj" target="_blank" rel="noopener noreferrer">UN Women (Ranjita Dilraj Profile), U.N. Women Asia-Pac. (2018)</a></p>
+  <p>2. <a href="https://www.unwomen.org/sites/default/files/Headquarters/Attachments/Sections/Library/Publications/2020/Realizing-womens-rights-to-land-and-other-productive-resources-2nd-edition-en.pdf" target="_blank" rel="noopener noreferrer">UN Women & OHCHR Report, Realizing Women's Rights to Land and Other Productive Resources (2d ed. 2020)</a></p>
+  <p>3. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13437287/" target="_blank" rel="noopener noreferrer">E.Y. Chung, Witchcraft Accusations Against Older Women in Sub-Saharan Africa, Front. Pub. Health (2026)</a></p>
+  <p>4. <a href="https://www.amnesty.org/en/latest/news/2025/04/ghana-witchcraft-accusations/" target="_blank" rel="noopener noreferrer">Amnesty International, Branded for Life but Resilient: Women Accused of Witchcraft in Ghana (July 2025)</a></p>
+  <p>5. <a href="https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00024612/03_Federici_Women.pdf" target="_blank" rel="noopener noreferrer">Silvia Federici, Women, Witch-Hunting and Enclosures in Africa Today, Sozial. Geschichte Online (2010)</a></p>
+  <p>6. <a href="https://decrimpovertystatus.org/stand-with-the-women-accused-of-witchcraft-in-ghana/" target="_blank" rel="noopener noreferrer">Campaign to Decriminalise Poverty and Status, Stand with the Women Accused of Witchcraft in Ghana</a></p>
   <p class="img-cred-note">Image credits: Smithsonian Magazine, CNRS NEWS, The Guardian</p>
 </div>`
     },
@@ -3125,11 +3137,11 @@
 <p>The status quo, made substance by substance, by one decision per year in Vienna, cannot move fast enough to respond to a constantly morphing problem. States must support an Early Warning Advisory system that is properly funded and empowered to implement provisional and limited controls as soon as WHO’s Expert Committee alerts the system to the presence of new analogues, without waiting for the next CND meeting. Such a provisional schedule would automatically expire, unless formally adopted at the next CND session, thereby preserving scientific thoroughness while maintaining state sovereignty over final decision-making. An accelerated process needs an unambiguous carve-out to protect medicines and scientific research, to be assessed separately and rapidly from the process of control. In this way, the drive for speed does not inadvertently create a drive for blanket prohibition.</p>
 <blockquote class="article-quote">The bear in Georgia did not have an early warning system, nor a controlled environment, nor time to figure out the danger. It’s now for the world to show it can do better than just one bear, in a wood, with another person’s stuff. The CND has the organisation, the scientific know-how, and the global reach. What it needs now is speed, for in the age of artificial drugs, yesterday’s solution is bound to be tomorrow’s loophole.</blockquote>
 <div class="footnotes-box">
-  <p><sup>1</sup> Wikipedia contributors. Cocaine Bear (bear). In Wikipedia. Retrieved September 12, 2026, from <a href="https://en.wikipedia.org/wiki/Cocaine_Bear_(bear)" target="_blank" rel="noopener">Wikipedia</a></p>
-  <p><sup>2</sup> Today I Found Out. The curious case of Pablo EskoBear—the “Cocaine Bear”. <a href="https://www.todayifoundout.com/index.php/2017/08/amazing-tale-kentucky-folk-hero-pablo-eskobear-cocaine-bear/" target="_blank" rel="noopener">Today I Found Out</a></p>
-  <p><sup>3</sup> The Times of India. Operation Toofan: Crackdown on drug mafia nearing 100 days. <a href="https://timesofindia.indiatimes.com/city/thiruvananthapuram/operation-toofan-crackdown-on-drug-mafia-nearing-100-days/articleshow/133812716.cms" target="_blank" rel="noopener">Times of India</a></p>
-  <p><sup>4</sup> Reuters. We bought what’s needed to make millions of fentanyl pills—for $3,600. <a href="https://www.reuters.com/investigates/special-report/usa-fentanyl-supply-chain-shipping/" target="_blank" rel="noopener">Reuters</a></p>
-  <p><sup>5</sup> United Nations Office on Drugs and Crime. (2026, March). Three NPS placed under international control at the 69th Session of the Commission on Narcotic Drugs. <a href="https://www.unodc.org/unodc/frontpage/2026/March/cnd-closing.html" target="_blank" rel="noopener">UNODC</a></p>
+  <p><sup>1</sup> Wikipedia contributors. Cocaine Bear (bear). In Wikipedia. Retrieved September 12, 2026, from <a href="https://en.wikipedia.org/wiki/Cocaine_Bear_(bear)" target="_blank" rel="noopener noreferrer">Wikipedia</a></p>
+  <p><sup>2</sup> Today I Found Out. The curious case of Pablo EskoBear—the “Cocaine Bear”. <a href="https://www.todayifoundout.com/index.php/2017/08/amazing-tale-kentucky-folk-hero-pablo-eskobear-cocaine-bear/" target="_blank" rel="noopener noreferrer">Today I Found Out</a></p>
+  <p><sup>3</sup> The Times of India. Operation Toofan: Crackdown on drug mafia nearing 100 days. <a href="https://timesofindia.indiatimes.com/city/thiruvananthapuram/operation-toofan-crackdown-on-drug-mafia-nearing-100-days/articleshow/133812716.cms" target="_blank" rel="noopener noreferrer">Times of India</a></p>
+  <p><sup>4</sup> Reuters. We bought what’s needed to make millions of fentanyl pills—for $3,600. <a href="https://www.reuters.com/investigates/special-report/usa-fentanyl-supply-chain-shipping/" target="_blank" rel="noopener noreferrer">Reuters</a></p>
+  <p><sup>5</sup> United Nations Office on Drugs and Crime. (2026, March). Three NPS placed under international control at the 69th Session of the Commission on Narcotic Drugs. <a href="https://www.unodc.org/unodc/frontpage/2026/March/cnd-closing.html" target="_blank" rel="noopener noreferrer">UNODC</a></p>
 </div>`
     },
     'article-uncnd-feature': {
@@ -3339,10 +3351,10 @@
 <blockquote class="article-quote">The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough that the patients do not have to look beyond it in the first place. Because if the gaps still exist, something else will replace it.</blockquote>
 <div class="footnotes-box">
   <p><strong>References & Citations:</strong></p>
-  <p><sup>1</sup> <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed NCBI — Pharmaceutical Market Access & Substandard Medicines Case Study (2024)</a></p>
-  <p><sup>2</sup> <a href="https://www.who.int/news-room/fact-sheets/detail/substandard-and-falsified-medical-products" target="_blank" rel="noopener">WHO Newsroom — Fact Sheet: Substandard and Falsified Medical Products</a></p>
-  <p><sup>4</sup> <a href="https://www.wto.org/english/docs_e/legal_e/trips_e.htm" target="_blank" rel="noopener">World Trade Organization — TRIPS Agreement Articles 7 & 8</a></p>
-  <p><sup>5</sup> <a href="https://www.wto.org/english/thewto_e/minist_e/min01_e/mindecl_trips_e.htm" target="_blank" rel="noopener">WTO Ministerial Declaration on the TRIPS Agreement and Public Health (Doha Declaration)</a></p>
+  <p><sup>1</sup> <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">PubMed NCBI — Pharmaceutical Market Access & Substandard Medicines Case Study (2024)</a></p>
+  <p><sup>2</sup> <a href="https://www.who.int/news-room/fact-sheets/detail/substandard-and-falsified-medical-products" target="_blank" rel="noopener noreferrer">WHO Newsroom — Fact Sheet: Substandard and Falsified Medical Products</a></p>
+  <p><sup>4</sup> <a href="https://www.wto.org/english/docs_e/legal_e/trips_e.htm" target="_blank" rel="noopener noreferrer">World Trade Organization — TRIPS Agreement Articles 7 & 8</a></p>
+  <p><sup>5</sup> <a href="https://www.wto.org/english/thewto_e/minist_e/min01_e/mindecl_trips_e.htm" target="_blank" rel="noopener noreferrer">WTO Ministerial Declaration on the TRIPS Agreement and Public Health (Doha Declaration)</a></p>
   <p><sup>6</sup> <span class="img-cred-note">Source of pictures: Pinterest</span></p>
 </div>`
     },
@@ -3446,8 +3458,8 @@
 
   let lastFocused = null;
   function openArticle(id, push = true) {
+    if (!id || !Object.prototype.hasOwnProperty.call(articleData, id)) return false;
     const data = articleData[id];
-    if (!data) return false;
     modalType.textContent = data.type;
     modalTitle.textContent = data.title;
     modalDek.textContent = data.dek;
@@ -3478,16 +3490,32 @@
     body.style.overflow = 'hidden';
     lastFocused = document.activeElement;
     closeArticle.focus();
-    if (push) history.pushState({ article: id }, '', '#' + id);
+    try {
+      if (push && window.location.protocol !== 'file:') {
+        history.pushState({ article: id }, '', '#' + id);
+      }
+    } catch (e) {
+      // Safe fallback for file:// or restricted contexts
+    }
     return true;
   }
 
   function closeArticleModal(push = true) {
     modal.classList.remove('is-open');
-    body.style.overflow = '';
+    if (!isLightboxOpen && !body.classList.contains('nav-open')) {
+      body.style.overflow = '';
+    }
     if (articleModalPdfFrame) articleModalPdfFrame.src = 'about:blank';
-    if (lastFocused && lastFocused.focus) lastFocused.focus();
-    if (push && location.hash.startsWith('#article-')) history.pushState(null, '', location.pathname + location.search);
+    if (lastFocused && typeof lastFocused.focus === 'function' && document.body.contains(lastFocused)) {
+      lastFocused.focus({ preventScroll: true });
+    }
+    try {
+      if (push && location.hash.startsWith('#article-') && window.location.protocol !== 'file:') {
+        history.pushState(null, '', location.pathname + location.search);
+      }
+    } catch (e) {
+      // Safe fallback for file:// or restricted contexts
+    }
   }
 
   document.querySelectorAll('.article-link').forEach(card => card.addEventListener('click', e => {
@@ -3497,12 +3525,20 @@
   }));
   closeArticle.addEventListener('click', () => closeArticleModal());
   modal.addEventListener('click', e => { if (e.target === modal) closeArticleModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeArticleModal(); });
   window.addEventListener('popstate', () => {
     const id = location.hash.slice(1);
-    if (articleData[id]) openArticle(id, false); else closeArticleModal(false);
+    if (id && Object.prototype.hasOwnProperty.call(articleData, id)) {
+      openArticle(id, false);
+    } else {
+      closeArticleModal(false);
+    }
   });
-  if (location.hash.startsWith('#article-')) openArticle(location.hash.slice(1), false);
+  if (location.hash.startsWith('#article-')) {
+    const initId = location.hash.slice(1);
+    if (initId && Object.prototype.hasOwnProperty.call(articleData, initId)) {
+      openArticle(initId, false);
+    }
+  }
 
   /* Radio Voice: carousel + HTML5 audio + Interactive Seeking */
   const radioAudio = new Audio(); radioAudio.preload='metadata';
@@ -3625,12 +3661,22 @@
       seekToFraction(getSeekFraction(e, progressContainer));
     });
 
+    // Efficient hover calculation scoped to progressContainer
+    progressContainer.addEventListener('mousemove', e => {
+      if(!isDraggingProgress){
+        const frac = getSeekFraction(e, progressContainer);
+        if(seekHover) seekHover.style.width = (frac * 100).toFixed(2) + '%';
+        if(seekTooltip && Number.isFinite(radioAudio.duration) && radioAudio.duration > 0){
+          seekTooltip.style.left = (frac * 100).toFixed(2) + '%';
+          seekTooltip.textContent = formatTime(frac * radioAudio.duration);
+        }
+      }
+    });
+
     window.addEventListener('mousemove', e => {
       if(isDraggingProgress){
-        seekToFraction(getSeekFraction(e, progressContainer));
-      }
-      if(progressContainer.matches(':hover') || isDraggingProgress){
         const frac = getSeekFraction(e, progressContainer);
+        seekToFraction(frac);
         if(seekHover) seekHover.style.width = (frac * 100).toFixed(2) + '%';
         if(seekTooltip && Number.isFinite(radioAudio.duration) && radioAudio.duration > 0){
           seekTooltip.style.left = (frac * 100).toFixed(2) + '%';
@@ -3749,6 +3795,7 @@
       playerButton.setAttribute('aria-label','Pause selected Radio Voice entry');
     }).catch(()=>{
       if(activeRadioButton) setPlayIcon(activeRadioButton,false);
+      activeRadioButton = null;
       playerButton.innerHTML=playIcon;
       if(status)status.textContent='Audio recording not available.';
     });
@@ -3851,7 +3898,17 @@
     document.getElementById('radio')?.scrollIntoView({behavior:'smooth',block:'start'});
   }));
 
-  updateRadio();window.addEventListener('resize',updateRadio);
+  updateRadio();
+let resizeTicking = false;
+window.addEventListener('resize', () => {
+  if (!resizeTicking) {
+    window.requestAnimationFrame(() => {
+      updateRadio();
+      resizeTicking = false;
+    });
+    resizeTicking = true;
+  }
+}, { passive: true });
 
   /* =========================================================
      PHOTO DESK & FULLSCREEN LIGHTBOX ARCHITECTURE
@@ -4191,11 +4248,10 @@
       src: "images/who-press-deliberation.jpg",
       committee: "05 · WHO",
       category: "WHO",
-      title: "Press Room Verification",
-      caption: "IPC Press Corps · Live Floor Monitoring",
+      title: "THE CHAIR TAKES THE FLOOR",
+      caption: "WHO · Live Committee Session",
       photographer: "IPC Photojournalism Desk · SSETMUN",
-      alt: "Press corps journalists reviewing laptop screen during WHO coverage",
-      articleId: "article-who-feature"
+      alt: "The Executive Board and Chair addressing the WHO committee floor during live session"
     }
   ];
 
@@ -4204,6 +4260,8 @@
   let filteredImages = [...photoDeskImages];
   let lightboxMode = 'carousel'; // 'carousel' | 'ipj'
   let lastActiveElement = null;
+  let savedScrollY = 0;
+  let isLightboxOpen = false;
 
   // Cached Carousel DOM elements
   const carouselImg = document.getElementById('photoCarouselImg');
@@ -4217,8 +4275,7 @@
   const carouselProgressFill = document.getElementById('photoProgressFill');
   const carouselPrevBtn = document.getElementById('photoPrevBtn');
   const carouselNextBtn = document.getElementById('photoNextBtn');
-  const photoNavPrev = document.getElementById('photoNavPrev');
-  const photoNavNext = document.getElementById('photoNavNext');
+  const photoExpandBtn = document.getElementById('photoExpandBtn');
   const photoStage = document.getElementById('photoStage');
   const filterBtns = document.querySelectorAll('.photo-filter-btn');
 
@@ -4232,18 +4289,25 @@
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxKicker = document.getElementById('lightboxKicker');
   const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxCredit = document.getElementById('lightboxCredit');
   const lightboxCounter = document.getElementById('lightboxCounter');
   const ipjGroupCard = document.getElementById('ipjGroupCard');
 
   const pad = n => String(n).padStart(2, '0');
 
+  const preloadedUrls = new Set();
   function preloadAdjacent() {
     if (!filteredImages.length) return;
     const nextIdx = (currentPhotoIndex + 1) % filteredImages.length;
     const prevIdx = (currentPhotoIndex - 1 + filteredImages.length) % filteredImages.length;
-    const img1 = new Image(); img1.src = filteredImages[nextIdx].src;
-    const img2 = new Image(); img2.src = filteredImages[prevIdx].src;
+    [filteredImages[nextIdx].src, filteredImages[prevIdx].src].forEach(src => {
+      if (src && !preloadedUrls.has(src)) {
+        preloadedUrls.add(src);
+        const img = new Image();
+        img.src = src;
+      }
+    });
   }
 
   function renderPhoto(index) {
@@ -4271,19 +4335,22 @@
     }
 
     if (carouselStoryBtn) {
-      if (item.articleId) {
+      if (item.articleId && typeof articleData !== 'undefined' && articleData[item.articleId]) {
         carouselStoryBtn.classList.remove('hidden');
+        carouselStoryBtn.style.display = 'inline-flex';
         carouselStoryBtn.onclick = (e) => {
           e.stopPropagation();
           if (typeof openArticle === 'function') openArticle(item.articleId);
         };
       } else {
         carouselStoryBtn.classList.add('hidden');
+        carouselStoryBtn.style.display = 'none';
+        carouselStoryBtn.onclick = null;
       }
     }
 
     // Sync with lightbox if currently open in carousel mode
-    if (photoLightbox && photoLightbox.classList.contains('is-open') && lightboxMode === 'carousel') {
+    if (photoLightbox && isLightboxOpen && lightboxMode === 'carousel') {
       renderLightboxPhoto();
     }
 
@@ -4294,11 +4361,9 @@
     renderPhoto(currentPhotoIndex + (dir === 'next' ? 1 : -1));
   }
 
-  // Understated carousel controls
+  // Understated carousel controls beside photograph
   if (carouselPrevBtn) carouselPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); movePhoto('prev'); });
   if (carouselNextBtn) carouselNextBtn.addEventListener('click', (e) => { e.stopPropagation(); movePhoto('next'); });
-  if (photoNavPrev) photoNavPrev.addEventListener('click', () => movePhoto('prev'));
-  if (photoNavNext) photoNavNext.addEventListener('click', () => movePhoto('next'));
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -4330,6 +4395,7 @@
       }
       if (lightboxKicker) lightboxKicker.textContent = 'IPJ · GROUP PHOTOGRAPH';
       if (lightboxTitle) lightboxTitle.textContent = 'International Press Corps';
+      if (lightboxCaption) lightboxCaption.textContent = '';
       if (lightboxCredit) lightboxCredit.textContent = '';
       if (lightboxPrev) lightboxPrev.classList.add('hidden');
       if (lightboxNext) lightboxNext.classList.add('hidden');
@@ -4343,6 +4409,7 @@
       }
       if (lightboxKicker) lightboxKicker.textContent = item.committee;
       if (lightboxTitle) lightboxTitle.textContent = item.title;
+      if (lightboxCaption) lightboxCaption.textContent = item.caption || '';
       if (lightboxCredit) lightboxCredit.textContent = item.photographer ? `Photograph by ${item.photographer}` : '';
       if (lightboxPrev) lightboxPrev.classList.remove('hidden');
       if (lightboxNext) lightboxNext.classList.remove('hidden');
@@ -4354,10 +4421,18 @@
   }
 
   function openLightbox(mode = 'carousel') {
-    lightboxMode = mode;
+    if (isLightboxOpen) return;
+    isLightboxOpen = true;
+    savedScrollY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
     lastActiveElement = document.activeElement;
+
+    // Lock scrolling on documentElement and body
+    document.documentElement.classList.add('lightbox-locked');
+    document.body.classList.add('lightbox-locked');
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
+    lightboxMode = mode;
     renderLightboxPhoto();
 
     if (photoLightbox) {
@@ -4370,21 +4445,53 @@
   }
 
   function closeLightbox() {
-    if (!photoLightbox || !photoLightbox.classList.contains('is-open')) return;
+    if (!photoLightbox || !isLightboxOpen) return;
+    isLightboxOpen = false;
+
     photoLightbox.classList.remove('is-open');
+
+    // Immediately remove scroll lock classes and inline styles
+    document.documentElement.classList.remove('lightbox-locked');
+    document.body.classList.remove('lightbox-locked');
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+    document.documentElement.style.touchAction = '';
+    document.body.style.touchAction = '';
+
+    // Restore exact scroll position immediately
+    window.scrollTo(0, savedScrollY);
+
     setTimeout(() => {
-      photoLightbox.setAttribute('hidden', '');
-      if (lastActiveElement && lastActiveElement.focus) {
-        lastActiveElement.focus();
+      if (!isLightboxOpen) {
+        photoLightbox.setAttribute('hidden', '');
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, savedScrollY);
+        if (lastActiveElement && typeof lastActiveElement.focus === 'function' && document.body.contains(lastActiveElement)) {
+          lastActiveElement.focus({ preventScroll: true });
+        }
       }
     }, 240);
   }
 
-  // Click triggers for fullscreen
+  // Click triggers for fullscreen: EXPAND button, entire photo stage, or image
+  if (photoExpandBtn) {
+    photoExpandBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox('carousel');
+    });
+  }
+
+  if (carouselImg) {
+    carouselImg.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox('carousel');
+    });
+  }
+
   if (photoStage) {
     photoStage.addEventListener('click', (e) => {
-      if (e.target.closest('.carousel-arrow')) return;
+      if (e.target.closest('.carousel-arrow') || e.target.closest('.photo-story-link')) return;
       openLightbox('carousel');
     });
     photoStage.addEventListener('keydown', (e) => {
@@ -4405,21 +4512,57 @@
     });
   }
 
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
-  if (lightboxPrev) lightboxPrev.addEventListener('click', () => { if (lightboxMode === 'carousel') movePhoto('prev'); });
-  if (lightboxNext) lightboxNext.addEventListener('click', () => { if (lightboxMode === 'carousel') movePhoto('next'); });
+  // Lightbox unified closing methods: close button, backdrop/outside click, Escape
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+  }
 
-  // Lightbox keyboard controls
+  if (photoLightbox) {
+    photoLightbox.addEventListener('click', (e) => {
+      // Don't close if clicking arrows, the photograph itself, or caption bar
+      if (e.target.closest('.lightbox-arrow') || e.target.closest('#lightboxImg') || e.target.closest('#lightboxCaptionBar')) {
+        return;
+      }
+      closeLightbox();
+    });
+  }
+
+  if (lightboxPrev) lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (lightboxMode === 'carousel') movePhoto('prev');
+  });
+  if (lightboxNext) lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (lightboxMode === 'carousel') movePhoto('next');
+  });
+
+  // Unified Overlay Dismissal & Lightbox/Carousel Keyboard Navigation
   window.addEventListener('keydown', (e) => {
-    if (photoLightbox && photoLightbox.classList.contains('is-open')) {
-      if (e.key === 'Escape') {
+    if (e.key === 'Escape') {
+      if (photoLightbox && isLightboxOpen) {
         e.preventDefault();
         closeLightbox();
-      } else if (lightboxMode === 'carousel') {
-        if (e.key === 'ArrowLeft') { e.preventDefault(); movePhoto('prev'); }
-        else if (e.key === 'ArrowRight') { e.preventDefault(); movePhoto('next'); }
+        return;
       }
+      if (modal && modal.classList.contains('is-open')) {
+        e.preventDefault();
+        closeArticleModal();
+        return;
+      }
+      if (body && body.classList.contains('nav-open')) {
+        e.preventDefault();
+        closeMobileNav();
+        return;
+      }
+      return;
+    }
+
+    if (photoLightbox && isLightboxOpen && lightboxMode === 'carousel') {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); movePhoto('prev'); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); movePhoto('next'); }
       return;
     }
 
@@ -4497,11 +4640,12 @@
   <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close fullscreen view">×</button>
   <button class="lightbox-arrow prev" id="lightboxPrev" type="button" aria-label="Previous photograph">←</button>
   <div class="lightbox-stage" id="lightboxStage">
-    <img id="lightboxImg" src="" alt="" draggable="false" loading="lazy" decoding="async">
+    <img id="lightboxImg" src="" alt="Enlarged conference photograph" draggable="false" loading="lazy" decoding="async">
     <div class="lightbox-caption-bar" id="lightboxCaptionBar">
       <div class="lightbox-info">
         <span class="lightbox-kicker" id="lightboxKicker"></span>
         <h4 class="lightbox-title" id="lightboxTitle"></h4>
+        <span class="lightbox-caption" id="lightboxCaption"></span>
         <span class="lightbox-credit" id="lightboxCredit"></span>
       </div>
       <span class="lightbox-counter" id="lightboxCounter" aria-live="polite"></span>
