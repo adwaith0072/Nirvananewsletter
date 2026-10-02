@@ -108,7 +108,6 @@
     .section-head{margin-bottom:24px;}
     .committee-banner{margin-bottom:24px;}
     .poem-wrap{margin-top:26px;}
-    .mini-photos{margin-top:26px;gap:10px;}
     .kicker{margin-bottom:10px;}
     .hero h1{margin-bottom:12px;}
     .hero .dek{margin-bottom:14px;}
@@ -215,10 +214,7 @@
   .poem-wrap .byline{display:block;margin-bottom:24px;}
   .poem-body{font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.95;color:var(--ink-soft);}
   .poem-body .cut{opacity:0.55;font-size:14px;}
-
-  .mini-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
-  .mini-photos .ph{aspect-ratio:4/3;}
-  @media (max-width:640px){.mini-photos{grid-template-columns:1fr 1fr;}}
+  
 
   .corps-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
   @media (max-width:760px){.corps-grid{grid-template-columns:1fr;}}
@@ -814,9 +810,6 @@
   .poem-body{font-size:15px;line-height:1.8;}
   .poem-body .cut{font-size:12px;}
 
-  .mini-photos{grid-template-columns:1fr 1fr;gap:9px;margin-top:22px;}
-  .mini-photos .ph{aspect-ratio:1/1;}
-
   /* IPC / credits */
   .corps-grid{display:flex;flex-direction:column;gap:28px;}
   .corps-col h3{font-size:9px;margin-bottom:11px;padding-bottom:8px;}
@@ -877,7 +870,6 @@
   .card-body{padding:15px;}
   .card h3{font-size:19px;}
   .radio-feature{padding:18px;}
-  .mini-photos{grid-template-columns:1fr;}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -916,8 +908,7 @@
   section.section > .feature,
   section.section > .grid,
   section.section > .radio-feature,
-  section.section > .poem-wrap,
-  section.section > .mini-photos {
+  section.section > .poem-wrap {
     padding-left:32px;
     padding-right:32px;
   }
@@ -934,7 +925,6 @@
   .committee-banner { margin-bottom:42px; }
   .feature { margin-bottom:42px; }
   .grid { row-gap:24px; }
-  .mini-photos { margin-top:36px; }
 
   /* More deliberate card proportions on desktop */
   .card { min-height:100%; }
@@ -1027,174 +1017,297 @@
   max-width:28ch;
   margin:0 0 3px auto;
 }
-.photo-grid{
-  display:grid;
-  grid-template-columns:1.9fr 1fr 1fr 1.55fr;
-  grid-template-rows:210px 210px;
-  gap:8px;
-}
-.photo-tile{
-  position:relative;
-  display:block;
-  overflow:hidden;
-  min-width:0;
-  background:var(--teal);
-  color:#fff;
-  border:0;
-  padding:0;
-  text-align:left;
-  cursor:pointer;
-  isolation:isolate;
-}
-.photo-tile.large{grid-column:1;grid-row:1 / span 2;}
-.photo-tile.aippm{grid-column:2;grid-row:1;}
-.photo-tile.uncnd{grid-column:3;grid-row:1;}
-.photo-tile.disec{grid-column:4;grid-row:1 / span 2;}
-.photo-tile.who{grid-column:2 / span 2;grid-row:2;}
-.photo-tile img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease;
-}
-.photo-tile::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  background:linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(0,0,0,.72) 100%);
-}
-.photo-tile:hover img{transform:scale(1.035);filter:saturate(1.04);}
-.photo-caption{
-  position:absolute;
-  z-index:2;
-  left:10px;
-  right:10px;
-  bottom:9px;
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:8px;
-  color:#fff;
-  font:500 9px 'Crimson Pro',serif;
-  text-transform:uppercase;
-  letter-spacing:.04em;
-}
-.photo-caption strong{font-weight:500;}
-.photo-caption span:last-child{opacity:.7;font-size:8px;}
-.photo-tile:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
-
-.aippm-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 18px;
-}
-.aippm-gallery-tile {
+/* =========================================================
+   PHOTO DESK EDITORIAL CAROUSEL
+   ========================================================= */
+.photo-carousel {
   position: relative;
-  background: rgba(0,0,0,0.32);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
+  width: 100%;
+}
+.photo-carousel-filters {
   display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: 0;
-  color: inherit;
-  transition: transform .28s cubic-bezier(.2,.7,.2,1), border-color .28s ease, box-shadow .28s ease;
-  isolation: isolate;
-  text-decoration: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
 }
-.aippm-gallery-tile:hover {
-  transform: translateY(-4px);
-  border-color: rgba(224,80,31,0.65);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.38);
+.photo-filter-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 7px 15px;
+  border-radius: 999px;
+  font: 500 12px/1 'Crimson Pro', serif;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: all .2s ease;
 }
-.aippm-gallery-tile:focus-visible {
+.photo-filter-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.photo-filter-btn.active {
+  background: var(--teal);
+  color: var(--paper);
+  border-color: var(--teal);
+  font-weight: 600;
+}
+.photo-filter-btn:focus-visible {
   outline: 2px solid var(--signal);
   outline-offset: 2px;
 }
-.aippm-gallery-tile img {
+.photo-stage {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0d1b17;
+  border: 1px solid rgba(22,59,51,0.22);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  touch-action: pan-y;
+  user-select: none;
+}
+.photo-stage:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.photo-frame-wrap {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  overflow: hidden;
+}
+.photo-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 580px;
+  width: 100%;
+  background: radial-gradient(circle at center, #132722 0%, #091310 100%);
+}
+.photo-frame img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: block;
-  transition: transform .45s cubic-bezier(.2,.7,.2,1), filter .35s ease;
+  margin: 0 auto;
+  transition: opacity .24s ease, transform .32s cubic-bezier(.2,.7,.2,1);
 }
-.aippm-gallery-tile:hover img {
-  transform: scale(1.04);
-  filter: saturate(1.05);
+.photo-frame img.sliding-in-left {
+  animation: photoSlideInLeft .28s cubic-bezier(.2,.7,.2,1) forwards;
 }
-.aippm-gallery-caption {
-  padding: 11px 12px;
-  background: rgba(10,25,22,0.96);
+.photo-frame img.sliding-in-right {
+  animation: photoSlideInRight .28s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes photoSlideInLeft {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes photoSlideInRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.photo-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(10,25,22,0.86);
+  backdrop-filter: blur(10px);
+  color: var(--paper);
+  font: 600 11px/1 'Crimson Pro', serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  pointer-events: none;
+  z-index: 2;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(10,25,22,0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s ease;
+  z-index: 5;
+  padding: 0;
+}
+.carousel-arrow:hover {
+  background: var(--teal);
+  border-color: var(--signal);
+  color: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+.carousel-arrow:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.carousel-arrow.prev { left: 18px; }
+.carousel-arrow.next { right: 18px; }
+
+.photo-editorial-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px 6px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.photo-editorial-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.photo-meta-kicker {
+  display: block;
+  font: 600 11px 'Crimson Pro', serif;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--signal);
+  margin-bottom: 5px;
+}
+.photo-meta-title {
+  font-family: 'Bodoni Moda', 'Fraunces', serif;
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.photo-meta-caption {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+  max-width: 60ch;
+}
+.photo-meta-credit {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.photo-credit-label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: .08em;
+  opacity: .75;
+}
+.photo-credit-name {
+  font-weight: 600;
+  color: var(--teal);
+}
+.photo-editorial-actions {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.photo-story-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background: transparent;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  border-radius: 999px;
+  font: 600 12.5px/1 'Crimson Pro', serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.photo-story-btn:hover {
+  background: var(--teal);
+  color: var(--paper);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(22,59,51,0.18);
+}
+.photo-story-btn:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.photo-story-btn.hidden {
+  display: none;
+}
+.photo-carousel-bottom {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  flex: 1;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  gap: 12px;
+  padding: 16px 6px 0;
 }
-.aippm-gallery-caption strong {
+.photo-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(22,59,51,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.photo-progress-fill {
+  height: 100%;
+  background: var(--signal);
+  transition: width .28s ease;
+}
+.photo-carousel-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: 'Crimson Pro', serif;
-  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+.photo-index-count {
   font-weight: 600;
-  color: #fff;
-  line-height: 1.25;
+  font-size: 14.5px;
+  color: var(--ink);
+  letter-spacing: .05em;
+  font-feature-settings: "tnum";
 }
-.aippm-gallery-caption span {
-  font-family: 'Crimson Pro', serif;
-  font-size: 11px;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.35;
-}
-@media(max-width:960px){
-  .aippm-gallery-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media(max-width:600px){
-  .aippm-gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .aippm-gallery-caption { padding: 8px 10px; }
-  .aippm-gallery-caption strong { font-size: 12px; }
-  .aippm-gallery-caption span { font-size: 10px; }
-}
-@media(max-width:400px){
-  .aippm-gallery-grid { grid-template-columns: 1fr; }
+.photo-hint {
+  font-size: 12px;
+  opacity: .75;
 }
 
-.uncsw-gallery-grid,
-.uncnd-gallery-grid,
-.disec-gallery-grid,
-.who-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+@media(max-width:900px){
+  .photo-frame { height: 460px; }
 }
-@media(max-width:960px){
-  .uncsw-gallery-grid,
-  .uncnd-gallery-grid,
-  .disec-gallery-grid,
-  .who-gallery-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media(max-width:600px){
-  .uncsw-gallery-grid,
-  .uncnd-gallery-grid,
-  .disec-gallery-grid,
-  .who-gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-}
-@media(max-width:400px){
-  .uncsw-gallery-grid,
-  .uncnd-gallery-grid,
-  .disec-gallery-grid,
-  .who-gallery-grid { grid-template-columns: 1fr; }
-}
-
-.mini-photos.cols-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-@media(max-width:860px){
-  .mini-photos.cols-4 { grid-template-columns: 1fr 1fr; }
+@media(max-width:760px){
+  .photo-frame { height: 380px; }
+  .carousel-arrow { width: 42px; height: 42px; }
+  .carousel-arrow.prev { left: 10px; }
+  .carousel-arrow.next { right: 10px; }
+  .photo-editorial-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-top: 18px; }
+  .photo-story-btn { align-self: flex-start; }
 }
 @media(max-width:480px){
-  .mini-photos.cols-4 { grid-template-columns: 1fr; }
+  .photo-frame { height: 280px; }
+  .photo-carousel-filters { gap: 6px; }
+  .photo-filter-btn { padding: 6px 11px; font-size: 11px; }
+  .photo-meta-title { font-size: 22px; }
+  .photo-meta-caption { font-size: 14px; }
+  .carousel-arrow { width: 36px; height: 36px; }
+  .photo-hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-frame img,
+  .photo-progress-fill,
+  .carousel-arrow,
+  .photo-story-btn {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 .wrap-ending{
@@ -1269,12 +1382,6 @@
 }
 @media(max-width:900px){
   .photo-desk-head{grid-template-columns:1fr 240px;gap:25px;}
-  .photo-grid{grid-template-columns:1.55fr 1fr 1fr;grid-template-rows:190px 190px 190px;}
-  .photo-tile.large{grid-column:1;grid-row:1 / span 2;}
-  .photo-tile.aippm{grid-column:2;grid-row:1;}
-  .photo-tile.uncnd{grid-column:3;grid-row:1;}
-  .photo-tile.disec{grid-column:2 / span 2;grid-row:2;}
-  .photo-tile.who{grid-column:1;grid-row:3;}
 }
 @media(max-width:760px){
   .photo-desk{padding-top:56px !important;padding-bottom:60px !important;}
@@ -1282,14 +1389,6 @@
   .photo-desk-head{display:block;margin-bottom:22px;}
   .photo-desk-title{font-size:clamp(54px,15vw,78px);}
   .photo-desk-note{margin:15px 0 0;max-width:34ch;}
-  .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:230px 150px 150px 190px;}
-  .photo-tile.large{grid-column:1 / span 2;grid-row:1;}
-  .photo-tile.aippm{grid-column:1;grid-row:2;}
-  .photo-tile.uncnd{grid-column:2;grid-row:2;}
-  .photo-tile.disec{grid-column:1 / span 2;grid-row:3;}
-  .photo-tile.who{grid-column:1 / span 2;grid-row:4;}
-  .photo-caption{font-size:8px;}
-  .photo-caption span:last-child{font-size:7px;}
   .wrap-ending{min-height:470px;padding:56px 0 22px !important;}
   .wrap-ending > .wrap-ending-inner{padding-left:20px !important;padding-right:20px !important;}
   .wrap-ending-main{min-height:350px;}
@@ -1298,7 +1397,6 @@
   .wrap-ending-bottom{font-size:8px;align-items:flex-start;}
 }
 @media(max-width:420px){
-  .photo-grid{grid-template-rows:210px 135px 135px 170px;}
   .photo-desk-title{font-size:56px;}
   .wrap-ending-nav{display:grid;grid-template-columns:repeat(2,1fr);width:100%;gap:16px;}
   .wrap-ending-nav a{text-align:center;}
@@ -1487,27 +1585,6 @@
       </div>
     </div>
   </div>
-
-  <div class="mini-photos" aria-label="AIPPM Committee Floor Documentation">
-    <div class="ph" style="background:url('images/aippm-placards-raised.jpg') center 30%/cover;position:relative;" role="img" aria-label="Placards Raised during AIPPM Roll Call">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Placards Raised · Priyanka Gandhi &amp; Shafi Parambil</span>
-    </div>
-    <div class="ph" style="background:url('images/aippm-owaisi-delegate.jpg') center 20%/cover;position:relative;" role="img" aria-label="Floor Address by Asaduddin Owaisi Delegate">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Floor Address · Asaduddin Owaisi Delegate</span>
-    </div>
-    <div class="ph" style="background:url('images/aippm-kapil-sibal-placard.jpg') center 25%/cover;position:relative;" role="img" aria-label="Kapil Sibal Placard Raised during Quorum">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Roll Call &amp; Quorum · Kapil Sibal Placard</span>
-    </div>
-    <div class="ph" style="background:url('images/aippm-committee-deliberation.jpg') center 40%/cover;position:relative;" role="img" aria-label="AIPPM Deliberation on Penal Codes &amp; Schedules">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Working Paper Consultations · Deliberations in Session</span>
-    </div>
-    <div class="ph" style="background:url('images/aippm-silhouette-debate.jpg') center/cover;position:relative;" role="img" aria-label="Shadows of Debate: Cross-Bench Confrontation">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Shadows of Debate · Cross-Bench Confrontation</span>
-    </div>
-    <div class="ph" style="background:url('images/aippm-caucus-discussion.jpg') center 25%/cover;position:relative;" role="img" aria-label="AIPPM Unmoderated Caucus Consultation">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Unmoderated Caucus · Informal Cross-Bench Dialogue</span>
-    </div>
-  </div>
 </section>
 
 <!-- ============ 02 · UNCSW ============ -->
@@ -1629,27 +1706,6 @@
       <a class="article-btn pdf" href="pdfs/why-do-my-rights-differ-poem.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>View Original Poem PDF ↗</span></a>
     </div>
   </div>
-
-  <div class="mini-photos" aria-label="UNCSW Committee Floor Documentation">
-    <div class="ph" style="background:url('images/uncsw-committee-in-session.jpg') center 35%/cover;position:relative;" role="img" aria-label="UNCSW Committee Floor in Session">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Committee in Session · Delegations on the Floor</span>
-    </div>
-    <div class="ph" style="background:url('images/uncsw-placards-raised.jpg') center 30%/cover;position:relative;" role="img" aria-label="Delegates Raising Placards during UNCSW Roll Call">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Roll Call &amp; Quorum · Guinea &amp; Turkey Placards</span>
-    </div>
-    <div class="ph" style="background:url('images/uncsw-working-paper-drafting.jpg') center 25%/cover;position:relative;" role="img" aria-label="Resolution Drafting by Delegate of Morocco">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Resolution Drafting · Morocco Delegation</span>
-    </div>
-    <div class="ph" style="background:url('images/uncsw-caucus-debate.jpg') center 20%/cover;position:relative;" role="img" aria-label="Unmoderated Caucus Floor Debate">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">The Floor in Motion · Caucus Debate</span>
-    </div>
-    <div class="ph" style="background:url('images/uncsw-delegate-note-taking.jpg') center 25%/cover;position:relative;" role="img" aria-label="Delegate Note Taking during Floor Deliberation">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Consultations &amp; Notes · Committee Deliberations</span>
-    </div>
-    <div class="ph" style="background:url('images/uncsw-switzerland-listening.jpg') center 30%/cover;position:relative;" role="img" aria-label="Diplomatic Deliberation by Switzerland Delegate">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Diplomatic Deliberation · Switzerland</span>
-    </div>
-  </div>
 </section>
 
 <!-- ============ 03 · UNCND ============ -->
@@ -1739,21 +1795,6 @@
         </div>
         <div class="card-foot"><span>Hosted by Malavika Unnikrishnan</span> <span>Satirical · 05:19</span></div>
       </div>
-    </div>
-  </div>
-
-  <div class="mini-photos cols-4" aria-label="UNCND Committee Floor Documentation">
-    <div class="ph" style="background:url('images/uncnd-whiteboard-scheduling.jpg') center 20%/cover;position:relative;" role="img" aria-label="Scheduling the Molecule: Whiteboard Calculations">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">1961 Scheduling · Digital Whiteboard</span>
-    </div>
-    <div class="ph" style="background:url('images/uncnd-caucus-consultation.jpg') center 30%/cover;position:relative;" role="img" aria-label="Unmoderated Caucus Working Paper Deliberations">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Working Paper Consultations · Floor Caucus</span>
-    </div>
-    <div class="ph" style="background:url('images/uncnd-floor-cross-examination.jpg') center 25%/cover;position:relative;" role="img" aria-label="Cross-Floor Debate and Point of Inquiry">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Point of Inquiry · Floor Debate</span>
-    </div>
-    <div class="ph" style="background:url('images/uncnd-delegate-portrait-bw.jpg') center 25%/cover;position:relative;" role="img" aria-label="Delegate in Deep Consideration">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Floor Portrait · Delegate in Reflection</span>
     </div>
   </div>
 </section>
@@ -1849,27 +1890,6 @@
       </div>
     </div>
   </div>
-
-  <div class="mini-photos" aria-label="UNGA DISEC Committee Floor Documentation">
-    <div class="ph" style="background:url('images/disec-floor-in-session.jpg') center 35%/cover;position:relative;" role="img" aria-label="DISEC Floor in Session: Türkiye and Thailand Consultations">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Floor in Session · Türkiye &amp; Thailand Blocs</span>
-    </div>
-    <div class="ph" style="background:url('images/disec-delegate-intervention.jpg') center 20%/cover;position:relative;" role="img" aria-label="Floor Intervention and Debate">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Point of Order · Delegate Floor Intervention</span>
-    </div>
-    <div class="ph" style="background:url('images/disec-podium-address.jpg') center 20%/cover;position:relative;" role="img" aria-label="General Speakers List Floor Address">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Podium Address · General Speakers List</span>
-    </div>
-    <div class="ph" style="background:url('images/disec-unmod-caucus-circle.jpg') center 40%/cover;position:relative;" role="img" aria-label="Unmoderated Caucus Floor Debate Circle">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">The Floor in Motion · Caucus Debate Circle</span>
-    </div>
-    <div class="ph" style="background:url('images/disec-working-paper-bloc.jpg') center 30%/cover;position:relative;" role="img" aria-label="Working Paper Negotiations and Resolution Drafting">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Resolution Drafting · Working Paper Bloc</span>
-    </div>
-    <div class="ph" style="background:url('images/disec-caucus-peace-sign.jpg') center 40%/cover;position:relative;" role="img" aria-label="Cross-Bench Consensus during Informal Caucus">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Cross-Bench Consensus · Informal Dialogue</span>
-    </div>
-  </div>
 </section>
 
 <!-- ============ 05 · WHO (School Committee) ============ -->
@@ -1959,33 +1979,6 @@
       </div>
     </div>
   </div>
-
-  <div class="mini-photos cols-4" aria-label="WHO Committee Floor Documentation">
-    <div class="ph" style="background:url('images/who-placards-raised.jpg') center 30%/cover;position:relative;" role="img" aria-label="WHO Roll Call: Member States Raise Placards in Quorum">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Roll Call &amp; Quorum · Placards Raised</span>
-    </div>
-    <div class="ph" style="background:url('images/who-delegate-address.jpg') center 20%/cover;position:relative;" role="img" aria-label="Delegate Delivering Floor Address on Pharmaceutical Regulations">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Floor Debate · Regulation &amp; Quality</span>
-    </div>
-    <div class="ph" style="background:url('images/who-delegates-panel.jpg') center 25%/cover;position:relative;" role="img" aria-label="Youth Delegates Presenting Resolution Clause to the Executive Board">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Working Paper Bloc · Youth Delegates</span>
-    </div>
-    <div class="ph" style="background:url('images/who-brazil-consultation.jpg') center 25%/cover;position:relative;" role="img" aria-label="Delegates of Brazil and Bloc Members Conferring Over Resolution Drafts">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Informal Caucus · Brazil &amp; Bloc</span>
-    </div>
-    <div class="ph" style="background:url('images/who-canada-speech.jpg') center 20%/cover;position:relative;" role="img" aria-label="Delegate of Canada Delivering Speech on Global Medicine Access">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Delegate of Canada · Access to Medicines</span>
-    </div>
-    <div class="ph" style="background:url('images/who-egypt-delegate.jpg') center 25%/cover;position:relative;" role="img" aria-label="Delegate of Egypt Participating in Floor Deliberation">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Delegate of Egypt · Sovereign Supply Chain</span>
-    </div>
-    <div class="ph" style="background:url('images/who-executive-board.jpg') center 30%/cover;position:relative;" role="img" aria-label="WHO Executive Board and Dais Presiding Over Committee Session">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">Executive Board · Dais &amp; Procedure</span>
-    </div>
-    <div class="ph" style="background:url('images/who-press-deliberation.jpg') center 30%/cover;position:relative;" role="img" aria-label="International Press Corps Monitoring Committee Floor">
-      <span class="photo-cred" style="background:rgba(19,45,40,0.88);backdrop-filter:blur(4px);position:absolute;bottom:8px;left:8px;right:8px;padding:6px 10px;font-size:10px;">IPC Press Desk · Real-Time Coverage</span>
-    </div>
-  </div>
 </section>
 
 <!-- ============ RADIO VOICE ============ -->
@@ -2044,361 +2037,69 @@
         <span class="photo-desk-kicker">07 · Captured</span>
         <h2 class="photo-desk-title">The Photo Desk</h2>
       </div>
-      <p class="photo-desk-note">The MUN through their lens. Moments that matter, without turning the publication into a gallery app.</p>
+      <p class="photo-desk-note">The MUN through their lens. A record of the rooms, people and moments that made SSETMUN.</p>
     </div>
 
-    <div class="photo-grid" aria-label="Selected photojournalism from the conference">
-      <button class="photo-tile large article-link" type="button" data-article="article-uncsw-witch" aria-label="UNCSW feature photo — open article">
-        <img src="images/uncsw-committee-in-session.jpg" alt="UNCSW committee floor in session with member state delegations">
-        <span class="photo-caption"><strong>02 · UNCSW</strong><span>Floor In Session</span></span>
-      </button>
-
-      <button class="photo-tile aippm article-link" type="button" data-article="article-aippm-sketch" aria-label="AIPPM photo — open article">
-        <img src="images/aippm-delegate-exhaustion.jpg" alt="AIPPM floor documentation: Delegate behind Amit Shah placard">
-        <span class="photo-caption"><strong>01 · AIPPM</strong><span>In Session · Amit Shah</span></span>
-      </button>
-
-      <button class="photo-tile uncnd article-link" type="button" data-article="article-uncnd-interview" aria-label="UNCND photo — open article">
-        <img src="images/uncnd-floor-cross-examination.jpg" alt="UNCND committee floor cross-examination">
-        <span class="photo-caption"><strong>03 · UNCND</strong><span>Floor Cross-Examination</span></span>
-      </button>
-
-      <button class="photo-tile disec article-link" type="button" data-article="article-disec-feature" aria-label="DISEC photo — open article">
-        <img src="images/disec-floor-in-session.jpg" alt="UNGA DISEC committee floor in session with member state delegations">
-        <span class="photo-caption"><strong>04 · DISEC</strong><span>Floor In Session</span></span>
-      </button>
-
-      <button class="photo-tile who article-link" type="button" data-article="article-who-sketch" aria-label="WHO photo — open article">
-        <img src="images/who-placards-raised.jpg" alt="WHO committee roll call voting with member states raising placards">
-        <span class="photo-caption"><strong>05 · WHO</strong><span>Roll Call &amp; Quorum</span></span>
-      </button>
-    </div>
-
-    <!-- Special Dispatch: Nine Frames from the AIPPM Floor -->
-    <div class="photo-desk-strip-head" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-      <div>
-        <span style="font-family:'Crimson Pro',serif;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);font-weight:600;display:block;margin-bottom:3px;">Field Dispatch · All India Political Parties Meet</span>
-        <h3 style="font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(22px,3.2vw,32px);color:var(--paper);margin:0;font-weight:400;letter-spacing:-0.02em;">AIPPM in Focus: Nine Frames from the Floor</h3>
+    <div class="photo-carousel" id="photoCarousel" role="region" aria-roledescription="carousel" aria-label="Conference Photo Desk Carousel">
+      <!-- Filter Bar: Jump directly to any committee or view all -->
+      <div class="photo-carousel-filters" role="tablist" aria-label="Filter photography by committee">
+        <button type="button" class="photo-filter-btn active" data-filter="all" role="tab" aria-selected="true">All Frames (34)</button>
+        <button type="button" class="photo-filter-btn" data-filter="AIPPM" role="tab" aria-selected="false">AIPPM (9)</button>
+        <button type="button" class="photo-filter-btn" data-filter="UNCSW" role="tab" aria-selected="false">UNCSW (6)</button>
+        <button type="button" class="photo-filter-btn" data-filter="UNCND" role="tab" aria-selected="false">UNCND (4)</button>
+        <button type="button" class="photo-filter-btn" data-filter="DISEC" role="tab" aria-selected="false">DISEC (7)</button>
+        <button type="button" class="photo-filter-btn" data-filter="WHO" role="tab" aria-selected="false">WHO (7)</button>
+        <button type="button" class="photo-filter-btn" data-filter="Press" role="tab" aria-selected="false">Press Corps (1)</button>
       </div>
-      <p style="font-family:'Crimson Pro',serif;font-size:12.5px;color:rgba(255,255,255,0.65);max-width:38ch;margin:0;line-height:1.45;">From roll call voting and working paper drafts to unmoderated caucus consultations, corridor disputes, and character studies — captured live by IPC photojournalists.</p>
-    </div>
 
-    <div class="aippm-gallery-grid" aria-label="AIPPM Nine Frames from the Floor">
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-sketch" aria-label="An Ambassador of Saffron — open article">
-        <img src="images/aippm-ambassador-of-saffron.jpg" alt="Yogi Adityanath delegate addressing the committee at the whiteboard">
-        <div class="aippm-gallery-caption">
-          <strong>The Ambassador of Saffron</strong>
-          <span>Yogi Adityanath Delegate · Floor Address</span>
+      <!-- Main Editorial Stage -->
+      <div class="photo-stage" id="photoStage" tabindex="0" aria-label="Photo spread viewport. Press Left or Right arrow keys to navigate.">
+        <div class="photo-frame-wrap">
+          <div class="photo-frame" id="photoFrame">
+            <img id="photoCarouselImg" src="images/aippm-ambassador-of-saffron.jpg" alt="Delegate representing Yogi Adityanath addressing the AIPPM committee floor in saffron attire" loading="eager" draggable="false">
+            <div class="photo-badge" id="photoBadge">01 · AIPPM</div>
+          </div>
         </div>
-      </button>
 
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-colonialism" aria-label="Placards Raised — open article">
-        <img src="images/aippm-placards-raised.jpg" alt="AIPPM delegates raising placards during roll call">
-        <div class="aippm-gallery-caption">
-          <strong>Placards Raised</strong>
-          <span>Roll Call · Priyanka Gandhi &amp; Shafi Parambil</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-colonialism" aria-label="Point of Order — open article">
-        <img src="images/aippm-owaisi-delegate.jpg" alt="Delegate representing Asaduddin Owaisi gesturing during floor speech">
-        <div class="aippm-gallery-caption">
-          <strong>Point of Order</strong>
-          <span>Asaduddin Owaisi Delegate · Floor Speech</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-colonialism" aria-label="Shadows of Debate — open article">
-        <img src="images/aippm-silhouette-debate.jpg" alt="Silhouette of two delegates debating in front of window">
-        <div class="aippm-gallery-caption">
-          <strong>Shadows of Debate</strong>
-          <span>Cross-Floor Confrontation · Unmoderated Caucus</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-colonialism" aria-label="Motion for Deliberation — open article">
-        <img src="images/aippm-kapil-sibal-placard.jpg" alt="Delegate raising Kapil Sibal placard during voting">
-        <div class="aippm-gallery-caption">
-          <strong>Motion for Deliberation</strong>
-          <span>Kapil Sibal Placard · Floor Voting</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-case" aria-label="Deliberations & Schedules — open article">
-        <img src="images/aippm-committee-deliberation.jpg" alt="AIPPM delegates conferring behind laptops">
-        <div class="aippm-gallery-caption">
-          <strong>Deliberation &amp; Schedules</strong>
-          <span>Working Papers · Indian Penal Code</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-sketch" aria-label="Weight of the Gavel — open article">
-        <img src="images/aippm-delegate-exhaustion.jpg" alt="Delegate resting face in hands behind Amit Shah placard">
-        <div class="aippm-gallery-caption">
-          <strong>Weight of the Gavel</strong>
-          <span>Delegate Behind Amit Shah Placard</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-sketch" aria-label="Cross-Floor Consensus — open article">
-        <img src="images/aippm-caucus-discussion.jpg" alt="Delegates conferring during unmoderated caucus">
-        <div class="aippm-gallery-caption">
-          <strong>Cross-Floor Consensus</strong>
-          <span>Unmoderated Caucus · Informal Dialogue</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-aippm-case" aria-label="Recess & Respite — open article">
-        <img src="images/aippm-floor-recess.jpg" alt="Delegates leaning back and sharing a light moment during floor recess">
-        <div class="aippm-gallery-caption">
-          <strong>Recess &amp; Respite</strong>
-          <span>Committee Floor · Between Motions</span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Special Dispatch: Six Frames from the UNCSW Floor -->
-    <div class="photo-desk-strip-head" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-      <div>
-        <span style="font-family:'Crimson Pro',serif;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);font-weight:600;display:block;margin-bottom:3px;">Field Dispatch · UN Commission on the Status of Women</span>
-        <h3 style="font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(22px,3.2vw,32px);color:var(--paper);margin:0;font-weight:400;letter-spacing:-0.02em;">UNCSW in Focus: Six Frames from the Floor</h3>
+        <!-- Navigation Controls -->
+        <button class="carousel-arrow prev" id="photoPrevBtn" type="button" aria-label="Previous photograph">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="carousel-arrow next" id="photoNextBtn" type="button" aria-label="Next photograph">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
-      <p style="font-family:'Crimson Pro',serif;font-size:12.5px;color:rgba(255,255,255,0.65);max-width:38ch;margin:0;line-height:1.45;">From roll call votes and working paper drafting blocs to unmoderated caucus disputes, diplomatic reflections, and committee floor dialogues — captured live by IPC photojournalists.</p>
-    </div>
 
-    <div class="aippm-gallery-grid uncsw-gallery-grid" aria-label="UNCSW Six Frames from the Floor">
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncsw-witch" aria-label="Committee Floor in Session — open article">
-        <img src="images/uncsw-committee-in-session.jpg" alt="UNCSW floor in session with Morocco, USA, Iraq, Denmark, Norway placards">
-        <div class="aippm-gallery-caption">
-          <strong>Committee in Session</strong>
-          <span>General Deliberations · Floor Delegations</span>
+      <!-- Editorial Metadata & Related Story -->
+      <div class="photo-editorial-bar">
+        <div class="photo-editorial-meta">
+          <span class="photo-meta-kicker" id="photoCommittee">01 · AIPPM</span>
+          <h3 class="photo-meta-title" id="photoTitle">The Ambassador of Saffron</h3>
+          <p class="photo-meta-caption" id="photoCaption">Yogi Adityanath Delegate · Floor Address</p>
+          <div class="photo-meta-credit">
+            <span class="photo-credit-label">Photograph by</span>
+            <span class="photo-credit-name" id="photoPhotographer">IPC Photojournalism Desk · SSETMUN</span>
+          </div>
         </div>
-      </button>
 
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncsw-interview" aria-label="Roll Call & Voting — open article">
-        <img src="images/uncsw-placards-raised.jpg" alt="Delegates raising placards during roll call: Guinea and Turkey">
-        <div class="aippm-gallery-caption">
-          <strong>Placards Raised</strong>
-          <span>Roll Call &amp; Quorum · Guinea &amp; Turkey</span>
+        <div class="photo-editorial-actions">
+          <button type="button" class="photo-story-btn" id="photoStoryBtn" aria-label="Read related article for this photograph">
+            <span>Read Related Story</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncsw-witch" aria-label="Resolution Drafting — open article">
-        <img src="images/uncsw-working-paper-drafting.jpg" alt="Delegate of Morocco drafting working paper clauses at desk">
-        <div class="aippm-gallery-caption">
-          <strong>Resolution Drafting</strong>
-          <span>Morocco Delegation · Working Paper Draft</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncsw-witch" aria-label="The Floor in Motion — open article">
-        <img src="images/uncsw-caucus-debate.jpg" alt="Animated delegate in red striped shirt in unmoderated caucus debate">
-        <div class="aippm-gallery-caption">
-          <strong>The Floor in Motion</strong>
-          <span>Unmoderated Caucus · Cross-Floor Debate</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncsw-interview" aria-label="Consultations & Notes — open article">
-        <img src="images/uncsw-delegate-note-taking.jpg" alt="Delegate in white hijab writing notes at desk during session">
-        <div class="aippm-gallery-caption">
-          <strong>Consultations &amp; Notes</strong>
-          <span>Floor Deliberations · Working Drafts</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncsw-poem" aria-label="Diplomatic Deliberation — open article">
-        <img src="images/uncsw-switzerland-listening.jpg" alt="Delegate behind Switzerland placard listening attentively">
-        <div class="aippm-gallery-caption">
-          <strong>Diplomatic Deliberation</strong>
-          <span>Switzerland Delegation · Active Listening</span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Special Dispatch: Four Frames from the UNCND Floor -->
-    <div class="photo-desk-strip-head" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-      <div>
-        <span style="font-family:'Crimson Pro',serif;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);font-weight:600;display:block;margin-bottom:3px;">Field Dispatch · UN Commission on Narcotic Drugs</span>
-        <h3 style="font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(22px,3.2vw,32px);color:var(--paper);margin:0;font-weight:400;letter-spacing:-0.02em;">UNCND in Focus: Four Frames from the Floor</h3>
       </div>
-      <p style="font-family:'Crimson Pro',serif;font-size:12.5px;color:rgba(255,255,255,0.65);max-width:38ch;margin:0;line-height:1.45;">From 1961 Single Convention scheduling hierarchies and unmoderated caucus consultations to floor cross-examinations and delegate reflections — captured live by IPC photojournalists.</p>
-    </div>
 
-    <div class="aippm-gallery-grid uncnd-gallery-grid" aria-label="UNCND Four Frames from the Floor">
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncnd-interview" aria-label="Scheduling Deliberations — open article">
-        <img src="images/uncnd-whiteboard-scheduling.jpg" alt="Delegate at interactive whiteboard charting 1961 Convention scheduling categories">
-        <div class="aippm-gallery-caption">
-          <strong>1961 Risk Hierarchy</strong>
-          <span>Scheduling Categories · Whiteboard Deliberation</span>
+      <!-- Progress Track & Count -->
+      <div class="photo-carousel-bottom">
+        <div class="photo-progress-track" aria-hidden="true">
+          <div class="photo-progress-fill" id="photoProgressFill" style="width: 2.94%;"></div>
         </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncnd-feature" aria-label="Caucus Consultations — open article">
-        <img src="images/uncnd-caucus-consultation.jpg" alt="Delegates conferring with laptops during unmoderated caucus">
-        <div class="aippm-gallery-caption">
-          <strong>Caucus Consultations</strong>
-          <span>Working Papers · Unmoderated Caucus</span>
+        <div class="photo-carousel-status">
+          <span class="photo-index-count" id="photoCount" aria-live="polite">01 / 34</span>
+          <span class="photo-hint">Swipe or use ← → arrow keys to browse</span>
         </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncnd-interview" aria-label="Floor Cross-Examination — open article">
-        <img src="images/uncnd-floor-cross-examination.jpg" alt="Delegate portrait during intense floor cross-examination">
-        <div class="aippm-gallery-caption">
-          <strong>Floor Cross-Examination</strong>
-          <span>Committee Deliberations · Sovereign Scheduling</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-uncnd-atoms" aria-label="Delegate in Contemplation — open article">
-        <img src="images/uncnd-delegate-portrait-bw.jpg" alt="Dramatic black and white portrait of UNCND delegate">
-        <div class="aippm-gallery-caption">
-          <strong>The Human Dimension</strong>
-          <span>Delegate in Contemplation · Black &amp; White Study</span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Special Dispatch: Seven Frames from the DISEC Floor -->
-    <div class="photo-desk-strip-head" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-      <div>
-        <span style="font-family:'Crimson Pro',serif;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);font-weight:600;display:block;margin-bottom:3px;">Field Dispatch · UNGA First Committee</span>
-        <h3 style="font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(22px,3.2vw,32px);color:var(--paper);margin:0;font-weight:400;letter-spacing:-0.02em;">DISEC in Focus: Seven Frames from the Floor</h3>
       </div>
-      <p style="font-family:'Crimson Pro',serif;font-size:12.5px;color:rgba(255,255,255,0.65);max-width:38ch;margin:0;line-height:1.45;">From General Speakers List podium addresses and working paper drafting blocs to unmoderated caucus circles and cross-bench consultations — captured live by IPC photojournalists.</p>
-    </div>
-
-    <div class="aippm-gallery-grid disec-gallery-grid" aria-label="DISEC Seven Frames from the Floor">
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-disec-feature" aria-label="Floor in Session — open article">
-        <img src="images/disec-floor-in-session.jpg" alt="DISEC floor in session with Türkiye and Thailand placards">
-        <div class="aippm-gallery-caption">
-          <strong>Committee in Session</strong>
-          <span>Türkiye, Thailand &amp; Regional Blocs</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-disec-interview" aria-label="Point of Order — open article">
-        <img src="images/disec-delegate-intervention.jpg" alt="Delegate pointing forward during floor debate">
-        <div class="aippm-gallery-caption">
-          <strong>Point of Order</strong>
-          <span>Delegate Floor Intervention &amp; Debate</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-disec-feature" aria-label="Podium Address — open article">
-        <img src="images/disec-podium-address.jpg" alt="Delegate addressing DISEC from the podium">
-        <div class="aippm-gallery-caption">
-          <strong>Podium Address</strong>
-          <span>General Speakers List · Floor Speech</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-disec-op-ed" aria-label="The Floor in Motion — open article">
-        <img src="images/disec-unmod-caucus-circle.jpg" alt="Delegates in unmoderated caucus circle surrounding standing delegate">
-        <div class="aippm-gallery-caption">
-          <strong>The Floor in Motion</strong>
-          <span>Unmoderated Caucus Debate Circle</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-disec-op-ed" aria-label="Resolution Drafting — open article">
-        <img src="images/disec-working-paper-bloc.jpg" alt="Delegates conferring around working papers">
-        <div class="aippm-gallery-caption">
-          <strong>Resolution Drafting</strong>
-          <span>Working Paper Consultations · US Folder</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-disec-interview" aria-label="Cross-Floor Consultation — open article">
-        <img src="images/disec-caucus-consultation.jpg" alt="Delegates in deep discussion during unmoderated caucus">
-        <div class="aippm-gallery-caption">
-          <strong>Cross-Floor Consultation</strong>
-          <span>Unmoderated Caucus · Informal Dialogue</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-disec-interview" aria-label="Cross-Bench Consensus — open article">
-        <img src="images/disec-caucus-peace-sign.jpg" alt="Smiling delegate in unmoderated caucus flashing peace sign surrounded by delegates">
-        <div class="aippm-gallery-caption">
-          <strong>Cross-Bench Consensus</strong>
-          <span>Informal Caucus · Delegates Light Moment</span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Special Dispatch: Seven Frames from the WHO Floor -->
-    <div class="photo-desk-strip-head" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-      <div>
-        <span style="font-family:'Crimson Pro',serif;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);font-weight:600;display:block;margin-bottom:3px;">Field Dispatch · World Health Organization (School Committee)</span>
-        <h3 style="font-family:'Bodoni Moda','Fraunces',serif;font-size:clamp(22px,3.2vw,32px);color:var(--paper);margin:0;font-weight:400;letter-spacing:-0.02em;">WHO in Focus: Eight Frames from the Floor</h3>
-      </div>
-      <p style="font-family:'Crimson Pro',serif;font-size:12.5px;color:rgba(255,255,255,0.65);max-width:38ch;margin:0;line-height:1.45;">From roll call voting and working paper deliberations to youth delegate addresses, informal caucus consultations, executive board guidance, and press corps monitoring — captured live by IPC photojournalists.</p>
-    </div>
-
-    <div class="aippm-gallery-grid who-gallery-grid" aria-label="WHO Eight Frames from the Floor">
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-scarcity" aria-label="Roll Call & Quorum — open article">
-        <img src="images/who-placards-raised.jpg" alt="Delegates of South Africa, China, Portugal, Paraguay, Russia, and Indonesia raising placards during roll call">
-        <div class="aippm-gallery-caption">
-          <strong>Roll Call &amp; Quorum</strong>
-          <span>Placards Raised · South Africa to Indonesia</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-sketch" aria-label="Youth Delegate Floor Address — open article">
-        <img src="images/who-delegate-address.jpg" alt="Young school delegate in grey suit addressing the committee with tablet in hand">
-        <div class="aippm-gallery-caption">
-          <strong>The Floor in Motion</strong>
-          <span>Floor Address · Pharmaceutical Standards</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-feature" aria-label="Youth Delegate Presentation — open article">
-        <img src="images/who-delegates-panel.jpg" alt="Four young delegates standing before the committee presenting clauses">
-        <div class="aippm-gallery-caption">
-          <strong>Working Paper Presentation</strong>
-          <span>Youth Delegates · Working Group Submission</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-feature" aria-label="Informal Caucus Strategy — open article">
-        <img src="images/who-brazil-consultation.jpg" alt="Delegates of Brazil and bloc members conferring over smartphone and resolution notes during informal caucus">
-        <div class="aippm-gallery-caption">
-          <strong>Informal Caucus Strategy</strong>
-          <span>Delegates of Brazil &amp; Bloc · Strategy Session</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-sketch" aria-label="Delegate of Canada Speech — open article">
-        <img src="images/who-canada-speech.jpg" alt="Delegate of Canada passionately speaking with placard in hand">
-        <div class="aippm-gallery-caption">
-          <strong>Voice of Canada</strong>
-          <span>Delegate Floor Speech · Access to Medicines</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-scarcity" aria-label="Delegate of Egypt Deliberations — open article">
-        <img src="images/who-egypt-delegate.jpg" alt="Delegate of Egypt holding country placard during committee deliberations">
-        <div class="aippm-gallery-caption">
-          <strong>Sovereign Health Security</strong>
-          <span>Delegate of Egypt · TRIPS &amp; Supply Chains</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-sketch" aria-label="Executive Board and Dais — open article">
-        <img src="images/who-executive-board.jpg" alt="Executive board and chairpersons presiding over WHO committee with wooden gavel">
-        <div class="aippm-gallery-caption">
-          <strong>Executive Board at the Dais</strong>
-          <span>Committee Leadership · Procedural Guidance</span>
-        </div>
-      </button>
-
-      <button class="aippm-gallery-tile article-link" type="button" data-article="article-who-feature" aria-label="IPC Press Corps Deliberations — open article">
-        <img src="images/who-press-deliberation.jpg" alt="Press corps journalists reviewing laptop screen during WHO coverage">
-        <div class="aippm-gallery-caption">
-          <strong>Press Room Verification</strong>
-          <span>IPC Press Corps · Live Floor Monitoring</span>
-        </div>
-      </button>
     </div>
   </div>
 </section>
@@ -2553,7 +2254,7 @@
   }));
 
   /* Scroll reveal */
-  const revealTargets = document.querySelectorAll('.section-head,.letter,.committee-banner,.feature,.grid,.mini-photos,.radio-feature,.corps-grid,.footer-grid,.photo-desk-head,.photo-grid,.photo-desk-strip-head,.aippm-gallery-grid');
+  const revealTargets = document.querySelectorAll('.section-head,.letter,.committee-banner,.feature,.grid,.radio-feature,.corps-grid,.footer-grid,.photo-desk-head,.photo-carousel');
   revealTargets.forEach((el,i)=>{el.classList.add('reveal'); if(i%4===1)el.classList.add('delay-1'); if(i%4===2)el.classList.add('delay-2'); if(i%4===3)el.classList.add('delay-3');});
   const revealObserver = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObserver.unobserve(e.target);}}),{threshold:.08});
   revealTargets.forEach(el=>revealObserver.observe(el));
@@ -3843,6 +3544,507 @@
   }));
 
   updateRadio();window.addEventListener('resize',updateRadio);
+
+  /* =========================================================
+     PHOTO DESK EDITORIAL CAROUSEL LOGIC
+     ========================================================= */
+  const photoDeskImages = [
+    {
+      src: "images/aippm-ambassador-of-saffron.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "The Ambassador of Saffron",
+      caption: "Yogi Adityanath Delegate · Floor Address",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate representing Yogi Adityanath addressing the AIPPM committee floor in saffron attire",
+      articleId: "article-aippm-sketch"
+    },
+    {
+      src: "images/aippm-placards-raised.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Placards Raised",
+      caption: "Roll Call · Priyanka Gandhi & Shafi Parambil",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegates raising placards during roll call in AIPPM including Priyanka Gandhi and Shafi Parambil",
+      articleId: "article-aippm-feature"
+    },
+    {
+      src: "images/aippm-owaisi-delegate.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Point of Order",
+      caption: "Asaduddin Owaisi Delegate · Floor Speech",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate representing Asaduddin Owaisi delivering a speech with raised hand in AIPPM",
+      articleId: "article-aippm-sketch"
+    },
+    {
+      src: "images/aippm-silhouette-debate.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Shadows of Debate",
+      caption: "Cross-Floor Confrontation · Unmoderated Caucus",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Dramatic silhouette of delegates engaged in cross-floor confrontation during unmoderated caucus in AIPPM",
+      articleId: "article-aippm-feature"
+    },
+    {
+      src: "images/aippm-kapil-sibal-placard.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Motion for Deliberation",
+      caption: "Kapil Sibal Placard · Floor Voting",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate raising Kapil Sibal placard during voting in AIPPM committee",
+      articleId: "article-aippm-feature"
+    },
+    {
+      src: "images/aippm-committee-deliberation.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Deliberation & Schedules",
+      caption: "Working Papers · Indian Penal Code",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "AIPPM committee floor during deliberation with Indian Penal Code and working papers on desks",
+      articleId: "article-aippm-feature"
+    },
+    {
+      src: "images/aippm-delegate-exhaustion.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Weight of the Gavel",
+      caption: "Delegate Behind Amit Shah Placard · In Session",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate resting chin in hand behind Amit Shah placard during intense debate in AIPPM",
+      articleId: "article-aippm-sketch"
+    },
+    {
+      src: "images/aippm-caucus-discussion.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Cross-Floor Consensus",
+      caption: "Unmoderated Caucus · Informal Dialogue",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegates huddling together during unmoderated caucus discussion in AIPPM",
+      articleId: "article-aippm-feature"
+    },
+    {
+      src: "images/aippm-floor-recess.jpg",
+      committee: "01 · AIPPM",
+      category: "AIPPM",
+      title: "Recess & Respite",
+      caption: "Committee Floor · Between Motions",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Wide shot of AIPPM committee hall with delegates during brief floor recess",
+      articleId: "article-aippm-sketch"
+    },
+    {
+      src: "images/uncsw-committee-in-session.jpg",
+      committee: "02 · UNCSW",
+      category: "UNCSW",
+      title: "Committee in Session",
+      caption: "General Deliberations · Floor Delegations",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "UNCSW committee floor in session with member state delegations",
+      articleId: "article-uncsw-witch"
+    },
+    {
+      src: "images/uncsw-placards-raised.jpg",
+      committee: "02 · UNCSW",
+      category: "UNCSW",
+      title: "Placards Raised",
+      caption: "Roll Call & Quorum · Guinea & Turkey",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "UNCSW delegates raising country placards during roll call including Guinea and Turkey",
+      articleId: "article-uncsw-witch"
+    },
+    {
+      src: "images/uncsw-working-paper-drafting.jpg",
+      committee: "02 · UNCSW",
+      category: "UNCSW",
+      title: "Resolution Drafting",
+      caption: "Morocco Delegation · Working Paper Draft",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate of Morocco reviewing draft resolution papers during UNCSW committee",
+      articleId: "article-uncsw-poem"
+    },
+    {
+      src: "images/uncsw-caucus-debate.jpg",
+      committee: "02 · UNCSW",
+      category: "UNCSW",
+      title: "The Floor in Motion",
+      caption: "Unmoderated Caucus · Cross-Floor Debate",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "UNCSW delegates standing and engaging in energetic informal caucus debate",
+      articleId: "article-uncsw-witch"
+    },
+    {
+      src: "images/uncsw-delegate-note-taking.jpg",
+      committee: "02 · UNCSW",
+      category: "UNCSW",
+      title: "Consultations & Notes",
+      caption: "Floor Deliberations · Working Drafts",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Close-up of UNCSW delegate taking detailed notes during floor deliberation",
+      articleId: "article-uncsw-poem"
+    },
+    {
+      src: "images/uncsw-switzerland-listening.jpg",
+      committee: "02 · UNCSW",
+      category: "UNCSW",
+      title: "Diplomatic Deliberation",
+      caption: "Switzerland Delegation · Active Listening",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate of Switzerland listening intently to debate on the UNCSW committee floor",
+      articleId: "article-uncsw-witch"
+    },
+    {
+      src: "images/uncnd-whiteboard-scheduling.jpg",
+      committee: "03 · UNCND",
+      category: "UNCND",
+      title: "1961 Risk Hierarchy",
+      caption: "Scheduling Categories · Whiteboard Deliberation",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "UNCND committee room whiteboard mapping 1961 Single Convention risk hierarchy and scheduling categories",
+      articleId: "article-uncnd-interview"
+    },
+    {
+      src: "images/uncnd-caucus-consultation.jpg",
+      committee: "03 · UNCND",
+      category: "UNCND",
+      title: "Caucus Consultations",
+      caption: "Working Papers · Unmoderated Caucus",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "UNCND delegates conferring over working papers during an unmoderated caucus session",
+      articleId: "article-uncnd-sketch"
+    },
+    {
+      src: "images/uncnd-floor-cross-examination.jpg",
+      committee: "03 · UNCND",
+      category: "UNCND",
+      title: "Floor Cross-Examination",
+      caption: "Committee Deliberations · Sovereign Scheduling",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "UNCND committee floor cross-examination between sovereign delegations",
+      articleId: "article-uncnd-interview"
+    },
+    {
+      src: "images/uncnd-delegate-portrait-bw.jpg",
+      committee: "03 · UNCND",
+      category: "UNCND",
+      title: "The Human Dimension",
+      caption: "Delegate in Contemplation · Black & White Study",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Black and white portrait of a UNCND delegate listening in quiet contemplation during debate",
+      articleId: "article-uncnd-sketch"
+    },
+    {
+      src: "images/disec-floor-in-session.jpg",
+      committee: "04 · UNGA DISEC",
+      category: "DISEC",
+      title: "Committee in Session",
+      caption: "Türkiye, Thailand & Regional Blocs",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "UNGA DISEC committee floor in session with member state delegations",
+      articleId: "article-disec-feature"
+    },
+    {
+      src: "images/disec-delegate-intervention.jpg",
+      committee: "04 · UNGA DISEC",
+      category: "DISEC",
+      title: "Point of Order",
+      caption: "Delegate Floor Intervention & Debate",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate pointing forward during floor debate in DISEC",
+      articleId: "article-disec-interview"
+    },
+    {
+      src: "images/disec-podium-address.jpg",
+      committee: "04 · UNGA DISEC",
+      category: "DISEC",
+      title: "Podium Address",
+      caption: "General Speakers List · Floor Speech",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate addressing DISEC from the podium",
+      articleId: "article-disec-feature"
+    },
+    {
+      src: "images/disec-unmod-caucus-circle.jpg",
+      committee: "04 · UNGA DISEC",
+      category: "DISEC",
+      title: "The Floor in Motion",
+      caption: "Unmoderated Caucus Debate Circle",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegates in unmoderated caucus circle surrounding standing delegate in DISEC",
+      articleId: "article-disec-op-ed"
+    },
+    {
+      src: "images/disec-working-paper-bloc.jpg",
+      committee: "04 · UNGA DISEC",
+      category: "DISEC",
+      title: "Resolution Drafting",
+      caption: "Working Paper Consultations · US Folder",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegates conferring around working papers in DISEC",
+      articleId: "article-disec-op-ed"
+    },
+    {
+      src: "images/disec-caucus-consultation.jpg",
+      committee: "04 · UNGA DISEC",
+      category: "DISEC",
+      title: "Cross-Floor Consultation",
+      caption: "Unmoderated Caucus · Informal Dialogue",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegates in deep discussion during unmoderated caucus in DISEC",
+      articleId: "article-disec-interview"
+    },
+    {
+      src: "images/disec-caucus-peace-sign.jpg",
+      committee: "04 · UNGA DISEC",
+      category: "DISEC",
+      title: "Cross-Bench Consensus",
+      caption: "Informal Caucus · Delegates Light Moment",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Smiling delegate in unmoderated caucus flashing peace sign surrounded by delegates in DISEC",
+      articleId: "article-disec-interview"
+    },
+    {
+      src: "images/who-placards-raised.jpg",
+      committee: "05 · WHO",
+      category: "WHO",
+      title: "Roll Call & Quorum",
+      caption: "Placards Raised · South Africa to Indonesia",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegates of South Africa, China, Portugal, Paraguay, Russia, and Indonesia raising placards during roll call",
+      articleId: "article-who-scarcity"
+    },
+    {
+      src: "images/who-delegate-address.jpg",
+      committee: "05 · WHO",
+      category: "WHO",
+      title: "The Floor in Motion",
+      caption: "Floor Address · Pharmaceutical Standards",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Young school delegate in grey suit addressing the committee with tablet in hand",
+      articleId: "article-who-sketch"
+    },
+    {
+      src: "images/who-delegates-panel.jpg",
+      committee: "05 · WHO",
+      category: "WHO",
+      title: "Working Paper Presentation",
+      caption: "Youth Delegates · Working Group Submission",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Four young delegates standing before the committee presenting clauses",
+      articleId: "article-who-feature"
+    },
+    {
+      src: "images/who-brazil-consultation.jpg",
+      committee: "05 · WHO",
+      category: "WHO",
+      title: "Informal Caucus Strategy",
+      caption: "Delegates of Brazil & Bloc · Strategy Session",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegates of Brazil and bloc members conferring over smartphone and resolution notes during informal caucus",
+      articleId: "article-who-feature"
+    },
+    {
+      src: "images/who-canada-speech.jpg",
+      committee: "05 · WHO",
+      category: "WHO",
+      title: "Voice of Canada",
+      caption: "Delegate Floor Speech · Access to Medicines",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate of Canada passionately speaking with placard in hand",
+      articleId: "article-who-sketch"
+    },
+    {
+      src: "images/who-egypt-delegate.jpg",
+      committee: "05 · WHO",
+      category: "WHO",
+      title: "Sovereign Health Security",
+      caption: "Delegate of Egypt · TRIPS & Supply Chains",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Delegate of Egypt holding country placard during committee deliberations",
+      articleId: "article-who-scarcity"
+    },
+    {
+      src: "images/who-executive-board.jpg",
+      committee: "05 · WHO",
+      category: "WHO",
+      title: "Executive Board at the Dais",
+      caption: "Committee Leadership · Procedural Guidance",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Executive board and chairpersons presiding over WHO committee with wooden gavel",
+      articleId: "article-who-sketch"
+    },
+    {
+      src: "images/who-press-deliberation.jpg",
+      committee: "06 · Press Room",
+      category: "Press",
+      title: "Press Room Verification",
+      caption: "IPC Press Corps · Live Floor Monitoring",
+      photographer: "IPC Photojournalism Desk · SSETMUN",
+      alt: "Press corps journalists reviewing laptop screen during WHO coverage",
+      articleId: "article-who-feature"
+    }
+  ];
+
+  let currentPhotoIndex = 0;
+  let currentFilter = 'all';
+  let filteredImages = [...photoDeskImages];
+
+  const carouselImg = document.getElementById('photoCarouselImg');
+  const carouselBadge = document.getElementById('photoBadge');
+  const carouselCommittee = document.getElementById('photoCommittee');
+  const carouselTitle = document.getElementById('photoTitle');
+  const carouselCaption = document.getElementById('photoCaption');
+  const carouselPhotographer = document.getElementById('photoPhotographer');
+  const carouselStoryBtn = document.getElementById('photoStoryBtn');
+  const carouselCount = document.getElementById('photoCount');
+  const carouselProgressFill = document.getElementById('photoProgressFill');
+  const carouselPrevBtn = document.getElementById('photoPrevBtn');
+  const carouselNextBtn = document.getElementById('photoNextBtn');
+  const photoStage = document.getElementById('photoStage');
+  const filterBtns = document.querySelectorAll('.photo-filter-btn');
+
+  function preloadAdjacent() {
+    if (!filteredImages.length) return;
+    const nextIdx = (currentPhotoIndex + 1) % filteredImages.length;
+    const prevIdx = (currentPhotoIndex - 1 + filteredImages.length) % filteredImages.length;
+    const img1 = new Image(); img1.src = filteredImages[nextIdx].src;
+    const img2 = new Image(); img2.src = filteredImages[prevIdx].src;
+  }
+
+  function renderPhoto(index, direction) {
+    if (!filteredImages.length) return;
+    if (index < 0) index = filteredImages.length - 1;
+    if (index >= filteredImages.length) index = 0;
+    currentPhotoIndex = index;
+    const item = filteredImages[currentPhotoIndex];
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion && direction && carouselImg) {
+      const animClass = direction === 'next' ? 'sliding-in-left' : 'sliding-in-right';
+      carouselImg.className = animClass;
+      setTimeout(() => { if (carouselImg) carouselImg.className = ''; }, 300);
+    }
+
+    if (carouselImg) {
+      carouselImg.src = item.src;
+      carouselImg.alt = item.alt;
+    }
+    if (carouselBadge) carouselBadge.textContent = item.committee;
+    if (carouselCommittee) carouselCommittee.textContent = item.committee;
+    if (carouselTitle) carouselTitle.textContent = item.title;
+    if (carouselCaption) carouselCaption.textContent = item.caption;
+    if (carouselPhotographer) carouselPhotographer.textContent = item.photographer;
+
+    const pad = n => String(n).padStart(2, '0');
+    if (carouselCount) carouselCount.textContent = `${pad(currentPhotoIndex + 1)} / ${pad(filteredImages.length)}`;
+    if (carouselProgressFill) {
+      const pct = ((currentPhotoIndex + 1) / filteredImages.length) * 100;
+      carouselProgressFill.style.width = `${pct.toFixed(2)}%`;
+    }
+
+    if (carouselStoryBtn) {
+      if (item.articleId) {
+        carouselStoryBtn.classList.remove('hidden');
+        carouselStoryBtn.onclick = () => {
+          if (typeof openArticle === 'function') openArticle(item.articleId);
+        };
+      } else {
+        carouselStoryBtn.classList.add('hidden');
+      }
+    }
+
+    preloadAdjacent();
+  }
+
+  function movePhoto(dir) {
+    renderPhoto(currentPhotoIndex + (dir === 'next' ? 1 : -1), dir);
+  }
+
+  if (carouselPrevBtn) carouselPrevBtn.addEventListener('click', () => movePhoto('prev'));
+  if (carouselNextBtn) carouselNextBtn.addEventListener('click', () => movePhoto('next'));
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      if (filter === currentFilter) return;
+      currentFilter = filter;
+      filterBtns.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      if (currentFilter === 'all') {
+        filteredImages = [...photoDeskImages];
+      } else {
+        filteredImages = photoDeskImages.filter(img => img.category === currentFilter);
+      }
+      currentPhotoIndex = 0;
+      renderPhoto(0);
+    });
+  });
+
+  if (photoStage) {
+    photoStage.style.cursor = 'pointer';
+    photoStage.addEventListener('click', e => {
+      if (e.target.closest('.carousel-arrow')) return;
+      const item = filteredImages[currentPhotoIndex];
+      if (item && item.articleId && typeof openArticle === 'function') {
+        openArticle(item.articleId);
+      }
+    });
+    photoStage.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); movePhoto('prev'); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); movePhoto('next'); }
+      else if (e.key === 'Enter') {
+        const item = filteredImages[currentPhotoIndex];
+        if (item && item.articleId && typeof openArticle === 'function') {
+          openArticle(item.articleId);
+        }
+      }
+    });
+  }
+
+  window.addEventListener('keydown', e => {
+    const photoSec = document.getElementById('photos');
+    if (!photoSec) return;
+    const rect = photoSec.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight * 0.75 && rect.bottom > window.innerHeight * 0.25;
+    if (inView && document.activeElement && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); movePhoto('prev'); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); movePhoto('next'); }
+    }
+  });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  if (photoStage) {
+    photoStage.addEventListener('touchstart', e => {
+      if (e.changedTouches && e.changedTouches[0]) {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      }
+    }, { passive: true });
+
+    photoStage.addEventListener('touchend', e => {
+      if (!e.changedTouches || !e.changedTouches[0]) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 0) movePhoto('prev');
+        else movePhoto('next');
+      }
+    }, { passive: true });
+  }
+
+  renderPhoto(0);
+
   /* Back to top */
   const backTop=document.getElementById('backToTop');
   window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>650),{passive:true});
