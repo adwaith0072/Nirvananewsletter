@@ -1021,7 +1021,7 @@
   margin:0 0 3px auto;
 }
 /* =========================================================
-   PHOTO DESK EDITORIAL CAROUSEL
+   PHOTO DESK EDITORIAL CAROUSEL & FULLSCREEN VIEWER
    ========================================================= */
 .photo-carousel {
   position: relative;
@@ -1037,7 +1037,7 @@
   background: transparent;
   border: 1px solid var(--line);
   color: var(--ink-soft);
-  padding: 7px 15px;
+  padding: 6px 14px;
   border-radius: 999px;
   font: 500 12px/1 'Crimson Pro', serif;
   text-transform: uppercase;
@@ -1063,11 +1063,11 @@
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  background: #0d1b17;
-  border: 1px solid rgba(22,59,51,0.22);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  background: #091311;
+  border: 1px solid var(--line);
   touch-action: pan-y;
   user-select: none;
+  cursor: zoom-in;
 }
 .photo-stage:focus-visible {
   outline: 2px solid var(--signal);
@@ -1082,9 +1082,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 580px;
+  min-height: 320px;
+  height: 560px;
   width: 100%;
-  background: radial-gradient(circle at center, #132722 0%, #091310 100%);
 }
 .photo-frame img {
   max-height: 100%;
@@ -1094,48 +1094,60 @@
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  transition: opacity .24s ease, transform .32s cubic-bezier(.2,.7,.2,1);
-}
-.photo-frame img.sliding-in-left {
-  animation: photoSlideInLeft .28s cubic-bezier(.2,.7,.2,1) forwards;
-}
-.photo-frame img.sliding-in-right {
-  animation: photoSlideInRight .28s cubic-bezier(.2,.7,.2,1) forwards;
-}
-@keyframes photoSlideInLeft {
-  from { opacity: 0; transform: translateX(24px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes photoSlideInRight {
-  from { opacity: 0; transform: translateX(-24px); }
-  to { opacity: 1; transform: translateX(0); }
+  transition: opacity .25s ease, transform .25s ease;
 }
 .photo-badge {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  background: rgba(10,25,22,0.86);
-  backdrop-filter: blur(10px);
+  top: 16px;
+  left: 16px;
+  background: rgba(9,19,17,0.85);
+  backdrop-filter: blur(8px);
   color: var(--paper);
   font: 600 11px/1 'Crimson Pro', serif;
   text-transform: uppercase;
   letter-spacing: .08em;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.15);
   pointer-events: none;
   z-index: 2;
 }
+.photo-zoom-hint {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(9,19,17,0.82);
+  backdrop-filter: blur(8px);
+  color: var(--paper);
+  font: 500 10.5px 'Crimson Pro', serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: .85;
+  transition: opacity .2s ease;
+}
+.photo-stage:hover .photo-zoom-hint {
+  opacity: 1;
+}
+
+/* Subtle Understated Side Arrows */
 .carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: rgba(10,25,22,0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(9,19,17,0.72);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.18);
   color: var(--paper);
   display: flex;
   align-items: center;
@@ -1144,26 +1156,29 @@
   transition: all .2s ease;
   z-index: 5;
   padding: 0;
+  opacity: .75;
 }
 .carousel-arrow:hover {
   background: var(--teal);
   border-color: var(--signal);
   color: #fff;
-  transform: translateY(-50%) scale(1.08);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.06);
 }
 .carousel-arrow:focus-visible {
   outline: 2px solid var(--signal);
   outline-offset: 2px;
 }
-.carousel-arrow.prev { left: 18px; }
-.carousel-arrow.next { right: 18px; }
+.carousel-arrow.prev { left: 16px; }
+.carousel-arrow.next { right: 16px; }
 
+/* Editorial Metadata Bar */
 .photo-editorial-bar {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 24px;
-  padding: 24px 6px 18px;
+  padding: 22px 4px 16px;
   border-bottom: 1px solid var(--line);
 }
 .photo-editorial-meta {
@@ -1176,11 +1191,11 @@
   text-transform: uppercase;
   letter-spacing: .12em;
   color: var(--signal);
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 .photo-meta-title {
   font-family: 'Bodoni Moda', 'Fraunces', serif;
-  font-size: clamp(26px, 3.2vw, 36px);
+  font-size: clamp(24px, 3vw, 34px);
   line-height: 1.1;
   letter-spacing: -.02em;
   margin: 0 0 6px;
@@ -1189,15 +1204,15 @@
 }
 .photo-meta-caption {
   font-family: 'Crimson Pro', serif;
-  font-size: 16px;
+  font-size: 15.5px;
   line-height: 1.45;
   color: var(--ink-soft);
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   max-width: 60ch;
 }
 .photo-meta-credit {
   font-family: 'Crimson Pro', serif;
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--ink-soft);
   display: flex;
   gap: 6px;
@@ -1213,48 +1228,85 @@
   font-weight: 600;
   color: var(--teal);
 }
-.photo-editorial-actions {
+.photo-story-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Crimson Pro', serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--teal);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin-top: 8px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s ease;
+}
+.photo-story-link:hover {
+  color: var(--signal);
+}
+.photo-story-link.hidden {
+  display: none;
+}
+
+/* Understated Navigation Controls & Counter */
+.photo-nav-suite {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   flex-shrink: 0;
   margin-top: 4px;
 }
-.photo-story-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 20px;
+.photo-nav-arrow {
   background: transparent;
-  border: 1px solid var(--teal);
-  color: var(--teal);
-  border-radius: 999px;
-  font: 600 12.5px/1 'Crimson Pro', serif;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: 'Crimson Pro', serif;
+  font-size: 20px;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all .2s ease;
+  padding: 0;
 }
-.photo-story-btn:hover {
-  background: var(--teal);
-  color: var(--paper);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(22,59,51,0.18);
+.photo-nav-arrow:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+  background: var(--paper-dim);
 }
-.photo-story-btn:focus-visible {
+.photo-nav-arrow:focus-visible {
   outline: 2px solid var(--signal);
   outline-offset: 2px;
 }
-.photo-story-btn.hidden {
-  display: none;
+.photo-index-count {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--ink);
+  letter-spacing: .05em;
+  font-feature-settings: "tnum";
+  min-width: 52px;
+  text-align: center;
 }
+
 .photo-carousel-bottom {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 16px 6px 0;
+  gap: 8px;
+  padding: 12px 4px 0;
 }
 .photo-progress-track {
   width: 100%;
-  height: 3px;
-  background: rgba(22,59,51,0.12);
+  height: 2px;
+  background: rgba(22,59,51,0.10);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -1263,51 +1315,290 @@
   background: var(--signal);
   transition: width .28s ease;
 }
-.photo-carousel-status {
+
+/* =========================================================
+   IPJ GROUP PHOTOGRAPH (IPC Section)
+   ========================================================= */
+.ipj-group-card {
+  margin: 28px 0 24px;
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  position: relative;
+  display: block;
+}
+.ipj-group-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,23,18,0.06);
+}
+.ipj-group-card:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.ipj-group-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1024 / 682;
+  background: var(--paper-dim);
+  overflow: hidden;
+}
+.ipj-group-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.ipj-group-card:hover .ipj-group-media img {
+  transform: scale(1.02);
+}
+.ipj-zoom-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(9, 19, 17, 0.82);
+  backdrop-filter: blur(6px);
+  color: var(--paper);
+  font-family: 'Crimson Pro', serif;
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+.ipj-group-card:hover .ipj-zoom-badge,
+.ipj-group-card:focus-visible .ipj-zoom-badge {
+  opacity: 1;
+}
+.ipj-group-caption {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+.ipj-group-caption strong {
   font-family: 'Crimson Pro', serif;
-  color: var(--ink-soft);
-}
-.photo-index-count {
-  font-weight: 600;
-  font-size: 14.5px;
+  font-size: 12.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
   color: var(--ink);
-  letter-spacing: .05em;
-  font-feature-settings: "tnum";
+  font-weight: 600;
 }
-.photo-hint {
-  font-size: 12px;
-  opacity: .75;
+.ipj-group-caption span {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
 }
 
+/* =========================================================
+   REUSABLE EDITORIAL FULLSCREEN LIGHTBOX
+   ========================================================= */
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .24s ease, visibility .24s ease;
+}
+.photo-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 14, 12, 0.95);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  z-index: 10;
+  background: transparent;
+  border: 0;
+  color: var(--paper);
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform .2s ease, color .2s ease;
+  padding: 0;
+}
+.lightbox-close:hover {
+  color: var(--signal);
+  transform: scale(1.1);
+}
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(9, 19, 17, 0.65);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--paper);
+  font-family: 'Crimson Pro', serif;
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+  padding: 0;
+}
+.lightbox-arrow:hover {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--signal);
+  transform: translateY(-50%) scale(1.08);
+}
+.lightbox-arrow:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.lightbox-arrow.prev { left: 20px; }
+.lightbox-arrow.next { right: 20px; }
+.lightbox-arrow.hidden { display: none !important; }
+
+.lightbox-stage {
+  position: relative;
+  z-index: 5;
+  max-width: 90vw;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.lightbox-stage img {
+  max-width: 100%;
+  max-height: calc(88vh - 52px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  transition: opacity .2s ease;
+}
+.lightbox-caption-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  max-width: 100%;
+  padding-top: 12px;
+  gap: 16px;
+  color: var(--paper);
+  font-family: 'Crimson Pro', serif;
+}
+.lightbox-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
+  min-width: 0;
+}
+.lightbox-kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--signal);
+  font-weight: 600;
+}
+.lightbox-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  letter-spacing: .02em;
+}
+.lightbox-credit {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+}
+.lightbox-counter {
+  font-size: 13px;
+  font-feature-settings: "tnum";
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+.lightbox-counter.hidden { display: none !important; }
+
 @media(max-width:900px){
-  .photo-frame { height: 460px; }
+  .photo-frame { height: 440px; }
 }
 @media(max-width:760px){
-  .photo-frame { height: 380px; }
-  .carousel-arrow { width: 42px; height: 42px; }
-  .carousel-arrow.prev { left: 10px; }
-  .carousel-arrow.next { right: 10px; }
-  .photo-editorial-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-top: 18px; }
-  .photo-story-btn { align-self: flex-start; }
+  .photo-frame { height: 360px; }
+  .carousel-arrow { width: 34px; height: 34px; }
+  .carousel-arrow.prev { left: 8px; }
+  .carousel-arrow.next { right: 8px; }
+  .photo-editorial-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-top: 16px; }
+  .photo-nav-suite { align-self: flex-start; }
+  .photo-lightbox { padding: 12px; }
+  .lightbox-close { top: 10px; right: 10px; font-size: 26px; width: 38px; height: 38px; }
+  .lightbox-arrow { width: 38px; height: 38px; font-size: 20px; }
+  .lightbox-arrow.prev { left: 8px; }
+  .lightbox-arrow.next { right: 8px; }
+  .lightbox-stage img { max-height: calc(85vh - 58px); }
+  .lightbox-caption-bar { flex-direction: column; align-items: flex-start; gap: 3px; padding-top: 8px; }
+  .lightbox-title { font-size: 13px; }
 }
 @media(max-width:480px){
-  .photo-frame { height: 280px; }
-  .photo-carousel-filters { gap: 6px; }
-  .photo-filter-btn { padding: 6px 11px; font-size: 11px; }
-  .photo-meta-title { font-size: 22px; }
-  .photo-meta-caption { font-size: 14px; }
-  .carousel-arrow { width: 36px; height: 36px; }
-  .photo-hint { display: none; }
+  .photo-frame { height: 260px; }
+  .photo-carousel-filters { gap: 5px; }
+  .photo-filter-btn { padding: 5px 10px; font-size: 11px; }
+  .photo-meta-title { font-size: 21px; }
+  .photo-meta-caption { font-size: 13.5px; }
+  .photo-zoom-hint span { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .photo-frame img,
   .photo-progress-fill,
   .carousel-arrow,
-  .photo-story-btn {
+  .photo-nav-arrow,
+  .lightbox-arrow,
+  .ipj-group-card {
     transition: none !important;
     animation: none !important;
   }
@@ -1460,7 +1751,7 @@
     <div class="hero-side">
       <div class="photo-block" role="img" aria-label="Inauguration and Opening Ceremony of SSET MUN '26">
         <img src="images/opening-ceremony.jpg" alt="Inauguration and Opening Ceremony of SSET MUN '26 with delegates assembled in the auditorium facing the stage" loading="eager">
-        <span class="photo-cred">Opening Ceremony · Sankrushi PS</span>
+        <span class="photo-cred">Opening Ceremony</span>
       </div>
       <div class="radio-mini">
         <div class="radio-mini-top">
@@ -1538,7 +1829,7 @@
       <div class="stat"><div class="num">1871</div><div class="lbl">Criminal Tribes Act targeted the hijra community</div></div>
       <div class="stat"><div class="num">158</div><div class="lbl">Years Section 377 was in the Indian Penal Code</div></div>
       <div style="margin-top:6px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
-        <img src="images/buried-in-colonialism_img6.jpg" alt="Aravani community in Koovagam" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+        <img src="images/buried-in-colonialism_img6.jpg" alt="Aravani community in Koovagam" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" loading="lazy" decoding="async">
         <span style="display:block;padding:6px 10px;font-family:'Crimson Pro',serif;font-size:9.5px;color:var(--ink-soft);background:var(--paper-dim);">Aravani community festival, Koovagam</span>
       </div>
     </div>
@@ -1631,7 +1922,7 @@
       <div class="stat"><div class="num">19</div><div class="lbl">people executed in the Salem witch trials, dispelling mythological scopes</div></div>
       <div class="stat"><div class="num">18</div><div class="lbl">older people killed in Tanzania by Sept 2024 over witchcraft allegations</div></div>
       <div style="margin-top:6px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
-        <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Salem witch trials" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+        <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Salem witch trials" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" loading="lazy" decoding="async">
         <span style="display:block;padding:6px 10px;font-family:'Crimson Pro',serif;font-size:9.5px;color:var(--ink-soft);background:var(--paper-dim);">Salem witch trials · Smithsonian Magazine</span>
       </div>
     </div>
@@ -1756,7 +2047,7 @@
           <div><b>Vienna Consensus</b> — Faltering as the CND struggles to balance regulatory speed with state sovereignty.</div>
         </div>
         <div style="margin-top:8px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
-          <img src="images/uncnd-whiteboard-scheduling.jpg" alt="UNCND Delegate at whiteboard detailing 1961 drug schedules" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+          <img src="images/uncnd-whiteboard-scheduling.jpg" alt="UNCND Delegate at whiteboard detailing 1961 drug schedules" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" loading="lazy" decoding="async">
           <span style="display:block;padding:6px 10px;font-family:'Crimson Pro',serif;font-size:9.5px;color:var(--ink-soft);background:var(--paper-dim);">1961 Scheduling Hierarchy &amp; Risk Assessment · SSET NEWS / IPC</span>
         </div>
       </div>
@@ -1843,7 +2134,7 @@
       <div class="stat"><div class="num">42%</div><div class="lbl">of global arms exports accounted for by the United States alone</div></div>
       <div class="stat"><div class="num">25,000</div><div class="lbl">Humvees delivered to Afghan forces that passed directly into Taliban hands</div></div>
       <div style="margin-top:8px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
-        <img src="images/disec-floor-in-session.jpg" alt="UNGA DISEC Floor in Session" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+        <img src="images/disec-floor-in-session.jpg" alt="UNGA DISEC Floor in Session" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" loading="lazy" decoding="async">
         <span style="display:block;padding:6px 10px;font-family:'Crimson Pro',serif;font-size:9.5px;color:var(--ink-soft);background:var(--paper-dim);">DISEC Floor in Session · SSET NEWS / IPC</span>
       </div>
     </div>
@@ -1939,7 +2230,7 @@
           <div><b>MEDICRIME Convention</b> — Treats falsified medical products as criminal conduct requiring cooperation.</div>
         </div>
         <div style="margin-top:8px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
-          <img src="images/scarcity-what-fills-the-void_img1.jpg" alt="Counterfeit pharmaceutical packaging" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+          <img src="images/scarcity-what-fills-the-void_img1.jpg" alt="Counterfeit pharmaceutical packaging" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -2055,25 +2346,25 @@
         <button type="button" class="photo-filter-btn" data-filter="WHO" role="tab" aria-selected="false">WHO (8)</button>
       </div>
 
-      <!-- Main Editorial Stage -->
-      <div class="photo-stage" id="photoStage" tabindex="0" aria-label="Photo spread viewport. Press Left or Right arrow keys to navigate.">
+      <!-- Main Editorial Stage: Click to view fullscreen -->
+      <div class="photo-stage" id="photoStage" tabindex="0" role="button" aria-label="Photo spread viewport. Click to view fullscreen, or use Left and Right arrow keys to browse.">
         <div class="photo-frame-wrap">
           <div class="photo-frame" id="photoFrame">
-            <img id="photoCarouselImg" src="images/aippm-ambassador-of-saffron.jpg" alt="Delegate representing Yogi Adityanath addressing the AIPPM committee floor in saffron attire" loading="eager" draggable="false">
+            <img id="photoCarouselImg" src="images/aippm-ambassador-of-saffron.jpg" alt="Delegate representing Yogi Adityanath addressing the AIPPM committee floor in saffron attire" loading="eager" decoding="async" draggable="false">
             <div class="photo-badge" id="photoBadge">01 · AIPPM</div>
+            <div class="photo-zoom-hint" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Expand</span>
+            </div>
           </div>
         </div>
 
-        <!-- Navigation Controls -->
-        <button class="carousel-arrow prev" id="photoPrevBtn" type="button" aria-label="Previous photograph">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <button class="carousel-arrow next" id="photoNextBtn" type="button" aria-label="Next photograph">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
+        <!-- Understated Stage Controls -->
+        <button class="carousel-arrow prev" id="photoPrevBtn" type="button" aria-label="Previous photograph">←</button>
+        <button class="carousel-arrow next" id="photoNextBtn" type="button" aria-label="Next photograph">→</button>
       </div>
 
-      <!-- Editorial Metadata & Related Story -->
+      <!-- Editorial Metadata & Understated Navigation Suite -->
       <div class="photo-editorial-bar">
         <div class="photo-editorial-meta">
           <span class="photo-meta-kicker" id="photoCommittee">01 · AIPPM</span>
@@ -2083,24 +2374,22 @@
             <span class="photo-credit-label">Photograph by</span>
             <span class="photo-credit-name" id="photoPhotographer">IPC Photojournalism Desk · SSETMUN</span>
           </div>
+          <div>
+            <button type="button" class="photo-story-link" id="photoStoryBtn" aria-label="Read related article for this photograph">Read Related Story →</button>
+          </div>
         </div>
 
-        <div class="photo-editorial-actions">
-          <button type="button" class="photo-story-btn" id="photoStoryBtn" aria-label="Read related article for this photograph">
-            <span>Read Related Story</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
+        <div class="photo-nav-suite">
+          <button class="photo-nav-arrow prev" id="photoNavPrev" type="button" aria-label="Previous photograph">←</button>
+          <span class="photo-index-count" id="photoCount" aria-live="polite">01 / 34</span>
+          <button class="photo-nav-arrow next" id="photoNavNext" type="button" aria-label="Next photograph">→</button>
         </div>
       </div>
 
-      <!-- Progress Track & Count -->
+      <!-- Progress Track -->
       <div class="photo-carousel-bottom">
         <div class="photo-progress-track" aria-hidden="true">
           <div class="photo-progress-fill" id="photoProgressFill" style="width: 2.94%;"></div>
-        </div>
-        <div class="photo-carousel-status">
-          <span class="photo-index-count" id="photoCount" aria-live="polite">01 / 34</span>
-          <span class="photo-hint">Swipe or use ← → arrow keys to browse</span>
         </div>
       </div>
     </div>
@@ -2126,6 +2415,22 @@
           <span><strong>Sankrushi PS</strong><small>Head of Photojournalism</small></span>
         </div>
       </div>
+
+      <!-- IPJ · Group Photograph -->
+      <figure class="ipj-group-card" id="ipjGroupCard" tabindex="0" role="button" aria-label="IPJ Group Photograph — Click to view fullscreen">
+        <div class="ipj-group-media">
+          <img src="images/ipj-group-photograph.jpg" alt="International Press Corps group photograph at SSETMUN" loading="lazy" decoding="async">
+          <span class="ipj-zoom-badge" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>Fullscreen ↗</span>
+          </span>
+        </div>
+        <figcaption class="ipj-group-caption">
+          <strong>IPJ · GROUP PHOTOGRAPH</strong>
+          <span>International Press Corps</span>
+        </figcaption>
+      </figure>
+
       <div class="team-columns">
         <div class="team-list"><span class="kicker">Journalists · 14</span><h3>Journalism Desk</h3>
           <div class="name-grid">
@@ -2257,7 +2562,7 @@
   }));
 
   /* Scroll reveal */
-  const revealTargets = document.querySelectorAll('.section-head,.letter,.committee-banner,.feature,.grid,.radio-feature,.corps-grid,.footer-grid,.photo-desk-head,.photo-carousel');
+  const revealTargets = document.querySelectorAll('.section-head,.letter,.committee-banner,.feature,.grid,.radio-feature,.corps-grid,.footer-grid,.photo-desk-head,.photo-carousel,.ipj-group-card');
   revealTargets.forEach((el,i)=>{el.classList.add('reveal'); if(i%4===1)el.classList.add('delay-1'); if(i%4===2)el.classList.add('delay-2'); if(i%4===3)el.classList.add('delay-3');});
   const revealObserver = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObserver.unobserve(e.target);}}),{threshold:.08});
   revealTargets.forEach(el=>revealObserver.observe(el));
@@ -2291,12 +2596,12 @@
 <p class="lead">Majority of conservative Indians love blaming "western media" for the change in Indian culture. But the only thing we did truly inherit from our colonizers was the prudishness in their personality, the censorship over our bodies and our history.</p>
 <p>Walk into any temple complex and the proof is right there, carved into stone. Khajuraho doesn't blush. Neither does the Konark Sun Temple. Take Ardhanarishvara: Shiva and Parvati fused into a single body, half male, half female, worshipped for over a thousand years, not as some oddity, but as a symbol of the cosmic balance. Or even Mohini, the form Vishnu takes to outwit the demons. She is not a footnote in the Puranas. Then, there's Shikhandi. Raised male. Pivotal to Bhishma's downfall on the battlefield. The Mahabharata doesn't edit that out or explain it away. It simply lets a <em>gender-nonconforming figure</em> shape the outcome of history's most famous war.</p>
 <div class="article-gallery">
-  <div class="article-img-wrap"><img src="images/buried-in-colonialism_img2.jpg" alt="Ardhanarishvara representation"><span class="img-caption">Ardhanarishvara: Shiva and Parvati fused in cosmic balance</span></div>
-  <div class="article-img-wrap"><img src="images/buried-in-colonialism_img4.jpg" alt="Mohini representation"><span class="img-caption">Mohini: Divine form of Vishnu outwitting demons</span></div>
+  <div class="article-img-wrap"><img src="images/buried-in-colonialism_img2.jpg" alt="Ardhanarishvara representation" loading="lazy" decoding="async"><span class="img-caption">Ardhanarishvara: Shiva and Parvati fused in cosmic balance</span></div>
+  <div class="article-img-wrap"><img src="images/buried-in-colonialism_img4.jpg" alt="Mohini representation" loading="lazy" decoding="async"><span class="img-caption">Mohini: Divine form of Vishnu outwitting demons</span></div>
 </div>
 <p>In parts of Tamil Nadu, the transgender community known as Aravanis trace their spiritual lineage to her (Mohini) brief marriage to Aravan, right before his sacrifice at Kurukshetra, a story still marked every year at a festival in Koovagam. The myths are theology; the Aravani and hijra communities are living social institutions with their own lineages, some of which draw on that theology and some of which don't. What they share is this: none of it was hidden, and none of it was branded "abnormal," "modern," or "unnatural." It was simply there, there as a part of nature’s balance.</p>
 <div class="article-featured-img">
-  <img src="images/buried-in-colonialism_img6.jpg" alt="Members of transgender community in Tamil Nadu">
+  <img src="images/buried-in-colonialism_img6.jpg" alt="Members of transgender community in Tamil Nadu" loading="lazy" decoding="async">
   <span class="img-caption">Members of the Aravani community at the Koovagam festival in Tamil Nadu</span>
 </div>
 <p>The hijra community's roots go back to the Mughal era, when its members held real power: guarding the zenana, advising at court, trusted enough to be recorded in Mughal chronicles. Call it what it actually was. Not tolerance in the modern, watered-down mindset of India. It was <strong>integration</strong>.</p>
@@ -2304,7 +2609,7 @@
 <p>The 2014 NALSA judgment was a genuine step forward. It recognised transgender persons as a third gender and grounded that recognition in Articles 14, 15, 19, and 21 of the Constitution. Equality, Inclusivity, Self Identification & Right to Life, not handed down as gifts from the state, but affirmed as rights the state was always obligated to protect. On paper, it's still one of the more progressive rulings anywhere in the world. Then, came the Transgender Persons (Protection of Rights) Act of 2019: it made transgender people apply to the government for a certificate proving who they already were, built directly against the warning NALSA itself had issued. Self-identification in theory. Self-justification in practice. Before this committee drafts another resolution about "intent," it might want to sit with that contradiction for a minute.</p>
 <p>Same-sex marriage hasn't fared any better. In <em>Supriyo v. Union of India</em>, 2023, the Supreme Court agreed unanimously that queer couples deserve dignity and freedom from discrimination. Then, in a 3:2 split, it refused to extend the Special Marriage Act to them. The matter got handed to Parliament, which has shown no particular hurry to pick it up because why hurry up a decision on a life-changing act that offers them no profit as it is not created out of capitalistic intent, but for the good of humanity. Why do something nice for a change?</p>
 <div class="article-featured-img" style="margin:24px 0;">
-  <img src="images/aippm-silhouette-debate.jpg" alt="Heated debate and floor consultations in AIPPM committee room">
+  <img src="images/aippm-silhouette-debate.jpg" alt="Heated debate and floor consultations in AIPPM committee room" loading="lazy" decoding="async">
   <span class="img-caption">The floor divides: cross-bench confrontation during unmoderated caucus on gender-neutral laws · Photo: International Press Corps</span>
 </div>
 <blockquote class="article-quote">So, here's the real question for this committee; Does India want to legislate gender neutrality because the rest of the world is catching up to an idea? Or because India is finally catching up to itself?</blockquote>
@@ -2391,7 +2696,7 @@
 </div>
 <div class="editorial-divider">✦ ✦ ✦</div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/aippm-committee-deliberation.jpg" alt="AIPPM delegates conferring behind laptops and notes during deliberation">
+  <img src="images/aippm-committee-deliberation.jpg" alt="AIPPM delegates conferring behind laptops and notes during deliberation" loading="lazy" decoding="async">
   <span class="img-caption">The committee deliberates: notes and draft clauses examined during the session on gender neutrality · Photo: International Press Corps</span>
 </div>
 <h3 class="section-subhead">Dear reader,</h3>
@@ -2428,13 +2733,13 @@
   </div>
 </div>
 <div class="article-featured-img">
-  <img src="images/aippm-ambassador-of-saffron.jpg" alt="AIPPM delegate representing Yogi Adityanath addressing the committee at the whiteboard">
+  <img src="images/aippm-ambassador-of-saffron.jpg" alt="AIPPM delegate representing Yogi Adityanath addressing the committee at the whiteboard" loading="lazy" decoding="async">
   <span class="img-caption">The delegate representing Yogi Adityanath addresses the AIPPM floor · Photo: International Press Corps</span>
 </div>
 <p class="lead">This man strolls into the committee hall as if he has already won, and it is a matter of interpretation as to whether this is a symptom of overconfidence or complete misunderstanding of the dynamics at play. This man, dressed in a saffron reds & oranges, wearing Indian clothes, is clearly sending some signals here.</p>
 <p>He is a study in contradictions. Externally he is loud and confident, the kind of person who speaks before other people can think. Internally, he is meticulous and organized; when you see him prepare for debates in the committee; he is carefully noting down inconsistencies and reading up on every rule and procedure involved to score the points he needs. He is a man of discipline and order who does not want to listen to anyone else but himself.</p>
 <div class="article-featured-img" style="margin:24px 0;">
-  <img src="images/aippm-caucus-discussion.jpg" alt="Informal consultations during unmoderated caucus">
+  <img src="images/aippm-caucus-discussion.jpg" alt="Informal consultations during unmoderated caucus" loading="lazy" decoding="async">
   <span class="img-caption">Cross-bench dialogue: informal consultations during unmoderated caucus · Photo: International Press Corps</span>
 </div>
 <p>He has come into the debate with clear and established views, which he is determined to stick to regardless of facts and figures. He does not believe in any western propaganda, although there is a possibility that this principle does not apply to his debating style. All the delegates in the committee are sanatanis, one unified family, he says, until the trans rights motion is proposed and suddenly the family has a guest list. Marriage is only possible between men and women, sacred and eternal; that is the kind of statement you make when you know nothing of its roots.</p>
@@ -2468,7 +2773,7 @@
   </div>
 </div>
 <div class="article-featured-img">
-  <img src="images/disec-floor-in-session.jpg" alt="UNGA DISEC committee floor in session with member state delegations">
+  <img src="images/disec-floor-in-session.jpg" alt="UNGA DISEC committee floor in session with member state delegations" loading="lazy" decoding="async">
   <span class="img-caption">The UNGA DISEC floor in session: member state delegations debate arms transfers and state accountability · Photo: International Press Corps</span>
 </div>
 <p>There is something almost comforting about the way the international community discusses weapons.</p>
@@ -2486,7 +2791,7 @@
 <p>Gaza has made the question of arms transfers impossible to separate from civilian protection. And across conflicts such as Sudan, Libya and Yemen, tracing weapons is complicated by secrecy, diversion and competing external interests. SIPRI has specifically documented the difficulty of tracking transfers in conflicts where secrecy is high.</p>
 <h3 class="section-subhead">The Question of State Responsibility</h3>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/disec-podium-address.jpg" alt="Delegate addressing DISEC from the podium">
+  <img src="images/disec-podium-address.jpg" alt="Delegate addressing DISEC from the podium" loading="lazy" decoding="async">
   <span class="img-caption">General Speakers List: delegate presents floor arguments on state responsibility and civilian protection · Photo: International Press Corps</span>
 </div>
 <p>This does not mean that every state should be forbidden from supporting an armed partner. States may have legitimate security interests. But if a government chooses to supply weapons, it should also choose to accept responsibility for what follows. If the recipient uses those weapons to attack civilians, "we didn't directly do it" should not be the entire defence.</p>
@@ -2510,7 +2815,7 @@
       meta: 'By IPC DISEC Desk · Diplomatic Interview',
       pdf: 'pdfs/beyond-the-weapons-russia.pdf',
       contentHtml: `<div class="article-featured-img">
-  <img src="images/disec-delegate-intervention.jpg" alt="DISEC delegate delivering floor intervention on weapons proliferation and state accountability">
+  <img src="images/disec-delegate-intervention.jpg" alt="DISEC delegate delivering floor intervention on weapons proliferation and state accountability" loading="lazy" decoding="async">
   <span class="img-caption">Point of order: delegate delivers passionate floor intervention on arms transfer accountability · Photo: International Press Corps</span>
 </div>
 <div class="qa-item">
@@ -2526,7 +2831,7 @@
   <div class="qa-a"><strong>A:</strong> We do not oppose verification. Our concern was mainly with the way the Panel of Experts was operating and the lack of objectivity in some of its reports.<br><br>A new mechanism can be considered, but it must be genuinely independent and should work under the United Nations, not under groups created by a few Western countries.<br><br>Russia has also criticised the use of satellite images and media reports as if they are complete proof of an arms transfer. These can be useful, but they are not always enough to establish responsibility.<br><br>If such a system is fair and does not target one country, Russia would have no reason to oppose it.</div>
 </div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/disec-caucus-consultation.jpg" alt="DISEC delegates in deep consultation during unmoderated caucus">
+  <img src="images/disec-caucus-consultation.jpg" alt="DISEC delegates in deep consultation during unmoderated caucus" loading="lazy" decoding="async">
   <span class="img-caption">Floor consultation: delegates negotiate evidence thresholds and verification mechanisms · Photo: International Press Corps</span>
 </div>
 <div class="qa-item">
@@ -2538,7 +2843,7 @@
   <div class="qa-a"><strong>A:</strong> If there is clear evidence that a state is deliberately supplying weapons to an illegal armed group, there should be consequences. The rules cannot depend on whether that country is powerful or not.<br><br>Possible measures could include stopping the particular weapons supply, investigating the companies and intermediaries involved, and imposing appropriate sanctions where they are legally justified.<br><br>As for permanent members of the Security Council, such as US, they should not receive special immunity simply because they are P5 members.<br><br>Russia's position is that the same principle must apply to every country. If Western states facilitate weapons transfers to armed groups, they should face the same scrutiny as Russia or any other state.</div>
 </div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/disec-caucus-peace-sign.jpg" alt="DISEC delegates conferring during unmoderated caucus">
+  <img src="images/disec-caucus-peace-sign.jpg" alt="DISEC delegates conferring during unmoderated caucus" loading="lazy" decoding="async">
   <span class="img-caption">Cross-bench consensus: delegates share informal moments following unmoderated caucus deliberations · Photo: International Press Corps</span>
 </div>`
     },
@@ -2571,18 +2876,18 @@
 <p>Following the Soviet invasion of Afghanistan in 1979, the CIA's Operation Cyclone funnelled over two billion dollars in weapons and training to the mujahideen through Pakistan's ISI, with Saudi Arabia matching Washington's contributions.<sup>1</sup> Among the transfers were roughly two thousand Stinger missiles; a CIA buyback program launched in 1993 at a cost of $65 million which is nearly double the missiles' original value.<sup>2</sup> It was later called an "abysmal failure" by intelligence officials, since the weapons had scattered too widely to trace. The strategic logic was sound: Washington raised the cost of occupation without deploying its own troops. But the networks built to fight that war did not disband with it, they hardened into the Taliban and sheltered al-Qaeda. <em>Sponsorship does not expire when the sponsor's interest does.</em></p>
 <p>If Afghanistan shows what sponsorship does, Libya shows how indirect transfer hides. A 2013 UN Panel of Experts report tracked Libyan weapons reaching fourteen countries in violation of the arms embargo; more recent reporting documents ammunition destined for Sudan's Rapid Support Forces being diverted through Libya and resold to networks linked to ISIS-affiliated gold trafficking in the Niger.<sup>3</sup> This is not incidental leakage; it is the predictable result of a system built on self-reported compliance. The Arms Trade Treaty's Article 11 requires states to assess and mitigate diversion risk, yet enforcement still relies heavily on exporters policing themselves, with no binding penalty for failure.<sup>4</sup></p>
 <div class="article-featured-img" style="margin:24px 0;">
-  <img src="images/disec-unmod-caucus-circle.jpg" alt="Delegates gathered in unmoderated caucus circle debating arms transfers">
+  <img src="images/disec-unmod-caucus-circle.jpg" alt="Delegates gathered in unmoderated caucus circle debating arms transfers" loading="lazy" decoding="async">
   <span class="img-caption">The floor in motion: unmoderated caucus circle debates evidentiary thresholds and proxy accountability · Photo: International Press Corps</span>
 </div>
 <p>Both failures converge on one unresolved legal question: <strong>when does support make a state responsible for what its proxy does?</strong> The ICJ's 1986 <em>Nicaragua</em> judgment set a demanding <em>"effective control"</em> test, requiring proof a state directed specific unlawful acts, a threshold so high it has shielded most sponsors from liability.<sup>5</sup> The ICTY's <em>Tadić</em> judgment proposed a looser <em>"overall control"</em> standard, satisfied merely by organizing, financing, or equipping a group.<sup>6</sup> The two have never been reconciled; the ICJ reaffirmed the stricter standard as recently as 2007. That unresolved ambiguity is precisely what sponsors exploit. The plausible deniability is not an accident of proxy warfare, but a loophole international law has left open.</p>
 <div class="article-featured-img">
-  <img src="images/arming-the-enemy-proxy-warfare_img1.jpg" alt="Syria and USA delegates in DISEC">
+  <img src="images/arming-the-enemy-proxy-warfare_img1.jpg" alt="Syria and USA delegates in DISEC" loading="lazy" decoding="async">
   <span class="img-caption">Delegates of Syria and the United States in committee caucus · Photo: Aaisha (IPP)</span>
 </div>
 <p>There is a real case for proxy support. The campaign against ISIS relied on the Syrian Democratic Forces, backed by limited, mission-specific U.S. arms and airpower, when the alternatives were direct intervention or letting a caliphate expand.<sup>7</sup> Proxy support cannot be dismissed as inherently illegitimate, but necessity is not exemption. The SDF's chain of custody was identifiable and its objective narrow. Afghanistan and Libya show what happens once that specificity disappears: necessity becomes a permanent alibi.</p>
 <p>Closing this gap requires naming mechanisms, not slogans. ATT diversion assessments need independent verification, not self-certification. UN Panels of Experts, currently renewed conflict-by-conflict, should become standing bodies empowered to trigger automatic sanctions review upon documented diversion. And DISEC should adopt a working rule bridging <em>Nicaragua</em> and <em>Tadić</em> for arms-transfer cases specifically: a state that arms or knowingly permits transit to a group with a documented record against civilians should face the lower <em>Tadić</em> threshold, reserving the stricter standard for disputes over specific operational acts.</p>
 <div class="article-featured-img" style="margin:24px 0;">
-  <img src="images/disec-working-paper-bloc.jpg" alt="DISEC delegates conferring around draft resolutions on proxy accountability">
+  <img src="images/disec-working-paper-bloc.jpg" alt="DISEC delegates conferring around draft resolutions on proxy accountability" loading="lazy" decoding="async">
   <span class="img-caption">Drafting bloc in session: delegates deliberate on working paper mechanisms for proxy accountability · Photo: International Press Corps</span>
 </div>
 <blockquote class="article-quote">Proxy warfare can still win a war without a state losing a soldier. But Afghanistan's scattered Stingers and Libya's decade-long diversion trail prove the costs simply relocate. The question is no longer whether the enemy of my enemy can defeat my enemy, it is whether a system that has spent forty years avoiding a definition of control is finally ready to write one.</blockquote>
@@ -2622,7 +2927,7 @@
   </div>
 </div>
 <div class="article-featured-img">
-  <img src="images/when-the-law-says-no_img1.jpg" alt="Bangladesh delegate and journalist placards on committee table">
+  <img src="images/when-the-law-says-no_img1.jpg" alt="Bangladesh delegate and journalist placards on committee table" loading="lazy" decoding="async">
   <span class="img-caption">In conversation with the delegate of Bangladesh on child marriage, dowry, legal loopholes and the limits of cultural justification · Photo Credits: Sruthy</span>
 </div>
 <div class="qa-item">
@@ -2634,7 +2939,7 @@
   <div class="qa-a"><strong>A2.</strong> Bangladesh recognizes that the special circumstances provision has generated legitimate international concern. Bangladesh's position is that preventing child marriage requires stronger safeguards, registration and enforcement, while addressing the poverty, insecurity and social pressures that drive families toward early marriage.<br><br><strong>Follow-up:</strong> If the purpose is to protect the child, why does the provision rely on parental and judicial approval without expressly requiring the child's own consent? Does that not allow the very family or social pressures behind child marriage to determine what is supposedly in the girl's “best interests”?<br><br>Bangladesh recognises the need for more safeguards in relation to Section 19. Nonetheless, it should be noted that Section 19 does not permit parents to unilaterally organise the marriage of a child. Rather, it mandates certain special circumstances, consideration by the Assessment Committee, consent of the parent or guardian, and finally, an order of the court in the best interest of the child. Moreover, the 2018 Rules specifically prohibit forced marriage and marriage to a rapist in the list of the special circumstances which can be recommended. Thus, Bangladesh realises the concern of obtaining the express consent of the child.</div>
 </div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/uncsw-delegate-note-taking.jpg" alt="Delegate writing notes during committee deliberations">
+  <img src="images/uncsw-delegate-note-taking.jpg" alt="Delegate writing notes during committee deliberations" loading="lazy" decoding="async">
   <span class="img-caption">Floor deliberations: A delegate takes detailed notes on statutory exemptions, judicial safeguards, and child rights protections · Photo: International Press Corps</span>
 </div>
 <div class="qa-item">
@@ -2646,7 +2951,7 @@
   <div class="qa-a"><strong>A4.</strong> The 2024 VAW Survey actually shows a decline in recent IPV from 66% in 2015 to 49% in 2024. However, the continued association between dowry and violence demonstrates that criminalisation alone cannot dismantle the social norms sustaining the practice. Bangladesh therefore supports a dual approach: strong legal enforcement against dowry alongside community-level norm change, women's economic empowerment and awareness of legal rights. The objective is not simply to punish dowry, but to make the social and economic conditions sustaining it less viable.</div>
 </div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/uncsw-placards-raised.jpg" alt="Delegates raising placards during roll call and voting">
+  <img src="images/uncsw-placards-raised.jpg" alt="Delegates raising placards during roll call and voting" loading="lazy" decoding="async">
   <span class="img-caption">Roll call and procedural voting: Member state delegations raise placards during UNCSW debate on customary law and human rights protections · Photo: International Press Corps</span>
 </div>
 <div class="qa-item">
@@ -2680,7 +2985,7 @@
   </div>
 </div>
 <div class="article-featured-img">
-  <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Salem witch trials representation">
+  <img src="images/when-fear-needs-a-victim-witch_img1.jpg" alt="Salem witch trials representation" loading="lazy" decoding="async">
   <span class="img-caption">The Salem witch trials: mythology vs historical reality · Credit: Smithsonian Magazine</span>
 </div>
 <p>Utter the word “witch” to a crowd, and mutters of Salem will arise. Popular memory has mythologised the Salem witch trials through a strange cocktail of memes, skits and trolls. The most prevalent idea of the trials is that women who seemed a bit too knowledgeable for the community’s liking were accused of being witches by the locals and burnt on a stake. But the reality of this mythology is grim and far from the theatrical flare given to it. There were around 200 people who were accused of doing witchcraft, of which 19 were executed through hanging. 5 of the executed were men. The pathology of the Witch trials of Salem can be attributed to xenophobia and religious extremism along with widespread paranoia. By 1693, the prosecutions had collapsed.<sup>1</sup></p>
@@ -2690,13 +2995,13 @@
   Your child died of a high fever? Must have been cursed by a witch.”</em>
 </blockquote>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/uncsw-caucus-debate.jpg" alt="Animated delegate in unmoderated caucus debate at UNCSW">
+  <img src="images/uncsw-caucus-debate.jpg" alt="Animated delegate in unmoderated caucus debate at UNCSW" loading="lazy" decoding="async">
   <span class="img-caption">The floor in motion: Delegates engage in passionate caucus debate on codifying protections vs. addressing customary impunity · Photo: International Press Corps</span>
 </div>
 <p>Who's the lucky winner that has to take the blame in such a situation? And why is it almost always elderly women, widowed women, disabled individuals, and people with albinism? Why does supernatural evil find a liking to these individuals?</p>
 <p>Director Rungano Nyoni of <em>I Am Not a Witch</em><sup>3</sup> learned about this strange phenomenon while conducting research for the movie in Ghana and Zimbabwe. Having stayed at an actual witch camp, Nyoni realised that such accusations were being made towards older women and children time and time again. Her movie, in fact, focuses on the absurdity of a powerless person being moulded into a threat and strives to not question whether there actually is witchcraft.</p>
 <div class="article-featured-img">
-  <img src="images/when-fear-needs-a-victim-witch_img2.jpg" alt="Living conditions in a witch camp in northern Ghana">
+  <img src="images/when-fear-needs-a-victim-witch_img2.jpg" alt="Living conditions in a witch camp in northern Ghana" loading="lazy" decoding="async">
   <span class="img-caption">Living in exile: Residents of a witch camp in northern Ghana · Credit: CNRS NEWS</span>
 </div>
 <p>This is why witch-hunting cannot simply be about belief. The deeper logic leads us to scapegoating. Instead of confronting the lack of resources in healthcare, the influence of powerful religious figures who feed extremism into the minds of the people, or the ulterior motive of financial gain due to greed and land disputes, the accusation performs a remarkable political and moral trick: it turns the powerless into the dangerous. The woman being beaten is recast as the threat. The child being expelled becomes the ultimate source of evil. The mob becomes, in its imagination (or delusion), the victim.</p>
@@ -2704,11 +3009,11 @@
 <p>In the infamous case of Akua Denteh,<sup>5</sup> a 90-year-old Ghanaian woman was publicly beaten to death in Kafaba after being accused of witchcraft. The video showed women beating her while members of the community watched and encouraged the attack. The case became a major catalyst for demands that Ghana criminalise witchcraft accusations. Furthermore, Ghanaian authorities have themselves acknowledged that witch accusations are highly gendered, with older women, widows, unmarried and childless women particularly affected.</p>
 <p>In Tanzania, witchcraft can perform the work of a property deed. There have been recorded incidents whereby claims made against the widow occur after the death of the husband and give an excuse to challenge her right to inherit. The supernatural allegation can conceal an extremely material objective: land. Human Rights Watch<sup>6</sup> reports that 25 older people were killed in 2023 in connection with witchcraft allegations. In just the first months of 2024 the violence continued; by September 2024, 18 older people had been killed and 123 subjected to other human-rights abuse.</p>
 <div class="article-featured-img">
-  <img src="images/when-fear-needs-a-victim-witch_img3.jpg" alt="Protest demanding justice for women accused of witchcraft">
+  <img src="images/when-fear-needs-a-victim-witch_img3.jpg" alt="Protest demanding justice for women accused of witchcraft" loading="lazy" decoding="async">
   <span class="img-caption">Protests against ritual violence and witch-branding · Credit: The Guardian</span>
 </div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/uncsw-working-paper-drafting.jpg" alt="Moroccan delegate drafting working paper at UNCSW">
+  <img src="images/uncsw-working-paper-drafting.jpg" alt="Moroccan delegate drafting working paper at UNCSW" loading="lazy" decoding="async">
   <span class="img-caption">Drafting safeguards: UNCSW delegates formulate resolution clauses addressing harmful customary practices and community rehabilitation · Photo: International Press Corps</span>
 </div>
 <p>Considering all of this, calling the camps where the accused women find refuge “sanctuaries” should make us uncomfortable. A place becomes a sanctuary only because home has become more dangerous. Not to mention the rigorous hard labour the women have to go through just to merely survive another day. CEDAW<sup>7</sup> has repeatedly urged to close such camps and ensure rehabilitation, safe reintegration and alternative housing for those accused.</p>
@@ -2743,7 +3048,7 @@
       contentHtml: `<div style="max-width:580px;margin:24px auto;padding:36px 32px;background:var(--paper-dim);border:1px solid var(--line);border-left:4px solid var(--signal);border-radius:2px;box-shadow:0 8px 24px rgba(26,23,18,.08);">
   <div style="font-family:'Crimson Pro',serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--signal);margin-bottom:16px;">UNCSW Arts Desk · Literary Contribution</div>
   <div style="margin:0 0 20px;border-radius:2px;overflow:hidden;border:1px solid var(--line);">
-    <img src="images/uncsw-switzerland-listening.jpg" alt="UNCSW delegate in quiet contemplation" style="width:100%;height:auto;display:block;">
+    <img src="images/uncsw-switzerland-listening.jpg" alt="UNCSW delegate in quiet contemplation" style="width:100%;height:auto;display:block;" loading="lazy" decoding="async">
     <span style="display:block;padding:6px 10px;font-family:'Crimson Pro',serif;font-size:10px;color:var(--ink-soft);background:var(--paper-dim);">Diplomatic deliberation: A delegate in quiet contemplation during UNCSW session · Photo: International Press Corps</span>
   </div>
   <div style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;line-height:2;color:var(--ink);">
@@ -2801,7 +3106,7 @@
 </div>
 <p class="lead">Your humble reporter, Sarah Asraf, reporting from the UNCND Committee, with an Op-Ed delving into why international drug scheduling still can't outrun a local chemist.</p>
 <div class="article-featured-img">
-  <img src="images/three-atoms-ahead_img1.jpg" alt="International Drug Laws by Paresh Nath">
+  <img src="images/three-atoms-ahead_img1.jpg" alt="International Drug Laws by Paresh Nath" loading="lazy" decoding="async">
   <span class="img-caption">Source: INTERNATIONAL DRUG LAWS by Paresh Nath</span>
 </div>
 <p>In December of 1985, a 175-pound black bear died in Georgia’s Chattahoochee National Forest after consuming a large quantity of cocaine.<sup>1</sup> The bear, nicknamed “Pablo Escobear” or “Cocaine Bear”, had ingested duffel bags dropped by a drug trafficker and smuggler, Andrew Thornton II, a former narcotics officer who died jumping out of a plane into the same forest just weeks prior. The bear ate what is described as an amount of cocaine so great no mammal could live through it, and it died within what is believed to be a matter of hours.<sup>2</sup></p>
@@ -2813,7 +3118,7 @@
 <p>For its part, the Commission on Narcotic Drugs is far from doing nothing. At its recent 69th session, the UN body agreed to schedule three new psychoactive substances, among which were two new synthetic opioids from the nitazene class, which are even more potent than fentanyl, according to recommendations from the World Health Organisation. The body created a new independent expert panel which will review the entire system of international drug control before its 2029 progress review. However, the same session was characterised by the failure of the Vienna Consensus, with more resolutions being adopted by voting and not through agreement. This indicates that states are drifting apart even on the fundamental questions of harm reduction and human rights despite the rapid pace of the chemistry.<sup>5</sup></p>
 <p>This is what the agenda item is in fact addressing: speed vs. sovereignty and control vs. access. The system of scheduling that was developed for the times when there were only a few dozen known narcotics cannot cope with the thousands of novel psychoactive substances synthesised by the server-based chemistry.</p>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/uncnd-delegate-portrait-bw.jpg" alt="UNCND delegate reflecting during committee session">
+  <img src="images/uncnd-delegate-portrait-bw.jpg" alt="UNCND delegate reflecting during committee session" loading="lazy" decoding="async">
   <span class="img-caption">The human dimension: a delegate in contemplation during UNCND deliberations on scheduling regimes and sovereign controls · Photo: International Press Corps</span>
 </div>
 <h3 class="section-subhead">Where the Line Should Be Drawn</h3>
@@ -2898,7 +3203,7 @@
   </div>
 </div>
 <div class="article-featured-img" style="margin:20px 0;">
-  <img src="images/uncnd-caucus-consultation.jpg" alt="UNCND delegates conferring over working papers and dossiers">
+  <img src="images/uncnd-caucus-consultation.jpg" alt="UNCND delegates conferring over working papers and dossiers" loading="lazy" decoding="async">
   <span class="img-caption">Working group consultations: UNCND delegates examine predictive toxicology schedules, regulatory lags, and early warning advisories · Photo: International Press Corps</span>
 </div>
 <div class="dossier-card" style="border-left: 3px solid var(--teal);">
@@ -2967,7 +3272,7 @@
   </div>
 </div>
 <div class="article-featured-img">
-  <img src="images/uncnd-floor-cross-examination.jpg" alt="UNCND delegate floor cross-examination during debate">
+  <img src="images/uncnd-floor-cross-examination.jpg" alt="UNCND delegate floor cross-examination during debate" loading="lazy" decoding="async">
   <span class="img-caption">Floor cross-examination: Delegates deliberate the limits of sovereign scheduling regimes at UNCND · Photo: International Press Corps</span>
 </div>
 <div class="qa-item">
@@ -2983,7 +3288,7 @@
   <div class="qa-a"><strong>Delegation of Indonesia:</strong> We already have the substance-by-substance scheduling regime, which is being modernised by our BNN with the substantial involvement of experts. It allows us to target only the actual threats without wasting resources on safe substances. Besides, the principle of legality in Indonesian criminal law allows us to adopt a balanced approach to scheduling.</div>
 </div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/uncnd-whiteboard-scheduling.jpg" alt="UNCND delegate at whiteboard mapping 1961 Convention risk categories">
+  <img src="images/uncnd-whiteboard-scheduling.jpg" alt="UNCND delegate at whiteboard mapping 1961 Convention risk categories" loading="lazy" decoding="async">
   <span class="img-caption">Substance-by-substance vs. class-based control: Mapping the 1961 Single Convention risk hierarchy at the committee board · Photo: International Press Corps</span>
 </div>
 <div class="qa-item">
@@ -2991,7 +3296,7 @@
   <div class="qa-a"><strong>Delegation of Indonesia:</strong> In this case, we need further evidence and discussions to consider even endorsing the shift from the substance-to-substance prohibition regime, taking into account that, due to our domestic legislation, we would not be able to enforce such a shift.</div>
 </div>
 <div class="article-featured-img" style="margin:20px 0 24px;">
-  <img src="images/when-the-molecule-gets-ahead_img1.jpg" alt="Delegate of Indonesia being interviewed by an International Press Journalist">
+  <img src="images/when-the-molecule-gets-ahead_img1.jpg" alt="Delegate of Indonesia being interviewed by an International Press Journalist" loading="lazy" decoding="async">
   <span class="img-caption">Archival dispatch: Delegate of Indonesia (left) in dialogue with International Press Journalist (right) · Source: IP Photojournalist, UNCND</span>
 </div>
 <div class="qa-item">
@@ -3007,7 +3312,7 @@
       pdf: 'pdfs/scarcity-what-fills-the-void.pdf',
       contentHtml: `<p class="lead">Because a scarcity becomes an opportunity for someone waiting. This is your journalist, Ishita Sudhir, reporting from the WHO Committee.</p>
 <div class="article-featured-img">
-  <img src="images/scarcity-what-fills-the-void_img1.jpg" alt="Counterfeit pharmaceutical packaging">
+  <img src="images/scarcity-what-fills-the-void_img1.jpg" alt="Counterfeit pharmaceutical packaging" loading="lazy" decoding="async">
   <span class="img-caption">Substandard and falsified medical products: bridging the gap where legitimate supply fails · Source: Pinterest</span>
 </div>
 <p>The importance of a tablet of medicine can be often overlooked. Its importance begins when health fails. It can make a difference between possible recovery and uncertainty, life and death. Yet a medicine is more than a tablet. It carries the expectation and hope that it will help in marking a new beginning. The expectation is often fundamental that the legitimacy of the medicine is often taken for granted. But what happens when a medicine is legal, regulated, and genuine but still does not reach the person who needs it? Then comes the role of counterfeit medicines.</p>
@@ -3017,18 +3322,18 @@
 <p>The relevance of intellectual property comes into play as pharmaceutical innovation requires protection. Even though international instruments such as the TRIPS agreement recognize this requirement, it does not place it beyond public health considerations. Articles 7 and 8 of the TRIPS situate intellectual property protection within the broader objectives of social and economic welfare, thereby permitting members to adopt the measures necessary to protect public health.<sup>4</sup> Meanwhile, the Doha Declaration has affirmed the right of members to use TRIPS flexibilities to protect public health and promote access to medicines.<sup>5</sup> Thus, the point is not that intellectual property is irrelevant, but that the legal status of a medicine by itself cannot be the answer as to whether that medicine is reaching the patient safely and affordably.</p>
 <p class="answer">The answer to this can be found in criminal law, where the MEDICRIME Convention treats the manufacture, supply, and trafficking of falsified medicinal products as conduct that requires criminalization and international cooperation. These measures can be seen as indispensable when falsification is organized across borders, yet criminal law simply answers one question: as to who is responsible for putting falsified products into circulation. Public health must answer another question: as to what allowed that product to become capable of reaching a patient in the first place.</p>
 <div class="article-featured-img" style="margin:22px 0;">
-  <img src="images/who-egypt-delegate.jpg" alt="Delegate of Egypt holding country placard during committee deliberations on essential medicines and intellectual property flexibilities">
+  <img src="images/who-egypt-delegate.jpg" alt="Delegate of Egypt holding country placard during committee deliberations on essential medicines and intellectual property flexibilities" loading="lazy" decoding="async">
   <span class="img-caption">The sovereign imperative: Delegate of Egypt conferring during WHO deliberations on TRIPS flexibilities and medicine access · Photo: IPC Photojournalist</span>
 </div>
 <div class="article-featured-img">
-  <img src="images/scarcity-what-fills-the-void_img2.jpg" alt="Falsified capsules and blister packs">
+  <img src="images/scarcity-what-fills-the-void_img2.jpg" alt="Falsified capsules and blister packs" loading="lazy" decoding="async">
   <span class="img-caption">The lethal peril of counterfeit immunosuppressive medication · Source: Pinterest</span>
 </div>
 <h3 class="section-subhead">A Matter of Life and Death for Transplant Recipients</h3>
 <p>Even though these theoretical distinctions exist, for an organ transplant recipient this is painfully practical. For them the correct and consistent use of immunosuppressive medicines such as <strong>tacrolimus</strong> is critical, and substandardization of the same can lead to serious life-threatening consequences. In such circumstances the question is not simply about access to medicines, but rather it becomes about the access to the right medicine with the right quality and a system that is fully capable of guaranteeing it.<sup>6</sup></p>
 <p>Therefore, the fight against falsified medicines cannot end with making the false medicines easier to identify. By just identifying, a legal system may punish the manufacturer, a regulator may issue an alert, and a border authority may intercept a shipment. But if the genuine medicine remains inaccessible, unaffordable, or unreliable in supply, then the reason for the mere existence of the counterfeits remains intact.</p>
 <div class="article-featured-img" style="margin:22px 0;">
-  <img src="images/who-placards-raised.jpg" alt="WHO delegates raising placards during roll call and voting">
+  <img src="images/who-placards-raised.jpg" alt="WHO delegates raising placards during roll call and voting" loading="lazy" decoding="async">
   <span class="img-caption">Consensus or compromise: Member states raising placards during committee procedure · Photo: IPC Photojournalist</span>
 </div>
 <blockquote class="article-quote">The most difficult issue faced is not how to keep falsified medicines out of the system but to make the legitimate system strong enough that the patients do not have to look beyond it in the first place. Because if the gaps still exist, something else will replace it.</blockquote>
@@ -3067,7 +3372,7 @@
   </div>
 </div>
 <div class="article-featured-img">
-  <img src="images/who-brazil-consultation.jpg" alt="Delegates of Brazil and bloc members conferring over smartphone and draft resolution notes during informal caucus">
+  <img src="images/who-brazil-consultation.jpg" alt="Delegates of Brazil and bloc members conferring over smartphone and draft resolution notes during informal caucus" loading="lazy" decoding="async">
   <span class="img-caption">Strategy in the margins: Delegates of Brazil and informal caucus members coordinating draft positions on essential medicines · Photo: IPC Photojournalist</span>
 </div>
 <p>Somewhere in town there is a big hospital. Bigger and more luxurious than ordinary clinics—so opulent that people often walk in mistaking it for a five-star hotel. One of the most premium restaurants in town runs its cafeteria. It is a common saying there that people might go in to visit a relative who underwent a liver transplant only just to eat the <em>tawa khaleji</em> (goat liver stir fry) at the counter. But the irony is that one would have to sell their own liver just to pay the hospital bills. Too much complexity.</p>
@@ -3076,7 +3381,7 @@
 <p>Why? Because maybe they aren’t even medicines. It’s all a play.</p>
 <blockquote class="article-quote" style="margin:20px 0;">They have shiny covers, fancy colours, and a name that frightens people. The ingredients are printed one by one in neat Latin. It looks all scientific. Everything curable. Everything real. Everything medicinal. But there is one thing missing. Only one single thing: the medicine that works. The medicine that should work. A fake medicine can imitate everything except one thing: the ability to save a life.</blockquote>
 <div class="article-featured-img" style="margin:22px 0;">
-  <img src="images/who-delegates-panel.jpg" alt="Four school delegates presenting working paper clauses to the executive board">
+  <img src="images/who-delegates-panel.jpg" alt="Four school delegates presenting working paper clauses to the executive board" loading="lazy" decoding="async">
   <span class="img-caption">The floor in session: Youth delegates presenting draft clauses on substandard drug interdiction · Photo: IPC Photojournalist</span>
 </div>
 <p>How are substandard and falsified medicines expected to work? They directly threaten patient lives. <em>“Patients first,”</em> they say. Yes—first in line to die.</p>
@@ -3091,7 +3396,7 @@
       pdf: 'pdfs/who-character-sketch.pdf',
       contentHtml: `<p class="lead">This is your journalist, Ishita Sudhir, with the character sketch of WHO.</p>
 <div class="article-featured-img">
-  <img src="images/who-delegate-address.jpg" alt="Youth delegate in grey suit delivering speech with tablet in hand">
+  <img src="images/who-delegate-address.jpg" alt="Youth delegate in grey suit delivering speech with tablet in hand" loading="lazy" decoding="async">
   <span class="img-caption">Deliberation in motion: A delegate addresses the WHO assembly on global health frameworks · Photo: IPC Photojournalist</span>
 </div>
 <p>The WHO committee seems to have a rather peculiar way of keeping themselves busy. Almost every discussion seemed to find its way towards stronger regulation, international cooperation, better enforcement, and even improved access, but only to deliberate the same concerns from yet another direction.</p>
@@ -3101,7 +3406,7 @@
 <p>Its approach to the Ministerial Declaration was none quite different. Once the delegates were divided into blocs and asked to identify the problems they faced, WHO seemed quite comfortable in its new arrangement. It was perhaps the committee at its most natural form: taking a complicated problem, giving everyone a little space to discuss it, and then hoping that somewhere in the heart of all these discussions a solution might emerge.</p>
 <p>There is something almost endearing about the committee’s faith in deliberation. It does not seem particularly interested in dramatic declarations or easy answers. If anything, it appears slightly suspicious of them. Every solution seems to require another discussion, every discussion another perspective, and every perspective another opportunity for cooperation. The process may seem slow, yet WHO seems to trust the process anyway.</p>
 <div class="article-featured-img" style="margin:24px 0;">
-  <img src="images/who-canada-speech.jpg" alt="Delegate of Canada delivering speech in WHO">
+  <img src="images/who-canada-speech.jpg" alt="Delegate of Canada delivering speech in WHO" loading="lazy" decoding="async">
   <span class="img-caption"><em>“It showed the patience to listen. It was diplomatic enough to compromise when needed.”</em> — Delegate of Canada during floor consultations · Photo: IPC Photojournalist</span>
 </div>
 <blockquote class="article-quote">Maybe that is also where its character becomes most apparent. It is not a committee that demands attention; it quietly accumulates it through repetition. Neither is it particularly confrontational nor is it entirely passive. It listens, revisits, negotiates, and moves forward. Even if the distance covered sometimes feels considerably smaller than the amount of discussion involved, it was optimistic enough to believe that the next round of discussion might perhaps be the one where everyone agrees.</blockquote>`
@@ -3549,7 +3854,7 @@
   updateRadio();window.addEventListener('resize',updateRadio);
 
   /* =========================================================
-     PHOTO DESK EDITORIAL CAROUSEL LOGIC
+     PHOTO DESK & FULLSCREEN LIGHTBOX ARCHITECTURE
      ========================================================= */
   const photoDeskImages = [
     {
@@ -3897,7 +4202,10 @@
   let currentPhotoIndex = 0;
   let currentFilter = 'all';
   let filteredImages = [...photoDeskImages];
+  let lightboxMode = 'carousel'; // 'carousel' | 'ipj'
+  let lastActiveElement = null;
 
+  // Cached Carousel DOM elements
   const carouselImg = document.getElementById('photoCarouselImg');
   const carouselBadge = document.getElementById('photoBadge');
   const carouselCommittee = document.getElementById('photoCommittee');
@@ -3909,8 +4217,26 @@
   const carouselProgressFill = document.getElementById('photoProgressFill');
   const carouselPrevBtn = document.getElementById('photoPrevBtn');
   const carouselNextBtn = document.getElementById('photoNextBtn');
+  const photoNavPrev = document.getElementById('photoNavPrev');
+  const photoNavNext = document.getElementById('photoNavNext');
   const photoStage = document.getElementById('photoStage');
   const filterBtns = document.querySelectorAll('.photo-filter-btn');
+
+  // Cached Lightbox DOM elements
+  const photoLightbox = document.getElementById('photoLightbox');
+  const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxStage = document.getElementById('lightboxStage');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxKicker = document.getElementById('lightboxKicker');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxCredit = document.getElementById('lightboxCredit');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const ipjGroupCard = document.getElementById('ipjGroupCard');
+
+  const pad = n => String(n).padStart(2, '0');
 
   function preloadAdjacent() {
     if (!filteredImages.length) return;
@@ -3920,19 +4246,12 @@
     const img2 = new Image(); img2.src = filteredImages[prevIdx].src;
   }
 
-  function renderPhoto(index, direction) {
+  function renderPhoto(index) {
     if (!filteredImages.length) return;
     if (index < 0) index = filteredImages.length - 1;
     if (index >= filteredImages.length) index = 0;
     currentPhotoIndex = index;
     const item = filteredImages[currentPhotoIndex];
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion && direction && carouselImg) {
-      const animClass = direction === 'next' ? 'sliding-in-left' : 'sliding-in-right';
-      carouselImg.className = animClass;
-      setTimeout(() => { if (carouselImg) carouselImg.className = ''; }, 300);
-    }
 
     if (carouselImg) {
       carouselImg.src = item.src;
@@ -3944,8 +4263,8 @@
     if (carouselCaption) carouselCaption.textContent = item.caption;
     if (carouselPhotographer) carouselPhotographer.textContent = item.photographer;
 
-    const pad = n => String(n).padStart(2, '0');
-    if (carouselCount) carouselCount.textContent = `${pad(currentPhotoIndex + 1)} / ${pad(filteredImages.length)}`;
+    const countText = `${pad(currentPhotoIndex + 1)} / ${pad(filteredImages.length)}`;
+    if (carouselCount) carouselCount.textContent = countText;
     if (carouselProgressFill) {
       const pct = ((currentPhotoIndex + 1) / filteredImages.length) * 100;
       carouselProgressFill.style.width = `${pct.toFixed(2)}%`;
@@ -3954,7 +4273,8 @@
     if (carouselStoryBtn) {
       if (item.articleId) {
         carouselStoryBtn.classList.remove('hidden');
-        carouselStoryBtn.onclick = () => {
+        carouselStoryBtn.onclick = (e) => {
+          e.stopPropagation();
           if (typeof openArticle === 'function') openArticle(item.articleId);
         };
       } else {
@@ -3962,15 +4282,23 @@
       }
     }
 
+    // Sync with lightbox if currently open in carousel mode
+    if (photoLightbox && photoLightbox.classList.contains('is-open') && lightboxMode === 'carousel') {
+      renderLightboxPhoto();
+    }
+
     preloadAdjacent();
   }
 
   function movePhoto(dir) {
-    renderPhoto(currentPhotoIndex + (dir === 'next' ? 1 : -1), dir);
+    renderPhoto(currentPhotoIndex + (dir === 'next' ? 1 : -1));
   }
 
-  if (carouselPrevBtn) carouselPrevBtn.addEventListener('click', () => movePhoto('prev'));
-  if (carouselNextBtn) carouselNextBtn.addEventListener('click', () => movePhoto('next'));
+  // Understated carousel controls
+  if (carouselPrevBtn) carouselPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); movePhoto('prev'); });
+  if (carouselNextBtn) carouselNextBtn.addEventListener('click', (e) => { e.stopPropagation(); movePhoto('next'); });
+  if (photoNavPrev) photoNavPrev.addEventListener('click', () => movePhoto('prev'));
+  if (photoNavNext) photoNavNext.addEventListener('click', () => movePhoto('next'));
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -3993,28 +4321,109 @@
     });
   });
 
-  if (photoStage) {
-    photoStage.style.cursor = 'pointer';
-    photoStage.addEventListener('click', e => {
-      if (e.target.closest('.carousel-arrow')) return;
-      const item = filteredImages[currentPhotoIndex];
-      if (item && item.articleId && typeof openArticle === 'function') {
-        openArticle(item.articleId);
+  /* Fullscreen Lightbox Controller */
+  function renderLightboxPhoto() {
+    if (lightboxMode === 'ipj') {
+      if (lightboxImg) {
+        lightboxImg.src = 'images/ipj-group-photograph.jpg';
+        lightboxImg.alt = 'International Press Corps group photograph at SSETMUN';
       }
+      if (lightboxKicker) lightboxKicker.textContent = 'IPJ · GROUP PHOTOGRAPH';
+      if (lightboxTitle) lightboxTitle.textContent = 'International Press Corps';
+      if (lightboxCredit) lightboxCredit.textContent = '';
+      if (lightboxPrev) lightboxPrev.classList.add('hidden');
+      if (lightboxNext) lightboxNext.classList.add('hidden');
+      if (lightboxCounter) lightboxCounter.classList.add('hidden');
+    } else {
+      const item = filteredImages[currentPhotoIndex];
+      if (!item) return;
+      if (lightboxImg) {
+        lightboxImg.src = item.src;
+        lightboxImg.alt = item.alt;
+      }
+      if (lightboxKicker) lightboxKicker.textContent = item.committee;
+      if (lightboxTitle) lightboxTitle.textContent = item.title;
+      if (lightboxCredit) lightboxCredit.textContent = item.photographer ? `Photograph by ${item.photographer}` : '';
+      if (lightboxPrev) lightboxPrev.classList.remove('hidden');
+      if (lightboxNext) lightboxNext.classList.remove('hidden');
+      if (lightboxCounter) {
+        lightboxCounter.classList.remove('hidden');
+        lightboxCounter.textContent = `${pad(currentPhotoIndex + 1)} / ${pad(filteredImages.length)}`;
+      }
+    }
+  }
+
+  function openLightbox(mode = 'carousel') {
+    lightboxMode = mode;
+    lastActiveElement = document.activeElement;
+    document.body.style.overflow = 'hidden';
+
+    renderLightboxPhoto();
+
+    if (photoLightbox) {
+      photoLightbox.removeAttribute('hidden');
+      requestAnimationFrame(() => {
+        photoLightbox.classList.add('is-open');
+        if (lightboxClose) lightboxClose.focus();
+      });
+    }
+  }
+
+  function closeLightbox() {
+    if (!photoLightbox || !photoLightbox.classList.contains('is-open')) return;
+    photoLightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      photoLightbox.setAttribute('hidden', '');
+      if (lastActiveElement && lastActiveElement.focus) {
+        lastActiveElement.focus();
+      }
+    }, 240);
+  }
+
+  // Click triggers for fullscreen
+  if (photoStage) {
+    photoStage.addEventListener('click', (e) => {
+      if (e.target.closest('.carousel-arrow')) return;
+      openLightbox('carousel');
     });
-    photoStage.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); movePhoto('prev'); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); movePhoto('next'); }
-      else if (e.key === 'Enter') {
-        const item = filteredImages[currentPhotoIndex];
-        if (item && item.articleId && typeof openArticle === 'function') {
-          openArticle(item.articleId);
-        }
+    photoStage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        openLightbox('carousel');
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault(); movePhoto('prev');
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault(); movePhoto('next');
       }
     });
   }
 
-  window.addEventListener('keydown', e => {
+  if (ipjGroupCard) {
+    ipjGroupCard.addEventListener('click', () => openLightbox('ipj'));
+    ipjGroupCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') openLightbox('ipj');
+    });
+  }
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', () => { if (lightboxMode === 'carousel') movePhoto('prev'); });
+  if (lightboxNext) lightboxNext.addEventListener('click', () => { if (lightboxMode === 'carousel') movePhoto('next'); });
+
+  // Lightbox keyboard controls
+  window.addEventListener('keydown', (e) => {
+    if (photoLightbox && photoLightbox.classList.contains('is-open')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeLightbox();
+      } else if (lightboxMode === 'carousel') {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); movePhoto('prev'); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); movePhoto('next'); }
+      }
+      return;
+    }
+
+    // In-page carousel keyboard navigation when photo desk is in view
     const photoSec = document.getElementById('photos');
     if (!photoSec) return;
     const rect = photoSec.getBoundingClientRect();
@@ -4025,6 +4434,7 @@
     }
   });
 
+  // Touch Swipe for In-Page Carousel
   let touchStartX = 0;
   let touchStartY = 0;
   if (photoStage) {
@@ -4046,6 +4456,29 @@
     }, { passive: true });
   }
 
+  // Touch Swipe for Fullscreen Lightbox
+  let lbTouchStartX = 0;
+  let lbTouchStartY = 0;
+  if (lightboxStage) {
+    lightboxStage.addEventListener('touchstart', e => {
+      if (e.changedTouches && e.changedTouches[0]) {
+        lbTouchStartX = e.changedTouches[0].clientX;
+        lbTouchStartY = e.changedTouches[0].clientY;
+      }
+    }, { passive: true });
+
+    lightboxStage.addEventListener('touchend', e => {
+      if (lightboxMode !== 'carousel' || !e.changedTouches || !e.changedTouches[0]) return;
+      const dx = e.changedTouches[0].clientX - lbTouchStartX;
+      const dy = e.changedTouches[0].clientY - lbTouchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 0) movePhoto('prev');
+        else movePhoto('next');
+      }
+    }, { passive: true });
+  }
+
+  // Initial render
   renderPhoto(0);
 
   /* Back to top */
@@ -4057,6 +4490,25 @@
   const loader=document.getElementById('pageLoader');
   window.addEventListener('load',()=>setTimeout(()=>loader.classList.add('hide'),220));
 </script>
+
+<!-- Reusable Editorial Fullscreen Lightbox -->
+<div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Fullscreen photo viewer" hidden>
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close fullscreen view">×</button>
+  <button class="lightbox-arrow prev" id="lightboxPrev" type="button" aria-label="Previous photograph">←</button>
+  <div class="lightbox-stage" id="lightboxStage">
+    <img id="lightboxImg" src="" alt="" draggable="false" loading="lazy" decoding="async">
+    <div class="lightbox-caption-bar" id="lightboxCaptionBar">
+      <div class="lightbox-info">
+        <span class="lightbox-kicker" id="lightboxKicker"></span>
+        <h4 class="lightbox-title" id="lightboxTitle"></h4>
+        <span class="lightbox-credit" id="lightboxCredit"></span>
+      </div>
+      <span class="lightbox-counter" id="lightboxCounter" aria-live="polite"></span>
+    </div>
+  </div>
+  <button class="lightbox-arrow next" id="lightboxNext" type="button" aria-label="Next photograph">→</button>
+</div>
 
 </body>
 </html>
