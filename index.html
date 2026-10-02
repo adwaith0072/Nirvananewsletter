@@ -1034,7 +1034,7 @@
   margin:0 0 3px auto;
 }
 /* =========================================================
-   PHOTO DESK EDITORIAL CAROUSEL & FULLSCREEN VIEWER
+   PHOTO DESK EDITORIAL CAROUSEL
    ========================================================= */
 .photo-carousel {
   position: relative;
@@ -1082,7 +1082,6 @@
   border: 1px solid var(--line);
   touch-action: pan-y;
   user-select: none;
-  cursor: zoom-in;
 }
 .photo-stage:focus-visible {
   outline: 2px solid var(--signal);
@@ -1126,38 +1125,6 @@
   border: 1px solid rgba(255,255,255,0.15);
   pointer-events: none;
   z-index: 2;
-}
-.photo-zoom-hint {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(9,19,17,0.85);
-  backdrop-filter: blur(8px);
-  color: var(--paper);
-  font: 500 11px/1 'Crimson Pro', serif;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 6px 13px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.18);
-  pointer-events: auto;
-  cursor: pointer;
-  z-index: 6;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  opacity: .9;
-  transition: opacity .2s ease, transform .2s ease, background .2s ease;
-}
-.photo-zoom-hint:hover {
-  opacity: 1;
-  background: var(--teal);
-  border-color: var(--signal);
-  transform: scale(1.05);
-}
-.photo-zoom-hint:focus-visible {
-  outline: 2px solid var(--signal);
-  outline-offset: 2px;
 }
 
 /* Subtle Understated Side Arrows */
@@ -1320,7 +1287,6 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  cursor: zoom-in;
   transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   position: relative;
   display: block;
@@ -1351,31 +1317,6 @@
 .ipj-group-card:hover .ipj-group-media img {
   transform: scale(1.02);
 }
-.ipj-zoom-badge {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(9, 19, 17, 0.82);
-  backdrop-filter: blur(6px);
-  color: var(--paper);
-  font-family: 'Crimson Pro', serif;
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  opacity: 0;
-  transition: opacity .25s ease;
-  pointer-events: none;
-}
-.ipj-group-card:hover .ipj-zoom-badge,
-.ipj-group-card:focus-visible .ipj-zoom-badge {
-  opacity: 1;
-}
 .ipj-group-caption {
   display: flex;
   justify-content: space-between;
@@ -1401,172 +1342,6 @@
   font-style: italic;
 }
 
-/* =========================================================
-   REUSABLE EDITORIAL FULLSCREEN LIGHTBOX
-   ========================================================= */
-html.lightbox-locked,
-body.lightbox-locked {
-  overflow: hidden !important;
-  touch-action: none;
-}
-.photo-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  box-sizing: border-box;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .24s ease, visibility .24s ease;
-}
-.photo-lightbox.is-open {
-  opacity: 1;
-  visibility: visible;
-}
-.lightbox-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(6, 14, 12, 0.95);
-  backdrop-filter: blur(14px);
-  cursor: pointer;
-}
-.lightbox-close {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  z-index: 10;
-  background: transparent;
-  border: 0;
-  color: var(--paper);
-  font-family: 'Inter', sans-serif;
-  font-size: 32px;
-  line-height: 1;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: transform .2s ease, color .2s ease;
-  padding: 0;
-}
-.lightbox-close:hover {
-  color: var(--signal);
-  transform: scale(1.1);
-}
-.lightbox-close:focus-visible {
-  outline: 2px solid var(--signal);
-  outline-offset: 2px;
-}
-.lightbox-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(9, 19, 17, 0.65);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--paper);
-  font-family: 'Crimson Pro', serif;
-  font-size: 24px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all .2s ease;
-  padding: 0;
-}
-.lightbox-arrow:hover {
-  background: var(--teal);
-  color: #fff;
-  border-color: var(--signal);
-  transform: translateY(-50%) scale(1.08);
-}
-.lightbox-arrow:focus-visible {
-  outline: 2px solid var(--signal);
-  outline-offset: 2px;
-}
-.lightbox-arrow.prev { left: 20px; }
-.lightbox-arrow.next { right: 20px; }
-.lightbox-arrow.hidden { display: none !important; }
-
-.lightbox-stage {
-  position: relative;
-  z-index: 5;
-  max-width: 90vw;
-  max-height: 88vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-}
-.lightbox-stage img {
-  max-width: 100%;
-  max-height: calc(88vh - 52px);
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  border-radius: 2px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
-  transition: opacity .2s ease;
-}
-.lightbox-caption-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  width: 100%;
-  max-width: 100%;
-  padding-top: 12px;
-  gap: 16px;
-  color: var(--paper);
-  font-family: 'Crimson Pro', serif;
-}
-.lightbox-info {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px 14px;
-  min-width: 0;
-}
-.lightbox-kicker {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  color: var(--signal);
-  font-weight: 600;
-}
-.lightbox-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0;
-  color: #fff;
-  letter-spacing: .02em;
-}
-.lightbox-caption {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.78);
-  font-style: italic;
-}
-.lightbox-credit {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.65);
-}
-.lightbox-counter {
-  font-size: 13px;
-  font-feature-settings: "tnum";
-  color: rgba(255, 255, 255, 0.85);
-  white-space: nowrap;
-}
-.lightbox-counter.hidden { display: none !important; }
 
 @media(max-width:900px){
   .photo-frame { height: 440px; }
@@ -1578,14 +1353,6 @@ body.lightbox-locked {
   .carousel-arrow.next { right: 8px; }
   .photo-editorial-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-top: 16px; }
   .photo-nav-suite { align-self: flex-start; }
-  .photo-lightbox { padding: 12px; }
-  .lightbox-close { top: 10px; right: 10px; font-size: 26px; width: 38px; height: 38px; }
-  .lightbox-arrow { width: 38px; height: 38px; font-size: 20px; }
-  .lightbox-arrow.prev { left: 8px; }
-  .lightbox-arrow.next { right: 8px; }
-  .lightbox-stage img { max-height: calc(85vh - 58px); }
-  .lightbox-caption-bar { flex-direction: column; align-items: flex-start; gap: 3px; padding-top: 8px; }
-  .lightbox-title { font-size: 13px; }
 }
 @media(max-width:480px){
   .photo-frame { height: 260px; }
@@ -1593,7 +1360,6 @@ body.lightbox-locked {
   .photo-filter-btn { padding: 5px 10px; font-size: 11px; }
   .photo-meta-title { font-size: 21px; }
   .photo-meta-caption { font-size: 13.5px; }
-  .photo-zoom-hint span { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1601,7 +1367,6 @@ body.lightbox-locked {
   .photo-progress-fill,
   .carousel-arrow,
   .photo-nav-arrow,
-  .lightbox-arrow,
   .ipj-group-card {
     transition: none !important;
     animation: none !important;
@@ -2350,16 +2115,12 @@ body.lightbox-locked {
         <button type="button" class="photo-filter-btn" data-filter="WHO" role="tab" aria-selected="false">WHO (8)</button>
       </div>
 
-      <!-- Main Editorial Stage: Click to view fullscreen -->
-      <div class="photo-stage" id="photoStage" tabindex="0" role="button" aria-label="Photo spread viewport. Click to view fullscreen, or use Left and Right arrow keys to browse.">
+      <!-- Main Editorial Stage -->
+      <div class="photo-stage" id="photoStage" tabindex="0" aria-label="Photo spread viewport. Use Left and Right arrow keys to browse.">
         <div class="photo-frame-wrap">
           <div class="photo-frame" id="photoFrame">
             <img id="photoCarouselImg" src="images/aippm-ambassador-of-saffron.jpg" alt="Delegate representing Yogi Adityanath addressing the AIPPM committee floor in saffron attire" loading="eager" decoding="async" draggable="false">
             <div class="photo-badge" id="photoBadge">01 · AIPPM</div>
-            <button type="button" class="photo-zoom-hint" id="photoExpandBtn" aria-label="Expand photograph to fullscreen">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-              <span>Expand</span>
-            </button>
           </div>
         </div>
 
@@ -2419,13 +2180,9 @@ body.lightbox-locked {
       </div>
 
       <!-- IPJ · Group Photograph -->
-      <figure class="ipj-group-card" id="ipjGroupCard" tabindex="0" role="button" aria-label="IPJ Group Photograph — Click to view fullscreen">
+      <figure class="ipj-group-card" id="ipjGroupCard">
         <div class="ipj-group-media">
           <img src="images/ipj-group-photograph.jpg" alt="International Press Corps group photograph at SSETMUN" loading="lazy" decoding="async">
-          <span class="ipj-zoom-badge" aria-hidden="true">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-            <span>Fullscreen ↗</span>
-          </span>
         </div>
         <figcaption class="ipj-group-caption">
           <strong>IPJ · GROUP PHOTOGRAPH</strong>
@@ -2534,7 +2291,7 @@ body.lightbox-locked {
     if (!body.classList.contains('nav-open')) return;
     body.classList.remove('nav-open');
     mobileToggle.setAttribute('aria-expanded','false');
-    if (!isLightboxOpen && !modal.classList.contains('is-open')) {
+    if (!modal.classList.contains('is-open')) {
       body.style.overflow = '';
     }
   }
@@ -3502,7 +3259,7 @@ body.lightbox-locked {
 
   function closeArticleModal(push = true) {
     modal.classList.remove('is-open');
-    if (!isLightboxOpen && !body.classList.contains('nav-open')) {
+    if (!body.classList.contains('nav-open')) {
       body.style.overflow = '';
     }
     if (articleModalPdfFrame) articleModalPdfFrame.src = 'about:blank';
@@ -3911,7 +3668,7 @@ window.addEventListener('resize', () => {
 }, { passive: true });
 
   /* =========================================================
-     PHOTO DESK & FULLSCREEN LIGHTBOX ARCHITECTURE
+     PHOTO DESK ARCHITECTURE
      ========================================================= */
   const photoDeskImages = [
     {
@@ -4258,10 +4015,6 @@ window.addEventListener('resize', () => {
   let currentPhotoIndex = 0;
   let currentFilter = 'all';
   let filteredImages = [...photoDeskImages];
-  let lightboxMode = 'carousel'; // 'carousel' | 'ipj'
-  let lastActiveElement = null;
-  let savedScrollY = 0;
-  let isLightboxOpen = false;
 
   // Cached Carousel DOM elements
   const carouselImg = document.getElementById('photoCarouselImg');
@@ -4275,24 +4028,8 @@ window.addEventListener('resize', () => {
   const carouselProgressFill = document.getElementById('photoProgressFill');
   const carouselPrevBtn = document.getElementById('photoPrevBtn');
   const carouselNextBtn = document.getElementById('photoNextBtn');
-  const photoExpandBtn = document.getElementById('photoExpandBtn');
   const photoStage = document.getElementById('photoStage');
   const filterBtns = document.querySelectorAll('.photo-filter-btn');
-
-  // Cached Lightbox DOM elements
-  const photoLightbox = document.getElementById('photoLightbox');
-  const lightboxBackdrop = document.getElementById('lightboxBackdrop');
-  const lightboxClose = document.getElementById('lightboxClose');
-  const lightboxPrev = document.getElementById('lightboxPrev');
-  const lightboxNext = document.getElementById('lightboxNext');
-  const lightboxStage = document.getElementById('lightboxStage');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxKicker = document.getElementById('lightboxKicker');
-  const lightboxTitle = document.getElementById('lightboxTitle');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  const lightboxCredit = document.getElementById('lightboxCredit');
-  const lightboxCounter = document.getElementById('lightboxCounter');
-  const ipjGroupCard = document.getElementById('ipjGroupCard');
 
   const pad = n => String(n).padStart(2, '0');
 
@@ -4349,11 +4086,6 @@ window.addEventListener('resize', () => {
       }
     }
 
-    // Sync with lightbox if currently open in carousel mode
-    if (photoLightbox && isLightboxOpen && lightboxMode === 'carousel') {
-      renderLightboxPhoto();
-    }
-
     preloadAdjacent();
   }
 
@@ -4386,118 +4118,10 @@ window.addEventListener('resize', () => {
     });
   });
 
-  /* Fullscreen Lightbox Controller */
-  function renderLightboxPhoto() {
-    if (lightboxMode === 'ipj') {
-      if (lightboxImg) {
-        lightboxImg.src = 'images/ipj-group-photograph.jpg';
-        lightboxImg.alt = 'International Press Corps group photograph at SSETMUN';
-      }
-      if (lightboxKicker) lightboxKicker.textContent = 'IPJ · GROUP PHOTOGRAPH';
-      if (lightboxTitle) lightboxTitle.textContent = 'International Press Corps';
-      if (lightboxCaption) lightboxCaption.textContent = '';
-      if (lightboxCredit) lightboxCredit.textContent = '';
-      if (lightboxPrev) lightboxPrev.classList.add('hidden');
-      if (lightboxNext) lightboxNext.classList.add('hidden');
-      if (lightboxCounter) lightboxCounter.classList.add('hidden');
-    } else {
-      const item = filteredImages[currentPhotoIndex];
-      if (!item) return;
-      if (lightboxImg) {
-        lightboxImg.src = item.src;
-        lightboxImg.alt = item.alt;
-      }
-      if (lightboxKicker) lightboxKicker.textContent = item.committee;
-      if (lightboxTitle) lightboxTitle.textContent = item.title;
-      if (lightboxCaption) lightboxCaption.textContent = item.caption || '';
-      if (lightboxCredit) lightboxCredit.textContent = item.photographer ? `Photograph by ${item.photographer}` : '';
-      if (lightboxPrev) lightboxPrev.classList.remove('hidden');
-      if (lightboxNext) lightboxNext.classList.remove('hidden');
-      if (lightboxCounter) {
-        lightboxCounter.classList.remove('hidden');
-        lightboxCounter.textContent = `${pad(currentPhotoIndex + 1)} / ${pad(filteredImages.length)}`;
-      }
-    }
-  }
-
-  function openLightbox(mode = 'carousel') {
-    if (isLightboxOpen) return;
-    isLightboxOpen = true;
-    savedScrollY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
-    lastActiveElement = document.activeElement;
-
-    // Lock scrolling on documentElement and body
-    document.documentElement.classList.add('lightbox-locked');
-    document.body.classList.add('lightbox-locked');
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-
-    lightboxMode = mode;
-    renderLightboxPhoto();
-
-    if (photoLightbox) {
-      photoLightbox.removeAttribute('hidden');
-      requestAnimationFrame(() => {
-        photoLightbox.classList.add('is-open');
-        if (lightboxClose) lightboxClose.focus();
-      });
-    }
-  }
-
-  function closeLightbox() {
-    if (!photoLightbox || !isLightboxOpen) return;
-    isLightboxOpen = false;
-
-    photoLightbox.classList.remove('is-open');
-
-    // Immediately remove scroll lock classes and inline styles
-    document.documentElement.classList.remove('lightbox-locked');
-    document.body.classList.remove('lightbox-locked');
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    document.documentElement.style.touchAction = '';
-    document.body.style.touchAction = '';
-
-    // Restore exact scroll position immediately
-    window.scrollTo(0, savedScrollY);
-
-    setTimeout(() => {
-      if (!isLightboxOpen) {
-        photoLightbox.setAttribute('hidden', '');
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-        window.scrollTo(0, savedScrollY);
-        if (lastActiveElement && typeof lastActiveElement.focus === 'function' && document.body.contains(lastActiveElement)) {
-          lastActiveElement.focus({ preventScroll: true });
-        }
-      }
-    }, 240);
-  }
-
-  // Click triggers for fullscreen: EXPAND button, entire photo stage, or image
-  if (photoExpandBtn) {
-    photoExpandBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openLightbox('carousel');
-    });
-  }
-
-  if (carouselImg) {
-    carouselImg.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openLightbox('carousel');
-    });
-  }
-
+  // Stage Keyboard Navigation (Arrow Left / Right)
   if (photoStage) {
-    photoStage.addEventListener('click', (e) => {
-      if (e.target.closest('.carousel-arrow') || e.target.closest('.photo-story-link')) return;
-      openLightbox('carousel');
-    });
     photoStage.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        openLightbox('carousel');
-      } else if (e.key === 'ArrowLeft') {
+      if (e.key === 'ArrowLeft') {
         e.preventDefault(); movePhoto('prev');
       } else if (e.key === 'ArrowRight') {
         e.preventDefault(); movePhoto('next');
@@ -4505,48 +4129,9 @@ window.addEventListener('resize', () => {
     });
   }
 
-  if (ipjGroupCard) {
-    ipjGroupCard.addEventListener('click', () => openLightbox('ipj'));
-    ipjGroupCard.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') openLightbox('ipj');
-    });
-  }
-
-  // Lightbox unified closing methods: close button, backdrop/outside click, Escape
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeLightbox();
-    });
-  }
-
-  if (photoLightbox) {
-    photoLightbox.addEventListener('click', (e) => {
-      // Don't close if clicking arrows, the photograph itself, or caption bar
-      if (e.target.closest('.lightbox-arrow') || e.target.closest('#lightboxImg') || e.target.closest('#lightboxCaptionBar')) {
-        return;
-      }
-      closeLightbox();
-    });
-  }
-
-  if (lightboxPrev) lightboxPrev.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (lightboxMode === 'carousel') movePhoto('prev');
-  });
-  if (lightboxNext) lightboxNext.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (lightboxMode === 'carousel') movePhoto('next');
-  });
-
-  // Unified Overlay Dismissal & Lightbox/Carousel Keyboard Navigation
+  // Unified Overlay Dismissal & Carousel Keyboard Navigation
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (photoLightbox && isLightboxOpen) {
-        e.preventDefault();
-        closeLightbox();
-        return;
-      }
       if (modal && modal.classList.contains('is-open')) {
         e.preventDefault();
         closeArticleModal();
@@ -4557,12 +4142,6 @@ window.addEventListener('resize', () => {
         closeMobileNav();
         return;
       }
-      return;
-    }
-
-    if (photoLightbox && isLightboxOpen && lightboxMode === 'carousel') {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); movePhoto('prev'); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); movePhoto('next'); }
       return;
     }
 
@@ -4599,27 +4178,6 @@ window.addEventListener('resize', () => {
     }, { passive: true });
   }
 
-  // Touch Swipe for Fullscreen Lightbox
-  let lbTouchStartX = 0;
-  let lbTouchStartY = 0;
-  if (lightboxStage) {
-    lightboxStage.addEventListener('touchstart', e => {
-      if (e.changedTouches && e.changedTouches[0]) {
-        lbTouchStartX = e.changedTouches[0].clientX;
-        lbTouchStartY = e.changedTouches[0].clientY;
-      }
-    }, { passive: true });
-
-    lightboxStage.addEventListener('touchend', e => {
-      if (lightboxMode !== 'carousel' || !e.changedTouches || !e.changedTouches[0]) return;
-      const dx = e.changedTouches[0].clientX - lbTouchStartX;
-      const dy = e.changedTouches[0].clientY - lbTouchStartY;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-        if (dx > 0) movePhoto('prev');
-        else movePhoto('next');
-      }
-    }, { passive: true });
-  }
 
   // Initial render
   renderPhoto(0);
@@ -4634,25 +4192,6 @@ window.addEventListener('resize', () => {
   window.addEventListener('load',()=>setTimeout(()=>loader.classList.add('hide'),220));
 </script>
 
-<!-- Reusable Editorial Fullscreen Lightbox -->
-<div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Fullscreen photo viewer" hidden>
-  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close fullscreen view">×</button>
-  <button class="lightbox-arrow prev" id="lightboxPrev" type="button" aria-label="Previous photograph">←</button>
-  <div class="lightbox-stage" id="lightboxStage">
-    <img id="lightboxImg" src="" alt="Enlarged conference photograph" draggable="false" loading="lazy" decoding="async">
-    <div class="lightbox-caption-bar" id="lightboxCaptionBar">
-      <div class="lightbox-info">
-        <span class="lightbox-kicker" id="lightboxKicker"></span>
-        <h4 class="lightbox-title" id="lightboxTitle"></h4>
-        <span class="lightbox-caption" id="lightboxCaption"></span>
-        <span class="lightbox-credit" id="lightboxCredit"></span>
-      </div>
-      <span class="lightbox-counter" id="lightboxCounter" aria-live="polite"></span>
-    </div>
-  </div>
-  <button class="lightbox-arrow next" id="lightboxNext" type="button" aria-label="Next photograph">→</button>
-</div>
 
 </body>
 </html>
